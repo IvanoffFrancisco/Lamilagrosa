@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Articulo1 from "../components/Articulo1";
 import Carrusel from "../components/Carrusel";
+import Promosiones from "../components/Promosiones";
 
 const images = [
   "/img/slideshow/sandwich-de-milanesa.jpg",
@@ -156,6 +157,7 @@ export default function Home() {
         intervalo="4500"
         images={images}
       />
+      <Promosiones/>
       <Articulo1 />
     </div>
   );
