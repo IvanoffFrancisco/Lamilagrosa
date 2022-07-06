@@ -5,7 +5,7 @@ const TipoMila = ({ setTipoMenu, tipoMenu }) => {
 
   return (
     <>
-      <div className="sticky w-full h-full bg-blue-600 border-t-4 border-b-4 border-gray-400 top-20 z-[800] ">
+      <div className="fixed w-full h-auto bg-blue-600 border-t-4 border-b-4 border-gray-400 top-20 z-[800] ">
         <ul className="max-w-[80%] mx-auto text-white flex justify-between items-center p-2 gap-x-5 font-semibold text-xs md:text-sm md:tracking-wide md:gap-x-7 lg:text-base lg:gap-x-8 xl:gap-x-10 2xl:gap-x-12 2xl:text-lg">
           <li onClick={handleSeleccion}>
             <p
