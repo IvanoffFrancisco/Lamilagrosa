@@ -204,7 +204,7 @@ const carta = [
   },
   {
     imagen: "/img/menues/Sandwich Crispy.png",
-    nombre: "Sandwich Crispy",
+    nombre: "Sándwich Crispy",
     ingredientes: [
       "doble de milanesa de pollo y muzza",
       "empanado crocante",
@@ -235,93 +235,3 @@ const menu = () => {
   return <ProductList carta={carta} />;
 };
 export default menu;
-
-// {
-//     imagen: "roquefort",
-//     nombre: "roquefort",
-//     ingredientes: [
-//       "salsa de tomate",
-//       "muzzarella",
-//       "roquefort",
-//       "rulos de jamon cocido",
-//       "parmesano rallado",
-//     ],
-//   },
-//   {
-//     imagen: "4 quesos",
-//     nombre: "4 quesos",
-//     ingredientes: ["muzzarella", "cheddar", "roquefort", "parmesano"],
-//   },
-//   {
-//     imagen: "5 quesos",
-//     nombre: "5 quesos",
-//     ingredientes: [
-//       "muzzarella",
-//       "cheddar",
-//       "roquefort",
-//       "parmesano",
-//       "provolone",
-//     ],
-//   },
-//   {
-//     imagen: "calabresa",
-//     nombre: "calabresa",
-//     ingredientes: ["salsa de tomate", "muzzarella", "longaniza", "huevo duro"],
-//   },
-//   {
-//     imagen: "vienesa",
-//     nombre: "vienesa",
-//     ingredientes: [
-//       "salsa de tomate",
-//       "muzzarella",
-//       "salchichas",
-//       "cebolla gratinada",
-//       "mostaza",
-//     ],
-//   },
-
-//   {
-//     imagen: "morron y huevo",
-//     nombre: "morron y huevo",
-//     ingredientes: [
-//       "salsa de tomate",
-//       "muzzarella",
-//       "morrones",
-//       "jamon cocido",
-//       "huevo picado",
-//       "aji molido",
-//     ],
-//   },
-//   {
-//     imagen: "gran imperio",
-//     nombre: "gran imperio",
-//     ingredientes: [
-//       "salsa de tomate",
-//       "muzzarella",
-//       "cheddar",
-//       "panceta",
-//       "4 huevos fritos",
-//     ],
-//   },
-//   {
-//     imagen: "la conquistadora",
-//     nombre: "la conquistadora",
-//     ingredientes: [
-//       "salsa de tomate",
-//       "muzzarella",
-//       "bondiola",
-//       "rodaja de tomate",
-//       "albahaca",
-//     ],
-//   },
-//   {
-//     imagen: "jamon crudo",
-//     nombre: "jamon crudo",
-//     ingredientes: [
-//       "salsa de tomate",
-//       "muzzarella",
-//       "jamon crudo",
-//       "rucula",
-//       "parmesano",
-//     ],
-//   },
