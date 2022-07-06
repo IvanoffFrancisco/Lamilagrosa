@@ -13,9 +13,10 @@ const MenuCard = ({ item }) => {
           alt="producto"
           objectFit="cover"
         />
-        <h2 className="font-bold text-md text-white py-2 lg:text-lg xl:text-xl">
+        <h2 className="font-bold text-lg text-white py-2 lg:text-lg xl:text-xl">
           {item.nombre}
         </h2>
+        <p className="text-blue-600 text-lg pb-2">$ {item.precio}</p>
       </div>
     </li>
   );
