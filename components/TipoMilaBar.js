@@ -1,28 +1,33 @@
-import React, { useState } from "react";
-
-const TipoMila = () => {
-  const [tipoMenu, setTipoMenu] = useState("Todas");
-
+const TipoMila = ({ setTipoMenu, tipoMenu }) => {
   const handleSeleccion = (e) => {
     setTipoMenu(e.target.innerHTML);
   };
 
   return (
     <>
-      <div className="sticky w-full h-auto bg-blue-600 top-20 z-[800] shadow-md shadow-gray-600">
-        <ul className="flex justify-center items-center p-3 gap-x-5 text-white text-xs md:text-sm md:tracking-wide md:gap-x-7 lg:text-base lg:gap-x-8 xl:gap-x-10 2xl:gap-x-12 2xl:text-lg">
+      <div className="sticky w-full h-auto bg-blue-500 top-20 z-[800] shadow-sm shadow-blue-900">
+        <ul className="max-w-[80%] mx-auto text-white flex justify-between items-center gap-x-2 font-semibold text-xs md:text-sm tracking-wide md:gap-x-7 lg:text-base lg:gap-x-8 xl:gap-x-10 2xl:gap-x-12 2xl:text-lg py-2 ">
           <li onClick={handleSeleccion}>
             <p
-              className={`cursor-pointer hover:border-b border-b-white ${
-                tipoMenu === "Sandwich" ? "border-b border-b-white" : ""
+              className={`cursor-pointer hover:border-b border-white ${
+                tipoMenu === "Todos" ? "border-b border-b-white" : ""
               }`}
             >
-              Sandwich
+              Todos
             </p>
           </li>
           <li onClick={handleSeleccion}>
             <p
-              className={`cursor-pointer  hover:border-b border-b-white ${
+              className={`cursor-pointer hover:border-b border-white ${
+                tipoMenu === "Sándwich" ? "border-b border-b-white" : ""
+              }`}
+            >
+              Sándwich
+            </p>
+          </li>
+          {/* <li onClick={handleSeleccion}>
+            <p
+              className={`cursor-pointer  hover:border-b border-white ${
                 tipoMenu === "Carne" ? "border-b border-b-white" : ""
               }`}
             >
@@ -31,44 +36,35 @@ const TipoMila = () => {
           </li>
           <li onClick={handleSeleccion}>
             <p
-              className={`cursor-pointer hover:border-b border-b-white ${
+              className={`cursor-pointer hover:border-b border-white ${
                 tipoMenu === "Pollo" ? "border-b border-b-white" : ""
               }`}
             >
               Pollo
             </p>
-          </li>
+          </li> */}
           <li onClick={handleSeleccion}>
             <p
-              className={`cursor-pointer hover:border-b border-b-white ${
-                tipoMenu === "Veganas" ? "border-b border-b-white" : ""
+              className={`cursor-pointer hover:border-b border-white ${
+                tipoMenu === "Vegana" ? "border-b border-b-white" : ""
               }`}
             >
-              Veganas
+              Vegana
             </p>
           </li>
           <li onClick={handleSeleccion}>
             <p
-              className={`cursor-pointer  hover:border-b border-b-white ${
-                tipoMenu === "Rellenas" ? "border-b border-b-white" : ""
+              className={`cursor-pointer  hover:border-b border-white ${
+                tipoMenu === "Rellena" ? "border-b border-b-white" : ""
               }`}
             >
-              Rellenas
-            </p>
-          </li>
-          <li onClick={handleSeleccion}>
-            <p
-              className={`cursor-pointer  hover:border-b border-b-white ${
-                tipoMenu === "Todas" ? "border-b border-b-white" : ""
-              }`}
-            >
-              Todas
+              Rellena
             </p>
           </li>
         </ul>
       </div>
-      <div className="max-w-[85%] mx-auto lg:px-8 xl:px-12 2xl:px-16 my-16 text-2xl tracking-wide font-semibold">
-        <p>{tipoMenu}</p>
+      <div className="max-w-[85%] mx-auto my-8 text-2xl tracking-wide font-semibold">
+        <p className="capitalize">{tipoMenu}</p>
       </div>
     </>
   );

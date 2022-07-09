@@ -71,7 +71,7 @@ const Carrusel = ({
   }, [autoplay, intervalo, siguiente]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden mt-20">
       <div className="flex items-center">
         <div
           ref={slideshow}

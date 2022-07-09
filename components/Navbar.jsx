@@ -13,8 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="sticky w-full h-20 z-[900] top-0 shadow-lg bg-white">
-      <div className="max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
+    <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
+      <div className="max-w-[80%] mx-auto flex justify-between items-center w-full h-full ">
         {/* <div> */}
         <Link href="/">
           <a className="pt-1">

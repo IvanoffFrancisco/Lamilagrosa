@@ -8,7 +8,6 @@ const images = [
   "/img/slideshow/milanesa_de_carne.jpg",
 ];
 
-
 export default function Home() {
   return (
     <div>
