@@ -1,5 +1,137 @@
 import ProductList from "../components/ProductList";
 
+const guarniciones = [
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/3d9120f7-f3ef-455c-8acd-cda3e4098807-1629229510757.png",
+    nombre: "Papas fritas",
+    ingredientes: ["papa"],
+    precio: 688,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/1937429-1617886917008.jpg",
+    nombre: "Papas fritas a caballo",
+    ingredientes: ["Papa", "huevo frito"],
+    precio: 825,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546594-1617886929209.jpg",
+    nombre: "Papas cheddar",
+    ingredientes: ["Papa", "cheddar", "panceta crocante", "ciboulette"],
+    precio: 825,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546595-1617886953216.jpg",
+    nombre: "Papas Criminales",
+    ingredientes: [
+      "Papas fritas",
+      "cheddar",
+      "cebolla de verdeo y colorada",
+      "panceta ahumada",
+      "huevo revuelto",
+      "pimentón dulce",
+    ],
+    precio: 1100,
+    id: 1,
+  },
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/12368191-8b4c-4336-9b94-42fdb50e09d5-1628272889480.png",
+    nombre: "Nachos",
+    ingredientes: ["nachos", "salsa a eleccion"],
+    precio: 600,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546599-1617886889264.jpg",
+    nombre: "Aros de Cebolla",
+    ingredientes: ["Aros de cebolla", "salsa barbacoa"],
+    precio: 653,
+    id: 1,
+  },
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/6287d03b-3082-4275-9de6-6a8e4f3d6732-1645118117215.png",
+    nombre: "Triángulo de Provolone",
+    ingredientes: ["provolone", "salsa criolla"],
+    precio: 600,
+    id: 1,
+  },
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/e3cec65d-8bb5-48c5-bbdb-1d22284a3d5e-1650463523409.png",
+    nombre: "Bastoncitos de Muzzarella",
+    ingredientes: ["muzzarella", "salsa fileto"],
+    precio: 600,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/1784419-1617887000030.jpg",
+    nombre: "Pechuguitas Crispy",
+    ingredientes: ["Pechuguitas pollo", "muzzarella", "salsa barbacoa"],
+    precio: 575,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546624-1617888077361.jpg",
+    nombre: "Ensalada Clásica",
+    ingredientes: [
+      "Cebolla",
+      "Huevo",
+      "Lechuga",
+      "Parmesano",
+      "Tomate",
+      "Zanahoria",
+      "Rúcula",
+    ],
+    precio: 614,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546627-1617888105700.jpg",
+    nombre: "Ensalada Caesar",
+    ingredientes: [
+      "lechuga",
+      "pollo",
+      "croutones",
+      "salsa Caesar",
+      "parmesano",
+    ],
+    precio: 800,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546629-1617888112237.jpg",
+    nombre: "Ensalada Caesar de Rúcula",
+    ingredientes: [
+      "lechuga",
+      "pollo",
+      "croutones",
+      "salsa Caesar",
+      "parmesano",
+    ],
+    precio: 800,
+    id: 1,
+  },
+  {
+    imagen: "https://images.rappi.com.ar/products/546622-1617888090814.jpg",
+    nombre: "Wrap Milanesitas de Pollo",
+    ingredientes: [
+      "Wrap de milanesas de pollo",
+      "mayonesa",
+      "verdes",
+      "cebolla caramelizada",
+      "tomate confitado",
+      "nachos",
+    ],
+    precio: 700,
+    id: 1,
+  },
+];
+
 const carta = [
   {
     imagen: "/img/menues/Capresse.jpg",
@@ -140,6 +272,7 @@ const carta = [
     precio: 1400,
     id: 14,
   },
+
   {
     imagen: "/img/menues/Vegana Clásica.png",
     nombre: "Milanesa Vegana Clásica",
@@ -147,6 +280,7 @@ const carta = [
     precio: 1320,
     id: 15,
   },
+
   {
     imagen: "/img/menues/Vegana Texmex.png",
     nombre: "Milanesa Vegana Texmex",
@@ -252,8 +386,50 @@ const carta = [
     precio: 1000,
     id: 23,
   },
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/86c32484-c45d-41eb-b217-cee3b6209acf-1629229103546.png",
+    nombre: "Milanesa Vegana de Calabaza",
+    ingredientes: [
+      "Milanesa de calabaza con miel",
+      "semillas de chia",
+      "semillas de lino",
+      "canela",
+    ],
+    precio: 906,
+    id: 24,
+  },
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/eb783756-4318-4bd6-967f-c260f159b1ab-1629229315501.png",
+    nombre: "Milanesa Vegana de Calabaza Napolitana",
+    ingredientes: [
+      "Milanesa Vegana de calabaza con miel",
+      "semillas de chia",
+      "lino y canela",
+      "muzzarella",
+      "tomate",
+      "pesto de albahaca",
+    ],
+    precio: 906,
+    id: 25,
+  },
+  {
+    imagen:
+      "https://images.rappi.com.ar/products/874e6f52-6156-4cf3-9b7c-f5137d76c714-1629229271646.png",
+    nombre: "Milanesa Vegana de Calabaza Capresse",
+    ingredientes: [
+      "Dúo de medallones de calabaza con un toque de miel",
+      "semillas de chia",
+      "lino y canela",
+      "topping de muzzarella",
+      "tomate",
+      "pesto de albahac",
+    ],
+    precio: 906,
+    id: 26,
+  },
 ];
-
 const menu = () => {
   return (
     <div className="mt-20">
