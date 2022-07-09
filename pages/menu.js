@@ -1,3 +1,4 @@
+import Layout from "../components/Layout";
 import ProductList from "../components/ProductList";
 
 const guarniciones = [
@@ -432,9 +433,11 @@ const carta = [
 ];
 const menu = () => {
   return (
-    <div className="mt-20">
-      <ProductList carta={carta} />;
-    </div>
+    <Layout>
+      <div className="mt-20">
+        <ProductList carta={carta} />;
+      </div>
+    </Layout>
   );
 };
 export default menu;

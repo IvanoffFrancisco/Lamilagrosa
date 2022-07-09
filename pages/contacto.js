@@ -1,7 +1,11 @@
-import React from "react";
+import Layout from "../components/Layout";
 
 const contacto = () => {
-  return <div>contacto</div>;
+  return (
+    <Layout>
+      <div className="mt-20">contacto</div>
+    </Layout>
+  );
 };
 
 export default contacto;
