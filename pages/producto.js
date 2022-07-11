@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Layout from "../components/Layout";
 import { TiHeartOutline } from "react-icons/ti";
 
 const guarniciones = [
@@ -143,6 +144,7 @@ const productoPrueba = {
 
 const producto = () => {
   return (
+    <Layout>
     <main className="w-full h-auto mt-20">
       <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
         
@@ -257,6 +259,7 @@ const producto = () => {
         </section>
       </div>
     </main>
+    </Layout>
   );
 };
 
