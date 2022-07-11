@@ -5,13 +5,13 @@ const nosotros = () => {
   return (
     <Layout>
       <div className="w-full h-auto mt-20">
-        <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center py-8 lg:py-10 xl:py-12 2xl:py-14 tracking-widest">
+        <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] 2xl:max-w-[75%] mx-auto">
+          <h2 className="text-2xl md:text-2xl lg:text-3xl font-bold text-center py-6 md:py-7 lg:py-8 xl:py-10 tracking-widest">
             Nuestra Historia
           </h2>
 
           <div className="w-full flex flex-col md:flex-row md:text-lg lg:text-lg xl:text-2xl 2xl:text-3xl gap-3">
-            <div className="w-full md:min-w-[400x]">
+            <div className="w-full md:min-w-[350x] max-w-[500px] mx-auto">
               <Image
                 src="/img/nosotros.jpg"
                 alt="nosotros"
@@ -22,7 +22,7 @@ const nosotros = () => {
               />
             </div>
 
-            <div className="w-full leading-6 lg:leading-8 xl:leading-10">
+            <div className="w-full leading-6 lg:leading-8">
               <p>La Mila Grosa abrió sus puertas en Enero del 2011.</p>
               <p>
                 Fieles a la fusión de los mejores ingredientes locales e
