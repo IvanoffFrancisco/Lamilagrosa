@@ -12,15 +12,13 @@ const Footer = () => {
         <div className="max-w-[85%] mx-auto min-h-[210px] py-5 flex flex-col items-center md:flex-row md:justify-center md:gap-x-12 md:items-center md:min-h-[250px] relative">
           <div className="w-auto h-auto flex items-center gap-4 ">
             <Link href="/">
-              <a className="cursor-pointer w-[66px] h-[65px] md:w-[110px] md:h-[110px]">
+              <a className="cursor-pointer w-[70px] h-[66px] md:w-[110px] md:h-[110px]">
                 <Image
                   layout="responsive"
-                  width="66"
+                  width="68"
                   height="66"
-                  //   src="/img/logo-LaMilaGrosa-final.png"
                   src="/img/logo-LaMilaGrosa-circular.png"
                   alt="logo"
-                  objectFit="cover"
                 />
               </a>
             </Link>
