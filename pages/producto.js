@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import { TiHeartOutline } from "react-icons/ti";
 
 const guarniciones = [
   {
@@ -144,15 +144,34 @@ const productoPrueba = {
 const producto = () => {
   return (
     <main className="w-full h-auto mt-20">
-      <div className="max-w-[85%] mx-auto">
-        <h2 className="text-center py-5 text-2xl text-blue-600">
-          {productoPrueba?.nombre}
-        </h2>
+      <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
+        
+        <div className="w-full flex justify-between pt-1">
+          <h2 className="text-center text-2xl font-semibold md:hidden">
+            {productoPrueba?.nombre}
+          </h2>
+          <TiHeartOutline
+            size="30px"
+            className="cursor-pointer md:hidden"
+            onClick={() => alert("hola")}
+          />
+        </div>
 
-        <section className="w-full flex flex-col">
+        <div>
+          <sapan className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
+            (
+            {productoPrueba.ingredientes
+              .map((ingrediente) => ingrediente)
+              .join(", ")}
+            )
+          </sapan>
+        </div>
+
+        <section className="w-full md:w-1/2 flex flex-col gap-2">
+
           <article className="w-full">
             <Image
-              src="/img/menues/a caballo.jpg"
+              src={productoPrueba.imagen}
               alt="producto"
               layout="responsive"
               width="500"
@@ -161,10 +180,18 @@ const producto = () => {
             />
           </article>
 
-          <section className="w-full my-2 ">
-            <ul className="grid grid-cols-3 grid-rows-2 gap-2">
+          <p className="text-center uppercase">
+            Elige una guarnición{" "}
+            <sapn className="text-red-600 font-semibold">Grosa!</sapn>
+          </p>
+
+          <section className="w-full">
+            <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
               {guarniciones.map((item, i) => (
-                <li className="w-full" key={i}>
+                <li
+                  className="min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start"
+                  key={i}
+                >
                   <Image
                     src={item.imagen}
                     alt="producto"
@@ -177,6 +204,56 @@ const producto = () => {
               ))}
             </ul>
           </section>
+        </section>
+
+        <section className="w-full md:w-1/2">
+            <div className="flex justify-between">
+              <h2 className="text-start text-2xl hidden md:block font-semibold">
+                {productoPrueba.nombre}
+              </h2>
+              <TiHeartOutline
+                size="30px"
+                className="cursor-pointer hidden md:block"
+                onClick={() => alert("hola")}
+              />
+            </div>
+
+            <sapan className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
+              (
+              {productoPrueba.ingredientes
+                .map((ingrediente) => ingrediente)
+                .join(", ")}
+              )
+            </sapan>
+
+            <p className="text-red-600 text-2xl font-bold py-6">
+              ${productoPrueba.precio}
+            </p>
+
+            <div className="md:py-5 flex justify-between">
+              <div>
+                <button className="p-2 border">-</button>
+                <div className="w-fit border p-2 inline-block">
+                  {"contador"}
+                </div>
+                <button className="p-2 border">+</button>
+              </div>
+              <button className="bg-red-600 py-2 px-4 text-white rounded-md uppercase">
+                Añadir
+              </button>
+            </div>
+
+            <div className="py-5">
+              <p>
+                Aca iria la descripcion del menu Curabitur non lectus tellus.
+                Vestibulum pulvinar vestibulum leo, id sagittis sapien aliquet
+                in. Nunc ac urna vel neque feugiat laoreet non finibus sem. In
+                rutrum sapien non lorem rhoncus cursus. Donec felis felis,
+                venenatis eleifend hendrerit mollis, dictum et nisi. Nunc dolor
+                nulla, pulvinar non venenatis vitae, sagittis eget nisl. Fusce
+                accumsan tellus augue.
+              </p>
+            </div>
         </section>
       </div>
     </main>
