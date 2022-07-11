@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const MenuCard = ({ item }) => {
   return (
@@ -19,7 +20,11 @@ const MenuCard = ({ item }) => {
           </h2>
           <div className="flex justify-evenly items-center py-3">
             <p className="text-red-600 text-2xl pb-2">$ {item.precio}</p>
-            <button className="py-1 px-3 bg-red-600 text-white text-lg rounded-md">Añadir</button>
+            <Link href="/producto">
+              <a className="py-1 px-3 bg-red-600 text-white text-lg rounded-md">
+                Añadir
+              </a>
+            </Link>
           </div>
         </div>
       </div>
