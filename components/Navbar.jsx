@@ -56,6 +56,11 @@ const Navbar = () => {
                 Contacto
               </li>
             </Link>
+            <Link href="/login">
+              <li className=" hover:border-b hover:border-blue-400">
+                Login
+              </li>
+            </Link>
           </ul>
         </div>
 
