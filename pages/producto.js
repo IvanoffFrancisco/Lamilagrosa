@@ -146,7 +146,7 @@ const producto = () => {
     <main className="w-full h-auto mt-20">
       <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
         
-        <div className="w-full flex justify-between pt-1">
+        <div className="flex justify-between pt-1">
           <h2 className="text-center text-2xl font-semibold md:hidden">
             {productoPrueba?.nombre}
           </h2>
@@ -167,7 +167,7 @@ const producto = () => {
           </sapan>
         </div>
 
-        <section className="w-full md:w-1/2 flex flex-col gap-2">
+        <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
 
           <article className="w-full">
             <Image
@@ -206,7 +206,7 @@ const producto = () => {
           </section>
         </section>
 
-        <section className="w-full md:w-1/2">
+        <section className="w-full md:w-1/2 lg:w-2/5">
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
                 {productoPrueba.nombre}
