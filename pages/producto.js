@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
+import ListadoGuarniciones from "../components/ListadoGuarniciones";
+
 import { TiHeartOutline } from "react-icons/ti";
+import ListadoIngredientes from "../components/ListadoIngredientes";
 
 const guarniciones = [
   {
@@ -143,72 +146,76 @@ const productoPrueba = {
 };
 
 const producto = () => {
+  const handleLeftClick = () => {};
+  const handleRightClick = () => {};
+
   return (
     <Layout>
-    <main className="w-full h-auto mt-20">
-      <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
-        
-        <div className="flex justify-between pt-1">
-          <h2 className="text-center text-2xl font-semibold md:hidden">
-            {productoPrueba?.nombre}
-          </h2>
-          <TiHeartOutline
-            size="30px"
-            className="cursor-pointer md:hidden"
-            onClick={() => alert("hola")}
-          />
-        </div>
-
-        <div>
-          <sapan className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
-            (
-            {productoPrueba.ingredientes
-              .map((ingrediente) => ingrediente)
-              .join(", ")}
-            )
-          </sapan>
-        </div>
-
-        <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
-
-          <article className="w-full">
-            <Image
-              src={productoPrueba.imagen}
-              alt="producto"
-              layout="responsive"
-              width="500"
-              height="300"
-              objectFit="cover"
+      <main className="w-full h-auto mt-20">
+        <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-5">
+          <div className="flex justify-between pt-1">
+            <h2 className="text-center text-2xl font-semibold md:hidden">
+              {productoPrueba?.nombre}
+            </h2>
+            <TiHeartOutline
+              size="30px"
+              className="cursor-pointer md:hidden"
+              onClick={() => alert("añadido a favorito")}
             />
-          </article>
+          </div>
+          <div className="flex justify-start pb-2 text-xs 2xl:text-sm md:hidden">
+            <ListadoIngredientes productoPrueba={productoPrueba} />
+          </div>
 
-          <p className="text-center uppercase">
-            Elige una guarnición{" "}
-            <sapn className="text-red-600 font-semibold">Grosa!</sapn>
-          </p>
+          <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
+            <article className="w-full">
+              <Image
+                src={productoPrueba.imagen}
+                alt="producto"
+                layout="responsive"
+                width="500"
+                height="300"
+                objectFit="cover"
+              />
+            </article>
 
-          <section className="w-full">
-            <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
-              {guarniciones.map((item, i) => (
-                <li
-                  className="min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start"
-                  key={i}
-                >
-                  <Image
-                    src={item.imagen}
-                    alt="producto"
-                    layout="responsive"
-                    width="500"
-                    height="300"
-                    objectFit="cover"
-                  />
-                </li>
-              ))}
-            </ul>
+            <p className="text-center uppercase">
+              Elige una guarnición{" "}
+              <span className="text-red-600 font-semibold">Grosa!</span>
+            </p>
+
+            <section className="w-full flex">
+              {/* <button
+                className="w-6 h-[66px] bg-black bg-opacity-30 flex justify-center items-center mr-[2px]"
+                onClick={handleLeftClick}
+              >
+                <Image
+                  src="/img/arrowl.png"
+                  alt=""
+                  layout="fixed"
+                  width={15}
+                  height={15}
+                  objectFit="contain"
+                />
+              </button> */}
+              <ListadoGuarniciones guarniciones={guarniciones} />
+              {/* <button
+                className="w-5 h-[66px] bg-black opacity-30 flex justify-center items-center ml-[2px]"
+                onClick={handleRightClick}
+              >
+                <Image
+                  src="/img/arrowr.png"
+                  alt=""
+                  layout="fixed"
+                  width={15}
+                  height={15}
+                  objectFit="contain"
+                />
+              </button> */}
+            </section>
           </section>
-        </section>
 
-        <section className="w-full md:w-1/2 lg:w-2/5">
+          <section className="w-full md:w-1/2 lg:w-2/5">
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
                 {productoPrueba.nombre}
@@ -219,16 +226,11 @@ const producto = () => {
                 onClick={() => alert("hola")}
               />
             </div>
+            <div className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden">
+              <ListadoIngredientes productoPrueba={productoPrueba} />
+            </div>
 
-            <sapan className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
-              (
-              {productoPrueba.ingredientes
-                .map((ingrediente) => ingrediente)
-                .join(", ")}
-              )
-            </sapan>
-
-            <p className="text-red-600 text-2xl font-bold py-6">
+            <p className="text-red-600 text-3xl font-bold py-6">
               ${productoPrueba.precio}
             </p>
 
@@ -256,35 +258,11 @@ const producto = () => {
                 accumsan tellus augue.
               </p>
             </div>
-        </section>
-      </div>
-    </main>
+          </section>
+        </div>
+      </main>
     </Layout>
   );
 };
 
 export default producto;
-
-{
-  /* <Image
-  src={imagen}
-  alt="producto"
-  layout="responsive"
-  width="600"
-  height="400"
-  objectFit="cover"
-/>; */
-}
-{
-  /* <div className="text-center px-2">
-        <h2 className="font-bold text-md pt-2 lg:text-lg xl:text-xl">
-          {item.nombre}
-        </h2>
-        <strong className="text-xs font-semibold 2xl:text-sm">
-          Ingredientes:
-        </strong>
-        <sapan className="flex justify-center pb-2 text-xs 2xl:text-sm">
-          ({item.ingredientes.map((ingrediente) => ingrediente).join(", ")})
-        </sapan>
-      </div> */
-}
