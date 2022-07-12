@@ -10,7 +10,7 @@ const Guarnicion = ({ guarnicion }) => {
         width="500"
         height="330"
         objectFit="cover"
-        className="cursor-pointer rounded-md hover:ring-red-600 ring-1"
+        className="cursor-pointer rounded-md"
       />
     </li>
   );
