@@ -62,8 +62,9 @@ const Carrusel = ({
   };
 
   useEffect(() => {
+    let interval;
     if (autoplay && slideshow.current?.children) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         siguiente();
       }, intervalo);
     }
