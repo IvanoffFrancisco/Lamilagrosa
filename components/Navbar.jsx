@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
-import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaYoutube, FaTwitter} from "react-icons/fa";
+import { BiUser } from "react-icons/bi";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -15,7 +16,6 @@ const Navbar = () => {
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
       <div className="max-w-[80%] mx-auto flex justify-between items-center w-full h-full ">
-        {/* <div> */}
         <Link href="/">
           <a className="pt-1">
             <Image
@@ -28,18 +28,12 @@ const Navbar = () => {
             />
           </a>
         </Link>
-        {/* </div> */}
 
         <div>
           <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-sm lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
             <Link href="/">
               <li className=" hover:border-b hover:border-blue-400">Inicio</li>
             </Link>
-            {/* <Link href="/miCuenta">
-              <li className=" hover:border-b hover:border-blue-400">
-                Mi Cuenta
-              </li>
-            </Link> */}
             <Link href="/menu">
               <li className=" hover:border-b hover:border-blue-400">Menu</li>
             </Link>
@@ -56,20 +50,32 @@ const Navbar = () => {
                 Contacto
               </li>
             </Link>
-            <Link href="/login">
+            {/* <Link href="/login">
               <li className=" hover:border-b hover:border-blue-400">
                 Login
               </li>
-            </Link>
+            </Link> */}
           </ul>
         </div>
 
-        <div className="flex gap-4 cursor-pointer hover:scale-110 transition-transform ease-in duration-200 items-center">
+        <div className="flex gap-10  transition-transform ease-in duration-200 items-center">
+          <div className="flex justify-center items-center">
+            <BiUser size="39px" className="hover: text-blue-600" />
+            <div className="flex flex-col">
+            <Link href="/login">
+              <p className="text-sm cursor-pointer hover:text-red-600">Identificate</p>
+            </Link>
+            <Link href="/register">
+              <p className="text-sm cursor-pointer tracking-wide hover:text-red-600">Registrate</p>
+            </Link>
+            </div>
+          </div>
+
           <Link href="/">
             <a>
               <MdOutlineLocalGroceryStore
                 size="30px"
-                className="text-blue-600 relative"
+                className="text-blue-600 relative hover:scale-110"
               />
             </a>
           </Link>

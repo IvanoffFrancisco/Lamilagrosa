@@ -1,87 +1,114 @@
-import { FaFacebook, FaLinkedinIn, FaGoogle, FaRegEnvelope, fa } from 'react-icons/fa'
-import  { MdLockOutline } from 'react-icons/md'
 import Link from "next/link";
-import Image from "next/image"
-import LoginImage from '../public/img/login-and-register.png'
+import Image from "next/image";
 
+import LoginImage from "../public/img/login-and-register.png";
+
+import {
+  FaFacebook,
+  FaLinkedinIn,
+  FaGoogle,
+  FaRegEnvelope,
+} from "react-icons/fa";
+import { MdLockOutline } from "react-icons/md";
 
 export default function Login() {
-        
-    return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-            <div className='bg-white rounded-2xl shadow-2xl flex w-2/3 max-w-4xl'>
-            <div className='w-3/5 p-5'>
-            <form action="#" method="GET">
-            <div className='text-left font-bold'>
-                <Image
-                    src={LoginImage}
-                    alt="Picture of the author"
-                    width={150}
-                    height={100}
-                    
+  return (
+    <div className="w-full h-screen bg-gray-100 flex items-center">
+      <main className="w-[900px] mx-auto flex flex-col-reverse md:flex-row justify-center text-center max-w-[85%]">
+        <div className="w-full md:w-1/2 bg-white py-6 flex justify-center items-center rounded-l-lg ">
+          <form action="#" method="GET" className="pt-6">
+            <Image
+              src={LoginImage}
+              alt="Picture of the author"
+              width={190}
+              height={120}
+            />
+            <h2 className="text-3xl font-bold text-sky-500 pt-4 pb-6">
+              Iniciar Sesión
+            </h2>
+
+            <div className="flex justify-center gap-x-3">
+              <Link href="/">
+                <a className="rounded-full bg-white shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-blue-600">
+                  <FaFacebook size="15px" className="" />
+                </a>
+              </Link>
+              <Link href="/">
+                <a className="rounded-full bg-white shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-300 hover:text-blue-500">
+                  <FaLinkedinIn size="15px" className="" />
+                </a>
+              </Link>
+              <Link href="/">
+                <a className="rounded-full bg-white shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-red-600">
+                  <FaGoogle size="15px" className="" />
+                </a>
+              </Link>
+            </div>
+
+            {/* Social login section */}
+            <p className="text-gray-400 py-4">o usa tu email</p>
+            <div className="flex flex-col items-center">
+              <div className="bg-gray-100 w-full py-2 flex items-center max-w-[90%] mb-3 rounded-sm">
+                <FaRegEnvelope className="text-sky-400 mx-2" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="bg-gray-100 outline-none text-sm flex-1 mr-2 border-sky-400"
+                  required={true}
                 />
-            </div>
-                <div className='py-10'>
-                <h2 className='text-3xl font-bold text-sky-500'>Ingresa con tu Cuenta</h2>
-                </div>
-                <div className='border-2 w-36 border-sky-500 inline-block mb-2'></div>
-                <div className='flex justify-center my-2'>
-                <a href='#' className='border-2 border-sky-300 rounded-full p-3 mx-1'>
-                    <FaFacebook className='text-sm  text-sky-600'/>
+              </div>
+              <div className="bg-gray-100 w-full py-2 flex items-center max-w-[90%] mb-1 rounded-sm">
+                <MdLockOutline className="text-sky-400 mx-[6px]" size="20px" />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  className="bg-gray-100 outline-none text-sm mr-2 border-sky-400"
+                  required={true}
+                />
+              </div>
+              <div className="flex justify-between w-64 m-5 pb-6">
+                <label className="flex items-center text-xs">
+                  <input
+                    type="checkbox"
+                    name="remember"
+                    className="mr-1 cursor-pointer"
+                  />
+                  Recordar Sesión
+                </label>
+                <a
+                  href="#"
+                  className="text-xs justify-between hover:text-sky-400 ease-in duration-200 border-sky-400"
+                >
+                  Olvidaste tu contraseña?
                 </a>
-                <a href='#' className='border-2 border-sky-300 rounded-full p-3 mx-1'>
-                    <FaLinkedinIn className='text-sm  text-sky-600'/>
-                </a>
-                <a href='#' className='border-2 border-sky-300 rounded-full p-3 mx-1'>
-                    <FaGoogle className='text-sm text-sky-600 '/>
-                </a>
-                </div>
-                 {/* Social login section */}
-                <p className='text-gray-400 my-3'>o usa tu email para ingresar</p>
-                <div className='flex flex-col items-center'>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center mb-3'>
-                <FaRegEnvelope className='text-sky-400 m-2'/> 
-                    <input 
-                        type='email'
-                        name='email' 
-                        placeholder='Email' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required={true}
-                    />
-                </div>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center'>
-                <MdLockOutline className='text-sky-400 m-2'/> 
-                    <input 
-                        type='password' 
-                        name='password' 
-                        placeholder='Password' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required={true}
-                    />
-                </div>
-                <div className='flex justify-between w-64 m-5'>
-                    <label className='flex items-center text-xs'><input type='checkbox' name='remember' className='mr-1'/>Recordar Sesión</label>
-                    <a href='#' className='text-xs justify-between hover:border-b-2 border-sky-400'>Olvidaste tu contraseña?</a>
-                </div>
-                <button className='border-2 border-sky-400 text-sky-400  rounded-full px-12 py-2 inline-block font-semibold hover:bg-sky-500 hover:text-white'>Inicia Sesión</button>
-                </div>
-            </form>
+              </div>
+              <button className="border-2 border-sky-400 text-sky-600 rounded-full px-12 py-2 mb-10 inline-block font-semibold hover:bg-sky-500 ease-in duration-300 hover:text-white tracking-widest">
+                Inicia Sesión
+              </button>
             </div>
-            {/* Sign in section */}
-            <div className='w-2/5 bg-sky-500 text-white rounded-tr-2xl rounded-br-2xl py-36 px-12'>
-                <form action="#" method="Get">
-                    <h2 className='text-3xl font-bold mb-2'>Bienvenido!</h2>
-                    <div className='border-2 w-10 border-white inline-block mb-2'></div>
-                    <p className='mb-10'>Si no tenes una cuenta, ingresa tus datos para loguearte a la App</p>
-                    <Link href='/register'>
-                    <button className='border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500'>Registrate</button>
-                    </Link>
-                </form>
-            </div> 
-            {/* Sign up section */}
-            </div>
-        </main>
+          </form>
         </div>
-    )
+        {/* Sign in section */}
+        <div className="hidden w-full md:w-1/2 bg-sky-500 text-white md:flex justify-center items-center p-8 rounded-r-lg">
+          <form action="#" method="Get">
+            <h2 className="text-3xl font-bold py-5 tracking-wide">Bienvenido!</h2>
+            {/* <div className="border w-10 border-white inline-block mb-2"></div> */}
+            <p >
+              Si todavia no sos parte de los{" "}
+              <span className="text-red-600 font-semibold">Grosos</span>
+            </p>
+            <p className="mb-5">registrate aca</p>
+            <Link href="/register">
+              <button className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300">
+                Registrate
+              </button>
+            </Link>
+          </form>
+        </div>
+        {/* Sign up section */}
+      </main>
+    </div>
+  );
 }
