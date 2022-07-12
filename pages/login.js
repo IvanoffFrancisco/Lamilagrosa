@@ -15,7 +15,7 @@ export default function Login() {
   return (
     <div className="w-full h-screen bg-gray-200 flex items-center">
       <main className="w-[800px] mx-auto flex flex-col-reverse md:flex-row justify-center text-center max-w-[85%]">
-        <div className="w-full md:w-1/2 bg-white py-6 flex justify-center items-center rounded-l-lg ">
+        <div className="w-full md:w-1/2 max-w-[400px] mx-auto bg-white py-6 flex justify-center items-center rounded-l-lg ">
           <form action="#" method="GET" className="w-full px-9 py-6">
             <Image
               src={LoginImage}
@@ -64,8 +64,8 @@ export default function Login() {
                 </Link>
               </div>
 
-              <button className="px-10 py-2 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-300 hover:text-white tracking-wide">
-                Inicia Sesión
+              <button className="px-10 py-2 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-300 hover:text-white tracking-wide uppercase">
+                Iniciar Sesión
               </button>
 
               <p className="text-gray-400 pb-3 ">o inicia con</p>
@@ -110,7 +110,7 @@ export default function Login() {
               exclusivos para los Grosos como vos!{" "}
             </p>
             <Link href="/register">
-              <button className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300">
+              <button className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300 uppercase">
                 Registrate
               </button>
             </Link>
