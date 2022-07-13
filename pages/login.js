@@ -72,17 +72,17 @@ export default function Login() {
               {/* Social login section */}
               <div className="flex justify-center gap-x-6">
                 <Link href="/">
-                  <a className="rounded-full bg-blue-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-blue-600">
+                  <a className="rounded-full bg-blue-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-blue-600 hover:shadow-md hover:shadow-black">
                     <FaFacebook size="20px" color="white" className="" />
                   </a>
                 </Link>
                 <Link href="/">
-                  <a className="rounded-full bg-blue-500 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-300 hover:text-blue-500">
+                  <a className="rounded-full bg-blue-500 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-blue-500 hover:shadow-md hover:shadow-black">
                     <FaLinkedinIn size="20px" color="white" className="" />
                   </a>
                 </Link>
                 <Link href="/">
-                  <a className="rounded-full bg-red-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-red-600">
+                  <a className="rounded-full bg-red-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-red-600 hover:shadow-md hover:shadow-black">
                     <FaGoogle size="20px" color="white" className="" />
                   </a>
                 </Link>
