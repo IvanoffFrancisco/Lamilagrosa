@@ -101,11 +101,11 @@ export default function Login() {
             {/* <div className="border w-10 border-white inline-block mb-2"></div> */}
             <p>
               Todavia no sos parte de{" "}
-              <span className="text-black font-semibold">La</span>
-              <span className="text-red-600 font-semibold">Mila</span>
-              <span className="text-black font-semibold">Grosa</span>?
+              <span className="text-black font-semibold">La </span>
+              <span className="text-red-600 font-semibold">Mila </span>
+              <span className="text-black font-semibold">Grosa?</span>
             </p>
-            <p className="mb-5">
+            <p className="mb-5 mt-2">
               Registrate ya y accede a todas nuestras promociones y descuentos
               exclusivos para los Grosos como vos!{" "}
             </p>
