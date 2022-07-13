@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 import Link from "next/link";
 import Image from "next/image";
-
-import LoginImage from "../public/img/login-and-register.png";
+import Error from "../components/error";
 
 import {
   FaFacebook,
@@ -11,14 +12,70 @@ import {
 } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 
+/**
+ * Datos validos:
+ * Email: seba@test.com
+ * Password: seba
+ */
+
 export default function Login() {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  //state that saves the error message to print on the screen
+  const [message, setMessage] = useState("");
+
+  //state that checks if there is an error in the form data
+  const [error, setError] = useState(false);
+
+  //extract values ​​from user state
+  const { email, password } = user;
+
+  const handleChange = (e) => {
+    setUser({
+      ...user,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if ([email, password].includes("")) {
+      setMessage("Todos los Campos son requeridos");
+      setError(true);
+      return;
+    }
+    setError(false);
+
+    if (email === "seba@test.com" && password === "seba") {
+      //Reinicia el formulario
+      setUser({
+        email: "",
+        password: "",
+      });
+
+      return;
+    } else {
+      setError(true);
+      setMessage("Nombre de Usuario o Clave Incorrectas");
+    }
+  };
+
   return (
     <div className="w-full h-screen bg-gray-200 flex items-center">
       <main className="w-[800px] mx-auto flex flex-col-reverse md:flex-row justify-center text-center max-w-[85%]">
         <div className="w-full md:w-1/2 max-w-[400px] mx-auto bg-white py-6 flex justify-center items-center rounded-l-lg ">
-          <form action="#" method="GET" className="w-full px-9 py-6">
+          <form
+            action="#"
+            method="GET"
+            onSubmit={handleSubmit}
+            className="w-full px-9 py-6"
+          >
             <Image
-              src={LoginImage}
+              src="/img/logo-web-LaMilaGrosa2.png"
               alt="Picture of the author"
               width={190}
               height={120}
@@ -26,16 +83,19 @@ export default function Login() {
             <h2 className="text-3xl font-semibold text-sky-500 pt-5 pb-5 ">
               Iniciar Sesión
             </h2>
-
+            {error && <Error message={message} setError={setError} />}
             <div className="flex flex-col items-center">
               <div className="bg-gray-100 w-full py-2 flex items-center mb-3 rounded-sm">
                 <FaRegEnvelope className="text-sky-400 mx-2" />
                 <input
                   type="email"
                   name="email"
+                  id="email"
                   placeholder="Email"
                   className="w-full bg-gray-100 outline-none text-sm mr-2 border-sky-400"
                   required={true}
+                  value={email}
+                  onChange={handleChange}
                 />
               </div>
               <div className="bg-gray-100 w-full py-2 flex items-center mb-1 rounded-sm">
@@ -43,9 +103,12 @@ export default function Login() {
                 <input
                   type="password"
                   name="password"
+                  id="password"
                   placeholder="Password"
                   className="w-full bg-gray-100 outline-none text-sm mr-2 border-sky-400"
                   required={true}
+                  value={password}
+                  onChange={handleChange}
                 />
               </div>
               <div className="flex justify-around w-full py-3">
