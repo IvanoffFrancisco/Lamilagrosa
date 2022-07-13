@@ -85,27 +85,27 @@ export default function Login() {
             </h2>
             {error && <Error message={message} setError={setError} />}
             <div className="flex flex-col items-center">
-              <div className="bg-gray-200 w-full py-2 flex items-center mb-3 rounded-sm">
+              <div className="bg-gray-100 w-full py-2 flex items-center mb-3 rounded-sm">
                 <FaRegEnvelope className="text-sky-400 mx-2" />
                 <input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="Email"
-                  className="w-full bg-gray-200 outline-none text-sm mr-2 border-sky-400"
+                  className="w-full bg-gray-100 outline-none text-sm mr-2 border-sky-400"
                   required={true}
                   value={email}
                   onChange={handleChange}
                 />
               </div>
-              <div className="bg-gray-200 w-full py-2 flex items-center mb-1 rounded-sm">
+              <div className="bg-gray-100 w-full py-2 flex items-center mb-1 rounded-sm">
                 <MdLockOutline className="text-sky-400 mx-[6px]" size="20px" />
                 <input
                   type="password"
                   name="password"
                   id="password"
                   placeholder="Password"
-                  className="w-full bg-gray-200 outline-none text-sm mr-2 border-sky-400"
+                  className="w-full bg-gray-100 outline-none text-sm mr-2 border-sky-400"
                   required={true}
                   value={password}
                   onChange={handleChange}
