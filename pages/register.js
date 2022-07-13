@@ -1,3 +1,6 @@
+import Link from "next/link";
+import Image from "next/image";
+
 import LoginImage from "../public/img/login-and-register.png";
 
 import {
@@ -6,13 +9,8 @@ import {
   FaGoogle,
   FaRegEnvelope,
   FaUser,
-  FaChevronCircleDown,
-  FaUserPlus,
 } from "react-icons/fa";
 import { MdLockOutline, MdLock, MdAddLocationAlt } from "react-icons/md";
-import Link from "next/link";
-import Image from "next/image";
-import RegisterImage from "../public/img/login-and-register.png";
 
 export default function register() {
   return (
@@ -122,7 +120,7 @@ export default function register() {
             <hr className="my-2" />
             <p>Si ya tiene una cuenta</p>
             <p>Ingrese aquí</p>
-            <Link href="/register">
+            <Link href="/login">
               <button className="border-2 border-white rounded-full mt-6 px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300 uppercase">
                 Inicia Sesión
               </button>
