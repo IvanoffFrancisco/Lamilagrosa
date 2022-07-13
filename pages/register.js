@@ -108,7 +108,7 @@ export default function register() {
 
         <div className="hidden md:w-1/2 bg-sky-500 text-white md:flex justify-center items-center rounded-r-lg px-9">
           <div>
-            <h2 className="text-3xl font-semibold pb-5 tracking-wide">
+            <h2 className="text-3xl font-semibold pb-3 tracking-wide">
               Bienvenido!
             </h2>
             <p>
@@ -117,11 +117,11 @@ export default function register() {
               <span className="text-red-600 font-semibold">Mila </span>
               <span className="text-black font-semibold">Grosa</span>
             </p>
-            <hr className="my-2" />
-            <p>Si ya tiene una cuenta</p>
+            {/* <hr className="my-2" /> */}
+            <p className="mt-7">Si ya tiene una cuenta</p>
             <p>Ingrese aquí</p>
             <Link href="/login">
-              <button className="border-2 border-white rounded-full mt-6 px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300 uppercase">
+              <button className="border-2 border-white rounded-full mt-4 px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300 uppercase">
                 Inicia Sesión
               </button>
             </Link>
