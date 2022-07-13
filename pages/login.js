@@ -43,12 +43,12 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if ([email, password].includes("")) {
-      setMessage("Todos los Campos son requeridos");
-      setError(true);
-      return;
-    }
-    setError(false);
+    // if ([email, password].includes("")) {
+    //   setMessage("Todos los Campos son requeridos");
+    //   setError(true);
+    //   return;
+    // }
+    // setError(false);
 
     if (email === "seba@test.com" && password === "seba") {
       //Reinicia el formulario
@@ -85,27 +85,27 @@ export default function Login() {
             </h2>
             {error && <Error message={message} setError={setError} />}
             <div className="flex flex-col items-center">
-              <div className="bg-gray-100 w-full py-2 flex items-center mb-3 rounded-sm">
+              <div className="bg-gray-200 w-full py-2 flex items-center mb-3 rounded-sm">
                 <FaRegEnvelope className="text-sky-400 mx-2" />
                 <input
                   type="email"
                   name="email"
                   id="email"
                   placeholder="Email"
-                  className="w-full bg-gray-100 outline-none text-sm mr-2 border-sky-400"
+                  className="w-full bg-gray-200 outline-none text-sm mr-2 border-sky-400"
                   required={true}
                   value={email}
                   onChange={handleChange}
                 />
               </div>
-              <div className="bg-gray-100 w-full py-2 flex items-center mb-1 rounded-sm">
+              <div className="bg-gray-200 w-full py-2 flex items-center mb-1 rounded-sm">
                 <MdLockOutline className="text-sky-400 mx-[6px]" size="20px" />
                 <input
                   type="password"
                   name="password"
                   id="password"
                   placeholder="Password"
-                  className="w-full bg-gray-100 outline-none text-sm mr-2 border-sky-400"
+                  className="w-full bg-gray-200 outline-none text-sm mr-2 border-sky-400"
                   required={true}
                   value={password}
                   onChange={handleChange}
@@ -120,14 +120,14 @@ export default function Login() {
                   />
                   Recordar Sesión
                 </label>
-                <Link href="/">
+                <Link href="/password">
                   <a className="text-[10px] md:text-[11px] hover:text-sky-400 ease-in duration-200 border-sky-400">
                     Olvidaste tu contraseña?
                   </a>
                 </Link>
               </div>
 
-              <button className="px-10 py-2 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-300 hover:text-white tracking-wide uppercase">
+              <button className="px-10 py-2 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase">
                 Iniciar Sesión
               </button>
 
@@ -173,7 +173,7 @@ export default function Login() {
               exclusivos para los Grosos como vos!{" "}
             </p>
             <Link href="/register">
-              <button className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-300 uppercase">
+              <button className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-200 uppercase">
                 Registrate
               </button>
             </Link>
