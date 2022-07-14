@@ -80,7 +80,7 @@ export default function Login() {
               width={190}
               height={120}
             />
-            <h2 className="text-3xl font-semibold text-sky-500 pt-5 pb-5 ">
+            <h2 className="text-2xl font-semibold text-sky-500 pt-5 pb-5 ">
               Iniciar Sesión
             </h2>
             {error && <Error message={message} setError={setError} />}
@@ -121,17 +121,18 @@ export default function Login() {
                   Recordar Sesión
                 </label>
                 <Link href="/password">
-                  <a className="text-[10px] md:text-[11px] hover:text-sky-400 ease-in duration-200 border-sky-400">
+                  <a className="text-[10px] hover:text-sky-400 ease-in duration-200 border-sky-400">
                     Olvidaste tu contraseña?
                   </a>
                 </Link>
               </div>
 
-              <button className="px-10 py-2 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase">
+              <button className="px-9 py-1 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase">
                 Iniciar Sesión
               </button>
 
               <p className="text-gray-400 pb-3 ">o inicia con</p>
+              
               {/* Social login section */}
               <div className="flex justify-center gap-x-6">
                 <Link href="/">
@@ -160,26 +161,23 @@ export default function Login() {
             <h2 className="text-3xl font-semibold pb-5 tracking-wide">
               Bienvenido!
             </h2>
-
-            {/* <div className="border w-10 border-white inline-block mb-2"></div> */}
             <p>
               Todavia no sos parte de{" "}
               <span className="text-black font-semibold">La </span>
               <span className="text-red-600 font-semibold">Mila </span>
               <span className="text-black font-semibold">Grosa?</span>
             </p>
-            <p className="mb-5 mt-2">
+            <p className="mb-7 mt-2">
               Registrate ya y accede a todas nuestras promociones y descuentos
               exclusivos para los Grosos como vos!{" "}
             </p>
             <Link href="/register">
-              <button className="border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-200 uppercase">
+              <button className="border-2 border-white rounded-full px-12 py-1 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-200 uppercase">
                 Registrate
               </button>
             </Link>
           </form>
         </div>
-        {/* Sign up section */}
       </main>
     </div>
   );
