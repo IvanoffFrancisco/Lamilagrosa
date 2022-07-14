@@ -22,7 +22,7 @@ const Navbar = () => {
               layout="fixed"
               width="130"
               height="80"
-              src="/img/logo-LaMilaGrosa2.png"
+              src="/img/logo-web-LaMilaGrosa2.png"
               alt="logo"
               className="cursor-pointer hover:scale-105"
             />
