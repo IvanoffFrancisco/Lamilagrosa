@@ -15,17 +15,18 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
-      <div className="max-w-[80%] mx-auto flex justify-between items-center w-full h-full ">
+      <div className="max-w-[95%] xs:max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
         <Link href="/">
           <a className="pt-1">
-            <Image
-              layout="fixed"
-              width="130"
-              height="80"
-              src="/img/logo-web-LaMilaGrosa2.png"
-              alt="logo"
-              className="cursor-pointer hover:scale-105"
-            />
+            <div className="w-[100px] xs:w-[110px] md:w-[130px]">
+              <Image
+                width="130"
+                height="80"
+                src="/img/logo-web-LaMilaGrosa2.png"
+                alt="logo"
+                className="cursor-pointer hover:scale-105"
+              />
+            </div>
           </a>
         </Link>
 
@@ -58,11 +59,11 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex gap-2 transition-transform ease-in duration-200 items-center">
-          <div className="flex justify-center items-center">
-            <BiUser size="35px" className="hover: text-blue-600" />
+        <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-2">
+          <div className="flex justify-center items-center ">
+            <BiUser size="30px" className="hover: text-blue-600 xs:" />
             <Link href="/login">
-              <p className="bg-blue-600 text-white py-1 lg:py-[6px] px-3 text-[9px] lg:text-[11px] cursor-pointer rounded-xl font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 mr-3 lg:mr-5 ">
+              <p className="bg-blue-600 text-white py-1 xs:py-[5px] md:py-[6px] px-1 xs:px-[5px] md:px-[6px] text-[8px] xs:text-[10px] md:text-[11px] cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 mr-3 lg:mr-5 ">
                 Identificate
               </p>
             </Link>
@@ -76,11 +77,8 @@ const Navbar = () => {
               />
             </a>
           </Link>
-          <div
-            onClick={handleNav}
-            className="flex gap-x-3 md:hidden cursor-pointer"
-          >
-            <AiOutlineMenu size={25} />
+          <div onClick={handleNav} className="flex md:hidden cursor-pointer">
+            <AiOutlineMenu size="30" />
           </div>
         </div>
       </div>
@@ -94,7 +92,7 @@ const Navbar = () => {
           className={
             nav
               ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-white px-8 pt-2 ease-in duration-300"
-              : "fixed left-[-100%] top-0 px-8 pt-2 ease-in duration-500 border-b-2"
+              : "fixed left-[-120%] top-0 px-8 pt-2 ease-in duration-500 border-b-2"
           }
         >
           <div>
