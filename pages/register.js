@@ -1,128 +1,213 @@
-import Head from 'next/head'
-import { FaFacebook, FaLinkedinIn, FaGoogle, FaRegEnvelope, FaUser, FaChevronCircleDown, FaUserPlus} from 'react-icons/fa'
-import  { MdLockOutline, MdLock, MdAddLocationAlt } from 'react-icons/md'
-import Link from 'next/link'
-import Image from 'next/image'
-import RegisterImage from '../public/img/login-and-register.png'
+  import Link from "next/link";
+  import Image from "next/image";
 
-export default function register() {
+  import LoginImage from "../public/img/login-and-register.png";
+
+  import {
+    FaFacebook,
+    FaLinkedinIn,
+    FaGoogle,
+    FaRegEnvelope,
+    FaUser,
+  } from "react-icons/fa";
+  import { MdLockOutline, MdLock, MdAddLocationAlt } from "react-icons/md";
+  import { useState } from "react";
+  import Error from "../components/Error";
+
+  export default function Register() {
+    //stores the form fields
+    const [user, setUser] = useState({
+      nombreUsuario: "",
+      email: "",
+      direccion: "",
+      password: "",
+      passwordConfirm: "",
+    });
+
+    //state that checks if there is an error in the form data
+    const [error, setError] = useState(false);
+    //state that saves the error message to print on the screen
+    const [message, setMessage] = useState("");
+
+    //extract values ​​from user state
+    const { nombreUsuario, email, direccion, password, passwordConfirm } = user;
+
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      if (password === passwordConfirm) {
+        // console.log(
+        //   `Los datos del registro son:
+        //   Nombre de usuario: ${nombreUsuario}
+        //   Direccion: ${direccion}
+        //   Email ${email}
+        //   Password ${password}`
+        // );
+
+        // Reset the form
+        setUser({
+          nombreUsuario: "",
+          email: "",
+          direccion: "",
+          password: "",
+          passwordConfirm: "",
+        });
+
+        setError(false);
+      } else {
+        setError(true);
+        setMessage("Las contraseñas no coinciden");
+      }
+    }
+
+    //stores the data entered in each field of the form
+    function onChange(e) {
+      setUser({
+        ...user,
+        [e.target.id]: e.target.value,
+      });
+    }
+
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
-        <Head>
-            <title>Create Next App</title>
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
+      <div className="w-full h-screen bg-gray-200 flex items-center">
+        <main className="w-[850px] mx-auto flex flex-col-reverse md:flex-row-reverse justify-center text-center max-w-[85%]">
+          <div className="w-full md:w-1/2 max-w-[425px] mx-auto bg-white py-10 flex justify-center items-center rounded-r-lg ">
+            <form
+              action="#"
+              method="GET"
+              className="w-full px-9 py-1"
+              onSubmit={handleSubmit}
+            >
+              <Image
+                src={LoginImage}
+                alt="Picture of the author"
+                width={190}
+                height={120}
+              />
+              <h2 className="text-2xl font-semibold text-sky-500 pt-3 pb-5 ">
+                Crea tu Cuenta
+              </h2>
+              {error && <Error message={message} />}
+              <div className="w-full flex flex-col items-center">
+                <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
+                  <FaUser className="text-sky-400 mx-2" />
+                  <input
+                    type="text"
+                    value={nombreUsuario}
+                    id="nombreUsuario"
+                    placeholder="Nombre de usuario"
+                    className="bg-gray-100 outline-none text-sm py-3 w-full"
+                    required
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
+                  <FaRegEnvelope className="text-sky-400 mx-2" />
+                  <input
+                    type="email"
+                    value={email}
+                    id="email"
+                    placeholder="Email"
+                    className="bg-gray-100 outline-none text-sm py-3 w-full"
+                    required
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
+                  <MdAddLocationAlt className="text-sky-400 mx-2" />
+                  <input
+                    type="text"
+                    value={direccion}
+                    id="direccion"
+                    placeholder="Dirección postal"
+                    className="bg-gray-100 outline-none text-sm py-3 w-full"
+                    required
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
+                  <MdLockOutline className="text-sky-400 mx-2" />
+                  <input
+                    type="password"
+                    value={password}
+                    id="password"
+                    placeholder="Contraseña"
+                    className="bg-gray-100 outline-none text-sm py-3 w-full"
+                    required
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
+                  <MdLock className="text-sky-400 mx-2" />
+                  <input
+                    type="password"
+                    value={passwordConfirm}
+                    id="passwordConfirm"
+                    placeholder="Confirmar contraseña"
+                    className="bg-gray-100 outline-none text-sm py-3 w-full"
+                    required
+                    onChange={onChange}
+                  />
+                </div>
 
-        <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-            <div className='bg-white rounded-2xl shadow-2xl flex w-2/3 max-w-4xl'>
-            <div className='w-3/5 p-5'>
-                <form action='' method='GET'>
-                <div className='text-left'>
-                    <FaUserPlus className='w-14 text-sky-600'/>
-                </div>
-                <div className='py-10'>
-                <h2 className='text-3xl font-bold text-sky-500 mb-2'>Registrarse Aqui</h2>
-                <p className='text-gray-400 mt-6'>Complete el formulario con sus datos para registrarse en la App</p>
-                <p className='text-gray-400 mb-0'> Asi puede obtener acceso a los descuentos y demás beneficios que tenemos para ofrecerle a nuestros consumidores</p>
-                </div>
-            <div className='border-2 w-36 border-sky-500 inline-block mb-6'></div>
-            <div className='flex justify-center my-2'>  
-                <a href='#' className='border-2 border-sky-300 rounded-full p-3 mx-1'>
-                    <FaFacebook className='text-sm  text-sky-600'/>
-                </a>
-                <a href='#' className='border-2 border-sky-300 rounded-full p-3 mx-1'>
-                    <FaLinkedinIn className='text-sm  text-sky-600'/>
-                </a>
-                <a href='#' className='border-2 border-sky-300 rounded-full p-3 mx-1'>
-                    <FaGoogle className='text-sm text-sky-600 '/>
-                </a>
-            </div>
+                <button className="px-24 py-[10px] mt-7 text-xs text-sky-400 font-semibold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-widest uppercase">
+                  Registrarse
+                </button>
+
+                <label className="flex items-center text-[10px] mt-2 mb-6 tracking-wide">
+                  <input type="checkbox" name="remember" className="mr-1" />
+                  Acepta someter su paladar a una nueva experiencia?
+                </label>
+              </div>
+
               {/* Social login section */}
-            <p className='text-gray-400 my-3'>o registrese con su email</p>
-                <div className='flex flex-col items-center'>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center mb-3'>
-                    <FaUser className='text-sky-400 m-4'/> 
-                    <input 
-                        type='text' 
-                        name='name' 
-                        placeholder='Usuario' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required
-                    />
-                </div>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center mb-3'>
-                    <FaRegEnvelope className='text-sky-400 m-4'/> 
-                    <input 
-                        type='email' 
-                        name='email' 
-                        placeholder='Email' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required
-                    />
-                </div>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center mb-3'>
-                    <MdLockOutline className='text-sky-400 m-4'/> 
-                    <input 
-                        type='password' 
-                        name='password' 
-                        placeholder='Contraseña' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required
-                    />
-                </div>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center mb-3'>
-                    <MdLock className='text-sky-400 m-4'/> 
-                    <input 
-                        type='password' 
-                        name='password' 
-                        placeholder='Confirmar contraseña' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required
-                    />
-                </div>
-                <div className='bg-gray-100 w-5/6 p-2 flex items-center mb-3'>
-                    <MdAddLocationAlt className='text-sky-400 m-4'/> 
-                    <input 
-                        type='text' 
-                        name='direccion' 
-                        placeholder='Agregar una dirección' 
-                        className='bg-gray-100 outline-none text-sm flex-1 hover:border-b-2 border-sky-400' 
-                        required
-                    />
-                </div>
-                    <button className='border-2 border-sky-400 text-sky-400  rounded-full px-12 py-2 inline-block font-semibold hover:bg-sky-500 hover:text-white'>Registrarse</button>
-                </div>
-                </form>
-            </div>
-            {/*  New Sign Up section */}
-            <div className='w-94 bg-sky-500 text-white rounded-tr-2xl rounded-br-2xl py-36 px-12'>
-                <form action='#' method='GET'>
-                <h2 className='text-3xl font-bold mb-6'>Bienvenidos!</h2>
-                <div className='border-2 w-28 border-white inline-block mb-4'></div>
-                <p className='mb-6'>Si tiene una cuenta existente, ingrese aqui</p>
-                <div className='flex justify-center my-2'><FaChevronCircleDown/></div>
-                <Link href="/login">
-                    <button className='border-2 border-white rounded-full px-12 py-2 inline-block font-semibold hover:bg-white hover:text-sky-500'>Ingresar</button>
+              <p className="text-gray-400 pb-3">o registrate con</p>
+              <div className="flex justify-center gap-x-6">
+                <Link href="/">
+                  <a className="rounded-full bg-blue-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:shadow-md hover:shadow-black">
+                    <FaFacebook size="15px" color="white" />
+                  </a>
                 </Link>
-                </form>
-                <div className='mt-20'>
-                <Image
-                    src={RegisterImage}
-                    alt="Picture of the author"
-                    width={400}
-                    height={300}
-                    
-                />
-                </div>
-                {/* New Sign In part */}
-            </div> 
+                <Link href="/">
+                  <a className="rounded-full bg-blue-500 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:shadow-md hover:shadow-black">
+                    <FaLinkedinIn size="15px" color="white" />
+                  </a>
+                </Link>
+                <Link href="/">
+                  <a className="rounded-full bg-red-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:shadow-md hover:shadow-black">
+                    <FaGoogle size="15px" color="white" />
+                  </a>
+                </Link>
+              </div>
+            </form>
+          </div>
+
+          <div className="hidden md:w-1/2 bg-sky-500 text-white md:flex justify-center items-center rounded-l-lg px-9">
+            <div>
+              <h2 className="text-3xl font-semibold pb-3 tracking-wide">
+                Bienvenido!
+              </h2>
+              <p className="mb-2 tracking-wide">
+                Estas a punto de ingresar a nuestra gran familia de
+                <span className="text-red-600 font-semibold"> Mila</span>
+                <span className="text-black font-semibold">Grosos.</span>
+              </p>
+              <p className="tracking-wide">
+                Al registrarte aceptas someter tu paladar a una nueva experiencia
+                de la que nunca querras volver
+              </p>
+
+              <p className="mt-16 text-[10px] text-gray-800 tracking-wide">
+                Si ya tenes una cuenta hace click aquí
+              </p>
+              <Link href="/login">
+                <button className="text-xs border-2 border-white rounded-full mt-2 px-24 py-[10px] font-semibold hover:bg-white hover:text-sky-500 ease-in duration-200 uppercase tracking-widest">
+                  Iniciar Sesión
+                </button>
+              </Link>
             </div>
+          </div>
         </main>
-    </div>
-    )
-}
-
-
-
-
-
+      </div>
+    );
+  }
