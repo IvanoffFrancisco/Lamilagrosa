@@ -15,13 +15,11 @@ const MenuCard = ({ item }) => {
           className="rounded-md"
         />
         <div>
-          <h2 className="font-bold text-lg text-white pt-2 px-1">
-            {item.nombre}
-          </h2>
-          <div className="flex justify-evenly items-center py-3">
-            <p className="text-red-600 text-2xl pb-2">$ {item.precio}</p>
+          <h2 className="font-bold text-lg text-white px-1">{item.nombre}</h2>
+          <div className="flex justify-evenly items-center py-1 mb-1">
+            <p className="text-red-600 text-2xl">$ {item.precio}</p>
             <Link href="/producto">
-              <a className="py-1 px-3 bg-red-600 text-white text-lg rounded-md">
+              <a className="py-[6px] px-3 bg-red-600 text-white text-sm rounded-md">
                 Añadir
               </a>
             </Link>
