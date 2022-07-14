@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const MenuCard = ({ item }) => {
   return (
-    <li className="h-full text-center bg-black shadow-md shadow-gray-700 hover:ring-4 hover:ring-red-600 rounded-md">
+    <li className="h-full text-center bg-black shadow-md shadow-gray-700 hover:ring-2 hover:ring-red-600 rounded-md">
       <div>
         <Image
           src={item.imagen}
