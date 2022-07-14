@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
-import { FaFacebook, FaYoutube, FaTwitter} from "react-icons/fa";
+import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 
 const Navbar = () => {
@@ -61,14 +61,11 @@ const Navbar = () => {
         <div className="flex gap-10  transition-transform ease-in duration-200 items-center">
           <div className="flex justify-center items-center">
             <BiUser size="39px" className="hover: text-blue-600" />
-            <div className="flex flex-col">
             <Link href="/login">
-              <p className="text-sm cursor-pointer hover:text-red-600">Identificate</p>
+              <p className="bg-blue-600 text-white py-2 px-4  text-[10px] cursor-pointer rounded-xl font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200">
+                Identificate
+              </p>
             </Link>
-            <Link href="/register">
-              <p className="text-sm cursor-pointer tracking-wide hover:text-red-600">Registrate</p>
-            </Link>
-            </div>
           </div>
 
           <Link href="/">
