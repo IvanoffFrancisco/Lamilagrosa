@@ -74,12 +74,16 @@ export default function Login() {
             onSubmit={handleSubmit}
             className="w-full px-9 py-6"
           >
-            <Image
-              src="/img/logo-web-LaMilaGrosa2.png"
-              alt="Picture of the author"
-              width={190}
-              height={120}
-            />
+            <Link href="/">
+              <a>
+                <Image
+                  src="/img/logo-web-LaMilaGrosa2.png"
+                  alt="Picture of the author"
+                  width={190}
+                  height={120}
+                />
+              </a>
+            </Link>
             <h2 className="text-2xl font-semibold text-sky-500 pt-5 pb-5 ">
               Iniciar Sesión
             </h2>
@@ -132,22 +136,22 @@ export default function Login() {
               </button>
 
               <p className="text-gray-400 pb-3 ">o inicia con</p>
-              
+
               {/* Social login section */}
               <div className="flex justify-center gap-x-6">
                 <Link href="/">
                   <a className="rounded-full bg-blue-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-blue-600 hover:shadow-md hover:shadow-black">
-                    <FaFacebook size="20px" color="white" className="" />
+                    <FaFacebook size="15px" color="white" className="" />
                   </a>
                 </Link>
                 <Link href="/">
                   <a className="rounded-full bg-blue-500 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-blue-500 hover:shadow-md hover:shadow-black">
-                    <FaLinkedinIn size="20px" color="white" className="" />
+                    <FaLinkedinIn size="15px" color="white" className="" />
                   </a>
                 </Link>
                 <Link href="/">
                   <a className="rounded-full bg-red-600 shadow-sm shadow-gray-800 p-2 cursor-pointer flex ease-in duration-200 hover:text-red-600 hover:shadow-md hover:shadow-black">
-                    <FaGoogle size="20px" color="white" className="" />
+                    <FaGoogle size="15px" color="white" className="" />
                   </a>
                 </Link>
               </div>
