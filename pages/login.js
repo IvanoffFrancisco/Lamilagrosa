@@ -127,7 +127,7 @@ export default function Login() {
                 </Link>
               </div>
 
-              <button className="px-9 py-1 mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase">
+              <button className="px-24 py-[10px] text-xs mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase">
                 Iniciar Sesión
               </button>
 
@@ -172,7 +172,7 @@ export default function Login() {
               exclusivos para los Grosos como vos!{" "}
             </p>
             <Link href="/register">
-              <button className="border-2 border-white rounded-full px-12 py-1 inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-200 uppercase">
+              <button className="border-2 border-white rounded-full px-24 py-[10px] text-xs inline-block font-semibold hover:bg-white hover:text-sky-500 ease-in duration-200 uppercase">
                 Registrate
               </button>
             </Link>
