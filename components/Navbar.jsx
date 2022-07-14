@@ -30,7 +30,7 @@ const Navbar = () => {
         </Link>
 
         <div>
-          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-sm lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
+          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
             <Link href="/">
               <li className=" hover:border-b hover:border-blue-400">Inicio</li>
             </Link>
@@ -58,11 +58,11 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex gap-10  transition-transform ease-in duration-200 items-center">
+        <div className="flex gap-2 transition-transform ease-in duration-200 items-center">
           <div className="flex justify-center items-center">
-            <BiUser size="39px" className="hover: text-blue-600" />
+            <BiUser size="35px" className="hover: text-blue-600" />
             <Link href="/login">
-              <p className="bg-blue-600 text-white py-2 px-4  text-[10px] cursor-pointer rounded-xl font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200">
+              <p className="bg-blue-600 text-white py-1 lg:py-[6px] px-3 text-[9px] lg:text-[11px] cursor-pointer rounded-xl font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 mr-3 lg:mr-5 ">
                 Identificate
               </p>
             </Link>
