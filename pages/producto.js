@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
+import Error from "../components/Error.js";
+
 import { TiHeartOutline } from "react-icons/ti";
 import { MdAddLocationAlt } from "react-icons/md";
-import { GiMeat, GiRoastChicken } from "react-icons/gi";
+import { GiCow, GiChicken } from "react-icons/gi";
 import { useState } from "react";
 
 const guarniciones = [
@@ -19,14 +21,14 @@ const guarniciones = [
     nombre: "Papas fritas a caballo",
     ingredientes: ["Papa", "huevo frito"],
     precio: 825,
-    id: 1,
+    id: 2,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546594-1617886929209.jpg",
     nombre: "Papas cheddar",
     ingredientes: ["Papa", "cheddar", "panceta crocante", "ciboulette"],
     precio: 825,
-    id: 1,
+    id: 3,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546595-1617886953216.jpg",
@@ -40,7 +42,7 @@ const guarniciones = [
       "pimentón dulce",
     ],
     precio: 1100,
-    id: 1,
+    id: 4,
   },
   {
     imagen:
@@ -48,14 +50,14 @@ const guarniciones = [
     nombre: "Nachos",
     ingredientes: ["nachos", "salsa a eleccion"],
     precio: 600,
-    id: 1,
+    id: 5,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546599-1617886889264.jpg",
     nombre: "Aros de Cebolla",
     ingredientes: ["Aros de cebolla", "salsa barbacoa"],
     precio: 653,
-    id: 1,
+    id: 6,
   },
   {
     imagen:
@@ -63,7 +65,7 @@ const guarniciones = [
     nombre: "Triángulo de Provolone",
     ingredientes: ["provolone", "salsa criolla"],
     precio: 600,
-    id: 1,
+    id: 7,
   },
   {
     imagen:
@@ -71,14 +73,14 @@ const guarniciones = [
     nombre: "Bastoncitos de Muzzarella",
     ingredientes: ["muzzarella", "salsa fileto"],
     precio: 600,
-    id: 1,
+    id: 8,
   },
   {
     imagen: "https://images.rappi.com.ar/products/1784419-1617887000030.jpg",
     nombre: "Pechuguitas Crispy",
     ingredientes: ["Pechuguitas pollo", "muzzarella", "salsa barbacoa"],
     precio: 575,
-    id: 1,
+    id: 9,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546624-1617888077361.jpg",
@@ -93,7 +95,7 @@ const guarniciones = [
       "Rúcula",
     ],
     precio: 614,
-    id: 1,
+    id: 10,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546627-1617888105700.jpg",
@@ -106,7 +108,7 @@ const guarniciones = [
       "parmesano",
     ],
     precio: 800,
-    id: 1,
+    id: 11,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546629-1617888112237.jpg",
@@ -119,7 +121,7 @@ const guarniciones = [
       "parmesano",
     ],
     precio: 800,
-    id: 1,
+    id: 12,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546622-1617888090814.jpg",
@@ -133,7 +135,7 @@ const guarniciones = [
       "nachos",
     ],
     precio: 700,
-    id: 1,
+    id: 13,
   },
 ];
 
@@ -146,23 +148,57 @@ const productoPrueba = {
 };
 
 const Producto = () => {
+  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
+
   const [pedido, setPedido] = useState({
-    menu: "",
-    tipoMila: "",
-    cantidad: "",
+    menu: `${productoPrueba.nombre}`,
+    tipoMila: "carne",
+    cantidad: "1",
     guarnicion: "",
-    direccion: "",
-    precio: "",
+    precio: `${productoPrueba.precio}`,
   });
 
-  const { menu, tipoMila, cantidad, guarnicion, direccion, precio } = pedido;
+  //state that saves the error message to print on the screen
+  const [message, setMessage] = useState("");
 
-  function onChange(e) {
-    setUser({
-      ...user,
-      [e.target.id]: e.target.value,
+  //state that checks if there is an error in the form data
+  const [error, setError] = useState(false);
+
+  //extract values ​​from user state
+  const { guarnicion, precio } = pedido;
+
+  const handleClick = (e) => {
+    setguarnicionSeleccionada(e.currentTarget.dataset.id);
+    setPedido({
+      ...pedido,
+      guarnicion: e.currentTarget.dataset.id,
     });
-  }
+  };
+
+  const onChange = (e) => {
+    if (e.target.name === "cantidad") {
+      setPedido({
+        ...pedido,
+        precio: e.target.value * productoPrueba.precio,
+        cantidad: e.target.value,
+      });
+      return;
+    }
+    setPedido({
+      ...pedido,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
+      console.log("guarnicion no seleccionada");
+      setError(true);
+      setMessage("Selecciona una guarnicion para continuar con tu compra");
+      return;
+    }
+  };
 
   return (
     <Layout>
@@ -180,13 +216,13 @@ const Producto = () => {
           </div>
 
           <div>
-            <sapan className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
+            <span className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
               (
               {productoPrueba.ingredientes
                 .map((ingrediente) => ingrediente)
                 .join(", ")}
               )
-            </sapan>
+            </span>
           </div>
 
           {/* columna izquierda */}
@@ -211,17 +247,26 @@ const Producto = () => {
               <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
                 {guarniciones.map((item, i) => (
                   <li
-                    className="min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start"
+                    className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
+                      guarnicionSeleccionada === item.nombre
+                        ? "border-2 border-red-600"
+                        : ""
+                    }`}
                     key={i}
+                    data-id={item.nombre}
+                    onClick={handleClick}
                   >
                     <Image
                       src={item.imagen}
-                      alt="producto"
+                      alt={item.nombre}
                       layout="responsive"
                       width="500"
                       height="300"
                       objectFit="cover"
                     />
+                    <p className="text-[10px] text-center font-semibold text-blue-600">
+                      {item.nombre}
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -237,64 +282,79 @@ const Producto = () => {
               <TiHeartOutline
                 size="30px"
                 className="cursor-pointer hidden md:block"
-                onClick={() => alert("hola")}
+                onClick={() => alert("guardando en favoritos")}
               />
             </div>
 
-            <sapan className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
+            <span className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
               (
               {productoPrueba.ingredientes
                 .map((ingrediente) => ingrediente)
                 .join(", ")}
               )
-            </sapan>
+            </span>
 
-            <div className="flex-col my-5 md:my-10">
-              <p className="text-center text-lg font-semibold">
-                Elija el tipo de su milanesa
+            <div className="my-2 md:my-5 flex flex-col items-center">
+              <p className="w-fit mx-auto text-md xs:text-xl md:text-2xl font-semibold tracking-widest">
+                Guarnición seleccionada
+              </p>
+              <span className="font-bold xs:text-lg text-red-600">
+                {" "}
+                {guarnicion}
+              </span>
+            </div>
+
+            <div className="flex-col my-5 md:my-5">
+              <p className="w-fit mx-auto text-md xs:text-xl md:text-2xl font-semibold tracking-widest">
+                Carne seleccionada
               </p>
               <div className="flex justify-center">
-                <div className="flex items-center gap-3 mr-3">
+                <div className="flex items-center gap-3 mr-2 md:mr-16">
                   <input
                     type="radio"
-                    id="carne"
                     name="tipoMila"
-                    value={tipoMila}
+                    value="ternera"
+                    onChange={onChange}
                     checked
                   />
                   <label
-                    htmlFor="carne"
-                    className="text-red-700 text-lg font-semibold"
+                    htmlFor="ternera"
+                    className="text-red-700 xs:text-xl font-semibold"
                   >
-                    Carne
+                    Ternera
                   </label>
-                  <GiMeat size={30} className="text-red-700" />
+                  <GiCow className="text-red-800 text-3xl" />
                 </div>
 
                 <div className="flex items-center gap-3">
                   <input
                     type="radio"
-                    id="pollo"
                     name="tipoMila"
-                    value={tipoMila}
-                    checked
+                    value="pollo"
+                    onChange={onChange}
                   />
                   <label
                     htmlFor="pollo"
-                    className="text-blue-700 text-lg font-semibold"
+                    className="text-blue-800 xs:text-xl font-semibold"
                   >
                     Pollo
                   </label>
-                  <GiRoastChicken size={25} className="text-blue-700" />
+                  <GiChicken className="text-blue-800 text-2xl" />
                 </div>
               </div>
             </div>
 
-            <div className="mb-5 md:mb-10 flex justify-between items-center">
+            <div className="mb-2 md:mb-10 flex justify-between items-center">
               <div>
-                <label className="font-semibold">Cantidad:</label>
-                <select className="border border-gray-900">
-                  <option value="1" selected>
+                <label className="font-bold text-md xs:text-lg md:text-xl">
+                  Cantidad:
+                </label>
+                <select
+                  onChange={onChange}
+                  className="border border-gray-900"
+                  name="cantidad"
+                >
+                  <option value="1" defaultValue>
                     1
                   </option>
                   <option value="2">2</option>
@@ -303,34 +363,27 @@ const Producto = () => {
                   <option value="5">5</option>
                 </select>
               </div>
-              <p className="text-red-600 text-3xl font-bold py-6">
-                ${productoPrueba.precio}
+              <p className="text-black xs:text-lg md:text-xl font-bold py-6">
+                Total:
+                <span className="text-red-700 xs:text-xl md:text-2xl font-black py-6">
+                  {" "}
+                  ${precio}
+                </span>
               </p>
             </div>
+            <form onSubmit={handleSubmit}>
+              {error && (
+                <div className="my-5">
+                  <Error message={message} setError={setError} />
+                </div>
+              )}
 
-            <div className="my-1 bg-gray-100 flex items-center rounded-md px-1">
-              <MdAddLocationAlt className="text-sky-400 mx-2" />
-              <input
-                type="text"
-                value={direccion}
-                id="direccion"
-                placeholder="Ingresa tu dirección aquí"
-                className="bg-gray-100 outline-none text-sm py-3 w-full"
-                required
-                onChange={onChange}
-              />
-            </div>
-            {/* <div className="py-5">
-              <p>
-                Aca iria la descripcion del menu Curabitur non lectus tellus.
-                Vestibulum pulvinar vestibulum leo, id sagittis sapien aliquet
-                in. Nunc ac urna vel neque feugiat laoreet non finibus sem. In
-                rutrum sapien non lorem rhoncus cursus. Donec felis felis,
-                venenatis eleifend hendrerit mollis, dictum et nisi. Nunc dolor
-                nulla, pulvinar non venenatis vitae, sagittis eget nisl. Fusce
-                accumsan tellus augue.
-              </p>
-            </div> */}
+              <div className="flex justify-center mt-5 xs:mt-10">
+                <button className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900">
+                  Añadir al Carrito
+                </button>
+              </div>
+            </form>
           </section>
         </div>
       </main>
