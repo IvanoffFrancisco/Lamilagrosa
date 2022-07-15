@@ -155,7 +155,6 @@ const Producto = () => {
     tipoMila: "carne",
     cantidad: "1",
     guarnicion: "",
-    direccion: "",
     precio: `${productoPrueba.precio}`,
   });
 
@@ -166,7 +165,7 @@ const Producto = () => {
   const [error, setError] = useState(false);
 
   //extract values ​​from user state
-  const { guarnicion, direccion, precio } = pedido;
+  const { guarnicion, precio } = pedido;
 
   const handleClick = (e) => {
     setguarnicionSeleccionada(e.currentTarget.dataset.id);
@@ -199,13 +198,6 @@ const Producto = () => {
       setMessage("Selecciona una guarnicion para continuar con tu compra");
       return;
     }
-    if (direccion === "" || direccion === undefined) {
-      console.log("direccion vacia");
-      setError(true);
-      setMessage("Ingresa una direccion de envio");
-      return;
-    }
-    setError(false);
   };
 
   return (
@@ -290,7 +282,7 @@ const Producto = () => {
               <TiHeartOutline
                 size="30px"
                 className="cursor-pointer hidden md:block"
-                onClick={() => alert("hola")}
+                onClick={() => alert("guardando en favoritos")}
               />
             </div>
 
@@ -302,9 +294,19 @@ const Producto = () => {
               )
             </span>
 
+            <div className="my-2 md:my-5 flex flex-col items-center">
+              <p className="w-fit mx-auto text-md xs:text-xl md:text-2xl font-semibold tracking-widest">
+                Guarnición seleccionada
+              </p>
+              <span className="font-bold xs:text-lg text-red-600">
+                {" "}
+                {guarnicion}
+              </span>
+            </div>
+
             <div className="flex-col my-5 md:my-5">
-              <p className="w-fit mx-auto text-md md:text-2xl font-semibold tracking-widest mb-2 ">
-                Elija el tipo de milanesa
+              <p className="w-fit mx-auto text-md xs:text-xl md:text-2xl font-semibold tracking-widest">
+                Carne seleccionada
               </p>
               <div className="flex justify-center">
                 <div className="flex items-center gap-3 mr-2 md:mr-16">
@@ -317,7 +319,7 @@ const Producto = () => {
                   />
                   <label
                     htmlFor="ternera"
-                    className="text-red-700 md:text-lg font-semibold"
+                    className="text-red-700 xs:text-xl font-semibold"
                   >
                     Ternera
                   </label>
@@ -333,7 +335,7 @@ const Producto = () => {
                   />
                   <label
                     htmlFor="pollo"
-                    className="text-blue-800 md:text-lg font-semibold"
+                    className="text-blue-800 xs:text-xl font-semibold"
                   >
                     Pollo
                   </label>
@@ -342,19 +344,11 @@ const Producto = () => {
               </div>
             </div>
 
-            <div className="md:my-5">
-              <span className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest">
-                Guarnicion seleccionada:
-              </span>
-              <span className="font-bold text-lg text-red-600">
-                {" "}
-                {guarnicion}
-              </span>
-            </div>
-
             <div className="mb-2 md:mb-10 flex justify-between items-center">
               <div>
-                <label className="font-bold text-md">Cantidad:</label>
+                <label className="font-bold text-md xs:text-lg md:text-xl">
+                  Cantidad:
+                </label>
                 <select
                   onChange={onChange}
                   className="border border-gray-900"
@@ -369,29 +363,15 @@ const Producto = () => {
                   <option value="5">5</option>
                 </select>
               </div>
-              <p className="text-black md:text-2xl font-bold py-6">
+              <p className="text-black xs:text-lg md:text-xl font-bold py-6">
                 Total:
-                <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
+                <span className="text-red-700 xs:text-xl md:text-2xl font-black py-6">
                   {" "}
                   ${precio}
                 </span>
               </p>
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="xs:my-1 bg-gray-100 flex items-center rounded-md px-1">
-                <MdAddLocationAlt className="text-sky-400 mx-2" />
-                <input
-                  type="text"
-                  name="direccion"
-                  value={direccion}
-                  id="direccion"
-                  placeholder="Ingresa tu dirección aquí"
-                  className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  onChange={onChange}
-                  // required
-                />
-              </div>
-
               {error && (
                 <div className="my-5">
                   <Error message={message} setError={setError} />
