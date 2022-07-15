@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
 import { TiHeartOutline } from "react-icons/ti";
+import { MdAddLocationAlt } from "react-icons/md";
+import { GiMeat, GiRoastChicken } from "react-icons/gi";
+import { useState } from "react";
 
 const guarniciones = [
   {
@@ -142,73 +145,91 @@ const productoPrueba = {
   id: 1,
 };
 
-const producto = () => {
+const Producto = () => {
+  const [pedido, setPedido] = useState({
+    menu: "",
+    tipoMila: "",
+    cantidad: "",
+    guarnicion: "",
+    direccion: "",
+    precio: "",
+  });
+
+  const { menu, tipoMila, cantidad, guarnicion, direccion, precio } = pedido;
+
+  function onChange(e) {
+    setUser({
+      ...user,
+      [e.target.id]: e.target.value,
+    });
+  }
+
   return (
     <Layout>
-    <main className="w-full h-auto mt-20">
-      <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
-        
-        <div className="flex justify-between pt-1">
-          <h2 className="text-center text-2xl font-semibold md:hidden">
-            {productoPrueba?.nombre}
-          </h2>
-          <TiHeartOutline
-            size="30px"
-            className="cursor-pointer md:hidden"
-            onClick={() => alert("hola")}
-          />
-        </div>
-
-        <div>
-          <sapan className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
-            (
-            {productoPrueba.ingredientes
-              .map((ingrediente) => ingrediente)
-              .join(", ")}
-            )
-          </sapan>
-        </div>
-
-        <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
-
-          <article className="w-full">
-            <Image
-              src={productoPrueba.imagen}
-              alt="producto"
-              layout="responsive"
-              width="500"
-              height="300"
-              objectFit="cover"
+      <main className="w-full h-auto mt-20">
+        <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
+          <div className="flex justify-between pt-1">
+            <h2 className="text-center text-2xl font-semibold md:hidden">
+              {productoPrueba?.nombre}
+            </h2>
+            <TiHeartOutline
+              size="30px"
+              className="cursor-pointer md:hidden"
+              onClick={() => alert("hola")}
             />
-          </article>
+          </div>
 
-          <p className="text-center uppercase">
-            Elige una guarnición{" "}
-            <sapn className="text-red-600 font-semibold">Grosa!</sapn>
-          </p>
+          <div>
+            <sapan className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
+              (
+              {productoPrueba.ingredientes
+                .map((ingrediente) => ingrediente)
+                .join(", ")}
+              )
+            </sapan>
+          </div>
 
-          <section className="w-full">
-            <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
-              {guarniciones.map((item, i) => (
-                <li
-                  className="min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start"
-                  key={i}
-                >
-                  <Image
-                    src={item.imagen}
-                    alt="producto"
-                    layout="responsive"
-                    width="500"
-                    height="300"
-                    objectFit="cover"
-                  />
-                </li>
-              ))}
-            </ul>
+          {/* columna izquierda */}
+          <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
+            <article className="w-full">
+              <Image
+                src={productoPrueba.imagen}
+                alt="producto"
+                layout="responsive"
+                width="500"
+                height="300"
+                objectFit="cover"
+              />
+            </article>
+
+            <h3 className="text-center uppercase">
+              Elige una guarnición{" "}
+              <sapn className="text-red-600 font-semibold">Grosa!</sapn>
+            </h3>
+
+            <section className="w-full">
+              <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
+                {guarniciones.map((item, i) => (
+                  <li
+                    className="min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start"
+                    key={i}
+                  >
+                    <Image
+                      src={item.imagen}
+                      alt="producto"
+                      layout="responsive"
+                      width="500"
+                      height="300"
+                      objectFit="cover"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
           </section>
-        </section>
 
-        <section className="w-full md:w-1/2 lg:w-2/5">
+          {/* columna derecha */}
+          <section className="w-full md:w-1/2 md:px-2 lg:w-2/5">
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
                 {productoPrueba.nombre}
@@ -228,24 +249,78 @@ const producto = () => {
               )
             </sapan>
 
-            <p className="text-red-600 text-2xl font-bold py-6">
-              ${productoPrueba.precio}
-            </p>
-
-            <div className="md:py-5 flex justify-between">
-              <div>
-                <button className="p-2 border">-</button>
-                <div className="w-fit border p-2 inline-block">
-                  {"contador"}
+            <div className="flex-col my-5 md:my-10">
+              <p className="text-center text-lg font-semibold">
+                Elija el tipo de su milanesa
+              </p>
+              <div className="flex justify-center">
+                <div className="flex items-center gap-3 mr-3">
+                  <input
+                    type="radio"
+                    id="carne"
+                    name="tipoMila"
+                    value={tipoMila}
+                    checked
+                  />
+                  <label
+                    htmlFor="carne"
+                    className="text-red-700 text-lg font-semibold"
+                  >
+                    Carne
+                  </label>
+                  <GiMeat size={30} className="text-red-700" />
                 </div>
-                <button className="p-2 border">+</button>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="radio"
+                    id="pollo"
+                    name="tipoMila"
+                    value={tipoMila}
+                    checked
+                  />
+                  <label
+                    htmlFor="pollo"
+                    className="text-blue-700 text-lg font-semibold"
+                  >
+                    Pollo
+                  </label>
+                  <GiRoastChicken size={25} className="text-blue-700" />
+                </div>
               </div>
-              <button className="bg-red-600 py-2 px-4 text-white rounded-md uppercase">
-                Añadir
-              </button>
             </div>
 
-            <div className="py-5">
+            <div className="mb-5 md:mb-10 flex justify-between items-center">
+              <div>
+                <label className="font-semibold">Cantidad:</label>
+                <select className="border border-gray-900">
+                  <option value="1" selected>
+                    1
+                  </option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <p className="text-red-600 text-3xl font-bold py-6">
+                ${productoPrueba.precio}
+              </p>
+            </div>
+
+            <div className="my-1 bg-gray-100 flex items-center rounded-md px-1">
+              <MdAddLocationAlt className="text-sky-400 mx-2" />
+              <input
+                type="text"
+                value={direccion}
+                id="direccion"
+                placeholder="Ingresa tu dirección aquí"
+                className="bg-gray-100 outline-none text-sm py-3 w-full"
+                required
+                onChange={onChange}
+              />
+            </div>
+            {/* <div className="py-5">
               <p>
                 Aca iria la descripcion del menu Curabitur non lectus tellus.
                 Vestibulum pulvinar vestibulum leo, id sagittis sapien aliquet
@@ -255,36 +330,12 @@ const producto = () => {
                 nulla, pulvinar non venenatis vitae, sagittis eget nisl. Fusce
                 accumsan tellus augue.
               </p>
-            </div>
-        </section>
-      </div>
-    </main>
+            </div> */}
+          </section>
+        </div>
+      </main>
     </Layout>
   );
 };
 
-export default producto;
-
-{
-  /* <Image
-  src={imagen}
-  alt="producto"
-  layout="responsive"
-  width="600"
-  height="400"
-  objectFit="cover"
-/>; */
-}
-{
-  /* <div className="text-center px-2">
-        <h2 className="font-bold text-md pt-2 lg:text-lg xl:text-xl">
-          {item.nombre}
-        </h2>
-        <strong className="text-xs font-semibold 2xl:text-sm">
-          Ingredientes:
-        </strong>
-        <sapan className="flex justify-center pb-2 text-xs 2xl:text-sm">
-          ({item.ingredientes.map((ingrediente) => ingrediente).join(", ")})
-        </sapan>
-      </div> */
-}
+export default Producto;
