@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
+import Error from "../components/Error.js";
+
 import { TiHeartOutline } from "react-icons/ti";
+import { MdAddLocationAlt } from "react-icons/md";
+import { GiCow, GiChicken } from "react-icons/gi";
+import { useState } from "react";
 
 const guarniciones = [
   {
@@ -16,14 +21,14 @@ const guarniciones = [
     nombre: "Papas fritas a caballo",
     ingredientes: ["Papa", "huevo frito"],
     precio: 825,
-    id: 1,
+    id: 2,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546594-1617886929209.jpg",
     nombre: "Papas cheddar",
     ingredientes: ["Papa", "cheddar", "panceta crocante", "ciboulette"],
     precio: 825,
-    id: 1,
+    id: 3,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546595-1617886953216.jpg",
@@ -37,7 +42,7 @@ const guarniciones = [
       "pimentón dulce",
     ],
     precio: 1100,
-    id: 1,
+    id: 4,
   },
   {
     imagen:
@@ -45,14 +50,14 @@ const guarniciones = [
     nombre: "Nachos",
     ingredientes: ["nachos", "salsa a eleccion"],
     precio: 600,
-    id: 1,
+    id: 5,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546599-1617886889264.jpg",
     nombre: "Aros de Cebolla",
     ingredientes: ["Aros de cebolla", "salsa barbacoa"],
     precio: 653,
-    id: 1,
+    id: 6,
   },
   {
     imagen:
@@ -60,7 +65,7 @@ const guarniciones = [
     nombre: "Triángulo de Provolone",
     ingredientes: ["provolone", "salsa criolla"],
     precio: 600,
-    id: 1,
+    id: 7,
   },
   {
     imagen:
@@ -68,14 +73,14 @@ const guarniciones = [
     nombre: "Bastoncitos de Muzzarella",
     ingredientes: ["muzzarella", "salsa fileto"],
     precio: 600,
-    id: 1,
+    id: 8,
   },
   {
     imagen: "https://images.rappi.com.ar/products/1784419-1617887000030.jpg",
     nombre: "Pechuguitas Crispy",
     ingredientes: ["Pechuguitas pollo", "muzzarella", "salsa barbacoa"],
     precio: 575,
-    id: 1,
+    id: 9,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546624-1617888077361.jpg",
@@ -90,7 +95,7 @@ const guarniciones = [
       "Rúcula",
     ],
     precio: 614,
-    id: 1,
+    id: 10,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546627-1617888105700.jpg",
@@ -103,7 +108,7 @@ const guarniciones = [
       "parmesano",
     ],
     precio: 800,
-    id: 1,
+    id: 11,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546629-1617888112237.jpg",
@@ -116,7 +121,7 @@ const guarniciones = [
       "parmesano",
     ],
     precio: 800,
-    id: 1,
+    id: 12,
   },
   {
     imagen: "https://images.rappi.com.ar/products/546622-1617888090814.jpg",
@@ -130,7 +135,7 @@ const guarniciones = [
       "nachos",
     ],
     precio: 700,
-    id: 1,
+    id: 13,
   },
 ];
 
@@ -142,73 +147,142 @@ const productoPrueba = {
   id: 1,
 };
 
-const producto = () => {
+const Producto = () => {
+  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
+
+  const [pedido, setPedido] = useState({
+    menu: `${productoPrueba.nombre}`,
+    tipoMila: "carne",
+    cantidad: "1",
+    guarnicion: "",
+    direccion: "",
+    precio: `${productoPrueba.precio}`,
+  });
+
+  //state that saves the error message to print on the screen
+  const [message, setMessage] = useState("");
+
+  //state that checks if there is an error in the form data
+  const [error, setError] = useState(false);
+
+  //extract values ​​from user state
+  const { guarnicion, direccion, precio } = pedido;
+
+  const handleClick = (e) => {
+    setguarnicionSeleccionada(e.currentTarget.dataset.id);
+    setPedido({
+      ...pedido,
+      guarnicion: e.currentTarget.dataset.id,
+    });
+  };
+
+  const onChange = (e) => {
+    if (e.target.name === "cantidad") {
+      setPedido({
+        ...pedido,
+        precio: e.target.value * productoPrueba.precio,
+        cantidad: e.target.value,
+      });
+      return;
+    }
+    setPedido({
+      ...pedido,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
+      console.log("guarnicion no seleccionada");
+      setError(true);
+      setMessage("Selecciona una guarnicion para continuar con tu compra");
+      return;
+    }
+    if (direccion === "" || direccion === undefined) {
+      console.log("direccion vacia");
+      setError(true);
+      setMessage("Ingresa una direccion de envio");
+      return;
+    }
+    setError(false);
+  };
+
   return (
     <Layout>
-    <main className="w-full h-auto mt-20">
-      <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
-        
-        <div className="flex justify-between pt-1">
-          <h2 className="text-center text-2xl font-semibold md:hidden">
-            {productoPrueba?.nombre}
-          </h2>
-          <TiHeartOutline
-            size="30px"
-            className="cursor-pointer md:hidden"
-            onClick={() => alert("hola")}
-          />
-        </div>
-
-        <div>
-          <sapan className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
-            (
-            {productoPrueba.ingredientes
-              .map((ingrediente) => ingrediente)
-              .join(", ")}
-            )
-          </sapan>
-        </div>
-
-        <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
-
-          <article className="w-full">
-            <Image
-              src={productoPrueba.imagen}
-              alt="producto"
-              layout="responsive"
-              width="500"
-              height="300"
-              objectFit="cover"
+      <main className="w-full h-auto mt-20">
+        <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
+          <div className="flex justify-between pt-1">
+            <h2 className="text-center text-2xl font-semibold md:hidden">
+              {productoPrueba?.nombre}
+            </h2>
+            <TiHeartOutline
+              size="30px"
+              className="cursor-pointer md:hidden"
+              onClick={() => alert("hola")}
             />
-          </article>
+          </div>
 
-          <p className="text-center uppercase">
-            Elige una guarnición{" "}
-            <sapn className="text-red-600 font-semibold">Grosa!</sapn>
-          </p>
+          <div>
+            <span className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
+              (
+              {productoPrueba.ingredientes
+                .map((ingrediente) => ingrediente)
+                .join(", ")}
+              )
+            </span>
+          </div>
 
-          <section className="w-full">
-            <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
-              {guarniciones.map((item, i) => (
-                <li
-                  className="min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start"
-                  key={i}
-                >
-                  <Image
-                    src={item.imagen}
-                    alt="producto"
-                    layout="responsive"
-                    width="500"
-                    height="300"
-                    objectFit="cover"
-                  />
-                </li>
-              ))}
-            </ul>
+          {/* columna izquierda */}
+          <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
+            <article className="w-full">
+              <Image
+                src={productoPrueba.imagen}
+                alt="producto"
+                layout="responsive"
+                width="500"
+                height="300"
+                objectFit="cover"
+              />
+            </article>
+
+            <h3 className="text-center uppercase">
+              Elige una guarnición{" "}
+              <sapn className="text-red-600 font-semibold">Grosa!</sapn>
+            </h3>
+
+            <section className="w-full">
+              <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
+                {guarniciones.map((item, i) => (
+                  <li
+                    className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
+                      guarnicionSeleccionada === item.nombre
+                        ? "border-2 border-red-600"
+                        : ""
+                    }`}
+                    key={i}
+                    data-id={item.nombre}
+                    onClick={handleClick}
+                  >
+                    <Image
+                      src={item.imagen}
+                      alt={item.nombre}
+                      layout="responsive"
+                      width="500"
+                      height="300"
+                      objectFit="cover"
+                    />
+                    <p className="text-[10px] text-center font-semibold text-blue-600">
+                      {item.nombre}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </section>
-        </section>
 
-        <section className="w-full md:w-1/2 lg:w-2/5">
+          {/* columna derecha */}
+          <section className="w-full md:w-1/2 md:px-2 lg:w-2/5">
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
                 {productoPrueba.nombre}
@@ -220,71 +294,121 @@ const producto = () => {
               />
             </div>
 
-            <sapan className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
+            <span className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
               (
               {productoPrueba.ingredientes
                 .map((ingrediente) => ingrediente)
                 .join(", ")}
               )
-            </sapan>
+            </span>
 
-            <p className="text-red-600 text-2xl font-bold py-6">
-              ${productoPrueba.precio}
-            </p>
-
-            <div className="md:py-5 flex justify-between">
-              <div>
-                <button className="p-2 border">-</button>
-                <div className="w-fit border p-2 inline-block">
-                  {"contador"}
+            <div className="flex-col my-5 md:my-5">
+              <p className="w-fit mx-auto text-md md:text-2xl font-semibold tracking-widest mb-2 ">
+                Elija el tipo de milanesa
+              </p>
+              <div className="flex justify-center">
+                <div className="flex items-center gap-3 mr-2 md:mr-16">
+                  <input
+                    type="radio"
+                    name="tipoMila"
+                    value="ternera"
+                    onChange={onChange}
+                    checked
+                  />
+                  <label
+                    htmlFor="ternera"
+                    className="text-red-700 md:text-lg font-semibold"
+                  >
+                    Ternera
+                  </label>
+                  <GiCow className="text-red-800 text-3xl" />
                 </div>
-                <button className="p-2 border">+</button>
+
+                <div className="flex items-center gap-3">
+                  <input
+                    type="radio"
+                    name="tipoMila"
+                    value="pollo"
+                    onChange={onChange}
+                  />
+                  <label
+                    htmlFor="pollo"
+                    className="text-blue-800 md:text-lg font-semibold"
+                  >
+                    Pollo
+                  </label>
+                  <GiChicken className="text-blue-800 text-2xl" />
+                </div>
               </div>
-              <button className="bg-red-600 py-2 px-4 text-white rounded-md uppercase">
-                Añadir
-              </button>
             </div>
 
-            <div className="py-5">
-              <p>
-                Aca iria la descripcion del menu Curabitur non lectus tellus.
-                Vestibulum pulvinar vestibulum leo, id sagittis sapien aliquet
-                in. Nunc ac urna vel neque feugiat laoreet non finibus sem. In
-                rutrum sapien non lorem rhoncus cursus. Donec felis felis,
-                venenatis eleifend hendrerit mollis, dictum et nisi. Nunc dolor
-                nulla, pulvinar non venenatis vitae, sagittis eget nisl. Fusce
-                accumsan tellus augue.
+            <div className="md:my-5">
+              <span className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest">
+                Guarnicion seleccionada:
+              </span>
+              <span className="font-bold text-lg text-red-600">
+                {" "}
+                {guarnicion}
+              </span>
+            </div>
+
+            <div className="mb-2 md:mb-10 flex justify-between items-center">
+              <div>
+                <label className="font-bold text-md">Cantidad:</label>
+                <select
+                  onChange={onChange}
+                  className="border border-gray-900"
+                  name="cantidad"
+                >
+                  <option value="1" defaultValue>
+                    1
+                  </option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <p className="text-black md:text-2xl font-bold py-6">
+                Total:
+                <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
+                  {" "}
+                  ${precio}
+                </span>
               </p>
             </div>
-        </section>
-      </div>
-    </main>
+            <form onSubmit={handleSubmit}>
+              <div className="xs:my-1 bg-gray-100 flex items-center rounded-md px-1">
+                <MdAddLocationAlt className="text-sky-400 mx-2" />
+                <input
+                  type="text"
+                  name="direccion"
+                  value={direccion}
+                  id="direccion"
+                  placeholder="Ingresa tu dirección aquí"
+                  className="bg-gray-100 outline-none text-sm py-3 w-full"
+                  onChange={onChange}
+                  // required
+                />
+              </div>
+
+              {error && (
+                <div className="my-5">
+                  <Error message={message} setError={setError} />
+                </div>
+              )}
+
+              <div className="flex justify-center mt-5 xs:mt-10">
+                <button className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900">
+                  Añadir al Carrito
+                </button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </main>
     </Layout>
   );
 };
 
-export default producto;
-
-{
-  /* <Image
-  src={imagen}
-  alt="producto"
-  layout="responsive"
-  width="600"
-  height="400"
-  objectFit="cover"
-/>; */
-}
-{
-  /* <div className="text-center px-2">
-        <h2 className="font-bold text-md pt-2 lg:text-lg xl:text-xl">
-          {item.nombre}
-        </h2>
-        <strong className="text-xs font-semibold 2xl:text-sm">
-          Ingredientes:
-        </strong>
-        <sapan className="flex justify-center pb-2 text-xs 2xl:text-sm">
-          ({item.ingredientes.map((ingrediente) => ingrediente).join(", ")})
-        </sapan>
-      </div> */
-}
+export default Producto;
