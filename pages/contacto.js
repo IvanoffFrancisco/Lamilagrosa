@@ -1,98 +1,129 @@
-import React from 'react';
+import Layout from "../components/Layout";
 import { BsTelephoneFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
 import { HiLocationMarker } from "react-icons/hi";
-import { FaInstagram, FaTwitter, FaFacebook, FaLinkedinIn, FaGithub} from "react-icons/fa";
+import {
+  FaInstagram,
+  FaTwitter,
+  FaFacebook,
+  FaLinkedinIn,
+  FaGithub,
+} from "react-icons/fa";
 
 export default function contact() {
-    return (
-        <div className="bg-white w-screen md:h-screen h-96">
-            <div className='flex justify-around content-center items-center mx-20 m-36 md:flex-row flex-col'>
-                {/* textual content */}
-                <div className='md:w-1/2 w-full md:p-10 my-10 md:my-0  flex-col'>
-                    <h1 className='text-4xl font-semibold text-sky-500 mb-4'>Contacta con nosotros</h1>
-                    <p className='text-gray-400 font-semibold text-sm'>
-                        Llena el formulario y nuestro equipo te respondera dentro de 12 horas!
-                    </p>
-                    <div className='flex-col my-8 gap-5 flex '> {/* w-2/6 */}   
-                        <div className='flex gap-5 p-4 border border-gray-500 hover:border-sky-400 md:w-1/2 rounded-lg group cursor-pointer items-center'>
-                            <BsTelephoneFill className='text-gray-500 ml-3 text-xl group-hover:text-sky-400'/>
-                            <p className='text-sky-500 text-base font-semibold ml-3'>+54-3794-612832</p>	
-                        </div>
-                    </div>
-                    <div className='flex-col my-8 gap-5 flex'>   
-                        <div className='flex gap-5 p-4 border border-gray-500 hover:border-sky-400 md:w-1/2 rounded-lg group cursor-pointer items-center'>
-                            <GrMail className='text-gray-500 ml-3 text-xl group-hover:text-sky-400'/>
-                            <p className='text-sky-500 text-base font-semibold ml-3'>laMilaGrosa@gmail.com</p>	
-                        </div>
-                    </div>
-                    <div className='flex-col my-8 gap-5 flex'>   
-                        <div className='flex gap-5 p-4 border border-gray-500 hover:border-sky-400 md:w-1/2 rounded-lg group cursor-pointer items-center'>
-                            <HiLocationMarker className='text-gray-500 ml-3 text-xl group-hover:text-sky-400'/>
-                            <p className='text-sky-500 text-base font-semibold ml-3'>Pellegrini 1252, Corrientes-AR</p>	
-                        </div>
-                    </div>
-                    <div className='flex gap-8 justify-center md:justify-start'>
-                        <FaInstagram className='text-2xl text-gray-500 hover:text-sky-400 cursor-pointer '/>
-                        <FaFacebook className='text-2xl text-gray-500 hover:text-sky-400 cursor-pointer '/>
-                        <FaTwitter className='text-2xl text-gray-500 hover:text-sky-400 cursor-pointer '/>
-                        <FaLinkedinIn className='text-2xl text-gray-500 hover:text-sky-400 cursor-pointer '/>
-                        <FaGithub className='text-2xl text-gray-500 hover:text-sky-400 cursor-pointer '/>
-                    </div>
-                </div>
-                {/* contact form */}
-                <div className='bg-white p-12 rounded-lg -ml-96 shadow-md'>
-                    <h1 className='text-3xl font-bold text-sky-500 mb-8'>Formulario de sugerencia</h1>
-                    <form action='#' method='GET'>
-                        <div className='grid xl:grid-cols-2 xl:gap-10'>
-                            <input 
-                                type='text' 
-                                name='usuario' 
-                                id='usuario' 
-                                className='form-control block w-full px-3 py-2 mb-5 text-base font-normal text-gray-500 bg-white bg-clip-padding border border-solid border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:bg-white focus:border-sky400 focus:outline-none' 
-                                placeholder='Usuario' 
-                                required={true}
-                            />
-                            <input 
-                                type='number' 
-                                name='numero' 
-                                id='numero' 
-                                className='form-control block w-full px-3 py-2 mb-5 text-base font-normal text-gray-500 bg-white bg-clip-padding border border-solid border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:bg-white focus:border-sky400 focus:outline-none' 
-                                placeholder='Numero de telofono' 
-                                required={true}
-                            />
-                        </div>
-                            <input 
-                                type='email' 
-                                name='email' 
-                                id='email' 
-                                className='form-control block w-full px-3 py-2 mb-5 text-base font-normal text-gray-500 bg-white bg-clip-padding border border-solid border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:bg-white focus:border-sky400 focus:outline-none' 
-                                placeholder='Correo electronico' 
-                                required={true}
-                            />
-                            <input 
-                                type='text' 
-                                name='recomendacion' 
-                                id='recomendacion' 
-                                className='form-control block w-full px-3 py-2 mb-5 text-base font-normal text-gray-500 bg-white bg-clip-padding border border-solid border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:bg-white focus:border-sky400 focus:outline-none' 
-                                placeholder='Que tipo de sugerencia desea agregar' 
-                                required={true}
-                            />
-                            <div className='flex justify-center'>
-                            <textarea 
-                                rows='3' 
-                                id='text_area' 
-                                className='form-control block w-full px-3 py-2 mb-5 text-base font-normal text-gray-500 bg-white bg-clip-padding border border-solid border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:bg-white focus:border-sky400 focus:outline-none' 
-                                placeholder='Comente aqui su sugerencia' 
-                                required={true}
-                            ></textarea>
-                            </div>
-                            <button type='submit' className='text-sky-400 bg-white hover:bg-sky-400 hover:text-white border border-sky-400 focus:ring-4 focus:outline-none focus:ring-sky-400 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center'>
-                                Enviar Sugerencia
-                            </button>
-                    </form>
-                </div>
+  return (
+    <Layout>
+      <div className="bg-white w-full md:mb-44">
+        <div className="max-w-[95%] mx-auto flex flex-col md:flex-row md:justify-center md:max-w-[900px] mt-32 md:mt-52">
+          {/* textual content */}
+          <div className="md:w-[400px] flex flex-col items-center">
+            <div className="">
+              <h2 className="w-full text-2xl font-semibold text-sky-500 mb-4 text-center">
+                Contacta con nosotros
+              </h2>
+              <p className="text-gray-400 font-semibold text-sm text-center max-w-[323px]">
+                Llena el formulario y nuestro equipo te respondera dentro de 12
+                horas!
+              </p>
             </div>
+
+            <div className="my-5">
+              <div className="py-5 px-10 my-3 flex justify-center items-center gap-5 border border-gray-500 rounded-md">
+                <BsTelephoneFill className="text-gray-500 text-2xl group-hover:text-sky-400" />
+                <p className="text-sky-500 text-sm font-semibold">
+                  +54-3794-612832
+                </p>
+              </div>
+
+              <div className="py-5 px-10 flex justify-center items-center my-3 gap-5 border border-gray-500 rounded-md">
+                <GrMail className="text-gray-500 text-2xl group-hover:text-sky-400" />
+                <p className="text-sky-500 text-sm font-semibold">
+                  laMilaGrosa@gmail.com
+                </p>
+              </div>
+
+              <div className="py-5 px-10 flex justify-center items-center mt-3 gap-5 border border-gray-500 rounded-md">
+                <HiLocationMarker className="text-gray-500 text-3xl group-hover:text-sky-400" />
+                <p className="text-sky-500 text-sm font-semibold">
+                  Pellegrini 1252, Corrientes-AR
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center items-center gap-5 md:justify-start my-5">
+              <FaInstagram className="text-2xl text-gray-500 hover:text-sky-400 cursor-pointer " />
+              <FaFacebook className="text-2xl text-gray-500 hover:text-sky-400 cursor-pointer " />
+              <FaTwitter className="text-2xl text-gray-500 hover:text-sky-400 cursor-pointer " />
+              <FaLinkedinIn className="text-2xl text-gray-500 hover:text-sky-400 cursor-pointer " />
+              <FaGithub className="text-2xl text-gray-500 hover:text-sky-400 cursor-pointer " />
+            </div>
+          </div>
+
+          <hr className="w-full border border-gray-400 max-w-[250px] mx-auto my-2 md:hidden" />
+
+          {/* contact form */}
+          <div className="w-full mx-auto xs:max-w-[330px] md:max-w-[400px] mt-5 md:mt-0">
+            <div className="w-full flex flex-col gap-y-5">
+              <h2 className="text-xl xs:text-2xl font-semibold text-sky-500 mb-4 text-center">
+                Tienes una sugerencia?
+              </h2>
+              <form action="#" method="GET" className="">
+                <div className="flex flex-col gap-5 ">
+                  <div className="flex flex-col md:flex-row gap-5">
+                    <input
+                      type="text"
+                      name="usuario"
+                      id="usuario"
+                      className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
+                      placeholder="Nonbre"
+                      required
+                    />
+                    <input
+                      type="number"
+                      name="numero"
+                      id="numero"
+                      className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
+                      placeholder="Numero de telofono"
+                      // required
+                    />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
+                    placeholder="Correo electronico"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="recomendacion"
+                    id="recomendacion"
+                    className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
+                    placeholder="Tipo de sugerencia"
+                    required
+                  />
+                  <div className="flex justify-center">
+                    <textarea
+                      rows="3"
+                      id="text_area"
+                      className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
+                      placeholder="Comente aqui su sugerencia"
+                      required
+                    ></textarea>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full mx-auto text-sky-400 hover:bg-sky-400 hover:text-white border border-sky-400 font-black rounded-lg text-sm py-5 shadow-md shadow-gray-400 ease-in duration-200 my-10 md:my-0"
+                  >
+                    Enviar Sugerencia
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </Layout>
+  );
 }
