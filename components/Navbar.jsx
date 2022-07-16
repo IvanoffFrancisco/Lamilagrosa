@@ -125,13 +125,13 @@ const Navbar = () => {
               <Link href="/menu">
                 <li className="mb-8 cursor-pointer">Menu</li>
               </Link>
-              <Link href="/">
+              <Link href="/nosotros">
                 <li className="mb-8 cursor-pointer">Nosotros</li>
               </Link>
-              <Link href="/">
+              <Link href="/locales">
                 <li className="mb-8 cursor-pointer">Locales</li>
               </Link>
-              <Link href="/">
+              <Link href="/contacto">
                 <li className="mb-8 cursor-pointer">Contacto</li>
               </Link>
             </ul>
