@@ -69,7 +69,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <Link href="/">
+          <Link href="/carrito">
             <a>
               <MdOutlineLocalGroceryStore
                 size="30px"
