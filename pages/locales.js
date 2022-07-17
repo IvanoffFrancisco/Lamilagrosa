@@ -3,13 +3,13 @@ import Image from "next/image";
 import LocalImage from "../public/img/Local1.png";
 import LocalImage2 from '../public/img/Local2.jpg';
 import LocalImage3 from '../public/img//Local3.jpg';
-import LocalImage4 from '../public/Local4.jpg';
+import LocalImage4 from '../public/img//Local4.jpg';
 import LogoImage from "../public/img/login-and-register.png";
 import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 
 export default function infoCards() {
     return (
-    <div className="min-h-screen min-w-fit bg-blue-500 overflow-auto">
+    <div className="min-h-screen min-w-fit bg-sky-200 overflow-auto">
         <div className="mx-auto mt-10 lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
         <Image
             src={LocalImage}
