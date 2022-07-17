@@ -9,7 +9,7 @@ import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 
 export default function infoCards() {
     return (
-    <div className="min-h-screen min-w-fit bg-sky-200 overflow-auto">
+    <div className="min-h-screen min-w-fit bg-sky-800 overflow-auto">
         <div className="mx-auto mt-10 lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
         <Image
             src={LocalImage}
@@ -374,7 +374,7 @@ export default function infoCards() {
                 </div>
             </div>
             <div className="h-8 w-48 ml-auto mt-auto bg-sky-800 rounded-full flex items-center justify-center">
-                <span className="flex items-center justify-center text-white font-semibold">Chaco - Resistencia, AR</span>
+                <span className="flex items-center justify-center text-white font-semibold">Chaco - Barranqueras, AR</span>
             </div>
             </div>
         </div>
