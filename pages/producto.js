@@ -319,7 +319,7 @@ const Producto = () => {
             </span>
 
             <div className="flex-col my-5 md:my-5">
-              <p className="w-fit mx-auto text-md md:text-2xl font-semibold tracking-widest mb-2 ">
+              <p className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest mb-2 ">
                 Elija el tipo de milanesa
               </p>
               <div className="flex justify-center">
