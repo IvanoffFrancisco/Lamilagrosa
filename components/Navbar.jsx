@@ -1,12 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter} from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 
+import {UsuarioContext} from '../contexts/UsuarioContext';
+
 const Navbar = () => {
+  //contextUsuario
+  const {isloged,userGlobal} = useContext(UsuarioContext);
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -57,7 +61,11 @@ const Navbar = () => {
             </Link> */}
           </ul>
         </div>
-
+        { isloged ? (
+            <Link href="/login">
+            <p className="text-sm cursor-pointer hover:text-red-600">{userGlobal.user}</p>
+          </Link>
+        ): (
         <div className="flex gap-10  transition-transform ease-in duration-200 items-center">
           <div className="flex justify-center items-center">
             <BiUser size="39px" className="hover: text-blue-600" />
@@ -86,6 +94,9 @@ const Navbar = () => {
             <AiOutlineMenu size={25} />
           </div>
         </div>
+        ) }
+        
+        
       </div>
 
       <div
