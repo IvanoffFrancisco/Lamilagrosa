@@ -151,8 +151,8 @@ const Producto = () => {
   const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
 
   const [pedido, setPedido] = useState({
-    menu: `${productoPrueba.nombre}`,
-    tipoMila: "carne",
+    menu: `${productoPrueba.id}`,
+    tipoMila: "ternera",
     cantidad: "1",
     guarnicion: "",
     direccion: "",
@@ -261,7 +261,7 @@ const Producto = () => {
                         : ""
                     }`}
                     key={i}
-                    data-id={item.nombre}
+                    data-id={item.id}
                     onClick={handleClick}
                   >
                     <Image
