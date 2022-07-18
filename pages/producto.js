@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
-import Error from "../components/Error.js";
+import Mensaje from "../components/Mensaje";
 
 import { TiHeartOutline } from "react-icons/ti";
-import { MdAddLocationAlt } from "react-icons/md";
 import { GiCow, GiChicken } from "react-icons/gi";
 import { useState } from "react";
 
@@ -148,31 +147,32 @@ const productoPrueba = {
 };
 
 const Producto = () => {
-  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
+  const [carrito, setCarrito] = useState([""]);
 
   const [pedido, setPedido] = useState({
     menu: `${productoPrueba.id}`,
     tipoMila: "ternera",
     cantidad: "1",
     guarnicion: "",
-    direccion: "",
     precio: `${productoPrueba.precio}`,
   });
 
-  //state that saves the error message to print on the screen
-  const [message, setMessage] = useState("");
+  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
 
-  //state that checks if there is an error in the form data
-  const [error, setError] = useState(false);
+  //state that saves the error message to print on the screen
+  const [mensaje, setMensaje] = useState("");
+
+  //estado que maneja el tipo de error
+  const [tipoError, setTipoError] = useState("");
 
   //extract values ​​from user state
-  const { guarnicion, direccion, precio } = pedido;
+  const { guarnicion, precio } = pedido;
 
   const handleClick = (e) => {
-    setguarnicionSeleccionada(e.currentTarget.dataset.id);
+    setguarnicionSeleccionada(e.currentTarget.dataset.nombre);
     setPedido({
       ...pedido,
-      guarnicion: e.currentTarget.dataset.id,
+      guarnicion: e.currentTarget.dataset.nombre,
     });
   };
 
@@ -193,19 +193,32 @@ const Producto = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // valida que la guarnicion haya sido seleccionada
     if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
-      console.log("guarnicion no seleccionada");
-      setError(true);
-      setMessage("Selecciona una guarnicion para continuar con tu compra");
+      setTipoError("error")
+      setMensaje("Selecciona una guarnicion");
       return;
     }
-    if (direccion === "" || direccion === undefined) {
-      console.log("direccion vacia");
-      setError(true);
-      setMessage("Ingresa una direccion de envio");
-      return;
-    }
-    setError(false);
+
+    // Guardo el pedido en el carrito
+    setCarrito([...carrito, pedido]);
+
+    // Resetea el formulario
+    e.target.reset();
+    setPedido({
+      ...pedido,
+      guarnicion: "",
+    });
+    setguarnicionSeleccionada("");
+
+    //añade mensaje
+    setTipoError("correcto")
+    setMensaje("Añadido correctamente")
+
+    //Elimina mensaje
+    setTimeout(() => {
+      setTipoError("")
+    }, 3000);
   };
 
   return (
@@ -261,7 +274,7 @@ const Producto = () => {
                         : ""
                     }`}
                     key={i}
-                    data-id={item.id}
+                    data-nombre={item.nombre}
                     onClick={handleClick}
                   >
                     <Image
@@ -282,7 +295,10 @@ const Producto = () => {
           </section>
 
           {/* columna derecha */}
-          <section className="w-full md:w-1/2 md:px-2 lg:w-2/5">
+          <form
+            onSubmit={handleSubmit}
+            className="w-full md:w-1/2 md:px-2 lg:w-2/5"
+          >
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
                 {productoPrueba.nombre}
@@ -377,34 +393,18 @@ const Producto = () => {
                 </span>
               </p>
             </div>
-            <form onSubmit={handleSubmit}>
-              <div className="xs:my-1 bg-gray-100 flex items-center rounded-md px-1">
-                <MdAddLocationAlt className="text-sky-400 mx-2" />
-                <input
-                  type="text"
-                  name="direccion"
-                  value={direccion}
-                  id="direccion"
-                  placeholder="Ingresa tu dirección aquí"
-                  className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  onChange={onChange}
-                  // required
-                />
+            {tipoError !== "" && (
+              <div className="my-5">
+                <Mensaje mensaje={mensaje} tipoError={tipoError} />
               </div>
+            )}
 
-              {error && (
-                <div className="my-5">
-                  <Error message={message} setError={setError} />
-                </div>
-              )}
-
-              <div className="flex justify-center mt-5 xs:mt-10">
-                <button className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900">
-                  Añadir al Carrito
-                </button>
-              </div>
-            </form>
-          </section>
+            <div className="flex justify-center mt-5 xs:mt-10">
+              <button id="añadir" className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900">
+                Añadir al Carrito
+              </button>
+            </div>
+          </form>
         </div>
       </main>
     </Layout>
