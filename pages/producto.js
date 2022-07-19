@@ -272,7 +272,7 @@ const Producto = () => {
                   <li
                     className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
                       guarnicionSeleccionada === item.nombre
-                        ? "border-2 border-red-600"
+                        ? "border-2 border-red-500 rounded-sm"
                         : ""
                     }`}
                     key={i}
