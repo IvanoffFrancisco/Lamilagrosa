@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
 import Mensaje from "../components/Mensaje";
+import { CarritoContext } from "../contexts/CarritoContext";
 
 import { TiHeartOutline } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 import { useState } from "react";
+import { useContext } from "react";
 
 const guarniciones = [
   {
@@ -147,7 +149,7 @@ const productoPrueba = {
 };
 
 const Producto = () => {
-  const [carrito, setCarrito] = useState([""]);
+  const [carrito, setCarrito] = useContext(CarritoContext);
 
   const [pedido, setPedido] = useState({
     menu: `${productoPrueba.id}`,
@@ -195,7 +197,7 @@ const Producto = () => {
     e.preventDefault();
     // valida que la guarnicion haya sido seleccionada
     if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
-      setTipoError("error")
+      setTipoError("error");
       setMensaje("Selecciona una guarnicion");
       return;
     }
@@ -212,12 +214,12 @@ const Producto = () => {
     setguarnicionSeleccionada("");
 
     //añade mensaje
-    setTipoError("correcto")
-    setMensaje("Añadido correctamente")
+    setTipoError("correcto");
+    setMensaje("Añadido correctamente");
 
     //Elimina mensaje
     setTimeout(() => {
-      setTipoError("")
+      setTipoError("");
     }, 3000);
   };
 
@@ -400,7 +402,10 @@ const Producto = () => {
             )}
 
             <div className="flex justify-center mt-5 xs:mt-10">
-              <button id="añadir" className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900">
+              <button
+                id="añadir"
+                className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900"
+              >
                 Añadir al Carrito
               </button>
             </div>
