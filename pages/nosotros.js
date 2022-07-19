@@ -19,10 +19,11 @@ const nosotros = () => {
                 width="600"
                 height="800"
                 objectFit="cover"
+                priority="true"
               />
             </div>
 
-            <div className="w-full leading-6 lg:leading-8">
+            <div className="md:w-full md:max-w-none leading-6 lg:leading-8 max-w-[500px] mx-auto">
               <p>La Mila Grosa abrió sus puertas en Enero del 2011.</p>
               <p>
                 Fieles a la fusión de los mejores ingredientes locales e
