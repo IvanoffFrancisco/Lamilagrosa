@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
+import Mensaje from "../components/Mensaje";
 import LoginImage from "../public/img/login-and-register.png";
 
 import {
@@ -11,8 +13,7 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { MdLockOutline, MdLock, MdAddLocationAlt } from "react-icons/md";
-import { useState } from "react";
-import Error from "../components/Error";
+
 
 export default function Register() {
   //stores the form fields
@@ -24,10 +25,11 @@ export default function Register() {
     passwordConfirm: "",
   });
 
-  //state that checks if there is an error in the form data
-  const [error, setError] = useState(false);
+  //estado que maneja el tipo de error
+  const [tipoError, setTipoError] = useState("");
+
   //state that saves the error message to print on the screen
-  const [message, setMessage] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
   //extract values ​​from user state
   const { nombreUsuario, email, direccion, password, passwordConfirm } = user;
@@ -44,6 +46,9 @@ export default function Register() {
       //   Password ${password}`
       // );
 
+      setTipoError("correcto");
+      setMensaje("Usuario registrado correctamente");
+
       // Reset the form
       setUser({
         nombreUsuario: "",
@@ -53,10 +58,14 @@ export default function Register() {
         passwordConfirm: "",
       });
 
-      setError(false);
+      //Elimina mensaje
+      setTimeout(() => {
+        setTipoError("");
+      }, 3000);
+
     } else {
-      setError(true);
-      setMessage("Las contraseñas no coinciden");
+      setTipoError("error");
+      setMensaje("Las contraseñas no coinciden");
     }
   }
 
@@ -91,7 +100,11 @@ export default function Register() {
             <h2 className="text-2xl font-semibold text-sky-500 pt-3 pb-5 ">
               Crea tu Cuenta
             </h2>
-            {error && <Error message={message} />}
+            {tipoError !== "" && (
+              <div className="my-5">
+                <Mensaje mensaje={mensaje} tipoError={tipoError} />
+              </div>
+            )}
             <div className="w-full flex flex-col items-center">
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <FaUser className="text-sky-400 mx-2" />

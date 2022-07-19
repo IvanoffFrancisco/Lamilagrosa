@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Link from "next/link";
 import Image from "next/image";
-import Error from "../components/Error";
+import Mensaje from "../components/Mensaje";
 
 import {
   FaFacebook,
@@ -12,12 +12,6 @@ import {
 } from "react-icons/fa";
 import { MdLockOutline } from "react-icons/md";
 
-/**
- * Datos validos:
- * Email: seba@test.com
- * Password: seba
- */
-
 export default function Login() {
   const [user, setUser] = useState({
     email: "",
@@ -25,10 +19,10 @@ export default function Login() {
   });
 
   //state that saves the error message to print on the screen
-  const [message, setMessage] = useState("");
+  const [mensaje, setMensaje] = useState("");
 
-  //state that checks if there is an error in the form data
-  const [error, setError] = useState(false);
+  //estado que maneja el tipo de error
+  const [tipoError, setTipoError] = useState("");
 
   //extract values ​​from user state
   const { email, password } = user;
@@ -43,24 +37,25 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if ([email, password].includes("")) {
-    //   setMessage("Todos los Campos son requeridos");
-    //   setError(true);
-    //   return;
-    // }
-    // setError(false);
-
     if (email === "seba@test.com" && password === "seba") {
+      setTipoError("correcto");
+      setMensaje("acceso concedido");
+
       //Reinicia el formulario
       setUser({
         email: "",
         password: "",
       });
+      
+      //Elimina mensaje
+      setTimeout(() => {
+        setTipoError("");
+      }, 3000);
 
       return;
     } else {
-      setError(true);
-      setMessage("Nombre de Usuario o Clave Incorrectas");
+      setTipoError("error");
+      setMensaje("Nombre de Usuario o Clave Incorrectas");
     }
   };
 
@@ -87,7 +82,11 @@ export default function Login() {
             <h2 className="text-2xl font-semibold text-sky-500 pt-5 pb-5 ">
               Iniciar Sesión
             </h2>
-            {error && <Error message={message} setError={setError} />}
+            {tipoError !== "" && (
+              <div className="my-5">
+                <Mensaje mensaje={mensaje} tipoError={tipoError} />
+              </div>
+            )}
             <div className="flex flex-col items-center">
               <div className="bg-gray-100 w-full py-2 flex items-center mb-3 rounded-sm">
                 <FaRegEnvelope className="text-sky-400 mx-2" />
