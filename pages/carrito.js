@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
+import { CarritoContext } from "../contexts/CarritoContext";
 
-const carrito = () => {
+const Carrito = () => {
+  const [carrito, setCarrito] = useContext(CarritoContext);
+
   const productosCarrito = [
     {
       menu: "Milanesa a caballo",
@@ -31,18 +35,19 @@ const carrito = () => {
       envio: 100,
     },
   ];
+
   const { menu, tipoMila, cantidad, guarnicion, direccion, precio, envio } =
     productosCarrito[0];
 
   return (
     <Layout>
       <div className="mt-20 w-full h-scren flex flex-col justify-center items-center bg-gray-200">
-        <div className="w-full pt-5 max-w-[95%] flex flex-col gap-3">
+        <ul className="w-full pt-5 max-w-[95%] flex flex-col gap-3">
           {/* Lista Productos */}
-          {productosCarrito.map((producto, i) => (
-            <ProductCard producto={producto} key={i} />
+          {carrito.map((producto) => (
+            <ProductCard producto={producto} key={producto.id} />
           ))}
-        </div>
+        </ul>
 
         {/* Resumen a pagar */}
         <div className="w-full h-22 bg-white mt-2">
@@ -66,4 +71,4 @@ const carrito = () => {
   );
 };
 
-export default carrito;
+export default Carrito;
