@@ -152,11 +152,12 @@ const Producto = () => {
   const [carrito, setCarrito] = useContext(CarritoContext);
 
   const [pedido, setPedido] = useState({
-    menu: `${productoPrueba.id}`,
+    menu: `${productoPrueba.nombre}`,
     tipoMila: "ternera",
     cantidad: "1",
     guarnicion: "",
     precio: `${productoPrueba.precio}`,
+    id:""
   });
 
   const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
@@ -201,12 +202,14 @@ const Producto = () => {
       setMensaje("Selecciona una guarnicion");
       return;
     }
-
+    //genero un id
+    pedido.id = Date.now().toString(36);
     // Guardo el pedido en el carrito
     setCarrito([...carrito, pedido]);
 
     // Resetea el formulario
     e.target.reset();
+
     setPedido({
       ...pedido,
       guarnicion: "",
@@ -223,6 +226,7 @@ const Producto = () => {
     }, 3000);
   };
 
+  
   return (
     <Layout>
       <main className="w-full h-auto mt-20">
