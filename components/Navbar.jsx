@@ -37,21 +37,21 @@ const Navbar = () => {
         <div>
           <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
             <Link href="/">
-              <li className=" hover:border-b hover:border-blue-400">Inicio</li>
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">Inicio</li>
             </Link>
             <Link href="/menu">
-              <li className=" hover:border-b hover:border-blue-400">Menu</li>
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">Menu</li>
             </Link>
             <Link href="/nosotros">
-              <li className=" hover:border-b hover:border-blue-400">
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
                 Nosotros
               </li>
             </Link>
             <Link href="/locales">
-              <li className=" hover:border-b hover:border-blue-400">Locales</li>
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">Locales</li>
             </Link>
             <Link href="/contacto">
-              <li className=" hover:border-b hover:border-blue-400">
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
                 Contacto
               </li>
             </Link>
@@ -61,12 +61,12 @@ const Navbar = () => {
         <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
           <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">
             <Link href="/login">
-              <a className="text-black md:text-xs font-semibold tracking-widest">
+              <a className="text-black md:text-xs font-semibold tracking-widest hover:ring ring-blue-600 px-1 py-1 rounded-md ease-in duration-200">
                 Iniciá sesión
               </a>
             </Link>
             <Link href="/register">
-              <button className="bg-blue-600 text-white py-1.5 md:py-1 md:px-2 md:text-xs cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 lg:mr-5 ">
+              <button className="bg-blue-600 text-white py-1.5 md:py-1 md:px-2 md:text-xs cursor-pointer rounded-md font-semibold tracking-widest hover:bg-white hover:text-black hover:ring ring-blue-600 px-1 ease-in duration-200 lg:mr-5 ">
                 Registrate
               </button>
             </Link>
