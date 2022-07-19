@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Mensaje from "../components/Mensaje";
 import { CarritoContext } from "../contexts/CarritoContext";
 
-import { TiHeartOutline } from "react-icons/ti";
+import { TiHeartOutline,TiArrowDown } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 import { useState } from "react";
 import { useContext } from "react";
@@ -261,9 +261,12 @@ const Producto = () => {
               />
             </article>
 
-            <h3 className="text-center uppercase">
+            <h3 className="text-center uppercase flex justify-center gap-5">
+              <TiArrowDown className="text-red-600 text-2xl"/>
               Elige una guarnición{" "}
-              <sapn className="text-red-600 font-semibold">Grosa!</sapn>
+              {/* <sapn className="text-red-600 font-semibold">Grosa!</sapn> */}
+              <TiArrowDown className="text-red-600 text-2xl"/>
+
             </h3>
 
             <section className="w-full">
