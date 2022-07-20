@@ -3,7 +3,12 @@ import Layout from "../components/Layout";
 import Mensaje from "../components/Mensaje";
 import { CarritoContext } from "../contexts/CarritoContext";
 
-import { TiHeartOutline,TiArrowDown } from "react-icons/ti";
+import {
+  TiHeartOutline,
+  TiArrowDown,
+  TiArrowLeft,
+  TiArrowRight,
+} from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 import { useState } from "react";
 import { useContext } from "react";
@@ -152,11 +157,12 @@ const Producto = () => {
   const [carrito, setCarrito] = useContext(CarritoContext);
 
   const [pedido, setPedido] = useState({
-    menu: `${productoPrueba.id}`,
+    menu: `${productoPrueba.nombre}`,
     tipoMila: "ternera",
     cantidad: "1",
     guarnicion: "",
     precio: `${productoPrueba.precio}`,
+    id: "",
   });
 
   const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
@@ -201,12 +207,14 @@ const Producto = () => {
       setMensaje("Selecciona una guarnicion");
       return;
     }
-
+    //genero un id
+    pedido.id = Date.now().toString(36);
     // Guardo el pedido en el carrito
     setCarrito([...carrito, pedido]);
 
     // Resetea el formulario
     e.target.reset();
+
     setPedido({
       ...pedido,
       guarnicion: "",
@@ -261,12 +269,13 @@ const Producto = () => {
               />
             </article>
 
-            <h3 className="text-center uppercase flex justify-center gap-5">
-              <TiArrowDown className="text-red-600 text-2xl"/>
+            <h3 className="text-center uppercase flex justify-around">
+              <TiArrowLeft className="text-red-600 text-2xl" />
+              <TiArrowDown className="text-red-600 text-2xl" />
               Elige una guarnición{" "}
               {/* <sapn className="text-red-600 font-semibold">Grosa!</sapn> */}
-              <TiArrowDown className="text-red-600 text-2xl"/>
-
+              <TiArrowDown className="text-red-600 text-2xl" />
+              <TiArrowRight className="text-red-600 text-2xl" />
             </h3>
 
             <section className="w-full">
