@@ -5,13 +5,13 @@ import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
-// import { BiUser } from "react-icons/bi";
+import { BiUserCircle } from "react-icons/bi";
 
-import {UsuarioContext} from '../contexts/UsuarioContext';
+import { UsuarioContext } from "../contexts/UsuarioContext";
 
 const Navbar = () => {
   //contextUsuario
-  const {isloged,userGlobal} = useContext(UsuarioContext);
+  const { isloged, userGlobal } = useContext(UsuarioContext);
   const [nav, setNav] = useState(false);
 
   const [carrito, setCarrito] = useContext(CarritoContext);
@@ -40,10 +40,14 @@ const Navbar = () => {
         <div>
           <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
             <Link href="/">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">Inicio</li>
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+                Inicio
+              </li>
             </Link>
             <Link href="/menu">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">Menu</li>
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+                Menu
+              </li>
             </Link>
             <Link href="/nosotros">
               <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
@@ -51,7 +55,9 @@ const Navbar = () => {
               </li>
             </Link>
             <Link href="/locales">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">Locales</li>
+              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+                Locales
+              </li>
             </Link>
             <Link href="/contacto">
               <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
@@ -62,29 +68,34 @@ const Navbar = () => {
         </div>
 
         {/* logica para poder mostrar el avatar o el nombre de usuario */}
-        {isloged ? (
-          <>
-            <p>{userGlobal.user}</p>
-          </>
-        ):(
-          <></>
-        )
-
-        }
-
         <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
-          <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">
-            <Link href="/login">
-              <a className="text-black md:text-xs font-semibold tracking-widest hover:ring ring-blue-600 px-1 py-1 rounded-md ease-in duration-200">
-                Iniciá sesión
-              </a>
-            </Link>
-            <Link href="/register">
-              <button className="bg-blue-600 text-white py-1.5 md:py-1 md:px-2 md:text-xs cursor-pointer rounded-md font-semibold tracking-widest hover:bg-white hover:text-black hover:ring ring-blue-600 px-1 ease-in duration-200 lg:mr-5 ">
-                Registrate
-              </button>
-            </Link>
-          </div>
+          {isloged ? (
+            <div className="flex items-center">
+              <div className="flex flex-col text-center">
+                <p className="text-[10px]">Bienvenido</p>
+                <p className="text-[10px] font-bold capitalize ">
+                  {userGlobal.user}
+                </p>
+              </div>
+              <BiUserCircle
+                size="32"
+                className="text-gray-600 hover:text-blue-600 hover:scale-105 ease-in duration-200 cursor-pointer mr-2"
+              />
+            </div>
+          ) : (
+            <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">
+              <Link href="/login">
+                <a className="md:text-xs font-semibold tracking-widest hover:ring-1 ring-blue-600 px-1 py-1 rounded-md ease-in duration-200">
+                  Iniciá sesión
+                </a>
+              </Link>
+              <Link href="/register">
+                <button className="bg-blue-600 text-white py-1.5 md:py-1 md:px-2 md:text-xs cursor-pointer rounded-md font-semibold tracking-widest hover:bg-white hover:text-black hover:ring-1 ring-blue-600 px-1 ease-in duration-200 lg:mr-5 ">
+                  Registrate
+                </button>
+              </Link>
+            </div>
+          )}
 
           <Link href="/carrito">
             <div className="relative flex justify-between">
@@ -92,7 +103,7 @@ const Navbar = () => {
                 size="30px"
                 className="text-blue-600 relative hover:scale-110"
               />
-                <span className="text-xs font-semibold">{carrito?.length}</span>
+              <span className="text-xs font-semibold">{carrito?.length}</span>
             </div>
           </Link>
           <div
@@ -134,18 +145,20 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="w-full flex flex-col mt-5 justify-center items-center gap-3">
-            <Link href="/login">
-              <a className="text-black lg:text-xs font-semibold tracking-widest hover:text-blue-600">
-                Iniciar sesión
-              </a>
-            </Link>
-            <Link href="/register">
-              <button className="flex bg-blue-600 text-white py-1.5 px-4 lg:text-xs cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 lg:mr-5 ">
-                Registrate
-              </button>
-            </Link>
-          </div>
+          {isloged ? null : (
+            <div className="w-full flex flex-col mt-5 justify-center items-center gap-3">
+              <Link href="/login">
+                <a className="text-black lg:text-xs font-semibold tracking-widest hover:text-blue-600">
+                  Iniciar sesión
+                </a>
+              </Link>
+              <Link href="/register">
+                <button className="flex bg-blue-600 text-white py-1.5 px-4 lg:text-xs cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 lg:mr-5 ">
+                  Registrate
+                </button>
+              </Link>
+            </div>
+          )}
 
           <div className="pl-4 mt-16 flex flex-col">
             <ul className="uppercase text-md">
