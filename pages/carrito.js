@@ -52,14 +52,13 @@ const Carrito = () => {
         {/* Resumen a pagar */}
         <div className="w-full h-22 bg-white mt-2">
           <div className="flex flex-col px-3">
-            <div className="text-blue-600 text-xs flex justify-between border-b border-gray-300">
-              <span>Envio a: {direccion}</span>
-              <span>{envio}</span>
-            </div>
-
-            <div className="text-black flex justify-between mt-1">
-              <span>Total con envio</span>
-              <span>$ {precio + envio}</span>
+            <div className="text-black flex justify-between mt-1 mx-2">
+              <span className="text-lg font-bold ">Sub Total</span>
+              <span className="text-lg font-bold text-red-600">$ 
+                {carrito.reduce(
+                  (previousValue, currentValue) => previousValue + parseInt(currentValue.precio),0
+                )}
+              </span>
             </div>
             <button className="my-2 bg-blue-600 text-white py-2 rounded-md">
               Continuar compra
