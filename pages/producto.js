@@ -205,30 +205,29 @@ const Producto = () => {
     if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
       setTipoError("error");
       setMensaje("Selecciona una guarnicion");
-      return;
+    } else {
+      //genero un id
+      pedido.id = Date.now().toString(36);
+      // Guardo el pedido en el carrito
+      setCarrito([...carrito, pedido]);
+
+      // Resetea el formulario
+      e.target.reset();
+
+      setPedido({
+        ...pedido,
+        guarnicion: "",
+      });
+      setguarnicionSeleccionada("");
+
+      //añade mensaje
+      setTipoError("correcto");
+      setMensaje("Añadido correctamente");
     }
-    //genero un id
-    pedido.id = Date.now().toString(36);
-    // Guardo el pedido en el carrito
-    setCarrito([...carrito, pedido]);
-
-    // Resetea el formulario
-    e.target.reset();
-
-    setPedido({
-      ...pedido,
-      guarnicion: "",
-    });
-    setguarnicionSeleccionada("");
-
-    //añade mensaje
-    setTipoError("correcto");
-    setMensaje("Añadido correctamente");
-
     //Elimina mensaje
     setTimeout(() => {
       setTipoError("");
-    }, 3000);
+    }, 2500);
   };
 
   return (
@@ -382,9 +381,9 @@ const Producto = () => {
               </span>
             </div>
 
-            <div className="mb-2 md:mb-10 flex justify-between items-center">
+            <div className="mb-2 md:mb-8 mt-5 flex justify-between items-center">
               <div>
-                <label className="font-bold text-md">Cantidad:</label>
+                <label className="font-bold">Cantidad:</label>
                 <select
                   onChange={onChange}
                   className="border border-gray-900"
@@ -399,7 +398,7 @@ const Producto = () => {
                   <option value="5">5</option>
                 </select>
               </div>
-              <p className="text-black md:text-2xl font-bold py-6">
+              <p className="text-black font-bold">
                 Total:
                 <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
                   {" "}
@@ -407,16 +406,16 @@ const Producto = () => {
                 </span>
               </p>
             </div>
-            {tipoError !== "" && (
-              <div className="my-5">
-                <Mensaje mensaje={mensaje} tipoError={tipoError} />
-              </div>
-            )}
 
-            <div className="flex justify-center mt-5 xs:mt-10">
+            <div className="w-full flex flex-col items-center justify-center mt-5 xs:mt-10">
+              {tipoError !== "" && (
+                <div className="w-full my-3">
+                  <Mensaje mensaje={mensaje} tipoError={tipoError} />
+                </div>
+              )}
               <button
                 id="añadir"
-                className="font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900"
+                className="w-full font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900"
               >
                 Añadir al Carrito
               </button>
