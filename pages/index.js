@@ -1,7 +1,6 @@
 import Articulo1 from "../components/Articulo1";
 import Carrusel from "../components/Carrusel";
 import Layout from "../components/Layout";
-import Promosiones from "../components/Promosiones";
 
 const images = [
   "/img/slideshow/sandwich-de-milanesa.jpg",

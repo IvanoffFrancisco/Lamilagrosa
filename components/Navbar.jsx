@@ -2,13 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useContext } from "react";
 import { CarritoContext } from "../contexts/CarritoContext";
-
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 // import { BiUser } from "react-icons/bi";
 
+import {UsuarioContext} from '../contexts/UsuarioContext';
+
 const Navbar = () => {
+  //contextUsuario
+  const {isloged,userGlobal} = useContext(UsuarioContext);
   const [nav, setNav] = useState(false);
 
   const [carrito, setCarrito] = useContext(CarritoContext);
@@ -57,6 +60,17 @@ const Navbar = () => {
             </Link>
           </ul>
         </div>
+
+        {/* logica para poder mostrar el avatar o el nombre de usuario */}
+        {isloged ? (
+          <>
+            <p>{userGlobal.user}</p>
+          </>
+        ):(
+          <></>
+        )
+
+        }
 
         <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
           <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">
