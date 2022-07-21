@@ -4,11 +4,11 @@ const Mensaje = ({ mensaje, tipoError }) => {
   return (
     <>
       {tipoError === "error" ? (
-        <p className="bg-red-600 w-full py-2  text-white uppercase font-semibold rounded-md text-center my-1 text-xs">
+        <p className="bg-red-600 w-full py-1.5 text-white font-semibold rounded-md text-center my-1 text-md">
           {mensaje}
         </p>
       ) : (
-        <p className="bg-green-600 w-full py-2  text-white uppercase font-semibold rounded-md text-center my-1 text-xs">
+        <p className="bg-green-600 w-full py-1.5 text-white font-semibold rounded-md text-center my-1 text-md">
           {mensaje}
         </p>
       )}
