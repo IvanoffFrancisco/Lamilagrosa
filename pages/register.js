@@ -13,79 +13,19 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { MdLockOutline, MdLock, MdAddLocationAlt } from "react-icons/md";
+import { useRegistro } from "../hooks/useRegistro";
 
 
 export default function Register() {
-  //stores the form fields
-  const [user, setUser] = useState({
-    nombreUsuario: "",
-    email: "",
-    direccion: "",
-    password: "",
-    passwordConfirm: "",
-  });
-
-  //estado que maneja el tipo de error
-  const [tipoError, setTipoError] = useState("");
-
-  //state that saves the error message to print on the screen
-  const [mensaje, setMensaje] = useState("");
-
-  //extract values ​​from user state
-  const { nombreUsuario, email, direccion, password, passwordConfirm } = user;
-
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    if (password === passwordConfirm) {
-      // console.log(
-      //   `Los datos del registro son:
-      //   Nombre de usuario: ${nombreUsuario}
-      //   Direccion: ${direccion}
-      //   Email ${email}
-      //   Password ${password}`
-      // );
-
-      setTipoError("correcto");
-      setMensaje("Usuario registrado correctamente");
-
-      // Reset the form
-      setUser({
-        nombreUsuario: "",
-        email: "",
-        direccion: "",
-        password: "",
-        passwordConfirm: "",
-      });
-
-      //Elimina mensaje
-      setTimeout(() => {
-        setTipoError("");
-      }, 3000);
-
-    } else {
-      setTipoError("error");
-      setMensaje("Las contraseñas no coinciden");
-    }
-  }
-
-  //stores the data entered in each field of the form
-  function onChange(e) {
-    setUser({
-      ...user,
-      [e.target.id]: e.target.value,
-    });
-  }
+  
+  const [hendlerInputChangeRegistro,handlerSubmitRegistro,userRegistro,tipoError,mensaje]=useRegistro();
 
   return (
     <div className="w-full h-screen bg-gray-200 flex items-center">
       <main className="w-[850px] mx-auto flex flex-col-reverse md:flex-row-reverse justify-center text-center max-w-[85%]">
         <div className="w-full md:w-1/2 max-w-[425px] mx-auto bg-white py-10 flex justify-center items-center rounded-r-lg ">
           <form
-            action="#"
-            method="GET"
             className="w-full px-9 py-1"
-            onSubmit={handleSubmit}
           >
             <Link href="/">
               <a>
@@ -110,64 +50,67 @@ export default function Register() {
                 <FaUser className="text-sky-400 mx-2" />
                 <input
                   type="text"
-                  value={nombreUsuario}
-                  id="nombreUsuario"
+                  value={userRegistro.user}
+                  id="user"
                   placeholder="Nombre de usuario"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  required
-                  onChange={onChange}
+                  required={true}
+                  onChange={hendlerInputChangeRegistro}
+                  minLength={5}
+                  maxLength={10}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <FaRegEnvelope className="text-sky-400 mx-2" />
                 <input
                   type="email"
-                  value={email}
+                  value={userRegistro.email}
                   id="email"
                   placeholder="Email"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  required
-                  onChange={onChange}
+                  required={true}
+                  onChange={hendlerInputChangeRegistro}
+                  minLength={10}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <MdAddLocationAlt className="text-sky-400 mx-2" />
                 <input
                   type="text"
-                  value={direccion}
-                  id="direccion"
+                  value={userRegistro.direcciones}
+                  id="direcciones"
                   placeholder="Dirección postal"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  required
-                  onChange={onChange}
+                  required={true}
+                  onChange={hendlerInputChangeRegistro}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <MdLockOutline className="text-sky-400 mx-2" />
                 <input
                   type="password"
-                  value={password}
+                  value={userRegistro.password}
                   id="password"
                   placeholder="Contraseña"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  required
-                  onChange={onChange}
+                  required={true}
+                  onChange={hendlerInputChangeRegistro}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <MdLock className="text-sky-400 mx-2" />
                 <input
                   type="password"
-                  value={passwordConfirm}
+                  value={userRegistro.passwordConfirm}
                   id="passwordConfirm"
                   placeholder="Confirmar contraseña"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
-                  required
-                  onChange={onChange}
+                  required={true}
+                  onChange={hendlerInputChangeRegistro}
                 />
               </div>
 
-              <button className="px-24 py-[10px] mt-7 text-xs text-sky-400 font-semibold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-widest uppercase">
+              <button className="px-24 py-[10px] mt-7 text-xs text-sky-400 font-semibold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-widest uppercase" onClick={handlerSubmitRegistro}>
                 Registrarse
               </button>
 
