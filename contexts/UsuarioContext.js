@@ -1,10 +1,12 @@
-import {createContext,useState,useEffect} from 'react';
+import {createContext,useState} from 'react';
 
 export const UsuarioContext=createContext();
 
 
 export const UsuarioProvider=({children})=>{
-    const [userGlobal, setUserGlobla] = useState({});
+    const [userGlobal, setUserGlobla] = useState({
+        
+    });
 
     const [isloged, setIsloged] = useState(false);
 

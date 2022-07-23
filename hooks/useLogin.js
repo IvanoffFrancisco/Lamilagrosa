@@ -40,6 +40,12 @@ export const useLogin = () => {
             } else {
                 setUserGlobla(respuesta);
                 setIsloged(true);
+                localStorage.setItem("isLoged",true)
+                localStorage.setItem('user',respuesta.user);
+                localStorage.setItem('email',respuesta.email);
+                localStorage.setItem('token',respuesta.token);
+                localStorage.setItem("id",respuesta.id);
+                localStorage.setItem("direcciones",respuesta.direcciones);
                 setError(false);
                 Router.push("/");
             

@@ -18,7 +18,7 @@ const MenuCard = ({ item }) => {
           <h2 className="font-bold text-lg text-white px-1">{item.nombre}</h2>
           <div className="flex justify-evenly items-center py-1 mb-1">
             <p className="text-red-600 text-2xl">$ {item.precio}</p>
-            <Link href="/producto">
+            <Link href={`/detalleMenu/${item._id}`}>
               <a className="py-[6px] px-3 bg-red-600 text-white text-sm rounded-md">
                 Añadir
               </a>

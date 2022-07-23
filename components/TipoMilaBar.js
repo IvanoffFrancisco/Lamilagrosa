@@ -55,10 +55,19 @@ const TipoMila = ({ setTipoMenu, tipoMenu }) => {
           <li onClick={handleSeleccion}>
             <p
               className={`cursor-pointer  hover:border-b border-white ${
-                tipoMenu === "Rellena" ? "border-b border-b-white" : ""
+                tipoMenu === "napolitana" ? "border-b border-b-white" : ""
               }`}
             >
-              Rellena
+              Napolitana
+            </p>
+          </li>
+          <li onClick={handleSeleccion}>
+            <p
+              className={`cursor-pointer hover:border-b border-white ${
+                tipoMenu === "Milanesa" ? "border-b border-b-white" : ""
+              }`}
+            >
+              Milanesa
             </p>
           </li>
         </ul>

@@ -154,7 +154,7 @@ export default function Register() {
             </p>
             <p className="tracking-wide">
               Al registrarte aceptas someter tu paladar a una nueva experiencia
-              de la que nunca querras volver
+              de la que nunca querras salir
             </p>
 
             <p className="mt-16 text-[10px] text-gray-800 tracking-wide">

@@ -1,16 +1,18 @@
 import "../styles/globals.css";
+import {MenuProvider} from '../contexts/MenuContext';
 import {UsuarioProvider} from '../contexts/UsuarioContext'
-import { CarritoProvider } from "../contexts/CarritoContext";
+import {CarritoProvider } from "../contexts/CarritoContext";
 
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UsuarioProvider>
+    <MenuProvider>
+      <UsuarioProvider>
         <CarritoProvider>
             <Component {...pageProps} />
         </CarritoProvider>
-    </UsuarioProvider>
-    
+      </UsuarioProvider>
+    </MenuProvider>
   );
 }
 
