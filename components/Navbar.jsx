@@ -1,12 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
+import { BiUserCircle } from "react-icons/bi";
 
 const Navbar = () => {
+  //contextUsuario
   const [nav, setNav] = useState(false);
+  const [user,setUser]=useState({});
+
+  useEffect(() => {
+    setUser({
+      user:localStorage.getItem('user'),
+      isLoged:localStorage.getItem('isLoged')
+    })
+  }, [])
+  
+
+
+  const [carrito, setCarrito] = useContext(CarritoContext);
 
   const handleNav = () => {
     setNav(!nav);
@@ -14,65 +29,95 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
-      <div className="max-w-[80%] mx-auto flex justify-between items-center w-full h-full ">
-        {/* <div> */}
+      <div className="max-w-[95%] xs:max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
         <Link href="/">
           <a className="pt-1">
-            <Image
-              layout="fixed"
-              width="130"
-              height="80"
-              src="/img/logo-LaMilaGrosa-final.png"
-              alt="logo"
-              className="cursor-pointer hover:scale-105"
-            />
+            <div className="w-[100px] xs:w-[110px] md:w-[130px]">
+              <Image
+                width="130"
+                height="80"
+                src="/img/logo-web-LaMilaGrosa2.png"
+                alt="logo"
+                className="cursor-pointer"
+              />
+            </div>
           </a>
         </Link>
-        {/* </div> */}
 
         <div>
-          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-sm lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
+          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
             <Link href="/">
-              <li className=" hover:border-b hover:border-blue-400">Inicio</li>
-            </Link>
-            {/* <Link href="/miCuenta">
-              <li className=" hover:border-b hover:border-blue-400">
-                Mi Cuenta
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+                Inicio
               </li>
-            </Link> */}
+            </Link>
             <Link href="/menu">
-              <li className=" hover:border-b hover:border-blue-400">Menu</li>
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+                Menu
+              </li>
             </Link>
             <Link href="/nosotros">
-              <li className=" hover:border-b hover:border-blue-400">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Nosotros
               </li>
             </Link>
             <Link href="/locales">
-              <li className=" hover:border-b hover:border-blue-400">Locales</li>
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+                Locales
+              </li>
             </Link>
             <Link href="/contacto">
-              <li className=" hover:border-b hover:border-blue-400">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Contacto
               </li>
             </Link>
           </ul>
         </div>
 
-        <div className="flex gap-4 cursor-pointer hover:scale-110 transition-transform ease-in duration-200 items-center">
-          <Link href="/">
-            <a>
+        {/* logica para poder mostrar el avatar o el nombre de usuario */}
+        <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
+          {user.isLoged ? (
+            <div className="flex items-center">
+              <div className="flex flex-col text-center">
+                <p className="text-[10px]">Bienvenido</p>
+                <p className="text-[10px] font-bold capitalize ">
+                  {user.user}
+                </p>
+              </div>
+              <BiUserCircle
+                size="32"
+                className="text-gray-600 hover:text-blue-600 hover:scale-105 ease-in duration-200 cursor-pointer mr-2"
+              />
+            </div>
+          ) : (
+            <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">
+              <Link href="/login">
+                <a className="md:text-xs font-semibold tracking-widest hover:ring-1 ring-blue-600 px-1 py-1 rounded-md ease-in duration-200">
+                  Iniciá sesión
+                </a>
+              </Link>
+              <Link href="/register">
+                <button className="bg-blue-600 text-white py-1.5 md:py-1 md:px-2 md:text-xs cursor-pointer rounded-md font-semibold tracking-widest hover:bg-white hover:text-black hover:ring-1 ring-blue-600 px-1 ease-in duration-200 lg:mr-5 ">
+                  Registrate
+                </button>
+              </Link>
+            </div>
+          )}
+
+          <Link href="/carrito">
+            <div className="relative flex justify-between">
               <MdOutlineLocalGroceryStore
                 size="30px"
-                className="text-blue-600 relative"
+                className="text-blue-600 relative hover:scale-110 ease-in duration-200"
               />
-            </a>
+              <span className="text-xs font-semibold">{carrito?.length}</span>
+            </div>
           </Link>
           <div
             onClick={handleNav}
-            className="flex gap-x-3 md:hidden cursor-pointer"
+            className="flex md:hidden cursor-pointer ml-3"
           >
-            <AiOutlineMenu size={25} />
+            <AiOutlineMenu size="30" />
           </div>
         </div>
       </div>
@@ -86,17 +131,18 @@ const Navbar = () => {
           className={
             nav
               ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-white px-8 pt-2 ease-in duration-300"
-              : "fixed left-[-100%] top-0 px-8 pt-2 ease-in duration-500 border-b-2"
+              : "fixed left-[-120%] top-0 px-8 pt-2 ease-in duration-500 border-b-2"
           }
         >
           <div>
             <div className="flex w-full items-center justify-between pb-2 border-b border-gray-300">
               <Image
-                src="/img/logo-LaMilaGrosa-final.png"
+                src="/img/logo-web-LaMilaGrosa2.png"
                 width="100"
                 height="65"
                 alt="logo"
               />
+
               <div
                 onClick={handleNav}
                 className="rounded-full bg-blue-500 shadow-md shadow-gray-800 p-3 cursor-pointer"
@@ -104,12 +150,22 @@ const Navbar = () => {
                 <AiOutlineClose />
               </div>
             </div>
-            <div className="my-6">
-              <p className="w-[85%] md:w-[90%] py-4 text-center text-blue-600">
-                La Mila Grosa
-              </p>
-            </div>
           </div>
+
+          {user.isLoged ? null : (
+            <div className="w-full flex flex-col mt-5 justify-center items-center gap-3">
+              <Link href="/login">
+                <a className="text-black lg:text-xs font-semibold tracking-widest hover:text-blue-600">
+                  Iniciar sesión
+                </a>
+              </Link>
+              <Link href="/register">
+                <button className="flex bg-blue-600 text-white py-1.5 px-4 lg:text-xs cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 lg:mr-5 ">
+                  Registrate
+                </button>
+              </Link>
+            </div>
+          )}
 
           <div className="pl-4 mt-16 flex flex-col">
             <ul className="uppercase text-md">
@@ -119,13 +175,13 @@ const Navbar = () => {
               <Link href="/menu">
                 <li className="mb-8 cursor-pointer">Menu</li>
               </Link>
-              <Link href="/">
+              <Link href="/nosotros">
                 <li className="mb-8 cursor-pointer">Nosotros</li>
               </Link>
-              <Link href="/">
+              <Link href="/locales">
                 <li className="mb-8 cursor-pointer">Locales</li>
               </Link>
-              <Link href="/">
+              <Link href="/contacto">
                 <li className="mb-8 cursor-pointer">Contacto</li>
               </Link>
             </ul>

@@ -1,8 +1,8 @@
+import React, {useEffect, useState,useContext } from 'react';
 import Image from "next/image";
-import Layout from "../components/Layout";
-import Mensaje from "../components/Mensaje";
-import { CarritoContext } from "../contexts/CarritoContext";
-
+import Layout from "../../components/Layout";
+import Mensaje from "../../components/Mensaje";
+import { CarritoContext } from "../../contexts/CarritoContext";
 import {
   TiHeartOutline,
   TiArrowDown,
@@ -10,8 +10,6 @@ import {
   TiArrowRight,
 } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
-import { useState } from "react";
-import { useContext } from "react";
 
 const guarniciones = [
   {
@@ -144,7 +142,6 @@ const guarniciones = [
     id: 13,
   },
 ];
-
 const productoPrueba = {
   imagen: "/img/menues/Capresse.jpg",
   nombre: "Milanesa Capresse",
@@ -153,7 +150,7 @@ const productoPrueba = {
   id: 1,
 };
 
-const Producto = () => {
+export default function detalleProducto(props) {
   const [carrito, setCarrito] = useContext(CarritoContext);
 
   const [pedido, setPedido] = useState({
@@ -165,9 +162,14 @@ const Producto = () => {
     id: "",
   });
 
-  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
+  //detalle de la comida buscada por id
+  const [detalleProducto, setDetalleProducto] = useState({})
 
-  //state that saves the error message to print on the screen
+  const [imagenMenu,setImagenMenu]=useState("");
+
+  //estado de guarnicion seleccionada
+  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
+  //estado que guarda el mensaje de error y lo muestra por pantalla
   const [mensaje, setMensaje] = useState("");
 
   //estado que maneja el tipo de error
@@ -230,13 +232,29 @@ const Producto = () => {
     }, 2500);
   };
 
+  const obtenerDetalleComida=async ()=>{
+    try {
+      let url=`https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`
+     const res=await fetch(url);
+     const respuesta=await res.json();
+     setDetalleProducto(respuesta);
+     setImagenMenu(String(respuesta.imagen));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    obtenerDetalleComida();
+  }, [props])
+  
   return (
     <Layout>
       <main className="w-full h-auto mt-20">
         <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
             <h2 className="text-center text-2xl font-semibold md:hidden">
-              {productoPrueba?.nombre}
+              {detalleProducto?.nombre}
             </h2>
             <TiHeartOutline
               size="30px"
@@ -258,14 +276,8 @@ const Producto = () => {
           {/* columna izquierda */}
           <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
             <article className="w-full">
-              <Image
-                src={productoPrueba.imagen}
-                alt="producto"
-                layout="responsive"
-                width="500"
-                height="300"
-                objectFit="cover"
-              />
+            { detalleProducto.imagen && ( <Image src={detalleProducto.imagen} layout="responsive" alt="producto"
+            objectFit="cover" width="800" height="500" /> ) }
             </article>
 
             <h3 className="text-center uppercase flex justify-around">
@@ -314,12 +326,12 @@ const Producto = () => {
           >
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
-                {productoPrueba.nombre}
+                {detalleProducto.nombre}
               </h2>
               <TiHeartOutline
                 size="30px"
                 className="cursor-pointer hidden md:block"
-                onClick={() => alert("guardando en favoritos")}
+                onClick={() => alert("hola")}
               />
             </div>
 
@@ -330,16 +342,6 @@ const Producto = () => {
                 .join(", ")}
               )
             </span>
-
-            <div className="my-2 md:my-5 flex flex-col items-center">
-              <p className="w-fit mx-auto text-md xs:text-xl md:text-2xl font-semibold tracking-widest">
-                Guarnición seleccionada
-              </p>
-              <span className="font-bold xs:text-lg text-red-600">
-                {" "}
-                {guarnicion}
-              </span>
-            </div>
 
             <div className="flex-col my-5 md:my-5">
               <p className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest mb-2 ">
@@ -356,7 +358,7 @@ const Producto = () => {
                   />
                   <label
                     htmlFor="ternera"
-                    className="text-red-700 xs:text-xl font-semibold"
+                    className="text-red-700 md:text-lg font-semibold"
                   >
                     Ternera
                   </label>
@@ -372,7 +374,7 @@ const Producto = () => {
                   />
                   <label
                     htmlFor="pollo"
-                    className="text-blue-800 xs:text-xl font-semibold"
+                    className="text-blue-800 md:text-lg font-semibold"
                   >
                     Pollo
                   </label>
@@ -410,9 +412,9 @@ const Producto = () => {
               </div>
               <p className="text-black font-bold">
                 Total:
-                <span className="text-red-700 xs:text-xl md:text-2xl font-black py-6">
+                <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
                   {" "}
-                  ${precio}
+                  ${detalleProducto?.precio}
                 </span>
               </p>
             </div>
@@ -434,7 +436,13 @@ const Producto = () => {
         </div>
       </main>
     </Layout>
-  );
-};
+  )
+}
 
-export default Producto;
+detalleProducto.getInitialProps=(context)=>{
+  const {query}=context;
+  const {id}=query;
+
+  return {id}
+}
+

@@ -18,7 +18,6 @@ export default function Home() {
         intervalo="4500"
         images={images}
       />
-
       <Articulo1 />
     </Layout>
   );
