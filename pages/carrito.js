@@ -5,38 +5,39 @@ import { CarritoContext } from "../contexts/CarritoContext";
 
 const Carrito = () => {
   const [carrito, setCarrito] = useContext(CarritoContext);
-  const productosCarrito = [
-    {
-      menu: "Milanesa a caballo",
-      tipoMila: "carne",
-      cantidad: "1",
-      guarnicion: "papas fritas",
-      direccion: "newton 1663",
-      precio: 1337,
-      envio: 100,
-    },
-    {
-      menu: "Milanesa a caballo",
-      tipoMila: "carne",
-      cantidad: "1",
-      guarnicion: "papas fritas",
-      direccion: "newton 1663",
-      precio: 1337,
-      envio: 100,
-    },
-    {
-      menu: "Milanesa a caballo",
-      tipoMila: "carne",
-      cantidad: "1",
-      guarnicion: "papas fritas",
-      direccion: "newton 1663",
-      precio: 1337,
-      envio: 100,
-    },
-  ];
+  
+  // const productosCarrito = [
+  //   {
+  //     menu: "Milanesa a caballo",
+  //     tipoMila: "carne",
+  //     cantidad: "1",
+  //     guarnicion: "papas fritas",
+  //     direccion: "newton 1663",
+  //     precio: 1337,
+  //     envio: 100,
+  //   },
+  //   {
+  //     menu: "Milanesa a caballo",
+  //     tipoMila: "carne",
+  //     cantidad: "1",
+  //     guarnicion: "papas fritas",
+  //     direccion: "newton 1663",
+  //     precio: 1337,
+  //     envio: 100,
+  //   },
+  //   {
+  //     menu: "Milanesa a caballo",
+  //     tipoMila: "carne",
+  //     cantidad: "1",
+  //     guarnicion: "papas fritas",
+  //     direccion: "newton 1663",
+  //     precio: 1337,
+  //     envio: 100,
+  //   },
+  // ];
 
-  const { menu, tipoMila, cantidad, guarnicion, direccion, precio, envio } =
-    productosCarrito[0];
+  // const { menu, tipoMila, cantidad, guarnicion, direccion, precio, envio } =
+  //   carrito;
 
   return (
     <Layout>
@@ -45,8 +46,8 @@ const Carrito = () => {
           <p className="text-lg font-semibold">
             Aún no tienes productos en tu carrito
           </p>{" "}
-          <p>
-            Has click aqui para para comer algo muy{" "}
+          <p className="text-lg font-semibold">
+            Has click <a className="text-blue-600 font-black" href="/menu" >aqui</a>  para para comer algo muy{" "}
             <span className="text-red-600 font-black">groso!</span>
           </p>
         </div>
