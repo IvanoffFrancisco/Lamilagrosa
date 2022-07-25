@@ -1,4 +1,4 @@
-import React, {useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
@@ -142,56 +142,45 @@ const guarniciones = [
     id: 13,
   },
 ];
-const productoPrueba = {
-  imagen: "/img/menues/Capresse.jpg",
-  nombre: "Milanesa Capresse",
-  ingredientes: ["muzzarella", "tomate", "pesto", "albahaca fresca"],
-  precio: 1337,
-  id: 1,
-};
 
 export default function detalleProducto(props) {
   const [carrito, setCarrito] = useContext(CarritoContext);
 
+  //detalle de la comida buscada por id
+  const [detalleProducto, setDetalleProducto] = useState({});
+  const { ingredientes } = detalleProducto;
+
   const [pedido, setPedido] = useState({
-    menu: `${productoPrueba.nombre}`,
-    tipoMila: "ternera",
+    menu: "",
+    imagenMenu: "",
+    tipoMila: "",
     cantidad: "1",
     guarnicion: "",
-    precio: `${productoPrueba.precio}`,
+    imagenGuarnicion: "",
+    precio: "",
     id: "",
   });
 
-  //detalle de la comida buscada por id
-  const [detalleProducto, setDetalleProducto] = useState({})
-
-  const [imagenMenu,setImagenMenu]=useState("");
-
-  //estado de guarnicion seleccionada
   const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
-  //estado que guarda el mensaje de error y lo muestra por pantalla
-  const [mensaje, setMensaje] = useState("");
 
-  //estado que maneja el tipo de error
+  const [mensaje, setMensaje] = useState("");
   const [tipoError, setTipoError] = useState("");
 
-  //extract values ​​from user state
-  const { guarnicion, precio } = pedido;
-
-  const handleClick = (e) => {
-    setguarnicionSeleccionada(e.currentTarget.dataset.nombre);
+  const handleGuarnicion = (e) => {
+    setguarnicionSeleccionada(e.currentTarget.dataset.guarnicion);
     setPedido({
       ...pedido,
-      guarnicion: e.currentTarget.dataset.nombre,
+      guarnicion: e.currentTarget.dataset.guarnicion,
+      imagenGuarnicion: e.currentTarget.dataset.imagen,
     });
   };
 
-  const onChange = (e) => {
+  const handleChange = (e) => {
     if (e.target.name === "cantidad") {
       setPedido({
         ...pedido,
-        precio: e.target.value * productoPrueba.precio,
         cantidad: e.target.value,
+        precio: e.target.value * detalleProducto.precio,
       });
       return;
     }
@@ -203,51 +192,66 @@ export default function detalleProducto(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // valida que la guarnicion haya sido seleccionada
     if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
       setTipoError("error");
       setMensaje("Selecciona una guarnicion");
-    } else {
-      //genero un id
-      pedido.id = Date.now().toString(36);
-      // Guardo el pedido en el carrito
-      setCarrito([...carrito, pedido]);
-
-      // Resetea el formulario
-      e.target.reset();
-
-      setPedido({
-        ...pedido,
-        guarnicion: "",
-      });
-      setguarnicionSeleccionada("");
-
-      //añade mensaje
-      setTipoError("correcto");
-      setMensaje("Añadido correctamente");
+      eliminarMensaje();
+      return;
     }
-    //Elimina mensaje
+    if (!detalleProducto.nombre?.includes("Vegana")) {
+      if (pedido.tipoMila === undefined || pedido.tipoMila === "") {
+        setTipoError("error");
+        setMensaje("Selecciona un tipo de carne");
+        eliminarMensaje();
+        return;
+      }
+    }
+
+    //genero un id para el pedido
+    pedido.id = Date.now().toString(36);
+    pedido.menu = detalleProducto.nombre;
+    pedido.imagenMenu = detalleProducto.imagen;
+    pedido.precio = detalleProducto.precio * pedido.cantidad;
+
+    // Guardo el pedido en el carrito
+    setCarrito([...carrito, pedido]);
+
+    // Resetea el formulario
+    e.target.reset();
+    setPedido({
+      ...pedido,
+      guarnicion: "",
+      tipoMila: "",
+    });
+    setguarnicionSeleccionada("");
+
+    setTipoError("correcto");
+    setMensaje("Añadido correctamente");
+    eliminarMensaje();
+  };
+
+  const eliminarMensaje = () => {
     setTimeout(() => {
       setTipoError("");
     }, 2500);
   };
 
-  const obtenerDetalleComida=async ()=>{
+  const obtenerDetalleComida = async () => {
     try {
-      let url=`https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`
-     const res=await fetch(url);
-     const respuesta=await res.json();
-     setDetalleProducto(respuesta);
-     setImagenMenu(String(respuesta.imagen));
+      let url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`;
+      const res = await fetch(url);
+      const respuesta = await res.json();
+      setDetalleProducto(respuesta);
+      // setImagenMenu(String(respuesta.imagen));
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
     obtenerDetalleComida();
-  }, [props])
-  
+  }, [props]);
+
   return (
     <Layout>
       <main className="w-full h-auto mt-20">
@@ -266,9 +270,7 @@ export default function detalleProducto(props) {
           <div>
             <span className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
               (
-              {productoPrueba.ingredientes
-                .map((ingrediente) => ingrediente)
-                .join(", ")}
+              {ingredientes?.map((ingrediente) => ingrediente?.tipo).join(", ")}
               )
             </span>
           </div>
@@ -276,15 +278,22 @@ export default function detalleProducto(props) {
           {/* columna izquierda */}
           <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
             <article className="w-full">
-            { detalleProducto.imagen && ( <Image src={detalleProducto.imagen} layout="responsive" alt="producto"
-            objectFit="cover" width="800" height="500" /> ) }
+              {detalleProducto.imagen && (
+                <Image
+                  src={detalleProducto.imagen}
+                  layout="responsive"
+                  alt="producto"
+                  objectFit="cover"
+                  width="800"
+                  height="500"
+                />
+              )}
             </article>
 
             <h3 className="text-center uppercase flex justify-around">
               <TiArrowLeft className="text-red-600 text-2xl" />
               <TiArrowDown className="text-red-600 text-2xl" />
               Elige una guarnición{" "}
-              {/* <sapn className="text-red-600 font-semibold">Grosa!</sapn> */}
               <TiArrowDown className="text-red-600 text-2xl" />
               <TiArrowRight className="text-red-600 text-2xl" />
             </h3>
@@ -299,8 +308,9 @@ export default function detalleProducto(props) {
                         : ""
                     }`}
                     key={i}
-                    data-nombre={item.nombre}
-                    onClick={handleClick}
+                    data-guarnicion={item.nombre}
+                    data-imagen={item.imagen}
+                    onClick={handleGuarnicion}
                   >
                     <Image
                       src={item.imagen}
@@ -337,51 +347,52 @@ export default function detalleProducto(props) {
 
             <span className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
               (
-              {productoPrueba.ingredientes
-                .map((ingrediente) => ingrediente)
-                .join(", ")}
+              {ingredientes?.map((ingrediente) => ingrediente?.tipo).join(", ")}
               )
             </span>
 
-            <div className="flex-col my-5 md:my-5">
-              <p className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest mb-2 ">
-                Elija el tipo de milanesa
-              </p>
-              <div className="flex justify-center">
-                <div className="flex items-center gap-3 mr-2 md:mr-16">
-                  <input
-                    type="radio"
-                    name="tipoMila"
-                    value="ternera"
-                    onChange={onChange}
-                    checked
-                  />
-                  <label
-                    htmlFor="ternera"
-                    className="text-red-700 md:text-lg font-semibold"
-                  >
-                    Ternera
-                  </label>
-                  <GiCow className="text-red-800 text-3xl" />
-                </div>
+            {detalleProducto.nombre?.includes("Vegana") ||
+            detalleProducto.nombre?.includes("Vegetariana") ? null : (
+              <div className="flex-col my-5 md:my-5">
+                <p className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest mb-2 ">
+                  Elija el tipo de milanesa
+                </p>
+                <div className="flex justify-center">
+                  <div className="flex items-center gap-3 mr-2 md:mr-16">
+                    <input
+                      type="radio"
+                      name="tipoMila"
+                      value="ternera"
+                      onChange={handleChange}
+                      // checked
+                    />
+                    <label
+                      htmlFor="ternera"
+                      className="text-red-700 md:text-lg font-semibold"
+                    >
+                      Ternera
+                    </label>
+                    <GiCow className="text-red-800 text-3xl" />
+                  </div>
 
-                <div className="flex items-center gap-3">
-                  <input
-                    type="radio"
-                    name="tipoMila"
-                    value="pollo"
-                    onChange={onChange}
-                  />
-                  <label
-                    htmlFor="pollo"
-                    className="text-blue-800 md:text-lg font-semibold"
-                  >
-                    Pollo
-                  </label>
-                  <GiChicken className="text-blue-800 text-2xl" />
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="radio"
+                      name="tipoMila"
+                      value="pollo"
+                      onChange={handleChange}
+                    />
+                    <label
+                      htmlFor="pollo"
+                      className="text-blue-800 md:text-lg font-semibold"
+                    >
+                      Pollo
+                    </label>
+                    <GiChicken className="text-blue-800 text-2xl" />
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
 
             <div className="md:my-5">
               <span className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest">
@@ -389,7 +400,7 @@ export default function detalleProducto(props) {
               </span>
               <span className="font-bold text-lg text-red-600">
                 {" "}
-                {guarnicion}
+                {pedido.guarnicion}
               </span>
             </div>
 
@@ -397,7 +408,7 @@ export default function detalleProducto(props) {
               <div>
                 <label className="font-bold">Cantidad:</label>
                 <select
-                  onChange={onChange}
+                  onChange={handleChange}
                   className="border border-gray-900"
                   name="cantidad"
                 >
@@ -414,7 +425,9 @@ export default function detalleProducto(props) {
                 Total:
                 <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
                   {" "}
-                  ${detalleProducto?.precio}
+                  $
+                  {detalleProducto?.precio &&
+                    detalleProducto?.precio * parseInt(pedido.cantidad)}
                 </span>
               </p>
             </div>
@@ -436,13 +449,12 @@ export default function detalleProducto(props) {
         </div>
       </main>
     </Layout>
-  )
+  );
 }
 
-detalleProducto.getInitialProps=(context)=>{
-  const {query}=context;
-  const {id}=query;
+detalleProducto.getInitialProps = (context) => {
+  const { query } = context;
+  const { id } = query;
 
-  return {id}
-}
-
+  return { id };
+};
