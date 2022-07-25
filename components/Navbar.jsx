@@ -38,7 +38,7 @@ const Navbar = () => {
                 height="80"
                 src="/img/logo-web-LaMilaGrosa2.png"
                 alt="logo"
-                className="cursor-pointer hover:scale-105"
+                className="cursor-pointer"
               />
             </div>
           </a>
@@ -47,27 +47,27 @@ const Navbar = () => {
         <div>
           <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
             <Link href="/">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Inicio
               </li>
             </Link>
             <Link href="/menu">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Menu
               </li>
             </Link>
             <Link href="/nosotros">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Nosotros
               </li>
             </Link>
             <Link href="/locales">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Locales
               </li>
             </Link>
             <Link href="/contacto">
-              <li className="hover:ring ring-blue-400 px-1 rounded-sm ease-in duration-200">
+              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
                 Contacto
               </li>
             </Link>
@@ -108,7 +108,7 @@ const Navbar = () => {
             <div className="relative flex justify-between">
               <MdOutlineLocalGroceryStore
                 size="30px"
-                className="text-blue-600 relative hover:scale-110"
+                className="text-blue-600 relative hover:scale-110 ease-in duration-200"
               />
               <span className="text-xs font-semibold">{carrito?.length}</span>
             </div>
