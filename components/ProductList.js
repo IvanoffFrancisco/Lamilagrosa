@@ -2,8 +2,10 @@ import React, { useState } from "react";
 
 import TipoMilaBar from "./TipoMilaBar";
 import MenuList from "./MenuList";
+import { useFetchMenu } from "../hooks/useFetchMenu";
 
 const ProductList = ({ carta }) => {
+  
   const [tipoMenu, setTipoMenu] = useState("Todos");
   return (
     <div className="w-full">
