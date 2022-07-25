@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const ProductCard = ({ producto }) => {
-  const { menu, tipoMila, cantidad, guarnicion, precio } = producto;
+  const { menu,imagenMenu, cantidad, guarnicion,imagenGuarnicion, precio , tipoMila} = producto;
 
   const handleDelete = (e) => {
     console.log();
@@ -14,7 +14,7 @@ const ProductCard = ({ producto }) => {
       <div className="flex flex-col items-center justify-between">
         <article className="w-[100px] h-[60px] border border-black">
           <Image
-            src="/img/menues/Capresse.jpg"
+            src={imagenMenu}
             alt={menu}
             layout="responsive"
             width="500"
@@ -25,7 +25,7 @@ const ProductCard = ({ producto }) => {
         <p>+</p>
         <article className="w-[100px] h-[60px] border border-black">
           <Image
-            src="https://images.rappi.com.ar/products/3d9120f7-f3ef-455c-8acd-cda3e4098807-1629229510757.png"
+            src={imagenGuarnicion}
             alt={guarnicion}
             layout="responsive"
             width="500"
@@ -37,12 +37,14 @@ const ProductCard = ({ producto }) => {
 
       <div className="w-full flex flex-col justify-between items-start">
         <h3 className="font-bold tracking-widest text-xs xs:text-lg">{menu}</h3>
-        <p className="font-bold tracking-widest text-xs">
-          de{" "}
-          <span className="text-blue-600 xs:text-base capitalize">
-            {tipoMila}
-          </span>
-        </p>
+        {tipoMila && (
+          <p className="font-bold tracking-widest text-xs">
+            de{" "}
+            <span className="text-blue-600 xs:text-base capitalize">
+              {tipoMila}
+            </span>
+          </p>
+        )}
         <p className="font-bold tracking-widest text-xs">
           con{" "}
           <span className="text-blue-600 xs:text-base capitalize">
