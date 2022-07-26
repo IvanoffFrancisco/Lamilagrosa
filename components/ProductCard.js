@@ -1,18 +1,25 @@
 import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
 
 const ProductCard = ({ producto }) => {
-  const { menu,imagenMenu, cantidad, guarnicion,imagenGuarnicion, precio , tipoMila} = producto;
+  const {
+    menu,
+    imagenMenu,
+    cantidad,
+    guarnicion,
+    imagenGuarnicion,
+    precio,
+    tipoMila,
+  } = producto;
 
   const handleDelete = (e) => {
     console.log();
   };
 
   return (
-    <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-700">
-      <div className="flex flex-col items-center justify-between">
-        <article className="w-[100px] h-[60px] border border-black">
+    <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-400 md:pl-5">
+      <div className="flex flex-col items-center justify-center">
+        <article className="w-[90px] md:w-[100px] border border-black">
           <Image
             src={imagenMenu}
             alt={menu}
@@ -23,7 +30,7 @@ const ProductCard = ({ producto }) => {
           />
         </article>
         <p>+</p>
-        <article className="w-[100px] h-[60px] border border-black">
+        <article className="w-[90px] md:w-[100px] border border-black">
           <Image
             src={imagenGuarnicion}
             alt={guarnicion}
@@ -35,7 +42,7 @@ const ProductCard = ({ producto }) => {
         </article>
       </div>
 
-      <div className="w-full flex flex-col justify-between items-start">
+      <div className="w-full flex flex-col justify-between items-start relative">
         <h3 className="font-bold tracking-widest text-xs xs:text-lg">{menu}</h3>
         {tipoMila && (
           <p className="font-bold tracking-widest text-xs">
@@ -52,22 +59,29 @@ const ProductCard = ({ producto }) => {
           </span>
         </p>
 
-        <div className="w-full">
-          <p className="text-blue-600">Cantidad {cantidad}</p>
-          <p className="text-red-600 text-xl">${precio}</p>
-        </div>
+        {/* <div className="w-full py-1"> */}
+        <p className=" py-1">Cantidad: {cantidad}</p>
+        <p className="font-semibold text-lg pt-2">
+          Total:<span className="font-bold"> ${precio}</span>
+        </p>
+        {/* </div> */}
 
         <div className="w-full flex justify-end gap-x-2">
           <button className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide">
             Editar
           </button>
-          <button
+
+          {/* <button
             onClick={handleDelete}
             className="bg-red-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-red-800 rounded-sm tracking-wide"
           >
             Eliminar
-          </button>
+          </button> */}
         </div>
+        <AiOutlineClose
+          onClick={handleDelete}
+          className="absolute top-0 right-0 text-red-600 text-xl cursor-pointer md:mt-1 md:mr-1"
+        />
       </div>
     </div>
   );
