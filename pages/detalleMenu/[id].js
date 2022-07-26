@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
@@ -143,11 +143,9 @@ const guarniciones = [
   },
 ];
 
-export default function detalleProducto(props) {
-  const [carrito, setCarrito, editarProducto, setEditarProducto] =
-    useContext(CarritoContext);
+export default function DetalleProducto(props) {
+  const [carrito, setCarrito] = useContext(CarritoContext);
 
-  //detalle de la comida buscada por id
   const [detalleProducto, setDetalleProducto] = useState({});
   const { ingredientes } = detalleProducto;
 
@@ -161,19 +159,29 @@ export default function detalleProducto(props) {
     precio: "",
     id: "",
   });
-  const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
+
+  const [guarnicionSeleccionada, setGuarnicionSeleccionada] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [tipoError, setTipoError] = useState("");
 
   useEffect(() => {
-    if (Object.keys(editarProducto).length > 0) {
-      console.log("editando")
-      setPedido(editarProducto);
+    obtenerDetalleComida();
+  }, [props]);
+
+  const obtenerDetalleComida = async () => {
+    try {
+      let url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`;
+      const res = await fetch(url);
+      const respuesta = await res.json();
+      setDetalleProducto(respuesta);
+      // setImagenMenu(String(respuesta.imagen));
+    } catch (error) {
+      console.log(error);
     }
-  }, [editarProducto]);
+  };
 
   const handleGuarnicion = (e) => {
-    setguarnicionSeleccionada(e.currentTarget.dataset.guarnicion);
+    setGuarnicionSeleccionada(e.currentTarget.dataset.guarnicion);
     setPedido({
       ...pedido,
       guarnicion: e.currentTarget.dataset.guarnicion,
@@ -229,7 +237,7 @@ export default function detalleProducto(props) {
       guarnicion: "",
       tipoMila: "",
     });
-    setguarnicionSeleccionada("");
+    setGuarnicionSeleccionada("");
 
     setTipoError("correcto");
     setMensaje("Añadido correctamente");
@@ -242,28 +250,13 @@ export default function detalleProducto(props) {
     }, 2500);
   };
 
-  const obtenerDetalleComida = async () => {
-    try {
-      let url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`;
-      const res = await fetch(url);
-      const respuesta = await res.json();
-      setDetalleProducto(respuesta);
-      // setImagenMenu(String(respuesta.imagen));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  
-
   return (
     <Layout>
-      
       <main className="w-full h-auto mt-20">
         <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
             <h2 className="text-center text-2xl font-semibold md:hidden">
-            {Object.keys(editarProducto).length > 0 ? pedido.menu : detalleProducto?.nombre }
+              {detalleProducto?.nombre}
             </h2>
             <TiHeartOutline
               size="30px"
@@ -341,7 +334,7 @@ export default function detalleProducto(props) {
           >
             <div className="flex justify-between">
               <h2 className="text-start text-2xl hidden md:block font-semibold">
-                {detalleProducto.nombre}
+                {detalleProducto?.nombre}
               </h2>
               <TiHeartOutline
                 size="30px"
@@ -457,7 +450,7 @@ export default function detalleProducto(props) {
   );
 }
 
-detalleProducto.getInitialProps = (context) => {
+DetalleProducto.getInitialProps = (context) => {
   const { query } = context;
   const { id } = query;
 
