@@ -5,8 +5,6 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 const Layout = ({ children, pagina }) => {
-  const [editarProducto, setEditarProducto] = useState("");
-
   return (
     <div>
       <Head>
