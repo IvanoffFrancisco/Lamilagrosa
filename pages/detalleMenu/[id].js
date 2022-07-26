@@ -144,7 +144,8 @@ const guarniciones = [
 ];
 
 export default function detalleProducto(props) {
-  const [carrito, setCarrito] = useContext(CarritoContext);
+  const [carrito, setCarrito, editarProducto, setEditarProducto] =
+    useContext(CarritoContext);
 
   //detalle de la comida buscada por id
   const [detalleProducto, setDetalleProducto] = useState({});
@@ -160,11 +161,16 @@ export default function detalleProducto(props) {
     precio: "",
     id: "",
   });
-
   const [guarnicionSeleccionada, setguarnicionSeleccionada] = useState("");
-
   const [mensaje, setMensaje] = useState("");
   const [tipoError, setTipoError] = useState("");
+
+  useEffect(() => {
+    if (Object.keys(editarProducto).length > 0) {
+      console.log("editando")
+      setPedido(editarProducto);
+    }
+  }, [editarProducto]);
 
   const handleGuarnicion = (e) => {
     setguarnicionSeleccionada(e.currentTarget.dataset.guarnicion);
@@ -248,17 +254,16 @@ export default function detalleProducto(props) {
     }
   };
 
-  useEffect(() => {
-    obtenerDetalleComida();
-  }, [props]);
+  
 
   return (
     <Layout>
+      
       <main className="w-full h-auto mt-20">
         <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
             <h2 className="text-center text-2xl font-semibold md:hidden">
-              {detalleProducto?.nombre}
+            {Object.keys(editarProducto).length > 0 ? pedido.menu : detalleProducto?.nombre }
             </h2>
             <TiHeartOutline
               size="30px"

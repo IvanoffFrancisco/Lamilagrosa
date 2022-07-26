@@ -4,10 +4,11 @@ import ProductCard from "../components/ProductCard";
 import { CarritoContext } from "../contexts/CarritoContext";
 
 const Carrito = () => {
-  const [carrito, setCarrito] = useContext(CarritoContext);
+  const [carrito, setCarrito ] = useContext(CarritoContext);
+  
 
   return (
-    <Layout>
+    <Layout pagina={"carrito de compras"}>
       {carrito.length === 0 ? (
         <div className="w-full h-screen flex flex-col justify-center items-center">
           <p className="text-lg font-semibold">
@@ -28,7 +29,7 @@ const Carrito = () => {
             <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-3">
               {/* Lista Productos */}
               {carrito.map((producto) => (
-                <ProductCard producto={producto} key={producto.id} />
+                <ProductCard producto={producto} carrito={carrito} key={producto.id} />
               ))}
             </ul>
 
