@@ -1,14 +1,12 @@
 import Image from "next/image";
 import { useContext } from "react";
 
-import { useRouter } from "next/router";
 import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
 const ProductCard = ({ producto }) => {
-  const router = useRouter();
-  const [carrito, setCarrito, setEditarProducto] = useContext(CarritoContext);
+  const [carrito, setCarrito] = useContext(CarritoContext);
 
   const {
     menu,
@@ -28,11 +26,6 @@ const ProductCard = ({ producto }) => {
       );
       setCarrito(carritoActualizado);
     }
-  };
-
-  const editarProducto = () => {
-    setEditarProducto(producto);
-    router.push("/detalleMenu");
   };
 
   return (
@@ -83,12 +76,9 @@ const ProductCard = ({ producto }) => {
           Total:<span className="font-bold"> ${precio}</span>
         </p>
 
-        <button
-          onClick={editarProducto}
-          className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide absolute bottom-0 right-0 md:mb-1 md:mr-1"
-        >
+        {/* <button className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide absolute bottom-0 right-0 md:mb-1 md:mr-1">
           Editar
-        </button>
+        </button> */}
         <AiOutlineClose
           onClick={handleDelete}
           className="absolute top-0 right-0 text-red-600 text-xl cursor-pointer md:mt-1 md:mr-1"
