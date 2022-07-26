@@ -1,7 +1,15 @@
 import Image from "next/image";
+import { useContext } from "react";
+
+import { useRouter } from "next/router";
+import { CarritoContext } from "../contexts/CarritoContext";
+
 import { AiOutlineClose } from "react-icons/ai";
 
 const ProductCard = ({ producto }) => {
+  const router = useRouter();
+  const [carrito, setCarrito, setEditarProducto] = useContext(CarritoContext);
+
   const {
     menu,
     imagenMenu,
@@ -12,8 +20,19 @@ const ProductCard = ({ producto }) => {
     tipoMila,
   } = producto;
 
-  const handleDelete = (e) => {
-    console.log();
+  const handleDelete = () => {
+    const respuesta = confirm("Deseas eliminar este producto?");
+    if (respuesta) {
+      const carritoActualizado = carrito.filter(
+        (elemento) => elemento.id !== producto.id
+      );
+      setCarrito(carritoActualizado);
+    }
+  };
+
+  const editarProducto = () => {
+    setEditarProducto(producto);
+    router.push("/detalleMenu");
   };
 
   return (
@@ -59,25 +78,17 @@ const ProductCard = ({ producto }) => {
           </span>
         </p>
 
-        {/* <div className="w-full py-1"> */}
         <p className=" py-1">Cantidad: {cantidad}</p>
         <p className="font-semibold text-lg pt-2">
           Total:<span className="font-bold"> ${precio}</span>
         </p>
-        {/* </div> */}
 
-        <div className="w-full flex justify-end gap-x-2">
-          <button className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide">
-            Editar
-          </button>
-
-          {/* <button
-            onClick={handleDelete}
-            className="bg-red-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-red-800 rounded-sm tracking-wide"
-          >
-            Eliminar
-          </button> */}
-        </div>
+        <button
+          onClick={editarProducto}
+          className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide absolute bottom-0 right-0 md:mb-1 md:mr-1"
+        >
+          Editar
+        </button>
         <AiOutlineClose
           onClick={handleDelete}
           className="absolute top-0 right-0 text-red-600 text-xl cursor-pointer md:mt-1 md:mr-1"
