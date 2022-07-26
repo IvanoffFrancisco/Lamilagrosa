@@ -12,7 +12,7 @@ import {
 
 export default function contact() {
   return (
-    <Layout>
+    <Layout pagina={"Contacto"}>
       <div className="bg-white w-full md:mb-44">
         <div className="max-w-[95%] mx-auto flex flex-col md:flex-row md:justify-center md:max-w-[900px] mt-32 md:mt-52">
           {/* textual content */}
