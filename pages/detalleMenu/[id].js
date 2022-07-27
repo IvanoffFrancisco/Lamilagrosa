@@ -144,7 +144,7 @@ const guarniciones = [
 ];
 
 export default function DetalleProducto(props) {
-  const [carrito, setCarrito] = useContext(CarritoContext);
+  const { carrito, setCarrito } = useContext(CarritoContext);
 
   const [detalleProducto, setDetalleProducto] = useState({});
   const { ingredientes } = detalleProducto;
