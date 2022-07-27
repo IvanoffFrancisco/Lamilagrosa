@@ -13,7 +13,7 @@ const Carrito = () => {
   console.log(direccion);
   return (
     <Layout pagina={"carrito de compras"}>
-      {carrito.length === 0 ? (
+      {carrito?.length === 0 || carrito == null ? (
         <div className="w-full h-screen flex flex-col justify-center items-center">
           <p className="text-lg font-semibold">
             Aún no tienes productos en tu carrito
@@ -32,7 +32,7 @@ const Carrito = () => {
           <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
             <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-3">
               {/* Lista Productos */}
-              {carrito.map((producto) => (
+              {carrito?.map((producto) => (
                 <ProductCard producto={producto} key={producto.id} />
               ))}
             </ul>
@@ -47,7 +47,7 @@ const Carrito = () => {
                   <span className="font-semibold ">Sub Total</span>
                   <span className="font-bold">
                     $
-                    {carrito.reduce(
+                    {carrito?.reduce(
                       (previousValue, currentValue) =>
                         previousValue + parseInt(currentValue.precio),
                       0

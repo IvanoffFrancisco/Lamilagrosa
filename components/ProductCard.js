@@ -6,7 +6,7 @@ import { CarritoContext } from "../contexts/CarritoContext";
 import { AiOutlineClose } from "react-icons/ai";
 
 const ProductCard = ({ producto }) => {
-  const [carrito, setCarrito] = useContext(CarritoContext);
+  const { carrito, setCarrito } = useContext(CarritoContext);
 
   const {
     menu,
@@ -21,10 +21,11 @@ const ProductCard = ({ producto }) => {
   const handleDelete = () => {
     const respuesta = confirm("Deseas eliminar este producto?");
     if (respuesta) {
-      const carritoActualizado = carrito.filter(
+      const carritoActualizado = carrito?.filter(
         (elemento) => elemento.id !== producto.id
       );
       setCarrito(carritoActualizado);
+      localStorage.setItem("LMG-Carrito", JSON.stringify(carritoActualizado));
     }
   };
 

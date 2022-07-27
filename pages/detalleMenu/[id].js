@@ -220,22 +220,33 @@ export default function DetalleProducto(props) {
         return;
       }
     }
-
-    //genero un id para el pedido
-    pedido.id = Date.now().toString(36);
     pedido.menu = detalleProducto.nombre;
     pedido.imagenMenu = detalleProducto.imagen;
     pedido.precio = detalleProducto.precio * pedido.cantidad;
+    pedido.id = Date.now().toString(36);
 
-    // Guardo el pedido en el carrito
-    setCarrito([...carrito, pedido]);
+    setPedido(pedido);
+
+
+    console.log(pedido);
+    carrito = [...carrito, pedido];
+    setCarrito(carrito);
+
+    console.log(carrito);
+
+    localStorage.setItem("LMG-Carrito", JSON.stringify(carrito));
 
     // Resetea el formulario
     e.target.reset();
     setPedido({
-      ...pedido,
-      guarnicion: "",
+      menu: "",
+      imagenMenu: "",
       tipoMila: "",
+      cantidad: "1",
+      guarnicion: "",
+      imagenGuarnicion: "",
+      precio: "",
+      id: "",
     });
     setGuarnicionSeleccionada("");
 

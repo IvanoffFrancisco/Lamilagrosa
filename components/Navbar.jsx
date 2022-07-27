@@ -13,11 +13,17 @@ const Navbar = () => {
   //contextUsuario
   const { userGlobal, setUserGlobal, isloged, setIsloged } =
     useContext(UsuarioContext);
-  const { carrito } = useContext(CarritoContext);
+  const { carrito, setCarrito } = useContext(CarritoContext);
 
   const [nav, setNav] = useState(false);
 
   useEffect(() => {
+    console.log("chequeando localStorage")
+    const localCarrito = JSON.parse(localStorage.getItem("LMG-Carrito"))
+    if (localCarrito) {
+      console.log("localCarrito no es null")
+      setCarrito(localCarrito);
+    } 
     setUserGlobal(localStorage.getItem("user"));
     setIsloged(localStorage.getItem("isLoged"));
   }, []);
