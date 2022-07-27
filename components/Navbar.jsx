@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useContext, useEffect } from "react";
 import { CarritoContext } from "../contexts/CarritoContext";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
@@ -9,19 +11,16 @@ import { BiUserCircle } from "react-icons/bi";
 
 const Navbar = () => {
   //contextUsuario
+  const { userGlobal, setUserGlobal, isloged, setIsloged } =
+    useContext(UsuarioContext);
+  const { carrito } = useContext(CarritoContext);
+
   const [nav, setNav] = useState(false);
-  const [user,setUser]=useState({});
 
   useEffect(() => {
-    setUser({
-      user:localStorage.getItem('user'),
-      isLoged:localStorage.getItem('isLoged')
-    })
-  }, [])
-  
-
-
-  const [carrito, setCarrito] = useContext(CarritoContext);
+    setUserGlobal(localStorage.getItem("user"));
+    setIsloged(localStorage.getItem("isLoged"));
+  }, []);
 
   const handleNav = () => {
     setNav(!nav);
@@ -76,12 +75,12 @@ const Navbar = () => {
 
         {/* logica para poder mostrar el avatar o el nombre de usuario */}
         <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
-          {user.isLoged ? (
+          {isloged ? (
             <div className="flex items-center">
               <div className="flex flex-col text-center">
                 <p className="text-[10px]">Bienvenido</p>
                 <p className="text-[10px] font-bold capitalize ">
-                  {user.user}
+                  {userGlobal}
                 </p>
               </div>
               <BiUserCircle
@@ -152,7 +151,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          {user.isLoged ? null : (
+          {isloged ? null : (
             <div className="w-full flex flex-col mt-5 justify-center items-center gap-3">
               <Link href="/login">
                 <a className="text-black lg:text-xs font-semibold tracking-widest hover:text-blue-600">
