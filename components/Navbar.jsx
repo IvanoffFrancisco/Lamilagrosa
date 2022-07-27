@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useContext, useEffect } from "react";
-import { CarritoContext } from "../contexts/CarritoContext";
+// import { CarritoContext } from "../contexts/CarritoContext";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
@@ -9,23 +9,25 @@ import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 
-const Navbar = () => {
+const Navbar = ({ carrito }) => {
+  const [nav, setNav] = useState(false);
+
   //contextUsuario
   const { userGlobal, setUserGlobal, isloged, setIsloged } =
     useContext(UsuarioContext);
-  const { carrito, setCarrito } = useContext(CarritoContext);
-
-  const [nav, setNav] = useState(false);
+  //contextCarrito
+  // const { carrito, setCarrito } = useContext(CarritoContext);
 
   useEffect(() => {
-    console.log("chequeando localStorage")
-    const localCarrito = JSON.parse(localStorage.getItem("LMG-Carrito"))
-    if (localCarrito) {
-      console.log("localCarrito no es null")
-      setCarrito(localCarrito);
-    } 
-    setUserGlobal(localStorage.getItem("user"));
-    setIsloged(localStorage.getItem("isLoged"));
+    // console.log("chequeando localStorage");
+    // const localCarrito = JSON.parse(localStorage.getItem("LMG-Carrito"));
+    // if (localCarrito) {
+    //   console.log("localCarrito no es null");
+    //   setCarrito(localCarrito);
+    // }
+    // setCarrito(JSON.parse(localStorage.getItem("LMG-Carrito")));
+    setUserGlobal(JSON.parse(localStorage.getItem("LMG-user")));
+    setIsloged(localStorage.getItem("isLogged"));
   }, []);
 
   const handleNav = () => {
@@ -86,7 +88,7 @@ const Navbar = () => {
               <div className="flex flex-col text-center">
                 <p className="text-[10px]">Bienvenido</p>
                 <p className="text-[10px] font-bold capitalize ">
-                  {userGlobal}
+                  {userGlobal?.user}
                 </p>
               </div>
               <BiUserCircle

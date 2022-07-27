@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
-import { CarritoContext } from "../../contexts/CarritoContext";
+// import { CarritoContext } from "../../contexts/CarritoContext";
 import {
   TiHeartOutline,
   TiArrowDown,
@@ -143,8 +143,8 @@ const guarniciones = [
   },
 ];
 
-export default function DetalleProducto(props) {
-  const { carrito, setCarrito } = useContext(CarritoContext);
+export default function DetalleProducto({ carrito, setCarrito, ...props }) {
+  // const { carrito, setCarrito } = useContext(CarritoContext);
 
   const [detalleProducto, setDetalleProducto] = useState({});
   const { ingredientes } = detalleProducto;
@@ -227,10 +227,9 @@ export default function DetalleProducto(props) {
 
     setPedido(pedido);
 
-
     console.log(pedido);
-    carrito = [...carrito, pedido];
-    setCarrito(carrito);
+    // carrito = [...carrito, pedido];
+    setCarrito(pedido);
 
     console.log(carrito);
 

@@ -43,12 +43,15 @@ export const useLogin = () => {
         setUserGlobal(respuesta);
         setIsloged(true);
 
-        localStorage.setItem("isLoged", true);
-        localStorage.setItem("user", respuesta.user);
-        localStorage.setItem("email", respuesta.email);
-        localStorage.setItem("token", respuesta.token);
-        localStorage.setItem("id", respuesta.id);
-        localStorage.setItem("direcciones", respuesta.direcciones);
+        localStorage.setItem("LMG-user", JSON.stringify(respuesta));
+
+        localStorage.setItem("isLogged", true);
+
+        // localStorage.setItem("user", respuesta.user);
+        // localStorage.setItem("email", respuesta.email);
+        // localStorage.setItem("token", respuesta.token);
+        // localStorage.setItem("id", respuesta.id);
+        // localStorage.setItem("direcciones", respuesta.direcciones);
         setError(false);
         Router.push("/");
       }
