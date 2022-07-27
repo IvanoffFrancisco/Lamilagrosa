@@ -1,11 +1,9 @@
 import { useContext } from "react";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
-import { CarritoContext } from "../contexts/CarritoContext";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 
-const Carrito = () => {
-  const { carrito } = useContext(CarritoContext);
+const Carrito = ({ carrito }) => {
   const { userGlobal } = useContext(UsuarioContext);
 
   const direccion = userGlobal?.direcciones?.[0].calle;

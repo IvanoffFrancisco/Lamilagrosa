@@ -1,13 +1,8 @@
 import Image from "next/image";
-import { useContext } from "react";
-
-import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-const ProductCard = ({ producto }) => {
-  const { carrito, setCarrito } = useContext(CarritoContext);
-
+const ProductCard = ({ producto, eliminarCarrito }) => {
   const {
     menu,
     imagenMenu,
@@ -17,17 +12,6 @@ const ProductCard = ({ producto }) => {
     precio,
     tipoMila,
   } = producto;
-
-  const handleDelete = () => {
-    const respuesta = confirm("Deseas eliminar este producto?");
-    if (respuesta) {
-      const carritoActualizado = carrito?.filter(
-        (elemento) => elemento.id !== producto.id
-      );
-      setCarrito(carritoActualizado);
-      localStorage.setItem("LMG-Carrito", JSON.stringify(carritoActualizado));
-    }
-  };
 
   return (
     <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-400 md:pl-5">
@@ -81,7 +65,7 @@ const ProductCard = ({ producto }) => {
           Editar
         </button> */}
         <AiOutlineClose
-          onClick={handleDelete}
+          onClick={() => eliminarCarrito(producto.id)}
           className="absolute top-0 right-0 text-red-600 text-xl cursor-pointer md:mt-1 md:mr-1"
         />
       </div>

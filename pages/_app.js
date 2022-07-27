@@ -9,27 +9,43 @@ function MyApp({ Component, pageProps }) {
   // const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
-    setCarrito(JSON.parse(localStorage.getItem("LMG-Carrito")));
-    if (carrito === null) {
-      setCarrito([]);
-    }
+    const carritoLS = JSON.parse(localStorage.getItem("LMG-Carrito")) ?? [];
+    console.log(carritoLS);
+    setCarrito(carritoLS);
+
     // setIsLogged(localStorage.getItem("isLogged"));
 
     // setUserGlobal(localStorage.getItem("user"));
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("LMG-Carrito", JSON.stringify(carrito));
+  }, [carrito]);
+
+  const agregarCarrito = (pedido) => {
+    setCarrito([...carrito, pedido]);
+  };
+
+  const eliminarCarrito = (id) => {
+    const respuesta = confirm("Deseas eliminar este producto?");
+    if (respuesta) {
+      const carritoActualizado = carrito?.filter(
+        (elemento) => elemento.id !== id
+      );
+      setCarrito(carritoActualizado);
+    }
+  };
+
   return (
     <MenuProvider>
       <UsuarioProvider>
-        {/* <CarritoProvider> */}
         <Component
           {...pageProps}
           carrito={carrito}
           setCarrito={setCarrito}
-          // isLogged={isLogged}
-          // setIsLogged={setIsLogged}
+          agregarCarrito={agregarCarrito}
+          eliminarCarrito={eliminarCarrito}
         />
-        {/* </CarritoProvider> */}
       </UsuarioProvider>
     </MenuProvider>
   );

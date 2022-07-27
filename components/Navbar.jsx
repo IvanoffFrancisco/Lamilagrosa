@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useContext, useEffect } from "react";
-// import { CarritoContext } from "../contexts/CarritoContext";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
@@ -9,23 +8,14 @@ import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 
-const Navbar = ({ carrito }) => {
+const Navbar = ({}) => {
   const [nav, setNav] = useState(false);
 
   //contextUsuario
   const { userGlobal, setUserGlobal, isloged, setIsloged } =
     useContext(UsuarioContext);
-  //contextCarrito
-  // const { carrito, setCarrito } = useContext(CarritoContext);
 
   useEffect(() => {
-    // console.log("chequeando localStorage");
-    // const localCarrito = JSON.parse(localStorage.getItem("LMG-Carrito"));
-    // if (localCarrito) {
-    //   console.log("localCarrito no es null");
-    //   setCarrito(localCarrito);
-    // }
-    // setCarrito(JSON.parse(localStorage.getItem("LMG-Carrito")));
     setUserGlobal(JSON.parse(localStorage.getItem("LMG-user")));
     setIsloged(localStorage.getItem("isLogged"));
   }, []);
@@ -117,7 +107,7 @@ const Navbar = ({ carrito }) => {
                 size="30px"
                 className="text-blue-600 relative hover:scale-110 ease-in duration-200"
               />
-              <span className="text-xs font-semibold">{carrito?.length}</span>
+              {/* <span className="text-xs font-semibold">{carrito?.length}</span> */}
             </div>
           </Link>
           <div

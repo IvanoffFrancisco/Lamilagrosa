@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
-// import { CarritoContext } from "../../contexts/CarritoContext";
+
 import {
   TiHeartOutline,
   TiArrowDown,
@@ -143,30 +143,22 @@ const guarniciones = [
   },
 ];
 
-export default function DetalleProducto({ carrito, setCarrito, ...props }) {
-  // const { carrito, setCarrito } = useContext(CarritoContext);
-
+export default function DetalleProducto({ agregarCarrito, ...props }) {
   const [detalleProducto, setDetalleProducto] = useState({});
-  const { ingredientes } = detalleProducto;
-
-  const [pedido, setPedido] = useState({
-    menu: "",
-    imagenMenu: "",
-    tipoMila: "",
-    cantidad: "1",
-    guarnicion: "",
-    imagenGuarnicion: "",
-    precio: "",
-    id: "",
+  const [cantidad, setCantidad] = useState(1);
+  const [carneMila, setCarneMila] = useState("");
+  const [guarnicion, setGuarnicion] = useState({
+    nombre: "",
+    imagen: "",
   });
-
-  const [guarnicionSeleccionada, setGuarnicionSeleccionada] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [tipoError, setTipoError] = useState("");
 
   useEffect(() => {
     obtenerDetalleComida();
   }, [props]);
+
+  const { ingredientes } = detalleProducto;
 
   const obtenerDetalleComida = async () => {
     try {
@@ -181,73 +173,63 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
   };
 
   const handleGuarnicion = (e) => {
-    setGuarnicionSeleccionada(e.currentTarget.dataset.guarnicion);
-    setPedido({
-      ...pedido,
-      guarnicion: e.currentTarget.dataset.guarnicion,
-      imagenGuarnicion: e.currentTarget.dataset.imagen,
+    // setGuarnicionSeleccionada(guarnicionElejida);
+    setGuarnicion({
+      nombre: e.currentTarget.dataset.nombre,
+      imagen: e.currentTarget.dataset.imagen,
     });
   };
 
   const handleChange = (e) => {
     if (e.target.name === "cantidad") {
-      setPedido({
-        ...pedido,
-        cantidad: e.target.value,
-        precio: e.target.value * detalleProducto.precio,
-      });
+      setCantidad(parseInt(e.target.value));
       return;
+    } else {
+      setCarneMila(e.target.value);
     }
-    setPedido({
-      ...pedido,
-      [e.target.name]: e.target.value,
-    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (guarnicionSeleccionada === undefined || guarnicionSeleccionada === "") {
+
+    if (guarnicion.nombre === undefined || guarnicion.nombre === "") {
       setTipoError("error");
       setMensaje("Selecciona una guarnicion");
       eliminarMensaje();
       return;
     }
+
     if (!detalleProducto.nombre?.includes("Vegana")) {
-      if (pedido.tipoMila === undefined || pedido.tipoMila === "") {
+      if (carneMila === undefined || carneMila === "") {
         setTipoError("error");
         setMensaje("Selecciona un tipo de carne");
         eliminarMensaje();
         return;
       }
     }
-    pedido.menu = detalleProducto.nombre;
-    pedido.imagenMenu = detalleProducto.imagen;
-    pedido.precio = detalleProducto.precio * pedido.cantidad;
-    pedido.id = Date.now().toString(36);
 
-    setPedido(pedido);
+    //Crea y agrega pedido al carrito
+    const pedido = {
+      menu: detalleProducto.nombre,
+      imagenMenu: detalleProducto.imagen,
+      tipoCarne: carneMila,
+      cantidad,
+      guarnicion: guarnicion.nombre,
+      imagenGuarnicion: guarnicion.imagen,
+      precio: detalleProducto.precio * cantidad,
+      id: Date.now().toString(36),
+    };
+    agregarCarrito(pedido);
 
-    console.log(pedido);
-    // carrito = [...carrito, pedido];
-    setCarrito(pedido);
-
-    console.log(carrito);
-
-    localStorage.setItem("LMG-Carrito", JSON.stringify(carrito));
-
-    // Resetea el formulario
+    // Resetea el formulario y guarnicion seleccionada
     e.target.reset();
-    setPedido({
-      menu: "",
-      imagenMenu: "",
-      tipoMila: "",
-      cantidad: "1",
-      guarnicion: "",
-      imagenGuarnicion: "",
-      precio: "",
-      id: "",
+    setCantidad(1);
+    setCarneMila("");
+    setGuarnicion({
+      nombre: "",
+      imagen: "",
     });
-    setGuarnicionSeleccionada("");
+    setGuarnicion({});
 
     setTipoError("correcto");
     setMensaje("Añadido correctamente");
@@ -311,12 +293,12 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
                 {guarniciones.map((item, i) => (
                   <li
                     className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
-                      guarnicionSeleccionada === item.nombre
+                      guarnicion.nombre === item.nombre
                         ? "border-2 border-red-500 rounded-sm"
                         : ""
                     }`}
                     key={i}
-                    data-guarnicion={item.nombre}
+                    data-nombre={item.nombre}
                     data-imagen={item.imagen}
                     onClick={handleGuarnicion}
                   >
@@ -369,13 +351,13 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
                   <div className="flex items-center gap-3 mr-2 md:mr-16">
                     <input
                       type="radio"
-                      name="tipoMila"
-                      value="ternera"
+                      name="tipoCarne"
+                      value="Ternera"
                       onChange={handleChange}
                       // checked
                     />
                     <label
-                      htmlFor="ternera"
+                      htmlFor="Ternera"
                       className="text-red-700 md:text-lg font-semibold"
                     >
                       Ternera
@@ -386,8 +368,8 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
                   <div className="flex items-center gap-3">
                     <input
                       type="radio"
-                      name="tipoMila"
-                      value="pollo"
+                      name="tipoCarne"
+                      value="Pollo"
                       onChange={handleChange}
                     />
                     <label
@@ -408,7 +390,7 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
               </span>
               <span className="font-bold text-lg text-red-600">
                 {" "}
-                {pedido.guarnicion}
+                {guarnicion.nombre}
               </span>
             </div>
 
@@ -419,6 +401,7 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
                   onChange={handleChange}
                   className="border border-gray-900"
                   name="cantidad"
+                  value={cantidad}
                 >
                   <option value="1" defaultValue>
                     1
@@ -435,7 +418,7 @@ export default function DetalleProducto({ carrito, setCarrito, ...props }) {
                   {" "}
                   $
                   {detalleProducto?.precio &&
-                    detalleProducto?.precio * parseInt(pedido.cantidad)}
+                    detalleProducto?.precio * cantidad}
                 </span>
               </p>
             </div>
