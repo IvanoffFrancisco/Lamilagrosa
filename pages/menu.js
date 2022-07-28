@@ -6,7 +6,7 @@ import { useContext } from "react";
 const menu = () => {
   const { menuGlobal } = useContext(MenuContextData);
   return (
-    <Layout pagina={"Menu"}>
+    <Layout pagina={"Menu"} >
       <div className="mt-20">
         <ProductList carta={menuGlobal} />;
       </div>
