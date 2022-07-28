@@ -1,8 +1,12 @@
 import Image from "next/image";
+import { useContext } from "react";
+import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-const ProductCard = ({ producto, eliminarCarrito }) => {
+const ProductCard = ({ producto }) => {
+  const { eliminarCarrito } = useContext(CarritoContext);
+
   const {
     menu,
     imagenMenu,
