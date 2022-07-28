@@ -2,15 +2,17 @@ import { useContext } from "react";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import { UsuarioContext } from "../contexts/UsuarioContext";
+import { CarritoContext } from "../contexts/CarritoContext";
 
-const Carrito = ({ carrito }) => {
+const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
+  const { carrito } = useContext(CarritoContext);
 
   const direccion = userGlobal?.direcciones?.[0].calle;
-  console.log(userGlobal);
-  console.log(direccion);
+  // console.log(userGlobal);
+  // console.log(direccion);
   return (
-    <Layout pagina={"carrito de compras"}>
+    <Layout pagina={"carrito de compras"} >
       {carrito?.length === 0 || carrito == null ? (
         <div className="w-full h-screen flex flex-col justify-center items-center">
           <p className="text-lg font-semibold">
