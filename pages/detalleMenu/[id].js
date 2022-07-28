@@ -19,7 +19,7 @@ const guarniciones = [
       "https://images.rappi.com.ar/products/3d9120f7-f3ef-455c-8acd-cda3e4098807-1629229510757.png",
     nombre: "Papas fritas",
     ingredientes: ["papa"],
-    precio: 688,
+    precio: 700,
     id: 1,
   },
   {
@@ -249,6 +249,12 @@ export default function DetalleProducto(props) {
   return (
     <Layout pagina="Detalle de productos" carrito={carrito}>
       <main className="w-full h-auto mt-20">
+        <h2 className="text-center py-3 md:py-5 text-xl md:text-2xl font-semibold bg-blue-600 text-white">
+          Personalizá
+          <span className="text-black pl-3 ont-bold">
+            Tu<span className="text-red-600">Mila</span>Grosa
+          </span>
+        </h2>
         <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
             <h2 className="text-center text-2xl font-semibold md:hidden">
@@ -294,35 +300,70 @@ export default function DetalleProducto(props) {
 
             <section className="w-full">
               <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
-                {guarniciones.map((item, i) => (
-                  <li
-                    className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
-                      guarnicion.nombre === item.nombre
-                        ? "border-2 border-red-500 rounded-sm"
-                        : ""
-                    }`}
-                    key={i}
-                    data-nombre={item.nombre}
-                    data-imagen={item.imagen}
-                    data-precio={item.precio}
-                    onClick={handleGuarnicion}
-                  >
-                    <Image
-                      src={item.imagen}
-                      alt={item.nombre}
-                      layout="responsive"
-                      width="500"
-                      height="300"
-                      objectFit="cover"
-                    />
-                    <p className="text-[10px] text-center font-semibold text-blue-600">
-                      {item.nombre}
-                    </p>
-                    <p className="text-[10px] text-center font-semibold text-red-600">
-                      ${item.precio}
-                    </p>
-                  </li>
-                ))}
+                {guarniciones
+                  .filter((item) => item.precio <= 700)
+                  .map((item, i) => (
+                    <li
+                      className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
+                        guarnicion.nombre === item.nombre
+                          ? "border-2 border-red-500 rounded-sm"
+                          : ""
+                      }`}
+                      key={i}
+                      data-nombre={item.nombre}
+                      data-imagen={item.imagen}
+                      data-precio={item.precio}
+                      onClick={handleGuarnicion}
+                    >
+                      <Image
+                        src={item.imagen}
+                        alt={item.nombre}
+                        layout="responsive"
+                        width="500"
+                        height="300"
+                        objectFit="cover"
+                      />
+                      <p className="text-[10px] text-center font-semibold text-blue-600">
+                        {item.nombre}
+                      </p>
+
+                      <p className="text-[10px] text-center font-semibold text-red-600">
+                        Gratis con tu menú
+                      </p>
+                    </li>
+                  ))}
+                {guarniciones
+                  .filter((item) => item.precio > 700)
+                  .map((item, i) => (
+                    <li
+                      className={`min-w-[110px] max-w-[100px] md:max-w-[150px] flex-shrink-0 snap-start hover:opacity-80 ${
+                        guarnicion.nombre === item.nombre
+                          ? "border-2 border-red-500 rounded-sm"
+                          : ""
+                      }`}
+                      key={i}
+                      data-nombre={item.nombre}
+                      data-imagen={item.imagen}
+                      data-precio={item.precio}
+                      onClick={handleGuarnicion}
+                    >
+                      <Image
+                        src={item.imagen}
+                        alt={item.nombre}
+                        layout="responsive"
+                        width="500"
+                        height="300"
+                        objectFit="cover"
+                      />
+                      <p className="text-[10px] text-center font-semibold text-blue-600">
+                        {item.nombre}
+                      </p>
+
+                      <p className="text-[10px] text-center font-semibold text-red-600">
+                        ${item.precio - 700} Adicional
+                      </p>
+                    </li>
+                  ))}
               </ul>
             </section>
           </section>
@@ -333,7 +374,7 @@ export default function DetalleProducto(props) {
             className="w-full md:w-1/2 md:px-2 lg:w-2/5"
           >
             <div className="flex justify-between">
-              <h2 className="text-start text-2xl hidden md:block font-semibold">
+              <h2 className="text-start text-2xl xl:text-3xl hidden md:block font-bold">
                 {detalleProducto?.nombre}
               </h2>
               <TiHeartOutline
@@ -352,7 +393,7 @@ export default function DetalleProducto(props) {
             {detalleProducto.nombre?.includes("Vegana") ||
             detalleProducto.nombre?.includes("Vegetariana") ? null : (
               <div className="flex-col my-5 md:my-5">
-                <p className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest mb-2 ">
+                <p className="w-fit mx-auto md:text-xl xl:text-2xl font-semibold tracking-widest mb-2 ">
                   Elija el tipo de milanesa
                 </p>
                 <div className="flex justify-center">
@@ -366,7 +407,7 @@ export default function DetalleProducto(props) {
                     />
                     <label
                       htmlFor="Ternera"
-                      className="text-red-700 md:text-lg font-semibold"
+                      className="text-red-700 md:text-lg xl:text-xl font-semibold"
                     >
                       Ternera
                     </label>
@@ -382,7 +423,7 @@ export default function DetalleProducto(props) {
                     />
                     <label
                       htmlFor="pollo"
-                      className="text-blue-800 md:text-lg font-semibold"
+                      className="text-blue-800 md:text-lg xl:text-xl font-semibold"
                     >
                       Pollo
                     </label>
@@ -392,22 +433,24 @@ export default function DetalleProducto(props) {
               </div>
             )}
 
-            <div className="md:my-5">
+            <div className="md:my-5 xl:my-8">
               <span className="w-fit mx-auto text-md md:text-xl font-semibold tracking-widest">
                 Guarnicion seleccionada:
               </span>
-              <span className="font-bold text-lg text-red-600">
+              <span className="font-bold text-lg xl:text-2xl text-blue-600">
                 {" "}
                 {guarnicion.nombre}
               </span>
             </div>
 
-            <div className="mb-2 md:mb-8 mt-5 flex justify-between items-center">
+            <div className="mb-2 md:mb-8 mt-5 xl:mt-8 flex justify-between items-center">
               <div>
-                <label className="font-bold">Cantidad de Menues:</label>
+                <label className="font-semibold xl:text-xl">
+                  Cantidad de Menues:
+                </label>
                 <select
                   onChange={handleChange}
-                  className="border border-gray-900 ml-1"
+                  className="border border-gray-900 ml-1 font-bold"
                   name="cantidad"
                   value={cantidad}
                 >
@@ -426,38 +469,17 @@ export default function DetalleProducto(props) {
                 </select>
               </div>
 
-              <p className="text-black font-bold">
+              <p className="text-black font-bold xl:text-xl">
                 Total:
                 <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
                   {" "}
                   $
-                  {detalleProducto?.precio &&
-                    detalleProducto?.precio * cantidad + guarnicion.precio}
+                  {detalleProducto?.precio && guarnicion.precio > 700
+                    ? detalleProducto?.precio * cantidad +
+                      (guarnicion.precio - 700)
+                    : detalleProducto?.precio * cantidad}
                 </span>
               </p>
-            </div>
-
-            <div>
-              <label className="font-bold">Cantidad de Guarniciones:</label>
-              <select
-                onChange={handleChange}
-                className="border border-gray-900 ml-1"
-                name="cantidad"
-                value={cantidad}
-              >
-                <option value="1" defaultValue>
-                  1
-                </option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="2">6</option>
-                <option value="3">7</option>
-                <option value="4">8</option>
-                <option value="5">9</option>
-                <option value="5">10</option>
-              </select>
             </div>
 
             <div className="w-full flex flex-col items-center justify-center mt-5 xs:mt-10">
