@@ -2,23 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useContext, useEffect } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
-
+import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 
-const Navbar = ({}) => {
+const Navbar = () => {
   const [nav, setNav] = useState(false);
-
-  //contextUsuario
-  const { userGlobal, setUserGlobal, isloged, setIsloged } =
-    useContext(UsuarioContext);
-
-  useEffect(() => {
-    setUserGlobal(JSON.parse(localStorage.getItem("LMG-user")));
-    setIsloged(localStorage.getItem("isLogged"));
-  }, []);
+  const { userGlobal, islogged } = useContext(UsuarioContext);
+  const { carrito } = useContext(CarritoContext);
 
   const handleNav = () => {
     setNav(!nav);
@@ -73,7 +66,7 @@ const Navbar = ({}) => {
 
         {/* logica para poder mostrar el avatar o el nombre de usuario */}
         <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
-          {isloged ? (
+          {islogged ? (
             <div className="flex items-center">
               <div className="flex flex-col text-center">
                 <p className="text-[10px]">Bienvenido</p>
@@ -107,7 +100,7 @@ const Navbar = ({}) => {
                 size="30px"
                 className="text-blue-600 relative hover:scale-110 ease-in duration-200"
               />
-              {/* <span className="text-xs font-semibold">{carrito?.length}</span> */}
+              <span className="text-xs font-semibold">{carrito?.length}</span>
             </div>
           </Link>
           <div
@@ -149,7 +142,7 @@ const Navbar = ({}) => {
             </div>
           </div>
 
-          {isloged ? null : (
+          {islogged ? null : (
             <div className="w-full flex flex-col mt-5 justify-center items-center gap-3">
               <Link href="/login">
                 <a className="text-black lg:text-xs font-semibold tracking-widest hover:text-blue-600">
