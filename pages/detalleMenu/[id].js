@@ -249,7 +249,7 @@ export default function DetalleProducto(props) {
   return (
     <Layout pagina="Detalle de productos" carrito={carrito}>
       <main className="w-full h-auto mt-20">
-        <h2 className="text-center py-3 md:py-5 text-xl md:text-2xl font-semibold bg-blue-600 text-white">
+        <h2 className="text-center py-3 md:py-5 text-xl md:text-2xl font-semibold bg-blue-500 text-white shadow-sm shadow-blue-900">
           Personalizá
           <span className="text-black pl-3 ont-bold">
             Tu<span className="text-red-600">Mila</span>Grosa
@@ -276,8 +276,8 @@ export default function DetalleProducto(props) {
           </div>
 
           {/* columna izquierda */}
-          <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2">
-            <article className="w-full">
+          <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2 ">
+            <article className="w-full shadow-sm shadow-gray-800">
               {detalleProducto.imagen && (
                 <Image
                   src={detalleProducto.imagen}
@@ -298,7 +298,7 @@ export default function DetalleProducto(props) {
               <TiArrowRight className="text-red-600 text-2xl" />
             </h3>
 
-            <section className="w-full">
+            <section className="w-full shadow-sm shadow-gray-800">
               <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
                 {guarniciones
                   .filter((item) => item.precio <= 700)
