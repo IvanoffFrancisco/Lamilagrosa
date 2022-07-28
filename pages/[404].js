@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 
 const notFound = () => {
   return (
-    <Layout>
+    <Layout pagina="404 Not Found" >
       <div className="w-full h-screen flex flex-col justify-center items-center">
         <h2 className="text-blue-600 text-9xl mb-3 font-bold tracking-widest px-1">
           404
