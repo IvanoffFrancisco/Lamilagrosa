@@ -23,7 +23,8 @@ export const useRegistro = () => {
     e.preventDefault();
 
     try {
-        if(userRegistro.password === userRegistro.passwordConfirm){
+        if(userRegistro.password === userRegistro.passwordConfirm && userRegistro.password.length !== 0){
+          if(userRegistro.direcciones.length!==0){
             if(errorUsuario==="correcto"){
               if(errorEmail==="correcto"){
                 const config={
@@ -44,15 +45,19 @@ export const useRegistro = () => {
 
               }else{
                 setTipoError("error");
-                setMensaje("El email no esta disponible");
+                setMensaje("El email no esta disponible y/o es campo esta vacio");
               }
             }else{
               setTipoError("error");
-              setMensaje("El usuario no esta disponible");
+              setMensaje("El usuario no esta disponible y/o es campo esta vacio");
             }
+          }else{
+            setTipoError("error");
+            setMensaje("el campo dirección es obligatorio");
+          }
         }else{
           setTipoError("error");
-          setMensaje("Las contraseñas no coinciden ");
+          setMensaje("Las contraseñas no coinciden o el campo password esta vacio  ");
         }
     } catch (error) {
         
@@ -71,52 +76,66 @@ export const useRegistro = () => {
     if(e.target.id==="user"){
       setTipoError("");
       setMensaje("");
-      const buscarUser={
-        user:e.target.value
+      if(e.target.value.length !== 0 && e.target.value.length >=5 && e.target.value.length <= 10){
+        console.log(e.target.id.length);
+        console.log(e.target.id);
+        const buscarUser={
+          user:e.target.value
+        }
+        const config={
+          method:"POST",
+          headers:{
+              "content-type":"application/json"
+          },
+          body:JSON.stringify(buscarUser)
       }
-      const config={
-        method:"POST",
-        headers:{
-            "content-type":"application/json"
-        },
-        body:JSON.stringify(buscarUser)
-    }
-      const res=await fetch("https://lamilagrosa-app.herokuapp.com/api/getUser",config);
-      const respuesta= await res.json();
-      if(respuesta.user==="disponible"){
-          setErrorUsuario("correcto");
-          setTipoError("correcto");
-          setMensaje("Usuario Disponible");
+        const res=await fetch("https://lamilagrosa-app.herokuapp.com/api/getUser",config);
+        const respuesta= await res.json();
+        if(respuesta.user==="disponible"){
+            setErrorUsuario("correcto");
+            setTipoError("correcto");
+            setMensaje("Usuario Disponible");
+        }else{
+          setErrorUsuario("error");
+          setTipoError("error");
+          setMensaje("user no disponible");
+      }
       }else{
-        setErrorUsuario("error");
-        setTipoError("error");
-        setMensaje("user no disponible");
-    }
+          setErrorUsuario("error");
+          setTipoError("error");
+          setMensaje("El campo usuario esta vacio y/o es muy corto");
+      }
     }
 
     if(e.target.id==="email"){
       setTipoError("");
       setMensaje("");
-      const buscarEmail={
-        email:e.target.value
+      if(e.target.value.length !== 0 && e.target.value.length >=5 && e.target.value.length <= 45){
+        const buscarEmail={
+          email:e.target.value
+        }
+        const config={
+          method:"POST",
+          headers:{
+              "content-type":"application/json"
+          },
+          body:JSON.stringify(buscarEmail)
       }
-      const config={
-        method:"POST",
-        headers:{
-            "content-type":"application/json"
-        },
-        body:JSON.stringify(buscarEmail)
-    }
-      const res=await fetch("https://lamilagrosa-app.herokuapp.com/api/getEmail",config);
-      const respuesta= await res.json();
-      if(respuesta.email==="disponible"){
-          setErrorEmail("correcto");
-          setTipoError("correcto");
-          setMensaje("Email Disponible");
+        const res=await fetch("https://lamilagrosa-app.herokuapp.com/api/getEmail",config);
+        const respuesta= await res.json();
+        if(respuesta.email==="disponible"){
+            setErrorEmail("correcto");
+            setTipoError("correcto");
+            setMensaje("Email Disponible");
+        }else{
+            setErrorEmail("error");
+            setTipoError("error");
+            setMensaje("email no disponible");
+        }
       }else{
-          setErrorEmail("error");
+          setErrorUsuario("error");
           setTipoError("error");
-          setMensaje("email no disponible");
+          setMensaje("El campo email esta vacio y/o es muy corto");
       }
     }
   }

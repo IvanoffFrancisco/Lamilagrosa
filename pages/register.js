@@ -50,12 +50,11 @@ export default function Register() {
                 <FaUser className="text-sky-400 mx-2" />
                 <input
                   type="text"
-                  value={userRegistro.user}
                   id="user"
                   placeholder="Nombre de usuario"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
                   required={true}
-                  onChange={hendlerInputChangeRegistro}
+                  onBlur={hendlerInputChangeRegistro}
                   minLength={5}
                   maxLength={10}
                 />
@@ -64,49 +63,47 @@ export default function Register() {
                 <FaRegEnvelope className="text-sky-400 mx-2" />
                 <input
                   type="email"
-                  value={userRegistro.email}
                   id="email"
                   placeholder="Email"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
                   required={true}
-                  onChange={hendlerInputChangeRegistro}
+                  onBlur={hendlerInputChangeRegistro}
                   minLength={10}
+                  maxLength={45}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <MdAddLocationAlt className="text-sky-400 mx-2" />
                 <input
                   type="text"
-                  value={userRegistro.direcciones}
                   id="direcciones"
-                  placeholder="Dirección postal"
+                  placeholder="Dirección"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
                   required={true}
-                  onChange={hendlerInputChangeRegistro}
+                  onBlur={hendlerInputChangeRegistro}
+                  minLength={1}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <MdLockOutline className="text-sky-400 mx-2" />
                 <input
                   type="password"
-                  value={userRegistro.password}
                   id="password"
                   placeholder="Contraseña"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
                   required={true}
-                  onChange={hendlerInputChangeRegistro}
+                  onBlur={hendlerInputChangeRegistro}
                 />
               </div>
               <div className="w-full my-1 bg-gray-100 flex items-center rounded-md px-1">
                 <MdLock className="text-sky-400 mx-2" />
                 <input
                   type="password"
-                  value={userRegistro.passwordConfirm}
                   id="passwordConfirm"
                   placeholder="Confirmar contraseña"
                   className="bg-gray-100 outline-none text-sm py-3 w-full"
                   required={true}
-                  onChange={hendlerInputChangeRegistro}
+                  onBlur={hendlerInputChangeRegistro}
                 />
               </div>
 
