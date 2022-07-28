@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Router from "next/router";
+
 export const useLogin = () => {
-  const { setUserGlobal, setIsloged } = useContext(UsuarioContext);
+  const { setUserGlobal, setIslogged } = useContext(UsuarioContext);
 
   const [user, setUser] = useState({
     email: "",
@@ -41,11 +42,11 @@ export const useLogin = () => {
         setError(true);
       } else {
         setUserGlobal(respuesta);
-        setIsloged(true);
+        setIslogged(true);
 
         localStorage.setItem("LMG-user", JSON.stringify(respuesta));
 
-        localStorage.setItem("isLogged", true);
+        localStorage.setItem("LMG-isLogged", true);
 
         // localStorage.setItem("user", respuesta.user);
         // localStorage.setItem("email", respuesta.email);
