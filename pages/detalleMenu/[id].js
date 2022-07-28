@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
+import { CarritoContext } from "../../contexts/CarritoContext";
+
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
 
@@ -143,13 +145,15 @@ const guarniciones = [
   },
 ];
 
-export default function DetalleProducto({ agregarCarrito, ...props }) {
+export default function DetalleProducto(props) {
+  const { carrito, agregarCarrito } = useContext(CarritoContext);
   const [detalleProducto, setDetalleProducto] = useState({});
   const [cantidad, setCantidad] = useState(1);
   const [carneMila, setCarneMila] = useState("");
   const [guarnicion, setGuarnicion] = useState({
     nombre: "",
     imagen: "",
+    precio: 0,
   });
   const [mensaje, setMensaje] = useState("");
   const [tipoError, setTipoError] = useState("");
@@ -173,10 +177,10 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
   };
 
   const handleGuarnicion = (e) => {
-    // setGuarnicionSeleccionada(guarnicionElejida);
     setGuarnicion({
       nombre: e.currentTarget.dataset.nombre,
       imagen: e.currentTarget.dataset.imagen,
+      precio: parseInt(e.currentTarget.dataset.precio),
     });
   };
 
@@ -224,10 +228,10 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
     // Resetea el formulario y guarnicion seleccionada
     e.target.reset();
     setCantidad(1);
-    setCarneMila("");
     setGuarnicion({
       nombre: "",
       imagen: "",
+      precio: 0,
     });
     setGuarnicion({});
 
@@ -243,7 +247,7 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
   };
 
   return (
-    <Layout>
+    <Layout pagina="Detalle de productos" carrito={carrito}>
       <main className="w-full h-auto mt-20">
         <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
@@ -300,6 +304,7 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
                     key={i}
                     data-nombre={item.nombre}
                     data-imagen={item.imagen}
+                    data-precio={item.precio}
                     onClick={handleGuarnicion}
                   >
                     <Image
@@ -312,6 +317,9 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
                     />
                     <p className="text-[10px] text-center font-semibold text-blue-600">
                       {item.nombre}
+                    </p>
+                    <p className="text-[10px] text-center font-semibold text-red-600">
+                      ${item.precio}
                     </p>
                   </li>
                 ))}
@@ -396,10 +404,10 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
 
             <div className="mb-2 md:mb-8 mt-5 flex justify-between items-center">
               <div>
-                <label className="font-bold">Cantidad:</label>
+                <label className="font-bold">Cantidad de Menues:</label>
                 <select
                   onChange={handleChange}
-                  className="border border-gray-900"
+                  className="border border-gray-900 ml-1"
                   name="cantidad"
                   value={cantidad}
                 >
@@ -410,17 +418,46 @@ export default function DetalleProducto({ agregarCarrito, ...props }) {
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
+                  <option value="2">6</option>
+                  <option value="3">7</option>
+                  <option value="4">8</option>
+                  <option value="5">9</option>
+                  <option value="5">10</option>
                 </select>
               </div>
+
               <p className="text-black font-bold">
                 Total:
                 <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
                   {" "}
                   $
                   {detalleProducto?.precio &&
-                    detalleProducto?.precio * cantidad}
+                    detalleProducto?.precio * cantidad + guarnicion.precio}
                 </span>
               </p>
+            </div>
+
+            <div>
+              <label className="font-bold">Cantidad de Guarniciones:</label>
+              <select
+                onChange={handleChange}
+                className="border border-gray-900 ml-1"
+                name="cantidad"
+                value={cantidad}
+              >
+                <option value="1" defaultValue>
+                  1
+                </option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="2">6</option>
+                <option value="3">7</option>
+                <option value="4">8</option>
+                <option value="5">9</option>
+                <option value="5">10</option>
+              </select>
             </div>
 
             <div className="w-full flex flex-col items-center justify-center mt-5 xs:mt-10">
