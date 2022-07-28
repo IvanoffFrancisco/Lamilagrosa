@@ -11,7 +11,7 @@ export const CarritoProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (carrito.length > 0) {
+    if (carrito?.length > 0) {
       localStorage.setItem("LMG-Carrito", JSON.stringify(carrito));
     }
   }, [carrito]);
