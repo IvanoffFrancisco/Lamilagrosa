@@ -10,7 +10,7 @@ const images = [
 
 export default function Home() {
   return (
-    <Layout pagina={"Home"}>
+    <Layout pagina={"Home"} >
       <Carrusel
         controles={true}
         autoplay={true}
