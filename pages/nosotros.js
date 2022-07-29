@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 const nosotros = () => {
   return (
     <Layout paina={"Nosotros"} >
-      <div className="w-full h-auto mt-4">
+      <div className="w-full h-auto mt-20">
         <div className="max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] 2xl:max-w-[75%] mx-auto">
           <h2 className="text-2xl md:text-2xl lg:text-3xl font-bold text-sky-900 text-center py-6 md:py-7 lg:py-8 xl:py-10 tracking-widest">
             Nuestra Historia
