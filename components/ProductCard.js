@@ -17,8 +17,12 @@ const ProductCard = ({ producto }) => {
     tipoMila,
   } = producto;
 
+  const handleChange = (e) => {
+    cantidad = parseInt(e.target.value);
+  };
+
   return (
-    <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-400 md:pl-5">
+    <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-500 md:pl-5">
       <div className="flex flex-col items-center justify-center">
         <article className="w-[90px] md:w-[100px] border border-black">
           <Image
@@ -59,10 +63,33 @@ const ProductCard = ({ producto }) => {
             {guarnicion}
           </span>
         </p>
-
-        <p className=" py-1">Cantidad: {cantidad}</p>
+        <div>
+          <label className="font-semibold xl:text-xl">
+            Cantidad de Menues:
+          </label>
+          <select
+            onChange={handleChange}
+            className="border border-gray-900 ml-1 font-bold"
+            name="cantidad"
+            value={cantidad}
+          >
+            <option value="1" defaultValue>
+              1
+            </option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="2">6</option>
+            <option value="3">7</option>
+            <option value="4">8</option>
+            <option value="5">9</option>
+            <option value="5">10</option>
+          </select>
+        </div>
+        {/* <p className=" py-1">Cantidad: {cantidad}</p> */}
         <p className="font-semibold text-lg pt-2">
-          Total:<span className="font-bold"> ${precio}</span>
+          Total:<span className="font-bold"> ${precio * cantidad}</span>
         </p>
 
         {/* <button className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide absolute bottom-0 right-0 md:mb-1 md:mr-1">
