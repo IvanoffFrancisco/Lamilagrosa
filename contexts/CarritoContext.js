@@ -6,7 +6,7 @@ export const CarritoProvider = ({ children }) => {
   const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
-    const carritoLS = JSON.parse(localStorage.getItem("LMG-Carrito"));
+    const carritoLS = JSON.parse(localStorage.getItem("LMG-Carrito")) ?? [];
     setCarrito(carritoLS);
   }, []);
 
