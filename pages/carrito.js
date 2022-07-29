@@ -13,14 +13,10 @@ const Carrito = () => {
   console.log(direccion);
   return (
     <Layout pagina={"carrito de compras"}>
-      <main className="mt-20 w-full  bg-gray-200">
+      <main className="mt-20 pb-10 w-full bg-gray-100">
         <h2 className="text-center text-blue-600 uppercase text-2xl font-semibold pt-5 ">
           Carrito de Compras
         </h2>
-        {/* <div className="w-full max-w-[85%] mx-auto text-xl">
-          Tu pedido sera enviado a la siguiente direccion:{" "}
-          <span className="text-red-600 font-bold text-2xl">{direccion}</span>
-        </div> */}
         {carrito?.length === 0 || carrito == null ? (
           <div className="w-full h-screen flex flex-col justify-center items-center">
             <p className="text-lg font-semibold">
@@ -36,7 +32,7 @@ const Carrito = () => {
             </p>
           </div>
         ) : (
-          <div className=" pb-5">
+          <div className="pb-5">
             <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
               <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-3">
                 {/* Lista Productos */}
@@ -46,7 +42,7 @@ const Carrito = () => {
               </ul>
               <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
                 {/* Domicilio */}
-                <div className="w-full bg-gray-300 mt-5 shadow-sm shadow-gray-400">
+                <div className="w-full bg-gray-200 mt-5 shadow-sm shadow-gray-500">
                   <div className="flex flex-col p-3">
                     <h3 className="font-bold text-lg py-2">Domicilio</h3>
                     <hr className="text-gray-700 pb-2" />
@@ -62,7 +58,7 @@ const Carrito = () => {
                   </div>
                 </div>
                 {/* Resumen a pagar */}
-                <div className="w-full bg-white mt-2 shadow-sm shadow-gray-400">
+                <div className="w-full bg-white mt-2 shadow-sm shadow-gray-500">
                   <div className="flex flex-col p-3">
                     <h3 className="font-bold text-lg pb-2">Resumen</h3>
                     <hr className="text-gray-700 pb-2" />
