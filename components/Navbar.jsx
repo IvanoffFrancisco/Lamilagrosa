@@ -35,29 +35,29 @@ const Navbar = () => {
         </Link>
 
         <div>
-          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 uppercase">
+          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16">
             <Link href="/">
-              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
                 Inicio
               </li>
             </Link>
             <Link href="/menu">
-              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
                 Menu
               </li>
             </Link>
             <Link href="/nosotros">
-              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
                 Nosotros
               </li>
             </Link>
             <Link href="/locales">
-              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
                 Locales
               </li>
             </Link>
             <Link href="/contacto">
-              <li className="hover:ring ring-blue-400 px-2 rounded-sm ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
                 Contacto
               </li>
             </Link>
@@ -82,12 +82,12 @@ const Navbar = () => {
           ) : (
             <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">
               <Link href="/login">
-                <a className="md:text-xs font-semibold tracking-widest hover:ring-1 ring-blue-600 px-1 py-1 rounded-md ease-in duration-200">
+                <a className="md:text-sm p-1 tracking-widest hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
                   Iniciá sesión
                 </a>
               </Link>
               <Link href="/register">
-                <button className="bg-blue-600 text-white py-1.5 md:py-1 md:px-2 md:text-xs cursor-pointer rounded-md font-semibold tracking-widest hover:bg-white hover:text-black hover:ring-1 ring-blue-600 px-1 ease-in duration-200 lg:mr-5 ">
+                <button className="bg-blue-600 text-white p-2 md:py-2 md:px-3 md:text-xs cursor-pointer rounded-full  font-semibold tracking-widest hover:bg-white hover:text-blue-800 hover:ring-2 ring-blue-600 ease-in duration-200 lg:mr-5 ">
                   Registrate
                 </button>
               </Link>
@@ -150,7 +150,7 @@ const Navbar = () => {
                 </a>
               </Link>
               <Link href="/register">
-                <button className="flex bg-blue-600 text-white py-1.5 px-4 lg:text-xs cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-2 border-blue-600 ease-in duration-200 lg:mr-5 ">
+                <button className="flex bg-blue-600 text-white py-1.5 px-4 lg:text-xs cursor-pointer rounded-lg font-semibold tracking-widest hover:bg-white hover:text-black border-1 border-blue-600 ease-in duration-200 lg:mr-5 ">
                   Registrate
                 </button>
               </Link>

@@ -1,4 +1,5 @@
 import Articulo1 from "../components/Articulo1";
+import Articulo2 from "../components/Articulo2";
 import Carrusel from "../components/Carrusel";
 import Layout from "../components/Layout";
 
@@ -19,6 +20,8 @@ export default function Home() {
         images={images}
       />
       <Articulo1 />
+      <hr className="my-4"></hr>
+      <Articulo2 />
     </Layout>
   );
 }
