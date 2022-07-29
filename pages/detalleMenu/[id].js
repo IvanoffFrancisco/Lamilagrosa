@@ -465,11 +465,11 @@ export default function DetalleProducto(props) {
                   <option value="3">3</option>
                   <option value="4">4</option>
                   <option value="5">5</option>
-                  <option value="2">6</option>
-                  <option value="3">7</option>
-                  <option value="4">8</option>
-                  <option value="5">9</option>
-                  <option value="5">10</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
                 </select>
               </div>
 
@@ -497,9 +497,9 @@ export default function DetalleProducto(props) {
               </button>
               <button
                 onClick={() => Router.push("/menu")}
-                className="w-1/2 lg:w-full font-semibold text-sm tracking-widest bg-blue-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-blue-900 mt-10"
+                className="w-1/2 font-semibold text-sm tracking-widest bg-blue-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-blue-900 mt-10"
               >
-                Volver al menu
+                Menú
               </button>
             </div>
           </form>
