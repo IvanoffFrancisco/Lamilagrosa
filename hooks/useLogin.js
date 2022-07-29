@@ -44,9 +44,9 @@ export const useLogin = () => {
         setUserGlobal(respuesta);
         setIslogged(true);
 
-        localStorage.setItem("LMG-user", JSON.stringify(respuesta));
+        // localStorage.setItem("LMG-user", JSON.stringify(respuesta));
 
-        localStorage.setItem("LMG-isLogged", true);
+        // localStorage.setItem("LMG-isLogged", true);
 
         // localStorage.setItem("user", respuesta.user);
         // localStorage.setItem("email", respuesta.email);
