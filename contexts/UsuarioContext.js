@@ -7,9 +7,18 @@ export const UsuarioProvider = ({ children }) => {
   const [islogged, setIslogged] = useState(false);
 
   useEffect(() => {
-    setUserGlobal(JSON.parse(localStorage.getItem("LMG-user")));
-    setIslogged(localStorage.getItem("LMG-isLogged"));
+    const user = JSON.parse(localStorage.getItem("LMG-user")) ?? {};
+    setUserGlobal(user);
+    if (Object.keys(user).length > 0) {
+      setIslogged(true);
+    }
   }, []);
+
+  useEffect(() => {
+    if (Object.keys(userGlobal).length > 0) {
+      localStorage.setItem("LMG-user", JSON.stringify(userGlobal));
+    }
+  }, [userGlobal]);
 
   return (
     <UsuarioContext.Provider
