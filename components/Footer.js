@@ -8,7 +8,7 @@ import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer>
-      <div className="w-full bg-blue-600 mt-10">
+      <div className="w-full bg-blue-600">
         <div className="max-w-[85%] mx-auto min-h-[210px] py-5 flex flex-col items-center md:flex-row md:justify-center md:gap-x-12 md:items-center md:min-h-[250px] relative">
           <div className="w-auto h-auto flex items-center gap-4 ">
             <Link href="/">
