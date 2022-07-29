@@ -62,7 +62,7 @@ const Carrito = () => {
                       <p className="text-xs">
                         En tu domicilio:{" "}
                         <span className="text-blue-600 capitalize">
-                          {direccion}
+                          {userGlobal?.direcciones?.[0].calle}
                         </span>
                       </p>
                       <p
@@ -122,7 +122,7 @@ const Carrito = () => {
                           <span className="font-semibold">
                             Envío a:{" "}
                             <span className="text-blue-600 capitalize">
-                              {direccion}
+                              {userGlobal?.direcciones?.[0].calle}
                             </span>
                           </span>
                           <span className="font-bold">$200</span>{" "}
