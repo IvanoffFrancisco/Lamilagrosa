@@ -1,5 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
+import Router from "next/router";
+
 import { CarritoContext } from "../../contexts/CarritoContext";
 
 import Layout from "../../components/Layout";
@@ -220,7 +222,7 @@ export default function DetalleProducto(props) {
       cantidad,
       guarnicion: guarnicion.nombre,
       imagenGuarnicion: guarnicion.imagen,
-      precio: detalleProducto.precio * cantidad,
+      precio: detalleProducto.precio,
       id: Date.now().toString(36),
     };
     agregarCarrito(pedido);
@@ -246,18 +248,20 @@ export default function DetalleProducto(props) {
     }, 2500);
   };
 
+  const volverAlMenu = () => {};
+
   return (
     <Layout pagina="Detalle de productos" carrito={carrito}>
-      <main className="w-full h-auto mt-20">
+      <main className="w-full h-auto mt-20 pb-10">
         <h2 className="text-center py-3 md:py-5 text-xl md:text-2xl font-semibold bg-blue-500 text-white shadow-sm shadow-blue-900">
           Personalizá
           <span className="text-black pl-3 ont-bold">
             Tu<span className="text-red-600">Mila</span>Grosa
           </span>
         </h2>
-        <div className="max-w-[85%] mx-auto w-full flex flex-col md:flex-row md:justify-center md:gap-x-3 pt-3">
+        <div className="max-w-[85%] mx-auto w-full flex flex-col lg:flex-row lg:justify-center lg:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
-            <h2 className="text-center text-2xl font-semibold md:hidden">
+            <h2 className="text-center text-2xl font-semibold lg:hidden">
               {detalleProducto?.nombre}
             </h2>
             <TiHeartOutline
@@ -268,7 +272,7 @@ export default function DetalleProducto(props) {
           </div>
 
           <div>
-            <span className="flex justify-start pb-4 text-xs 2xl:text-sm md:hidden">
+            <span className="flex justify-start pb-4 text-xs 2xl:text-sm lg:hidden">
               (
               {ingredientes?.map((ingrediente) => ingrediente?.tipo).join(", ")}
               )
@@ -276,7 +280,7 @@ export default function DetalleProducto(props) {
           </div>
 
           {/* columna izquierda */}
-          <section className="w-full md:w-1/2 lg:w-3/5 flex flex-col gap-2 ">
+          <section className="w-full lg:w-3/5 flex flex-col gap-2 ">
             <article className="w-full shadow-sm shadow-gray-800">
               {detalleProducto.imagen && (
                 <Image
@@ -371,20 +375,20 @@ export default function DetalleProducto(props) {
           {/* columna derecha */}
           <form
             onSubmit={handleSubmit}
-            className="w-full md:w-1/2 md:px-2 lg:w-2/5"
+            className="w-full mt-5 lg:px-2 lg:w-2/5"
           >
             <div className="flex justify-between">
-              <h2 className="text-start text-2xl xl:text-3xl hidden md:block font-bold">
+              <h2 className="text-start text-2xl xl:text-3xl hidden lg:block font-bold">
                 {detalleProducto?.nombre}
               </h2>
               <TiHeartOutline
                 size="30px"
-                className="cursor-pointer hidden md:block"
+                className="cursor-pointer hidden lg:block"
                 onClick={() => alert("hola")}
               />
             </div>
 
-            <span className="md:flex justify-start pb-2 text-xs 2xl:text-sm hidden ">
+            <span className="lg:flex justify-start pb-2 text-xs 2xl:text-sm hidden lg:block">
               (
               {ingredientes?.map((ingrediente) => ingrediente?.tipo).join(", ")}
               )
@@ -488,11 +492,14 @@ export default function DetalleProducto(props) {
                   <Mensaje mensaje={mensaje} tipoError={tipoError} />
                 </div>
               )}
-              <button
-                id="añadir"
-                className="w-full font-black text-sm md:text-md tracking-widest bg-red-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-red-900"
-              >
+              <button className="w-full md:w-2/3 lg:w-full font-black text-sm tracking-widest bg-red-600 text-white py-3 md:py-4 px-10 rounded-md shadow-sm shadow-red-900">
                 Añadir al Carrito
+              </button>
+              <button
+                onClick={() => Router.push("/menu")}
+                className="w-1/2 lg:w-full font-semibold text-sm tracking-widest bg-blue-600 text-white py-2 md:py-3 px-10 rounded-md shadow-sm shadow-blue-900 mt-10"
+              >
+                Volver al menu
               </button>
             </div>
           </form>
