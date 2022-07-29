@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Layout from "../components/Layout";
 import LocalImage from "../public/img/Local1.png";
 import LocalImage2 from '../public/img/Local2.jpg';
 import LocalImage3 from '../public/img//Local3.jpg';
@@ -9,7 +10,8 @@ import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 
 export default function infoCards() {
     return (
-    <div className="min-h-screen min-w-fit bg-sky-800 overflow-auto">
+        <Layout>
+    <div className="min-h-screen mt-20 min-w-fit bg-blue-700 overflow-auto">
         <div className="mx-auto mt-10 lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
         <Image
             src={LocalImage}
@@ -380,5 +382,6 @@ export default function infoCards() {
         </div>
         </div>
     </div>
+    </Layout>
 );
 }
