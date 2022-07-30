@@ -101,15 +101,13 @@ const Navbar = () => {
                         </div>  
                       <div className={navUser ? "fixed" : "hidden fixed  ease-in duration-300"}>
                             <ul className="mt-10 bg-white fixed w-[150px] text-center rounded-lg">
-                              <Link href="#">
-                                <li className="py-3 border-b-2 hover:bg-blue-400 ">Editar Perfil</li>
+                              <Link href="profile">
+                                <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer">Perfil</li>
                               </Link>
-                              <Link href="#">
-                                <li className="py-3 border-b-2 hover:bg-blue-400 ">Historial</li>
+                              <Link href="historial">
+                                <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer ">Historial</li>
                               </Link>
-                              <Link href="#">
-                                <li className="py-3 border-b-2 hover:bg-red-600 rounded-b-md">Cerrar Sesión</li>
-                              </Link>
+                                <li className="py-3 border-b-2 hover:bg-red-600 rounded-b-md cursor-pointer">Cerrar Sesión</li>
                             </ul>
                     </div>
                 </div>
