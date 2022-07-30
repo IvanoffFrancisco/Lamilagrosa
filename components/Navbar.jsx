@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
-import { AiOutlineMenu, AiOutlineClose, AiFillInstagram } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineClose, AiFillInstagram,AiOutlineUser } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 import { BiUserCircle } from "react-icons/bi";
 
@@ -12,6 +12,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
   const { userGlobal, islogged } = useContext(UsuarioContext);
   const { carrito } = useContext(CarritoContext);
+  const [navUser, setNavUser] = useState(false);
 
   const handleNav = () => {
     setNav(!nav);
@@ -71,13 +72,48 @@ const Navbar = () => {
               <div className="flex flex-col text-center">
                 <p className="text-[10px]">Bienvenido</p>
                 <p className="text-[10px] font-bold capitalize ">
-                  {userGlobal?.user}
+                  {userGlobal.user}
                 </p>
-              </div>
-              <BiUserCircle
-                size="32"
-                className="text-gray-600 hover:text-blue-600 hover:scale-105 ease-in duration-200 cursor-pointer mr-2"
-              />
+                </div>
+                  <div
+                      className="flex ml-3">
+                      <AiOutlineUser
+                        size="32"
+                        className="text-gray-600 hover:text-blue-600 hover:scale-105 ease-in duration-200 cursor-pointer"
+                        onClick={() => setNavUser(!navUser)}
+                        />
+                        <div>
+                          {navUser ? <Image
+                        width="25"
+                        height="25"
+                        src="/img/arrowd.svg"
+                        className="cursor-pointer"
+                        onClick={() => setNavUser(!navUser)}
+                        />
+                        : 
+                        <Image
+                        width="25"
+                        height="25"
+                        src="/img/arrowl2.svg"
+                        className="cursor-pointer"
+                        onClick={() => setNavUser(!navUser)}
+                        />
+                        }
+                        </div>  
+                      <div className={navUser ? "fixed" : "hidden fixed  ease-in duration-300"}>
+                            <ul className="mt-10 bg-white fixed w-[150px] text-center rounded-lg">
+                              <Link href="#">
+                                <li className="py-3 border-b-2 hover:bg-blue-400 ">Editar Perfil</li>
+                              </Link>
+                              <Link href="#">
+                                <li className="py-3 border-b-2 hover:bg-blue-400 ">Historial</li>
+                              </Link>
+                              <Link href="#">
+                                <li className="py-3 border-b-2 hover:bg-red-600 rounded-b-md">Cerrar Sesión</li>
+                              </Link>
+                            </ul>
+                    </div>
+                </div>
             </div>
           ) : (
             <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">

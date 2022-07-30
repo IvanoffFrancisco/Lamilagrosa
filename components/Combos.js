@@ -80,7 +80,7 @@ export default function Combos() {
             {islogged ? (
               <Link href="menu">
                 <button className="mt-2 p-2 w-40 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
-                  Combo 1
+                  Combo 2
                 </button>
               </Link>
             
@@ -119,7 +119,7 @@ export default function Combos() {
             {islogged ? (
               <Link href="menu">
                 <button className="mt-2 p-2 w-40 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
-                  Combo 1
+                  Combo 3
                 </button>
               </Link>
             
@@ -156,7 +156,7 @@ export default function Combos() {
               {islogged ? (
                 <Link href="menu">
                   <button className="mt-2 p-2 w-40 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
-                    Combo 1
+                    Combo 4
                   </button>
                 </Link>
             ) 

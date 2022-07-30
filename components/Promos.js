@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, {useState, useContext } from 'react'
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export default function Promos() {
                 <p className="font-semibold text-md text-white">
                   Veni los miercoles y con tu compra en nuestro vegano obtenes hasta un 20% de descuento en tu pedido!
                 </p>
-                <p className="font-bold text-sm text-white">
+                <p className="font-bold text-sm text-green-900">
                   (Solo valido si el pedido es en efectivo)
                 </p>
               </div>
@@ -72,7 +72,7 @@ export default function Promos() {
                 <p className="font-semibold text-md text-white">
                   Los Viernes y Sabados con tu compra en nuestro menu de Sandwiches obtene hasta un 15% de descuento en tu pedido!
                 </p>
-                <p className="font-bold text-sm text-white">
+                <p className="font-bold text-sm text-red-900">
                   (Solo valido pagos con tarjeta de debito)
                 </p>
               </div>
@@ -117,13 +117,13 @@ export default function Promos() {
                 <p className="font-semibold text-md text-white">
                   Con la compra en nuestro menu de napolitanas obtene hasta un 15% de descuento en tu pedido, venite!
                 </p>
-                <p className="font-bold text-sm text-white">
+                <p className="font-bold text-sm text-blue-900">
                   (Solo valido si el pedido es en efectivo)
                 </p>
               </div>
             {islogged ? (
               <Link href="menu">
-                <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Promo Amigo</button>
+                <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Promo Amigos</button>
               </Link>
             ) 
             : (
@@ -157,7 +157,7 @@ export default function Promos() {
                 <p className="font-semibold text-md text-white">
                   Los Domingos veni a disfrutar con tu pareja y obtene hasta un 15% de descuento en tu pedido, pasate por nuestro local!
                 </p>
-                <p className="font-bold text-sm text-white">
+                <p className="font-bold text-sm text-pink-900">
                   (Solo valido pagos con tarjeta de debito)
                 </p>
               </div>

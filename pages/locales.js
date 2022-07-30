@@ -381,6 +381,9 @@ export default function infoCards() {
             </div>
         </div>
         </div>
+        <div className="m-auto text-center my-20">
+            link reseñas
+        </div>
     </div>
     </Layout>
 );
