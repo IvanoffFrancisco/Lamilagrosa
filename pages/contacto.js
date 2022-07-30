@@ -75,7 +75,7 @@ export default function contact() {
                       name="usuario"
                       id="usuario"
                       className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
-                      placeholder="Nonbre"
+                      placeholder="Nombre"
                       required
                     />
                     <input
