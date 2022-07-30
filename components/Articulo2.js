@@ -12,7 +12,7 @@ export default function Articulo2() {
         {islogged ? (
             <div className='my-12'>
                 <h1 className='text-3xl font-extrabold text-red-800 py-3'>Bienvenido, {userGlobal?.user}!!</h1>
-                <h2 className='font-bold text-2xl text-black'>Disfruta de las promociones y combos mas grosos de la La<span className='text-red-500'>Mila</span>Grosa</h2>
+                <h2 className='font-bold text-2xl text-black'>Disfruta de las promociones y combos mas grosos de La<span className='text-red-500'>Mila</span>Grosa</h2>
             </div>
             ) 
             : (
