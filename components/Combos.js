@@ -1,4 +1,4 @@
-import React, {useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/dist/client/image";
 import Link from "next/link";

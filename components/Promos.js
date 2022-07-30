@@ -1,4 +1,4 @@
-import React, {useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,7 +78,7 @@ export default function Promos() {
               </div>
             {islogged ? (
               <Link href="menu">
-                <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">Promo Saludable</button>
+                <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">Promo Sandwiches</button>
               </Link>
             ) 
             : (
@@ -110,7 +110,7 @@ export default function Promos() {
                     <FaPercent className="text-sm text-blue-800 mt-auto mb-auto"/>
                 </div>
               <div className="m-auto text-center -mr-32">
-                <h3 className="text-3xl -mt-4 font-bold text-blue-900">Promo Los Pibes</h3>
+                <h3 className="text-3xl -mt-4 font-bold text-blue-900">Promo Amigos</h3>
                 <p className="font-semibold text-md text-white">
                   Los Martes y jueves hacete el groso e invita a un amigo
                 </p>
@@ -123,7 +123,7 @@ export default function Promos() {
               </div>
             {islogged ? (
               <Link href="menu">
-                <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Promo Saludable</button>
+                <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Promo Amigo</button>
               </Link>
             ) 
             : (
@@ -153,7 +153,7 @@ export default function Promos() {
                     <FaPercent className="text-sm text-pink-600 mt-auto mb-auto"/>
                 </div>
                 <div className="m-auto text-center -mr-32">
-                <h3 className="text-3xl -mt-4 font-bold text-pink-900 py-2">Promo Sandwiches</h3>
+                <h3 className="text-3xl -mt-4 font-bold text-pink-900 py-2">Promo Romantica</h3>
                 <p className="font-semibold text-md text-white">
                   Los Domingos veni a disfrutar con tu pareja y obtene hasta un 15% de descuento en tu pedido, pasate por nuestro local!
                 </p>
@@ -163,7 +163,7 @@ export default function Promos() {
               </div>
             {islogged ? (
               <Link href="menu">
-                <button className="mt-4 p-2 font-bold text-pink-800 border-2 border-pink-800 bg-white rounded-2xl hover:bg-pink-600 hover:text-white hover:border-pink-800">Promo Saludable</button>
+                <button className="mt-4 p-2 font-bold text-pink-800 border-2 border-pink-800 bg-white rounded-2xl hover:bg-pink-600 hover:text-white hover:border-pink-800">Promo Romantica</button>
               </Link>
             ) 
             : (

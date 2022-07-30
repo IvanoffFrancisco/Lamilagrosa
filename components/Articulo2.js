@@ -1,4 +1,4 @@
-import React, {useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import Combos from './Combos'
 import Promos from './Promos'
 import { UsuarioContext } from "../contexts/UsuarioContext";
