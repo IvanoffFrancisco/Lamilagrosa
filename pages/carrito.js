@@ -6,21 +6,19 @@ import { CarritoContext } from "../contexts/CarritoContext";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
-  const { carrito } = useContext(CarritoContext);
+  const { carrito, totalCarrito } = useContext(CarritoContext);
   const [direccion, setDireccion] = useState(
     userGlobal?.direcciones?.[0].calle
   );
   const [editarDomicilio, seteditarDomicilio] = useState(false);
-  const [subTotal, setSubTotal] = useState(
-    carrito?.reduce(
-      (previousValue, currentValue) =>
-        previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
-      0
-    )
-  );
+  const [subTotal, setSubTotal] = useState(totalCarrito);
 
   const hendleDomicilio = (e) => {
     setDireccion(e.target.value);
+  };
+
+  const actualizaSubTotal = () => {
+    setSubTotal(totalCarrito);
   };
 
   return (
@@ -50,7 +48,11 @@ const Carrito = () => {
                 <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-2">
                   {/* Lista Productos */}
                   {carrito?.map((producto) => (
-                    <ProductCard producto={producto} key={producto.id} />
+                    <ProductCard
+                      producto={producto}
+                      key={producto.id}
+                      actualizaSubTotal={actualizaSubTotal}
+                    />
                   ))}
                 </ul>
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
@@ -113,11 +115,20 @@ const Carrito = () => {
                       {/* Sub Total */}
                       <div className="flex justify-between mt-1">
                         <span className="font-semibold ">Sub Total</span>
-                        <span className="font-bold">${subTotal}</span>
+                        <span className="font-bold">
+                          $
+                          {carrito?.reduce(
+                            (previousValue, currentValue) =>
+                              previousValue +
+                              parseInt(currentValue.precio) *
+                                currentValue.cantidad,
+                            0
+                          )}
+                        </span>
                       </div>
 
                       {/* Envio */}
-                      {subTotal < 5000 ? (
+                      {totalCarrito < 5000 ? (
                         <div className="flex justify-between mt-1">
                           <span className="font-semibold">
                             Envío a:{" "}
@@ -130,9 +141,14 @@ const Carrito = () => {
                       ) : (
                         <div className="flex justify-between mt-1">
                           <span className="font-semibold">
-                            Envío:{" "}
+                            Envío a:{" "}
+                            <span className="text-blue-600 capitalize">
+                              {userGlobal?.direcciones?.[0].calle}
+                            </span>{" "}
                           </span>
-                          <span className="font-semibold text-xs">Sin Cargo</span>{" "}
+                          <span className="font-semibold text-xs">
+                            Sin Cargo
+                          </span>{" "}
                         </div>
                       )}
 
@@ -148,7 +164,7 @@ const Carrito = () => {
                           Total
                         </span>
                         <span className="font-bold pb-2 text-red-600">
-                          {subTotal < 5000 ? subTotal + 200 : subTotal}
+                          {totalCarrito < 5000 ? subTotal + 200 : subTotal}
                         </span>
                       </div>
                       <button className="w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto my-2 bg-red-600 text-white py-2 rounded-md font-semibold">
