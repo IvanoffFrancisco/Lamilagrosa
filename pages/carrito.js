@@ -3,22 +3,19 @@ import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
+import EnvioCard from "../components/EnvioCard";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
   const { carrito, totalCarrito } = useContext(CarritoContext);
+
   const [direccion, setDireccion] = useState(
     userGlobal?.direcciones?.[0].calle
   );
   const [editarDomicilio, seteditarDomicilio] = useState(false);
-  const [subTotal, setSubTotal] = useState(totalCarrito);
 
   const hendleDomicilio = (e) => {
     setDireccion(e.target.value);
-  };
-
-  const actualizaSubTotal = () => {
-    setSubTotal(totalCarrito);
   };
 
   return (
@@ -51,47 +48,17 @@ const Carrito = () => {
                     <ProductCard
                       producto={producto}
                       key={producto.id}
-                      actualizaSubTotal={actualizaSubTotal}
                     />
                   ))}
                 </ul>
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
                   {/* Domicilio */}
-                  <div className="w-full bg-white mt-3 lg:mt-5 shadow-sm shadow-gray-500 rounded-sm">
-                    <div className="flex flex-col p-3">
-                      <h3 className="font-semibold pb-2">Recibí tu pedido</h3>
-                      <hr className="text-gray-700 pb-2" />
-                      <p className="text-xs">
-                        En tu domicilio:{" "}
-                        <span className="text-blue-600 capitalize">
-                          {userGlobal?.direcciones?.[0].calle}
-                        </span>
-                      </p>
-                      <p
-                        onClick={() => seteditarDomicilio(true)}
-                        className="text-[10px] text-blue-600 cursor-pointer pt-1"
-                      >
-                        Editar o elegir otro
-                      </p>
-                      <p className="text-xs text-red-600 text-center pt-2">
-                        Con tu compra superior a $5000 el envio es sin cago
-                      </p>
-
-                      {/* editar domicilio */}
-                      <div
-                        className={`w-full ${editarDomicilio ? "" : "hidden"}`}
-                      >
-                        <label className="text-xs">Edita tu domicilio: </label>
-                        <input
-                          onChange={hendleDomicilio}
-                          type="text"
-                          className="bg-gray-100 outline-none text-sm py-1.5 pl-2 rounded-sm w-full text-blue-600 capitalize"
-                          value={direccion}
-                          laceholder="Domicilio"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  <EnvioCard
+                    userGlobal={userGlobal}
+                    hendleDomicilio={hendleDomicilio}
+                    direccion={direccion}
+                    editarDomicilio={editarDomicilio}
+                  />
 
                   <div className="w-full bg-white mt-3 lg:mt-2 shadow-sm shadow-gray-500 rounded-sm">
                     <div className="flex flex-col p-3">
@@ -128,7 +95,12 @@ const Carrito = () => {
                       </div>
 
                       {/* Envio */}
-                      {totalCarrito < 5000 ? (
+                      {carrito?.reduce(
+                        (previousValue, currentValue) =>
+                          previousValue +
+                          currentValue.precio * currentValue.cantidad,
+                        0
+                      ) < 5000 ? (
                         <div className="flex justify-between mt-1">
                           <span className="font-semibold">
                             Envío a:{" "}
@@ -164,7 +136,20 @@ const Carrito = () => {
                           Total
                         </span>
                         <span className="font-bold pb-2 text-red-600">
-                          {totalCarrito < 5000 ? subTotal + 200 : subTotal}
+                          $
+                          {totalCarrito < 5000
+                            ? carrito?.reduce(
+                                (previousValue, currentValue) =>
+                                  previousValue +
+                                  currentValue.precio * currentValue.cantidad,
+                                0
+                              ) +200
+                            : carrito?.reduce(
+                                (previousValue, currentValue) =>
+                                  previousValue +
+                                  currentValue.precio * currentValue.cantidad,
+                                0
+                              ) }
                         </span>
                       </div>
                       <button className="w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto my-2 bg-red-600 text-white py-2 rounded-md font-semibold">
