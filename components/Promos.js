@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useContext } from 'react'
+import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/image";
 import Link from "next/link";
 import PromoImg from '../public/img/PromoImg.png'
@@ -8,6 +9,9 @@ import PromoImg4 from '../public/img/PromoImg4.png'
 import { FaPercent } from "react-icons/fa";
 
 export default function Promos() {
+
+  const { userGlobal, islogged } = useContext(UsuarioContext);
+
   return (
     <>
       <div className="my-auto ml-44">
@@ -32,9 +36,16 @@ export default function Promos() {
                   (Solo valido si el pedido es en efectivo)
                 </p>
               </div>
-              <Link href="login">
-                <button className="mt-4 p-2 font-bold text-green-800 border-2 border-green-800 bg-white rounded-2xl hover:bg-green-600 hover:text-white hover:border-green-800">Obtener Promo</button>
+            {islogged ? (
+              <Link href="menu">
+                <button className="mt-4 p-2 font-bold text-green-800 border-2 border-green-800 bg-white rounded-2xl hover:bg-green-600 hover:text-white hover:border-green-800">Promo Saludable</button>
               </Link>
+            ) 
+            : (
+            <Link href="login">
+              <button className="mt-4 p-2 font-bold text-green-800 border-2 border-green-800 bg-white rounded-2xl hover:bg-green-600 hover:text-white hover:border-green-800">Acceder Promo</button>
+            </Link>
+            )}  
             </div>
             <div className="w-full text-center m-auto -mr-12 md:w-1/2 p-4 md:p-0">
               <Image 
@@ -65,9 +76,16 @@ export default function Promos() {
                   (Solo valido pagos con tarjeta de debito)
                 </p>
               </div>
-              <Link href="login">
-                <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">Obtener Promo</button>
+            {islogged ? (
+              <Link href="menu">
+                <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">Promo Saludable</button>
               </Link>
+            ) 
+            : (
+            <Link href="login">
+              <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">Acceder Promo</button>
+            </Link>
+            )} 
             </div>
             <div className="w-full text-center m-auto -mr-12 md:w-1/2 p-4 md:p-0">
               <Image 
@@ -103,9 +121,16 @@ export default function Promos() {
                   (Solo valido si el pedido es en efectivo)
                 </p>
               </div>
-              <Link href="login">
-                <button className="mt-2 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Obtener Promo</button>
+            {islogged ? (
+              <Link href="menu">
+                <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Promo Saludable</button>
               </Link>
+            ) 
+            : (
+            <Link href="login">
+              <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">Acceder Promo</button>
+            </Link>
+            )} 
             </div>
             <div className="w-fit text-center m-auto -mr-8 md:w-1/2 p-4 md:p-0">
               <Image 
@@ -136,9 +161,16 @@ export default function Promos() {
                   (Solo valido pagos con tarjeta de debito)
                 </p>
               </div>
-              <Link href="login">
-                <button className="mt-4 p-2 font-bold text-pink-800 border-2 border-pink-800 bg-white rounded-2xl hover:bg-pink-600 hover:text-white hover:border-pink-800">Obtener Promo</button>
+            {islogged ? (
+              <Link href="menu">
+                <button className="mt-4 p-2 font-bold text-pink-800 border-2 border-pink-800 bg-white rounded-2xl hover:bg-pink-600 hover:text-white hover:border-pink-800">Promo Saludable</button>
               </Link>
+            ) 
+            : (
+            <Link href="login">
+              <button className="mt-4 p-2 font-bold text-pink-800 border-2 border-pink-800 bg-white rounded-2xl hover:bg-pink-600 hover:text-white hover:border-pink-800">Acceder Promo</button>
+            </Link>
+            )}
             </div>
             <div className="w-full text-center m-auto -mr-12 md:w-1/2 p-4 md:p-0">
               <Image 
