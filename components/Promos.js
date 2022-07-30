@@ -190,13 +190,5 @@ export default function Promos() {
 }
 
 
-// La milagrosa promos.
-
-// *Promociones:
-
-// 1-Saludable: Miércoles verde, si venís a nuestro local, con la compra de dos comidas de nuestro menú vegano tenés un 40% con tu compra!
-// 2-Hamburguesas: Los Viernes y Sábados, con la compra de 4 comidas de nuestro menú de hamburguesas te llevas un 30% de descuento con tu compra.
-// 3-Los pibes: Los martes y jueves, con la compra 2 milanesas caballo, te llevas un descuento del 25% y dos botellitas corona de regalo con tu compra.
-// 4-Parejas: Los domingos, la promo de parejas te invita a probar dos comidas de nuestro menú de hamburguesas o dos milanesas a la napolitana, te llevas un 30% de descuento con tu comida y dos latas Patagonia de regalo.
 
 

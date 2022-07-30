@@ -176,10 +176,3 @@ export default function Combos() {
 }
 
 
-
-// *Combos:
-
-// 1-Combo familiar: 4 hamburguesas con una porción de papas con cheddar a "definir precio".
-// 2-Combo amigo: Dos comidas iguales a elección con guarnición a elección al precio de "definir precio".
-// 3-Combo pareja: Dos milanesas napolitanas con guarnición a elegir al precio de "definir precio".
-// 4-Combo saludable: Dos comidas veganas iguales con guarnición a elegir al precio de "definir precio".
