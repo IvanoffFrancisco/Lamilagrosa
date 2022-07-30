@@ -20,6 +20,15 @@ export const CarritoProvider = ({ children }) => {
     setCarrito([...carrito, pedido]);
   };
 
+  const totalCarrito = () => {
+    const sumaCarrito = carrito?.reduce(
+      (previousValue, currentValue) =>
+        previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+      0
+    );
+    return sumaCarrito;
+  };
+
   const eliminarCarrito = (id) => {
     const respuesta = confirm("Deseas eliminar este producto?");
     if (respuesta) {
@@ -32,7 +41,13 @@ export const CarritoProvider = ({ children }) => {
 
   return (
     <CarritoContext.Provider
-      value={{ carrito, setCarrito, agregarCarrito, eliminarCarrito }}
+      value={{
+        carrito,
+        setCarrito,
+        agregarCarrito,
+        eliminarCarrito,
+        totalCarrito,
+      }}
     >
       {children}
     </CarritoContext.Provider>
