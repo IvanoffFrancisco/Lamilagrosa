@@ -372,7 +372,11 @@ export default function DetalleProducto(props) {
           </section>
 
           {/* columna derecha */}
-          <form className="w-full mt-5 lg:px-2 lg:w-2/5">
+
+          <form
+            onSubmit={handleSubmit}
+            className="w-full mt-5 lg:px-2 lg:w-2/5"
+          >
             <div className="flex justify-between">
               <h2 className="text-start text-2xl xl:text-3xl hidden lg:block font-bold">
                 {detalleProducto?.nombre}
@@ -489,16 +493,13 @@ export default function DetalleProducto(props) {
                 </div>
               )}
 
-              <button
-                onClick={handleSubmit}
-                className="w-full d:w-2/3 lg:w-full font-black text-sm tracking-widest bg-red-600 text-white py-3 md:py-4 px-10 rounded-md shadow-sm shadow-red-900"
-              >
+              <button className="w-full d:w-2/3 lg:w-full font-black text-sm tracking-widest bg-red-600 text-white py-3 md:py-4 px-10 rounded-md shadow-sm shadow-red-900 mb-10">
                 Añadir al Carrito
               </button>
               <Link href="/menu">
-                <button className="px-5 font-semibold text-sm tracking-widest bg-blue-600 text-white py-2 md:py-3 rounded-md shadow-sm shadow-blue-900 mt-10 text-center">
+                <a className="px-5 font-semibold text-sm tracking-widest bg-blue-600 text-white py-2 md:py-3 rounded-md shadow-sm shadow-blue-900 text-center">
                   Menú
-                </button>
+                </a>
               </Link>
             </div>
           </form>
