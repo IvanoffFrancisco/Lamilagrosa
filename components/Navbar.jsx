@@ -6,7 +6,6 @@ import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { AiOutlineMenu, AiOutlineClose, AiFillInstagram,AiOutlineUser } from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
-import { BiUserCircle } from "react-icons/bi";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
