@@ -101,7 +101,7 @@ const Navbar = () => {
                         </div>  
                       <div className={navUser ? "fixed" : "hidden fixed  ease-in duration-300"}>
                             <ul className="mt-10 bg-white fixed w-[150px] text-center rounded-lg">
-                              <Link href="profile">
+                              <Link href="perfil">
                                 <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer">Perfil</li>
                               </Link>
                               <Link href="historial">
