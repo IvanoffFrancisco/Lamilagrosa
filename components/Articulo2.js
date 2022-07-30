@@ -18,7 +18,7 @@ export default function Articulo2() {
             : (
             <div className='my-12'>
                 <h1 className='font-bold text-3xl text-red-800 py-4'>Inicia Sesion o Registrate para acceder a estas bombas!!!</h1>
-                <h2 className='font-bold text-2xl text-black'>Las promociones y combos mas grosos de la La<span className='text-red-500'>Mila</span>Grosa</h2>
+                <h2 className='font-bold text-2xl text-black'>Las promociones y combos mas grosos de La<span className='text-red-500'>Mila</span>Grosa</h2>
             </div>
             )}
         <Promos />
