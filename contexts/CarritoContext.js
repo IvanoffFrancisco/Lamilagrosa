@@ -20,13 +20,15 @@ export const CarritoProvider = ({ children }) => {
     setCarrito([...carrito, pedido]);
   };
 
-  const totalCarrito = () => {
-    const sumaCarrito = carrito?.reduce(
-      (previousValue, currentValue) =>
-        previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
-      0
-    );
-    return sumaCarrito;
+  const actualizarCarrito = (pedido) => {
+    const carritoActualizado = carrito?.map((elemento) => {
+      if (elemento.id === pedido.id) {
+        return pedido;
+      } else {
+        return elemento;
+      }
+    });
+    setCarrito(carritoActualizado);
   };
 
   const eliminarCarrito = (id) => {
@@ -46,7 +48,7 @@ export const CarritoProvider = ({ children }) => {
         setCarrito,
         agregarCarrito,
         eliminarCarrito,
-        totalCarrito,
+        actualizarCarrito,
       }}
     >
       {children}
