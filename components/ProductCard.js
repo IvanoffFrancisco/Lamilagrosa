@@ -1,18 +1,20 @@
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-const ProductCard = ({ producto, actualizaSubTotal }) => {
-  const { eliminarCarrito } = useContext(CarritoContext);
+const ProductCard = ({ producto }) => {
+  const { eliminarCarrito, actualizarCarrito } = useContext(CarritoContext);
+  const [cantidad, setCantidad] = useState(producto.cantidad);
 
   const { menu, imagenMenu, guarnicion, imagenGuarnicion, precio, tipoMila } =
     producto;
 
   const handleChange = (e) => {
-    producto.cantidad = e.target.value;
-    actualizaSubTotal();
+    setCantidad(e.target.value);
+    producto.cantidad = parseInt(e.target.value);
+    actualizarCarrito(producto);
   };
 
   return (
@@ -65,7 +67,7 @@ const ProductCard = ({ producto, actualizaSubTotal }) => {
             onChange={handleChange}
             className="border border-gray-900 ml-1 font-bold"
             name="cantidad"
-            value={producto.cantidad}
+            value={cantidad}
           >
             <option value="1" defaultValue>
               1
@@ -83,7 +85,7 @@ const ProductCard = ({ producto, actualizaSubTotal }) => {
         </div>
         <p className="font-semibold text-lg pt-2">
           Total:
-          <span className="text-red-600"> ${precio * producto.cantidad}</span>
+          <span className="text-red-600"> ${precio * cantidad}</span>
         </p>
         <AiOutlineClose
           onClick={() => eliminarCarrito(producto.id)}
