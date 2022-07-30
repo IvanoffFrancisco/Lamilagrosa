@@ -28,7 +28,7 @@ function SideNavbar() {
             <div className=" my-4 border-b border-red-600 pb-4">
             <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-blue-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                     <CgProfile className="text-2xl text-sky-600 group-hover:text-white " />
-                <Link href="historial">
+                <Link href="perfil">
                     <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                         Editar Perfil
                     </a>
