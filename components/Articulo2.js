@@ -22,7 +22,6 @@ export default function Articulo2() {
             </div>
             )}
         <Promos />
-    <div className='border-2 border-orange-300 rounded-full min-w-screen my-20 flex justify-center text-start'></div>
         <Combos />
     </div>
     )
