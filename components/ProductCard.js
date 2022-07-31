@@ -4,24 +4,26 @@ import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-const ProductCard = ({ producto }) => {
-  const { eliminarCarrito, actualizarCarrito } = useContext(CarritoContext);
+const ProductCard = ({ producto, setSumaCarrito }) => {
+  const { eliminarCarrito, actualizarCarrito, carrito } =
+    useContext(CarritoContext);
+    
   const [cantidadMenus, setCantidadMenus] = useState(producto.cantidad);
 
-  const {
-    menu,
-    imagenMenu,
-    guarnicion,
-    imagenGuarnicion,
-    precio,
-    tipoMila,
-    cantidad,
-  } = producto;
+  const { menu, imagenMenu, guarnicion, imagenGuarnicion, precio, tipoMila } =
+    producto;
 
   const handleChange = (e) => {
     setCantidadMenus(e.target.value);
-    cantidad = parseInt(e.target.value);
+    producto.cantidad = parseInt(e.target.value);
     actualizarCarrito(producto);
+    setSumaCarrito(
+      carrito?.reduce(
+        (previousValue, currentValue) =>
+          previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+        0
+      )
+    );
   };
 
   return (

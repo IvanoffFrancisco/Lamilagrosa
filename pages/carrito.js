@@ -8,8 +8,7 @@ import ResumenCarrito from "../components/ResumenCarrito";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
-
-  const { carrito, totalCarrito } = useContext(CarritoContext);
+  const { carrito } = useContext(CarritoContext);
   const [sumaCarrito, setSumaCarrito] = useState(
     carrito?.reduce(
       (previousValue, currentValue) =>
@@ -21,9 +20,14 @@ const Carrito = () => {
     userGlobal?.direcciones?.[0].calle || ""
   );
 
+  const [metodoEnvio, setMetodoEnvio] = useState("retira");
   const [editarDomicilio, seteditarDomicilio] = useState(false);
 
-  const hendleDomicilio = (e) => {
+  const handleDomicilio = (e) => {
+    if (e.target.value==="") {
+      alert("Domicilio no valido");
+      return;
+    }
     setDireccion(e.target.value);
   };
 
@@ -53,25 +57,29 @@ const Carrito = () => {
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
                 <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-2">
                   {carrito?.map((producto) => (
-                    <ProductCard producto={producto} key={producto.id} />
+                    <ProductCard
+                      producto={producto}
+                      key={producto.id}
+                      setSumaCarrito={setSumaCarrito}
+                    />
                   ))}
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
                   <EnvioCards
                     direccion={direccion}
-                    setDireccion={setDireccion}
                     editarDomicilio={editarDomicilio}
                     seteditarDomicilio={seteditarDomicilio}
-                    hendleDomicilio={hendleDomicilio}
+                    handleDomicilio={handleDomicilio}
+                    metodoEnvio={metodoEnvio}
+                    setMetodoEnvio={setMetodoEnvio}
                   />
 
                   <ResumenCarrito
-                    userGlobal={userGlobal}
                     carrito={carrito}
-                    totalCarrito={totalCarrito}
                     direccion={direccion}
                     sumaCarrito={sumaCarrito}
+                    metodoEnvio={metodoEnvio}
                   />
                 </div>
               </div>
