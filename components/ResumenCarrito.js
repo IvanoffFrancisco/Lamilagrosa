@@ -44,7 +44,7 @@ const ResumenCarrito = ({ carrito, sumaCarrito, direccion, metodoEnvio }) => {
           <span className="font-bold pb-2 text-red-600">Total</span>
           <span className="font-bold pb-2 text-red-600">
             $
-            {sumaCarrito > 5000 || metodoEnvio === "Retira"
+            {sumaCarrito > 5000 || metodoEnvio === "retira"
               ? sumaCarrito
               : sumaCarrito + 200}
           </span>
