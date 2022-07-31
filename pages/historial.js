@@ -9,8 +9,10 @@ export default function OrderHistory() {
     <>
     <ProfileSideBar/>
     <div>
-        <h1 className='ml-96 text-start font-bold text-2xl text-sky-800 my-4'>Historial de Compras:</h1>
-        <div className='border-2 border-orange-300 rounded-full w-60 ml-96 text-start'></div>
+        <div className='bg-gray-200 h-full py-4'>
+            <h1 className='text-center font-bold text-2xl  text-red-900 m-auto'>Historial de Compras</h1>
+        </div>
+        <div className='border-2 border-orange-300 rounded-full w-full'></div>
         <div className="mx-auto overflow-hidden  border-2 border-blue-800 bg-black  shadow-xl shadow-gray-400 mt-10 lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
         <Image
             src={FoodImg}
