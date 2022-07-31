@@ -6,14 +6,21 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const ProductCard = ({ producto }) => {
   const { eliminarCarrito, actualizarCarrito } = useContext(CarritoContext);
-  const [cantidad, setCantidad] = useState(producto.cantidad);
+  const [cantidadMenus, setCantidadMenus] = useState(producto.cantidad);
 
-  const { menu, imagenMenu, guarnicion, imagenGuarnicion, precio, tipoMila } =
-    producto;
+  const {
+    menu,
+    imagenMenu,
+    guarnicion,
+    imagenGuarnicion,
+    precio,
+    tipoMila,
+    cantidad,
+  } = producto;
 
   const handleChange = (e) => {
-    setCantidad(e.target.value);
-    producto.cantidad = parseInt(e.target.value);
+    setCantidadMenus(e.target.value);
+    cantidad = parseInt(e.target.value);
     actualizarCarrito(producto);
   };
 
@@ -67,7 +74,7 @@ const ProductCard = ({ producto }) => {
             onChange={handleChange}
             className="border border-gray-900 ml-1 font-bold"
             name="cantidad"
-            value={cantidad}
+            value={cantidadMenus}
           >
             <option value="1" defaultValue>
               1
@@ -85,7 +92,7 @@ const ProductCard = ({ producto }) => {
         </div>
         <p className="font-semibold text-lg pt-2">
           Total:
-          <span className="text-red-600"> ${precio * cantidad}</span>
+          <span className="text-red-600"> ${precio * cantidadMenus}</span>
         </p>
         <AiOutlineClose
           onClick={() => eliminarCarrito(producto.id)}
