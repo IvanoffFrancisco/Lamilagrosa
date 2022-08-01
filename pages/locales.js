@@ -11,7 +11,7 @@ import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 export default function infoCards() {
   return (
     <Layout>
-      <div className="min-h-screen min-w-screen overflow-auto">
+      <div className="min-h-screen min-w-fit overflow-auto">
         <div className="m-auto text-center mt-28">
           <div className="my-12">
             <h1 className="font-bold text-3xl text-red-800 py-4">
