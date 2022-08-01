@@ -4,15 +4,26 @@ import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-const ProductCard = ({ producto }) => {
-  const { eliminarCarrito } = useContext(CarritoContext);
-  const [cantidadMenu, setCantidadMenu] = useState(producto.cantidad);
+const ProductCard = ({ producto, setSumaCarrito }) => {
+  const { eliminarCarrito, actualizarCarrito, carrito } =
+    useContext(CarritoContext);
+    
+  const [cantidadMenus, setCantidadMenus] = useState(producto.cantidad);
 
   const { menu, imagenMenu, guarnicion, imagenGuarnicion, precio, tipoMila } =
     producto;
 
   const handleChange = (e) => {
-    setCantidadMenu(parseInt(e.target.value));
+    setCantidadMenus(e.target.value);
+    producto.cantidad = parseInt(e.target.value);
+    actualizarCarrito(producto);
+    setSumaCarrito(
+      carrito?.reduce(
+        (previousValue, currentValue) =>
+          previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+        0
+      )
+    );
   };
 
   return (
@@ -65,7 +76,7 @@ const ProductCard = ({ producto }) => {
             onChange={handleChange}
             className="border border-gray-900 ml-1 font-bold"
             name="cantidad"
-            value={cantidadMenu}
+            value={cantidadMenus}
           >
             <option value="1" defaultValue>
               1
@@ -81,14 +92,10 @@ const ProductCard = ({ producto }) => {
             <option value="10">10</option>
           </select>
         </div>
-        {/* <p className=" py-1">Cantidad: {cantidad}</p> */}
         <p className="font-semibold text-lg pt-2">
-          Total:<span className="text-red-600"> ${precio * cantidadMenu}</span>
+          Total:
+          <span className="text-red-600"> ${precio * cantidadMenus}</span>
         </p>
-
-        {/* <button className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide absolute bottom-0 right-0 md:mb-1 md:mr-1">
-          Editar
-        </button> */}
         <AiOutlineClose
           onClick={() => eliminarCarrito(producto.id)}
           className="absolute top-0 right-0 text-red-600 text-xl cursor-pointer md:mt-1 md:mr-1"

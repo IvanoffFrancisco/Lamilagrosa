@@ -16,13 +16,23 @@ export const UsuarioProvider = ({ children }) => {
 
   useEffect(() => {
     if (Object.keys(userGlobal).length > 0) {
+      console.log("modificando LS de user");
       localStorage.setItem("LMG-user", JSON.stringify(userGlobal));
     }
   }, [userGlobal]);
 
+  const actualizarUser = (user) => {
+    setUserGlobal(user);
+  };
   return (
     <UsuarioContext.Provider
-      value={{ islogged, setIslogged, userGlobal, setUserGlobal }}
+      value={{
+        islogged,
+        setIslogged,
+        userGlobal,
+        setUserGlobal,
+        actualizarUser,
+      }}
     >
       {children}
     </UsuarioContext.Provider>
