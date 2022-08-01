@@ -11,8 +11,26 @@ import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 export default function infoCards() {
   return (
     <Layout>
-      <div className="min-h-screen mt-20 min-w-fit bg-blue-700 overflow-auto">
-      <div className="m-auto py-12 lg:w-3/5 xs:my-auto xs:flex xs:h-auto xs:flex-col">
+      <div className="min-h-screen mt-20 min-w-fitoverflow-auto">
+        <div className="m-auto text-center mt-28">
+          <div className="my-12">
+            <h1 className="font-bold text-3xl text-red-800 py-4">
+              Información General de nuestros 4 Locales
+            </h1>
+            <h2 className="font-bold text-2xl text-black">
+              Todos la información de los locales de La<span className="text-red-500">Mila</span>
+              Grosa, con sus horarios y direcciones!
+            </h2>
+          </div>
+        </div>
+        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+          <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
+            Informacion del Local 1{" "}
+          </h1>
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+        </div>
+        <div className="m-auto py-auto shadow-xl shadow-gray-500 lg:w-3/5 xs:my-12 xs:flex xs:h-auto xs:flex-col">
           <Image
             src={LocalImage}
             alt="Picture of the author"
@@ -100,13 +118,20 @@ export default function infoCards() {
               </div>
               <div className="h-8 ml-auto mt-auto flex justify-end">
                 <span className="flex items-center justify-center text-blue-800 font-bold">
-                    Bahía Blanca - Buenos Aires
+                  Bahía Blanca - Buenos Aires
                 </span>
               </div>
             </div>
           </div>
-        </div>    
-        <div className="m-auto py-12 lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
+        </div>
+        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+          <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
+            Informacion del Local 2{" "}
+          </h1>
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+        </div>
+        <div className="m-auto py-auto shadow-xl shadow-gray-500 xs:my-12  lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
           <Image
             src={LocalImage2}
             alt="Picture of the author"
@@ -200,8 +225,15 @@ export default function infoCards() {
               </div>
             </div>
           </div>
-        </div>    
-        <div className="m-auto py-12 lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
+        </div>
+        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+          <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
+            Informacion del Local 3{" "}
+          </h1>
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+        </div>
+        <div className="m-auto py-auto shadow-xl shadow-gray-500 xs:my-12 lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
           <Image
             src={LocalImage3}
             alt="Picture of the author"
@@ -294,8 +326,15 @@ export default function infoCards() {
               </div>
             </div>
           </div>
-        </div>    
-        <div className="m-auto py-12 lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
+        </div>
+        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+          <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
+            Informacion del Local 4{" "}
+          </h1>
+          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+        </div>
+        <div className="m-auto py-auto shadow-xl shadow-gray-500 xs:my-12 lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
           <Image
             src={LocalImage4}
             alt="Picture of the author"
@@ -378,7 +417,6 @@ export default function infoCards() {
                         +54-3794-612832
                       </span>
                     </p>
-                    <FaPhoneAlt className="ml-2 text-sm text-sky-700" />
                   </div>
                 </div>
               </div>
@@ -389,9 +427,8 @@ export default function infoCards() {
               </div>
             </div>
           </div>
-        </div>    
+        </div>
       </div>
     </Layout>
   );
 }
-
