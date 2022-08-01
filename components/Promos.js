@@ -14,7 +14,7 @@ export default function Promos() {
 
   return (
     <div className="my-4">
-      <div className="bg-gray-200 w-full m-auto my-10 text-center overflow-hidden">
+      <div className="bg-gray-100 w-full m-auto my-10 text-center overflow-hidden">
         <div className='border-2 border-orange-300 rounded-full w-full text-start'></div>
         <h1 className=' font-bold m-auto text-center text-3xl text-red-900 my-4'>Promociones Grosas:</h1>
         <div className='border-2 border-orange-300 rounded-full w-full text-start'></div>
@@ -24,7 +24,7 @@ export default function Promos() {
           <div className="max-w-screen-md mx-auto px-10 pt-20">
             <div className="bg-green-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
               <div className="w-full md:w-2/4 md:h-3/4 p-4">
-                <div className="rounded-full bg-green-200 w-fit flex flex-row py-2 px-4  -mt-8 -ml-8">
+                <div className="rounded-full bg-green-200 w-fit flex flex-row py-2 px-4 ring-2 ring-green-900  -mt-8 -ml-8">
                   <p className="font-bold text-green-800 text-xl flex flex-col m-0 p-0">
                     20<span className="text-sm mt-auto text-center">OFF</span>
                   </p>
@@ -74,7 +74,7 @@ export default function Promos() {
           <div className="max-w-screen-md mx-auto px-10 pt-20">
             <div className="bg-red-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
               <div className="w-full md:w-2/4 md:h-3/4 p-4">
-                <div className="rounded-full bg-red-200 w-fit flex flex-row py-2 px-4  -mt-8 -ml-8">
+                <div className="rounded-full bg-red-200 w-fit flex flex-row py-2 px-4 ring-2 ring-red-900  -mt-8 -ml-8">
                   <p className="font-bold text-red-800 text-xl flex flex-col m-0 p-0">
                     15<span className="text-sm mt-auto text-center">OFF</span>
                   </p>
@@ -126,7 +126,7 @@ export default function Promos() {
           <div className="max-w-screen-md mx-auto px-10 pt-20">
             <div className="bg-blue-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
               <div className="w-full md:w-2/4 md:h-3/4 p-4">
-                <div className="rounded-full bg-blue-200 w-fit flex flex-row py-2 px-4  -mt-8 -ml-8">
+                <div className="rounded-full bg-blue-200 w-fit flex flex-row py-2 px-4 ring-2 ring-blue-900  -mt-8 -ml-8">
                   <p className="font-bold text-blue-800 text-xl flex flex-col m-0 p-0">
                     15<span className="text-sm mt-auto text-center">OFF</span>
                   </p>
@@ -176,7 +176,7 @@ export default function Promos() {
           <div className="max-w-screen-md mx-auto px-10 pt-20">
             <div className="bg-pink-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
               <div className="w-full md:w-2/4 md:h-3/4 p-4">
-                <div className="rounded-full bg-pink-200 w-fit flex flex-row py-2 px-4  -mt-8 -ml-8">
+                <div className="rounded-full bg-pink-200 w-fit flex flex-row py-2 px-4 ring-2 ring-pink-900  -mt-8 -ml-8">
                   <p className="font-bold text-pink-800 text-xl flex flex-col m-0 p-0">
                     20<span className="text-sm mt-auto text-center">OFF</span>
                   </p>
