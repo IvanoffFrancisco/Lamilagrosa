@@ -20,6 +20,17 @@ export const CarritoProvider = ({ children }) => {
     setCarrito([...carrito, pedido]);
   };
 
+  const actualizarCarrito = (pedido) => {
+    const carritoActualizado = carrito?.map((elemento) => {
+      if (elemento.id === pedido.id) {
+        return pedido;
+      } else {
+        return elemento;
+      }
+    });
+    setCarrito(carritoActualizado);
+  };
+
   const eliminarCarrito = (id) => {
     const respuesta = confirm("Deseas eliminar este producto?");
     if (respuesta) {
@@ -32,7 +43,13 @@ export const CarritoProvider = ({ children }) => {
 
   return (
     <CarritoContext.Provider
-      value={{ carrito, setCarrito, agregarCarrito, eliminarCarrito }}
+      value={{
+        carrito,
+        setCarrito,
+        agregarCarrito,
+        eliminarCarrito,
+        actualizarCarrito,
+      }}
     >
       {children}
     </CarritoContext.Provider>
