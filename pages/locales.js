@@ -107,7 +107,8 @@ export default function infoCards() {
                 />
                 <div className="ml-4 flex xs:flex-col">
                   <p className="text-blue-800 text-sm font-bold">
-                    La<span className="text-red-800">Mila</span>Grosa siempre para servirle
+                    La<span className="text-red-800">Mila</span>Grosa siempre
+                    para servirle
                   </p>
                   <div className="flex mt-1">
                     <p className="text-gray-600 text-sm font-semibold">
@@ -210,8 +211,9 @@ export default function infoCards() {
                   height={75}
                 />
                 <div className="ml-4">
-                  <p className="text-sky-800 text-sm font-semibold">
-                    LaMilaGrosa siempre para servirle
+                  <p className="text-blue-800 text-sm font-bold">
+                    La<span className="text-red-800">Mila</span>Grosa siempre
+                    para servirle
                   </p>
                   <div className="flex mt-1">
                     <p className="text-gray-600 text-sm font-semibold">
@@ -306,8 +308,9 @@ export default function infoCards() {
                   height={75}
                 />
                 <div className="ml-4">
-                  <p className="text-sky-800 text-sm font-semibold">
-                    LaMilaGrosa siempre para servirle
+                  <p className="text-blue-800 text-sm font-bold">
+                    La<span className="text-red-800">Mila</span>Grosa siempre
+                    para servirle
                   </p>
                   <div className="flex mt-1">
                     <p className="text-gray-600 text-sm font-semibold">
@@ -409,8 +412,9 @@ export default function infoCards() {
                   height={75}
                 />
                 <div className="ml-4">
-                  <p className="text-sky-800 text-sm font-semibold">
-                    LaMilaGrosa siempre para servirle
+                  <p className="text-blue-800 text-sm font-bold">
+                    La<span className="text-red-800">Mila</span>Grosa siempre
+                    para servirle
                   </p>
                   <div className="flex mt-1">
                     <p className="text-gray-600 text-sm font-semibold">
