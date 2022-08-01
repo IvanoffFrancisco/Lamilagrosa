@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/dist/client/image";
 import Link from "next/link";
-import FoodImg from "../public/img/menues/barbacoa.jpg";
-import FoodImg2 from "../public/img/menues/barbacoa.jpg";
+import FoodImg from "../public/img/menues/Doble Criminal.jpg";
+// import FoodImg2 from "../public/img/menues/Vegana-Texmex.png";
 import FoodImg3 from "../public/img/menues/barbacoa.jpg";
 import FoodImg4 from "../public/img/menues/barbacoa.jpg";
 import { TiStarFullOutline } from "react-icons/ti";
@@ -57,11 +57,11 @@ export default function Combos() {
         </div>
         <div className="w-60 p-2 my-4 bg-white rounded-xl border-2 border-dashed border-red-800 transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
         <Image 
-            className=" object-cover rounded-xl h-40" 
-            src={FoodImg2}
+            className="object-cover rounded-xl overflow-auto z-0" 
+            src={FoodImg}
             alt="">
           </Image>
-          <div className="flex flex-row">
+          <div className="flex flex-row -mt-10">
               <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
               <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
               <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -70,8 +70,7 @@ export default function Combos() {
           <div className="p-2">
             <h2 className="font-bold text-2xl text-red-800 mb-2">Combo 2</h2>
             <p className="leading-relaxed font-bold text-slate-800">
-              En La<span className="text-red-900">Mila</span>Grosa encontre una de las mejores servicios
-              en cuanto a atention y calidad, uno de los mejores lugares.
+              Combo 2
             </p>
           </div>
           <div className="m-2">
@@ -106,8 +105,7 @@ export default function Combos() {
           <div className="p-2">
             <h2 className="font-bold text-2xl text-red-800 mb-2">Combo 3</h2>
             <p className="leading-relaxed font-bold text-slate-800">
-              En La<span className="text-red-900">Mila</span>Grosa encontre una de las mejores servicios
-              en cuanto a atention y calidad, uno de los mejores lugares.
+              Combo 3
             </p>
           </div>
           <div className="m-2">
@@ -144,8 +142,7 @@ export default function Combos() {
           <div className="p-2">
             <h2 className="font-bold text-2xl text-red-800 mb-2">Combo 4</h2>
             <p className="leading-relaxed font-bold text-slate-800">
-              En La<span className="text-red-900">Mila</span>Grosa encontre una de las mejores servicios
-              en cuanto a atention y calidad, uno de los mejores lugares.
+              Combo 4
             </p>
           </div>
           <div className="m-2">
