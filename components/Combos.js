@@ -4,8 +4,8 @@ import Image from "next/dist/client/image";
 import Link from "next/link";
 import FoodImg from "../public/img/menues/Doble Criminal.jpg";
 // import FoodImg2 from "../public/img/menues/Vegana-Texmex.png";
-import FoodImg3 from "../public/img/menues/barbacoa.jpg";
-import FoodImg4 from "../public/img/menues/barbacoa.jpg";
+import FoodImg3 from "../public/img/menues/Doble Criminal.jpg";
+import FoodImg4 from "../public/img/menues/Doble Criminal.jpg";
 import { TiStarFullOutline } from "react-icons/ti";
 
 export default function Combos() {
@@ -57,11 +57,11 @@ export default function Combos() {
         </div>
         <div className="w-60 p-2 my-4 bg-white rounded-xl border-2 border-dashed border-red-800 transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
         <Image 
-            className="object-cover rounded-xl overflow-auto z-0" 
+            className="object-cover rounded-xl" 
             src={FoodImg}
             alt="">
           </Image>
-          <div className="flex flex-row -mt-10">
+          <div className="flex flex-row">
               <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
               <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
               <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
