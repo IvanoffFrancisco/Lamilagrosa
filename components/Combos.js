@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/dist/client/image";
 import Link from "next/link";
-import FoodImg from "../public/img/menues/Sándwich-Superclásico.png";
-import FoodImg2 from "../public/img/menues/Vegana-Texmex.png";
-import FoodImg3 from "../public/img/menues/la-Gringa.png";
-import FoodImg4 from "../public/img/menues/napolitana.png";
+import FoodImg from "../public/img/menues/barbacoa.jpg";
+import FoodImg2 from "../public/img/menues/barbacoa.jpg";
+import FoodImg3 from "../public/img/menues/barbacoa.jpg";
+import FoodImg4 from "../public/img/menues/barbacoa.jpg";
 import { TiStarFullOutline } from "react-icons/ti";
 
 export default function Combos() {
