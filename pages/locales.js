@@ -11,26 +11,27 @@ import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 export default function infoCards() {
   return (
     <Layout>
-      <div className="min-h-screen mt-20 min-w-fitoverflow-auto">
+      <div className="min-h-screen min-w-screen overflow-auto">
         <div className="m-auto text-center mt-28">
           <div className="my-12">
             <h1 className="font-bold text-3xl text-red-800 py-4">
               Información General de nuestros 4 Locales
             </h1>
             <h2 className="font-bold text-2xl text-black">
-              Todos la información de los locales de La<span className="text-red-500">Mila</span>
+              Todos la información de los locales de La
+              <span className="text-red-500">Mila</span>
               Grosa, con sus horarios y direcciones!
             </h2>
           </div>
         </div>
-        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
-          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+        <div className="bg-gray-300 xs:w-full m-auto my-10 text-center overflow-hidden">
+          <div className="border-2 border-orange-300 w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
             Informacion de nuestro Local en Bahía Blanca{" "}
           </h1>
-          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
+          <div className="border-2 border-orange-300 xs:w-full text-start"></div>
         </div>
-        <div className="m-auto py-auto shadow-xl shadow-gray-500 lg:w-3/5 xs:my-12 xs:flex xs:h-auto xs:flex-col">
+        <div className="m-auto shadow-xl shadow-gray-500 xs:min-w-screen xs:overflow-clip lg:w-3/5 xs:my-12 xs:flex xs:h-auto xs:flex-col">
           <Image
             src={LocalImage}
             alt="Picture of the author"
@@ -59,40 +60,42 @@ export default function infoCards() {
                 Horarios de Atención:
               </span>
             </p>
-            <div className="flex flex-row justify-center mt-2">
-              <p className="text-sm text-gray-800 ml-2 font-bold">
-                Lunes: CERRADO
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Martes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Miercoles:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Jueves:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Viernes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Sabado:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Domingo:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
+            <div className="flex mt-2 xs:flex xs:h-auto sm:ml-20 xs:flex-col xs:min-w-screen overflow-auto">
+              <div className="flex flex-row">
+                <p className="text-sm text-gray-800 ml-2 font-bold">
+                  Lunes: CERRADO
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Martes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Miercoles:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Jueves:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-slate-800">Viernes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Sabado:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Domingo:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+              </div>
             </div>
             <div className="flex items-center mt-8">
               <div className="flex items-center">
@@ -102,9 +105,9 @@ export default function infoCards() {
                   width={100}
                   height={75}
                 />
-                <div className="ml-4">
-                  <p className="text-sky-800 text-sm font-semibold">
-                    LaMilaGrosa siempre para servirle
+                <div className="ml-4 flex xs:flex-col">
+                  <p className="text-blue-800 text-sm font-bold">
+                    La<span className="text-red-800">Mila</span>Grosa siempre para servirle
                   </p>
                   <div className="flex mt-1">
                     <p className="text-gray-600 text-sm font-semibold">
@@ -116,8 +119,8 @@ export default function infoCards() {
                   </div>
                 </div>
               </div>
-              <div className="h-8 ml-auto mt-auto flex justify-end">
-                <span className="flex items-center justify-center text-blue-800 font-bold">
+              <div className="h-8 xs:ml-auto mt-auto flex justify-end">
+                <span className="flex items-center justify-center text-blue-900 font-bold">
                   Bahía Blanca - Buenos Aires
                 </span>
               </div>
@@ -131,7 +134,7 @@ export default function infoCards() {
           </h1>
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
-        <div className="m-auto py-auto shadow-xl shadow-gray-500 xs:my-12  lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
+        <div className="m-auto shadow-xl shadow-gray-500 xs:my-20  xs:py-auto lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
           <Image
             src={LocalImage2}
             alt="Picture of the author"
@@ -161,40 +164,42 @@ export default function infoCards() {
                 Horarios de Atención:
               </span>
             </p>
-            <div className="flex flex-row justify-center mt-2">
-              <p className="text-sm text-gray-800 ml-2 font-bold">
-                Lunes: CERRADO
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Martes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Miercoles:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Jueves:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Viernes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Sabado:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Domingo:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
+            <div className="flex mt-2 xs:flex xs:h-auto sm:ml-20 xs:flex-col xs:min-w-screen overflow-auto">
+              <div className="flex flex-row">
+                <p className="text-sm text-gray-800 ml-2 font-bold">
+                  Lunes: CERRADO
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Martes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Miercoles:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Jueves:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-slate-800">Viernes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Sabado:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Domingo:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+              </div>
             </div>
             <div className="flex items-center mt-8">
               <div className="flex items-center">
@@ -255,40 +260,42 @@ export default function infoCards() {
                 Horarios de Atención:
               </span>
             </p>
-            <div className="flex flex-row justify-center mt-2">
-              <p className="text-sm text-gray-800 ml-2 font-bold">
-                Lunes: CERRADO
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Martes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Miercoles:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Jueves:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Viernes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Sabado:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Domingo:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
+            <div className="flex mt-2 xs:flex xs:h-auto sm:ml-20 xs:flex-col xs:min-w-screen overflow-auto">
+              <div className="flex flex-row">
+                <p className="text-sm text-gray-800 ml-2 font-bold">
+                  Lunes: CERRADO
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Martes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Miercoles:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Jueves:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-slate-800">Viernes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Sabado:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Domingo:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+              </div>
             </div>
             <div className="flex items-center mt-8">
               <div className="flex items-center">
@@ -306,7 +313,7 @@ export default function infoCards() {
                     <p className="text-gray-600 text-sm font-semibold">
                       Telefono:{" "}
                       <span className="text-sky-400 hover:border-b-2 hover:border-sky-400 ml-1">
-                      +54-9-3794-588351
+                        +54-9-3794-588351
                       </span>
                     </p>
                   </div>
@@ -356,40 +363,42 @@ export default function infoCards() {
                 Horarios de Atención:
               </span>
             </p>
-            <div className="flex flex-row justify-center mt-2">
-              <p className="text-sm text-gray-800 ml-2 font-bold">
-                Lunes: CERRADO
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Martes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Miercoles:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Jueves:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Viernes:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Sabado:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
-              <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
-                <span className="font-bold text-gray-800">Domingo:</span>
-                <span className="mb-2">10:00hs - 14:00hs</span>
-                <span>20:00hs - 01:30hs</span>
-              </p>
+            <div className="flex mt-2 xs:flex xs:h-auto sm:ml-20 xs:flex-col xs:min-w-screen overflow-auto">
+              <div className="flex flex-row">
+                <p className="text-sm text-gray-800 ml-2 font-bold">
+                  Lunes: CERRADO
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Martes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Miercoles:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Jueves:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-slate-800">Viernes:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Sabado:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+                <p className="text-sm text-gray-600 ml-2 font-semibold flex flex-col">
+                  <span className="font-bold text-gray-800">Domingo:</span>
+                  <span className="mb-2">10:00hs - 14:00hs</span>
+                  <span>20:00hs - 01:30hs</span>
+                </p>
+              </div>
             </div>
             <div className="flex items-center mt-8">
               <div className="flex items-center">
@@ -407,7 +416,7 @@ export default function infoCards() {
                     <p className="text-gray-600 text-sm font-semibold">
                       Telefono:{" "}
                       <span className="text-sky-400 hover:border-b-2 hover:border-sky-400 ml-1">
-                      +54-9-362424-7421
+                        +54-9-362424-7421
                       </span>
                     </p>
                   </div>
