@@ -15,16 +15,16 @@ export default function infoCards() {
         <div className="m-auto text-center mt-28">
           <div className="my-12">
             <h1 className="font-bold text-3xl text-red-800 py-4">
-              Información General de nuestros 4 Locales
+              Información General sobre nuestros 4 Locales
             </h1>
             <h2 className="font-bold text-2xl text-black">
-              Todos la información de los locales de La
+              Toda la información de los locales de La
               <span className="text-red-500">Mila</span>
               Grosa, con sus horarios y direcciones!
             </h2>
           </div>
         </div>
-        <div className="bg-gray-300 xs:w-full m-auto my-10 text-center overflow-hidden">
+        <div className="bg-gray-100 xs:w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
             Informacion de nuestro Local en Bahía Blanca{" "}
@@ -128,7 +128,7 @@ export default function infoCards() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
+        <div className="bg-gray-100 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
             Informacion del nuestros Locales en Corrientes Capital{" "}
@@ -330,7 +330,7 @@ export default function infoCards() {
             </div>
           </div>
         </div>
-        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
+        <div className="bg-gray-100 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
             Informacion de nuestro Local en Barranqueras{" "}
