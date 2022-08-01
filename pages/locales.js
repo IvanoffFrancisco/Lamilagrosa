@@ -26,7 +26,7 @@ export default function infoCards() {
         <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion del Local 1{" "}
+            Informacion de nuestro Local en Bahía Blanca{" "}
           </h1>
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
@@ -110,7 +110,7 @@ export default function infoCards() {
                     <p className="text-gray-600 text-sm font-semibold">
                       Telefono:{" "}
                       <span className="text-sky-400 hover:border-b-2 hover:border-sky-400 ml-1">
-                        +54-3794-612832
+                        +54-9-291-4654080
                       </span>
                     </p>
                   </div>
@@ -127,7 +127,7 @@ export default function infoCards() {
         <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion del Local 2{" "}
+            Informacion del nuestros Locales en Corrientes Capital{" "}
           </h1>
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
@@ -212,7 +212,7 @@ export default function infoCards() {
                     <p className="text-gray-600 text-sm font-semibold">
                       Telefono:{" "}
                       <span className="text-sky-400 hover:border-b-2 hover:border-sky-400 ml-1">
-                        +54-3794-612832
+                        +54-9-3794-612832
                       </span>
                     </p>
                   </div>
@@ -225,13 +225,6 @@ export default function infoCards() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
-          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
-          <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion del Local 3{" "}
-          </h1>
-          <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
         <div className="m-auto py-auto shadow-xl shadow-gray-500 xs:my-12 lg:w-3/5 xs:flex xs:h-auto xs:flex-col">
           <Image
@@ -313,7 +306,7 @@ export default function infoCards() {
                     <p className="text-gray-600 text-sm font-semibold">
                       Telefono:{" "}
                       <span className="text-sky-400 hover:border-b-2 hover:border-sky-400 ml-1">
-                        +54-3794-612832
+                      +54-9-3794-588351
                       </span>
                     </p>
                   </div>
@@ -330,7 +323,7 @@ export default function infoCards() {
         <div className="bg-gray-300 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion del Local 4{" "}
+            Informacion de nuestro Local en Barranqueras{" "}
           </h1>
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
@@ -414,7 +407,7 @@ export default function infoCards() {
                     <p className="text-gray-600 text-sm font-semibold">
                       Telefono:{" "}
                       <span className="text-sky-400 hover:border-b-2 hover:border-sky-400 ml-1">
-                        +54-3794-612832
+                      +54-9-362424-7421
                       </span>
                     </p>
                   </div>
