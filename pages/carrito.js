@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
+import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
@@ -18,7 +19,10 @@ const Carrito = () => {
       0
     )
   );
+  
+  const obtenerSubTotal=()=>{
 
+  }
   const hendleDomicilio = (e) => {
     setDireccion(e.target.value);
   };
@@ -48,10 +52,34 @@ const Carrito = () => {
             <div className="pb-5">
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
                 <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-2">
-                  {/* Lista Productos */}
-                  {carrito?.map((producto) => (
+                  {/* Lista Menus o Guarniciones */}
+                  {
+                    carrito.map(pro=>{
+                      if(pro.hasOwnProperty('menu')){
+                        return <ProductCard producto={pro} key={pro.id} />
+                      }else{
+                        return <GuarnicionCarritoCard producto={pro}/>
+                      }
+                    })
+                  }
+
+                  {/* {
+                  carrito.hasOwnProperty('menu') ? (
+                    carrito.map(pro=>{
+                      return(
+                        <ProductCard producto={pro} key={pro.id} />
+                      )
+                    })
+                  ):(
+                    carrito.map(gua=>{
+                      return(
+                        <GuarnicionCarritoCard producto={gua}/>
+                      )
+                    })
+                  )
+                  /* {carrito?.map((producto) => (
                     <ProductCard producto={producto} key={producto.id} />
-                  ))}
+                  ))} */}
                 </ul>
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
                   {/* Domicilio */}
