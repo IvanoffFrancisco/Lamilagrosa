@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CarritoContext } from "../../contexts/CarritoContext";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
+import {MenuContextData} from '../../contexts/MenuContext'
 
 import {
   TiHeartOutline,
@@ -14,7 +15,7 @@ import {
 } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 
-const guarniciones = [
+const guarnicionGlobal = [
   {
     imagen:
       "https://images.rappi.com.ar/products/3d9120f7-f3ef-455c-8acd-cda3e4098807-1629229510757.png",
@@ -147,6 +148,7 @@ const guarniciones = [
 ];
 
 export default function DetalleProducto(props) {
+  const {guarnicionGlobal}=useContext(MenuContextData);
   const { carrito, agregarCarrito } = useContext(CarritoContext);
   const [detalleProducto, setDetalleProducto] = useState({});
   const [cantidad, setCantidad] = useState(1);
@@ -221,7 +223,7 @@ export default function DetalleProducto(props) {
       cantidad,
       guarnicion: guarnicion.nombre,
       imagenGuarnicion: guarnicion.imagen,
-      precio: detalleProducto.precio,
+      precio:detalleProducto.precio,
       id: Date.now().toString(36),
     };
     agregarCarrito(pedido);
@@ -303,7 +305,7 @@ export default function DetalleProducto(props) {
 
             <section className="w-full shadow-sm shadow-gray-800">
               <ul className="snap-x snap-mandatory overflow-x-scroll grid grid-flow-col gap-1">
-                {guarniciones
+                {guarnicionGlobal
                   .filter((item) => item.precio <= 700)
                   .map((item, i) => (
                     <li
@@ -335,7 +337,7 @@ export default function DetalleProducto(props) {
                       </p>
                     </li>
                   ))}
-                {guarniciones
+                {guarnicionGlobal
                   .filter((item) => item.precio > 700)
                   .map((item, i) => (
                     <li

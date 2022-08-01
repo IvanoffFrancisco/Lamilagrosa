@@ -5,6 +5,7 @@ import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import EnvioCards from "../components/EnvioCards";
 import ResumenCarrito from "../components/ResumenCarrito";
+import GuarnicionCarritoCard from '../components/GuarnicionCarritoCard';
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
@@ -56,13 +57,19 @@ const Carrito = () => {
             <div className="pb-5">
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
                 <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-2">
-                  {carrito?.map((producto) => (
-                    <ProductCard
-                      producto={producto}
-                      key={producto.id}
-                      setSumaCarrito={setSumaCarrito}
-                    />
-                  ))}
+                  {
+                    carrito?.map(menus=>{
+                      if(menus.hasOwnProperty('menu')){
+                        return <ProductCard
+                                  producto={menus}
+                                  key={menus.id}
+                                  setSumaCarrito={setSumaCarrito}
+                              />
+                      }else{
+                          return <GuarnicionCarritoCard producto={menus}/>
+                      }
+                    })
+                  }
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">

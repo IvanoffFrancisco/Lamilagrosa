@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import TipoMilaBar from "./TipoMilaBar";
 import MenuList from "./MenuList";
 
-const ProductList = ({ carta }) => {
+const ProductList = ({ carta,guarniciones }) => {
+
   const [tipoMenu, setTipoMenu] = useState("Todos");
   return (
     <div className="w-full">
@@ -11,7 +12,7 @@ const ProductList = ({ carta }) => {
         El Menú más <span className="text-blue-500">Groso</span> que existe!
       </h2>
       <TipoMilaBar setTipoMenu={setTipoMenu} tipoMenu={tipoMenu} />
-      <MenuList carta={carta} tipoMenu={tipoMenu} />
+      <MenuList carta={carta} tipoMenu={tipoMenu} guarniciones={guarniciones} />
     </div>
   );
 };

@@ -53,6 +53,15 @@ const TipoMila = ({ setTipoMenu, tipoMenu }) => {
               Milanesa
             </p>
           </li>
+          <li onClick={handleSeleccion}>
+            <p
+              className={`cursor-pointer hover:ring-1 ring-white px-2 rounded-sm ease-in duration-200 ${
+                tipoMenu === "Guarnicion" ? "ring-1 ring-white" : ""
+              }`}
+            >
+              Guarnicion
+            </p>
+          </li>
         </ul>
       </div>
       <div className="max-w-[85%] mx-auto my-8 text-2xl tracking-wide font-semibold">
