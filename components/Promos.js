@@ -1,127 +1,124 @@
-import React, {useState, useContext } from 'react'
+import React, { useState, useContext } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import Image from "next/image";
 import Link from "next/link";
-import PromoImg from '../public/img/PromoImg.png'
-import PromoImg2 from '../public/img/PromoImg2.png'
-import PromoImg3 from '../public/img/PromoImg3.png'
-import PromoImg4 from '../public/img/PromoImg4.png'
+import PromoImg from "../public/img/PromoImg.png";
+import PromoImg2 from "../public/img/PromoImg2.png";
+import PromoImg3 from "../public/img/PromoImg3.png";
+import PromoImg4 from "../public/img/PromoImg4.png";
 import { FaPercent } from "react-icons/fa";
 
 export default function Promos() {
-
   const { userGlobal, islogged } = useContext(UsuarioContext);
 
   return (
     <div className="my-4">
-      <div className="bg-gray-200 w-full m-auto my-10 text-center overflow-hidden">
-        <div className='border-2 border-orange-300 rounded-full w-full text-start'></div>
-        <h1 className=' font-bold m-auto text-center text-3xl text-red-900 my-4'>Promociones Grosas:</h1>
-        <div className='border-2 border-orange-300 rounded-full w-full text-start'></div>
-        </div>
-      <div className=" flex flex-col sm:flex-row">
-        <div className="w-full">
-          <div className="max-w-screen-md mx-auto px-10 pt-20">
-            <div className="bg-green-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
-              <div className="w-full md:w-2/4 md:h-3/4 p-4">
-                <div className="rounded-full bg-green-200 w-fit flex flex-row py-2 px-4  -mt-8 -ml-8">
-                  <p className="font-bold text-green-800 text-xl flex flex-col m-0 p-0">
-                    20<span className="text-sm mt-auto text-center">OFF</span>
-                  </p>
-                  <FaPercent className="text-sm text-green-800 mt-auto mb-auto" />
-                </div>
-                <div className="py-4 sm:py-0">
-                  <h3 className="text-3xl font-bold text-green-900">
+      <div className="bg-gray-200 w-full text-center border-t-4 border-b-4 border-double border-orange-300">
+        <h1 className="font-bold text-xl md:text-2xl xl:text-3xl text-blue-700 py-2 md:py-3">
+          Promociones Grosas
+        </h1>
+      </div>
+
+      <div className="max-w-[90%] pt-14 mx-auto flex flex-col lg:flex-row gap-8">
+        <div className="w-full bg-blue-400 rounded-lg shadow-2xl shadow-gray-600 flex flex-col md:flex-row-reverse md:items-center px-2">
+          <div className="w-full pt-2">
+            <Image
+              src={PromoImg}
+              alt="PromoImg1"
+              layout="fixed"
+              height={200}
+              width={200}
+              className=""
+            ></Image>
+          </div>
+          <div className="p-4 lg">
+            <div className="rounded-full bg-blue-200 w-fit flex flex-row py-3 px-4 -mt-8 -ml-8">
+              <p className="font-bold text-blue-800 text-xl flex flex-col m-0 p-0">
+                20%<span className="text-sm text-center">OFF</span>
+              </p>
+            </div>
+
+            <div className="pb-4">
+              <h3 className="text-3xl font-bold text-blue-900 pb-2">
+                Promo Saludable
+              </h3>
+              <div className="md:mt-6 sm:mt-0 mb-4">
+                <p className="text-white text-md font-bold ">
+                  Porque cuidarse tambien es groso, los miercoles obtené un 20%
+                  de descuento en tu menu vegano.
+                </p>
+                <p className="text-xs text-blue-900 font-semibold md:mt-6 sm:mt-0 ">
+                  (Promocion valida para consumo en el local y abonando en
+                  efectivo)
+                </p>
+              </div>
+              {islogged ? (
+                <Link href="menu">
+                  <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">
                     Promo Saludable
-                  </h3>
-                  <div className="md:mt-6 sm:mt-0">
-                    <p className="text-white text-md font-bold ">
-                      Veni los miercoles y con tu compra en nuestro vegano
-                      obtenes hasta un 20% de descuento en tu pedido!
-                    </p>
-                    <p className="font-semibold text-green-900 md:mt-6 sm:mt-0">
-                      (Solo valido si el pedido es en efectivo)
-                    </p>
-                  </div>
-                  {islogged ? (
-                    <Link href="menu">
-                      <button className="mt-4 p-2 font-bold text-green-800 border-2 border-green-800 bg-white rounded-2xl hover:bg-green-600 hover:text-white hover:border-green-800">
-                        Promo Saludable
-                      </button>
-                    </Link>
-                  ) : (
-                    <Link href="login">
-                      <button className="mt-4 p-2 font-bold text-green-800 border-2 border-green-800 bg-white rounded-2xl hover:bg-green-600 hover:text-white hover:border-green-800">
-                        Acceder Promo
-                      </button>
-                    </Link>
-                  )}
-                </div>
-              </div>
-              <div className="w-full md:mt-12 text-center sm:mt-0  md:w-1/2 p-4 md:p-0">
-                <Image
-                  src={PromoImg}
-                  alt=""
-                  height={220}
-                  width={220}
-                  className=""
-                ></Image>
-              </div>
+                  </button>
+                </Link>
+              ) : (
+                <Link href="login">
+                  <button className="mt-4 p-2 font-bold text-blue-800 border-2 border-blue-800 bg-white rounded-2xl hover:bg-blue-600 hover:text-white hover:border-blue-800">
+                    Acceder Promo
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
-        <div className="w-full">
-          <div className="max-w-screen-md mx-auto px-10 pt-20">
-            <div className="bg-red-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
-              <div className="w-full md:w-2/4 md:h-3/4 p-4">
-                <div className="rounded-full bg-red-200 w-fit flex flex-row py-2 px-4  -mt-8 -ml-8">
-                  <p className="font-bold text-red-800 text-xl flex flex-col m-0 p-0">
-                    15<span className="text-sm mt-auto text-center">OFF</span>
-                  </p>
-                  <FaPercent className="text-sm text-red-800 mt-auto mb-auto" />
-                </div>
-                <div className="py-4 sm:py-0">
-                  <h3 className="text-3xl font-bold text-red-900">
+
+        <div className="w-full bg-red-400 rounded-lg shadow-2xl shadow-gray-600 flex flex-col md:flex-row-reverse md:items-center px-2">
+          <div className="w-full pt-2">
+            <Image
+              src={PromoImg2}
+              alt="PromoImg2"
+              layout="fixed"
+              height={180}
+              width={180}
+              className=""
+            ></Image>
+          </div>
+          <div className="p-4 lg">
+            <div className="rounded-full bg-red-200 w-fit flex flex-row py-3 px-4 -mt-8 -ml-8">
+              <p className="font-bold text-red-800 text-xl flex flex-col m-0 p-0">
+                15%<span className="text-sm text-center">OFF</span>
+              </p>
+            </div>
+
+            <div className="pb-4">
+              <h3 className="text-3xl font-bold text-red-900 pb-2">
+                Promo Sandwiches
+              </h3>
+              <div className="md:mt-6 sm:mt-0 mb-4">
+                <p className="text-white text-md font-bold ">
+                  Los Viernes y Sabados obtene un 15% de descuento en nuestros Sandwiches Grosos!
+                </p>
+                <p className="text-xs text-red-900 font-semibold md:mt-6 sm:mt-0 ">
+                  (Promocion valida solo para delivery y abonando en
+                  efectivo)
+                </p>
+              </div>
+              {islogged ? (
+                <Link href="menu">
+                  <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
                     Promo Sandwiches
-                  </h3>
-                  <div className="md:mt-6 sm:mt-0">
-                    <p className="text-white text-md font-bold ">
-                      Los Viernes y Sabados con tu compra en nuestro menu de
-                      Sandwiches obtene hasta un 15% de descuento en tu pedido!
-                    </p>
-                    <p className="font-semibold text-red-900 md:mt-6 sm:mt-0">
-                      (Solo valido pagos con tarjeta de debito)
-                    </p>
-                  </div>
-                  {islogged ? (
-                    <Link href="menu">
-                      <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
-                        Promo Sandwiches
-                      </button>
-                    </Link>
-                  ) : (
-                    <Link href="login">
-                      <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
-                        Acceder Promo
-                      </button>
-                    </Link>
-                  )}
-                </div>
-              </div>
-              <div className="w-full md:mt-12 text-center sm:mt-0  md:w-1/2 p-4 md:p-0">
-                <Image
-                  src={PromoImg2}
-                  alt=""
-                  height={220}
-                  width={220}
-                  className=""
-                ></Image>
-              </div>
+                  </button>
+                </Link>
+              ) : (
+                <Link href="login">
+                  <button className="mt-4 p-2 font-bold text-red-800 border-2 border-red-800 bg-white rounded-2xl hover:bg-red-600 hover:text-white hover:border-red-800">
+                    Acceder Promo
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
       </div>
-      <div className=" flex flex-col sm:flex-row">
+
+      {/* <div className=" flex flex-col sm:flex-row">
         <div className="w-full">
           <div className="max-w-screen-md mx-auto px-10 pt-20">
             <div className="bg-blue-500 md:h-80 sm:h-96  rounded-lg shadow-2xl shadow-gray-600 flex flex-wrap flex-col-reverse md:flex-col">
@@ -222,11 +219,7 @@ export default function Promos() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
-
-
-
-
