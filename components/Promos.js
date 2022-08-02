@@ -6,7 +6,7 @@ import PromoCard from "./PromoCard";
 
 export default function Promos() {
   return (
-    <div className="pt-32 pb-32">
+    <div className="pt-10 md:pt-15 lg:pt-20 xl:pt-25 pb-32">
       <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 w-full text-center border-t-4 border-b-4 border-double border-white shadow-sm mb-16">
         <h1 className="font-bold text-xl md:text-2xl xl:text-3xl text-white py-2 md:py-3">
           Promociones Grosas!
@@ -32,7 +32,7 @@ export default function Promos() {
           titulo="Promo Sandwiches"
           contenido1="Los Viernes y Sabados obtene un 15% de descuento en nuestros
                   Sandwiches mas Grosos!"
-          contenido2="Promocion valida solo para delivery abonando en efectivo"
+          contenido2="Promocion valida solo para delivery abonando en efectivo o debito"
           fondo=" bg-red-500 to-red-500"
           color="red"
           descuento="15"
