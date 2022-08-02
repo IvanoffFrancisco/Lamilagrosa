@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
-      <div className="max-w-[95%] xs:max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
+      <div className="max-w-[95%] xs:max-w-[90%] lg:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
         <Link href="/">
           <a className="pt-1">
             <div className="w-[100px] xs:w-[110px] md:w-[130px]">
@@ -40,7 +40,7 @@ const Navbar = () => {
         </Link>
 
         <div>
-          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16 font-semibold">
+          <ul className="hidden md:flex cursor-pointer md:gap-x-1 md:text- lg:gap-x-6 lg:text-lg xl:gap-x-10 xl:text-xl 2xl:gap-x-16 font-semibold">
             <Link href="/">
               <li className="hover:ring-1 ring-blue-800 px-4 rounded-full  hover:text-blue-800 ease-in duration-200">
                 Inicio
@@ -70,7 +70,7 @@ const Navbar = () => {
         </div>
 
         {/* logica para poder mostrar el avatar o el nombre de usuario */}
-        <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
+        <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-1 lg:gap-x-2">
           {islogged ? (
             <div className="flex relative">
               <div className="flex flex-col text-center">
@@ -106,7 +106,9 @@ const Navbar = () => {
                 </div>
                 <div
                   className={
-                    navUser ? "absolute top-4 left-0" : "hidden ease-in duration-300"
+                    navUser
+                      ? "absolute top-4 left-0"
+                      : "hidden ease-in duration-300"
                   }
                 >
                   <ul className="mt-10 bg-white absolute w-[150px] text-center rounded-b-lg border">
