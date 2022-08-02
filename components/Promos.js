@@ -22,6 +22,7 @@ export default function Promos() {
                   de descuento en tu menu vegano o vegetariano."
           contenido2="Promocion valida para consumo en el local abonando en
                   efectivo"
+          fondo=" bg-blue-500 to-blue-500"
           color="blue"
           descuento="20"
         />
@@ -32,6 +33,7 @@ export default function Promos() {
           contenido1="Los Viernes y Sabados obtene un 15% de descuento en nuestros
                   Sandwiches mas Grosos!"
           contenido2="Promocion valida solo para delivery abonando en efectivo"
+          fondo=" bg-red-500 to-red-500"
           color="red"
           descuento="15"
         />
@@ -46,6 +48,7 @@ export default function Promos() {
                   descuento comprando dos menues de nuestras MilaGosas!"
           contenido2="Promocion valida para consumo en el local abonando en
                   efectivo"
+          fondo=" bg-blue-500 to-blue-500"
           color="blue"
           descuento="15"
         />
@@ -57,6 +60,7 @@ export default function Promos() {
                   tu pareja y obtene un 20% de descuento en cualquier menu."
           contenido2="Promocion valida para consumo en el local y abonando en
                   efectivo"
+          fondo=" bg-red-500 to-red-500"
           color="red"
           descuento="20"
         />
