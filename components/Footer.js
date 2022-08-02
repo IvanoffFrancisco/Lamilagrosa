@@ -18,7 +18,7 @@ const Footer = () => {
                   width="68"
                   height="66"
                   src="/img/logo-LaMilaGrosa-circular.png"
-                  alt="logo"
+                  alt="logo milagrosa"
                 />
               </a>
             </Link>
@@ -63,7 +63,7 @@ const Footer = () => {
                   width="105"
                   height="33"
                   src="/img/Disponible-en-AppStore.png"
-                  alt="logo"
+                  alt="logo appstore"
                 />
               </a>
             </Link>
@@ -74,14 +74,14 @@ const Footer = () => {
                   width="105"
                   height="33"
                   src="/img/Disponible-en-GooglePlay.png"
-                  alt="logo"
+                  alt="logo google play"
                 />
               </a>
             </Link>
           </div>
         </div>
 
-        <div className="mx-auto flex text-[10px] text-gray-600 mt-4 gap-x-10 justify-center ">
+        <div className="mx-auto flex text-xs text-gray-600 mt-4 gap-x-10 justify-center ">
           <div className="flex flex-col lg:flex-row items-center gap-y-2 lg:gap-x-10 lg:text-sm">
             <Link href="/">
               <p className="cursor-pointer hover:font-semibold">
@@ -106,7 +106,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="">
-          <p className="text-[10px] pt-5 mb-10 text-center">
+          <p className="text-xs pt-5 mb-10 text-center">
             Copyright &copy; 2022 La Mila Grosa
           </p>
         </div>

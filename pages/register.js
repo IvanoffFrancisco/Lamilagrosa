@@ -31,7 +31,7 @@ export default function Register() {
               <a>
                 <Image
                   src={LoginImage}
-                  alt="Picture of the author"
+                  alt="logo milagrosa"
                   width={190}
                   height={120}
                 />
@@ -111,7 +111,7 @@ export default function Register() {
                 Registrarse
               </button>
 
-              <label className="flex items-center text-[10px] mt-2 mb-6 tracking-wide">
+              <label className="flex items-center text-xs mt-2 mb-6 tracking-wide">
                 <input type="checkbox" name="remember" className="mr-1" />
                 Acepta someter su paladar a una nueva experiencia?
               </label>
@@ -154,7 +154,7 @@ export default function Register() {
               de la que nunca querras salir
             </p>
 
-            <p className="mt-16 text-[10px] text-gray-800 tracking-wide">
+            <p className="mt-16 text-xs text-gray-800 tracking-wide">
               Si ya tenes una cuenta hace click aquí
             </p>
             <Link href="/login">

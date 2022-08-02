@@ -16,7 +16,6 @@ export const UsuarioProvider = ({ children }) => {
 
   useEffect(() => {
     if (Object.keys(userGlobal).length > 0) {
-      console.log("modificando LS de user");
       localStorage.setItem("LMG-user", JSON.stringify(userGlobal));
     }
   }, [userGlobal]);

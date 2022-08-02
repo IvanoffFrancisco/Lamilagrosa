@@ -32,7 +32,6 @@ export default function DetalleGuarnicion(props) {
       const res = await fetch(url);
       const respuesta = await res.json();
       setDetalleProducto(respuesta);
-      // setImagenMenu(String(respuesta.imagen));
     } catch (error) {
       console.log(error);
     }
@@ -108,7 +107,7 @@ export default function DetalleGuarnicion(props) {
                 <Image
                   src={detalleProducto.imagen}
                   layout="responsive"
-                  alt="producto"
+                  alt={detalleProducto.nombre}
                   objectFit="cover"
                   width="800"
                   height="500"

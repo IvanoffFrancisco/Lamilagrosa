@@ -82,7 +82,7 @@ const Carrusel = ({
             <div className="w-[100vw] h-full relative" key={index}>
               <Image
                 src={image}
-                alt="asd"
+                alt="imagen slideshow"
                 width="1200"
                 height="520"
                 layout="responsive"
@@ -96,23 +96,25 @@ const Carrusel = ({
       {controles && (
         <div className="absolute top-0 z-20 pointer-events-none w-full h-full flex items-center">
           <button
+          aria-label="Flecha a izquierda"
             className="absolute left-0 w-10 h-8 md:w-14 md:h-12 pointer-events-auto border-none cursor-pointer outline-none bg-black bg-opacity-30"
             onClick={anterior}
           >
             <Image
               src="/img/arrowl.png"
-              alt=""
+              alt="flecha izquierda"
               layout="fill"
               objectFit="contain"
             />
           </button>
           <button
+          aria-label="flecha a derecha"
             className="absolute right-0 w-10 h-8 md:w-14 md:h-12 pointer-events-auto border-none cursor-pointer outline-none bg-black bg-opacity-30"
             onClick={siguiente}
           >
             <Image
               src="/img/arrowr.png"
-              alt=""
+              alt="flecha derecha"
               layout="fill"
               objectFit="contain"
             />

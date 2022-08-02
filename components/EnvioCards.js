@@ -51,7 +51,7 @@ const EnvioCards = ({
             </p>
             <p
               onClick={() => seteditarDomicilio(true)}
-              className="text-[10px] text-red-600 cursor-pointer pt-1"
+              className="text-xs text-red-600 cursor-pointer pt-1"
             >
               {direccion === "" ? "" : "Editar domicilio"}
             </p>
@@ -63,7 +63,7 @@ const EnvioCards = ({
               editarDomicilio || direccion === "" ? "" : "hidden"
             }`}
           >
-            <label className="text-[10px] text-blue-600">
+            <label className="text-xs text-blue-600">
               {direccion === "" ? "Ingresa un domicilio" : "Edita tu domicilio"}
             </label>
             <div className="flex justify-between gap-1">
@@ -73,30 +73,10 @@ const EnvioCards = ({
                 className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
                 placeholder="Domicilio"
               />
-              <button className="bg-blue-600 text-[10px] text-white py-1 px-3 rounded-md">
+              <button className="bg-blue-600 text-xs text-white py-1 px-3 rounded-md">
                 Aceptar
               </button>
             </div>
-            {/* {direccion === "" ? (
-              <div className="flex justify-between gap-1">
-                <input
-                  onBlur={handleDomicilio}
-                  type="text"
-                  className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
-                  placeholder="Domicilio"
-                />
-                <button className="bg-blue-600 text-[10px] text-white py-1 px-3 rounded-md">
-                  Aceptar
-                </button>
-              </div>
-            ) : (
-              <input
-                onChange={handleDomicilio}
-                type="text"
-                className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
-                value={direccion}
-              />
-            )} */}
           </div>
 
           <p className="text-xs text-red-600 text-center pt-3 animate-pulse">

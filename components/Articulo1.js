@@ -15,9 +15,6 @@ const Articulo1 = () => {
           Menú
         </button>
       </Link>
-      {/* <h2 className="lg:text-xl xl:text-xl text-black font-semibold mx-auto tracking-wide mt-8 lg:mt-10 xl:mt-24">
-        O disfruta ahorrando con estas increibles promos
-      </h2> */}
     </div>
   );
 };

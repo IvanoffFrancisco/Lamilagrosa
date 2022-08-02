@@ -24,27 +24,13 @@ export default function GuarnicionCarritoCard({ producto,setSumaCarrito }) {
           );
     };
 
-    // const handleChange = (e) => {
-    //   setCantidadMenus(e.target.value);
-    //   producto.cantidad = parseInt(e.target.value);
-    //   actualizarCarrito(producto);
-    //   setSumaCarrito(
-    //     carrito?.reduce(
-    //       (previousValue, currentValue) =>
-    //         previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
-    //       0
-    //     )
-    //   );
-    // };
-    
-  
     return (
         <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-500 md:pl-5 rounded-sm">
              <div className="flex flex-col items-center justify-center">
                <article className="w-[90px] md:w-[100px] border border-black">
                  <Image
                   src={imagenGuarnicion}
-                  alt={guarnicion}
+                  alt={guarnicion.nombre}
                   layout="responsive"
                   width="500"
                   height="300"
@@ -93,14 +79,9 @@ export default function GuarnicionCarritoCard({ producto,setSumaCarrito }) {
                   <option value="10">10</option>
                 </select>
               </div>
-              {/* <p className=" py-1">Cantidad: {cantidad}</p> */}
               <p className="font-semibold text-lg pt-2">
                 Total:<span className="text-red-600"> ${precio * cantidadGuarnicion }</span>
               </p>
-      
-              {/* <button className="bg-blue-600 text-white text-xs px-1.5 py-1 shadow-sm shadow-blue-800 rounded-sm tracking-wide absolute bottom-0 right-0 md:mb-1 md:mr-1">
-                Editar
-              </button> */}
               <AiOutlineClose
                 onClick={() => eliminarCarrito(producto.id)}
                 className="absolute top-0 right-0 text-red-600 text-xl cursor-pointer md:mt-1 md:mr-1"

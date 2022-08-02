@@ -22,11 +22,11 @@ const PromoCard = ({
       <div className="w-full pt-2 text-center">
         <Image
           src={imagen}
-          alt="Promo1"
+          alt="imagen de Promocion"
           layout="fixed"
           height={180}
           width={180}
-        ></Image>
+        />
       </div>
       <div className="p-4 lg text-center">
         <div className="rounded-full bg-gray-300 w-fit flex flex-row py-3 px-4 -mt-9 -ml-9 shadow-sm shadow-gray-500">
@@ -36,9 +36,9 @@ const PromoCard = ({
         </div>
 
         <div className="pb-4">
-          <h3 className={`text-3xl font-black text-${color}-900 pb-2`}>
+          <h2 className={`text-3xl font-black text-${color}-900 pb-2`}>
             {titulo}
-          </h3>
+          </h2>
           <div className="md:mt-6 sm:mt-0 mb-4">
             <p className="text-white text-md font-bold ">{contenido1}</p>
             <p className="text-xs text-black font-semibold md:mt-6 sm:mt-0 ">

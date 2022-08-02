@@ -156,7 +156,7 @@ export default function DetalleProducto(props) {
               {detalleProducto.imagen && (
                 <Image
                   src={detalleProducto.imagen}
-                  layout="responsive"
+                  layout={detalleProducto.nombre}
                   alt="producto"
                   objectFit="cover"
                   width="800"
@@ -199,11 +199,11 @@ export default function DetalleProducto(props) {
                         height="300"
                         objectFit="cover"
                       />
-                      <p className="text-[10px] text-center font-semibold text-blue-600">
+                      <p className="text-xs text-center font-semibold text-blue-600">
                         {item.nombre}
                       </p>
 
-                      <p className="text-[10px] text-center font-semibold text-red-600">
+                      <p className="text-xs text-center font-semibold text-red-600">
                         Gratis con tu menú
                       </p>
                     </li>
@@ -231,11 +231,11 @@ export default function DetalleProducto(props) {
                         height="300"
                         objectFit="cover"
                       />
-                      <p className="text-[10px] text-center font-semibold text-blue-600">
+                      <p className="text-xs text-center font-semibold text-blue-600">
                         {item.nombre}
                       </p>
 
-                      <p className="text-[10px] text-center font-semibold text-red-600">
+                      <p className="text-xs text-center font-semibold text-red-600">
                         ${item.precio - 700} Adicional
                       </p>
                     </li>

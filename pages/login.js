@@ -28,7 +28,7 @@ export default function Login() {
               <a>
                 <Image
                   src="/img/logo-web-LaMilaGrosa2.png"
-                  alt="Picture of the author"
+                  alt="logo milagrosa"
                   width={190}
                   height={120}
                 />
@@ -67,7 +67,7 @@ export default function Login() {
                 />
               </div>
               <div className="flex justify-around w-full py-3">
-                <label className="text-[10px] md:text-[11px] flex items-center ">
+                <label className="text-xs md:text-xs flex items-center ">
                   <input
                     type="checkbox"
                     name="remember"
@@ -76,7 +76,7 @@ export default function Login() {
                   Recordar Sesión
                 </label>
                 <Link href="/password">
-                  <a className="text-[10px] hover:text-sky-400 ease-in duration-200 border-sky-400">
+                  <a className="text-xs hover:text-sky-400 ease-in duration-200 border-sky-400">
                     Olvidaste tu contraseña?
                   </a>
                 </Link>

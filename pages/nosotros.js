@@ -15,7 +15,7 @@ const nosotros = () => {
             <div className="w-full h-fit md:min-w-[350x] max-w-[500px] mx-auto border-4 border-orange-300 border-double shadow-lg shadow-gray-300">
               <Image
                 src={AboutUs}
-                alt="nosotros"
+                alt="imagen de cheff cocinando"
                 layout="responsive"
                 width="600"
                 height="800"

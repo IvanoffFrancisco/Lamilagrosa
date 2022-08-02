@@ -5,7 +5,7 @@ const Guarnicion = ({ guarnicion }) => {
     <li className="min-w-[117px] max-w-[100px] flex-shrink-0 snap-start">
       <Image
         src={guarnicion.imagen}
-        alt="producto"
+        alt={guarnicion.nombre}
         layout="responsive"
         width="500"
         height="330"

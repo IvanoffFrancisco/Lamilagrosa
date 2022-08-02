@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Router from 'next/router'
-import { useState, useContext, useEffect } from "react";
+import Router from "next/router";
+import { useState, useContext } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
@@ -23,22 +23,22 @@ const Navbar = () => {
     setNav(!nav);
   };
 
-  const  cerrarSesion=()=>{
-    localStorage.removeItem('LMG-user');
+  const cerrarSesion = () => {
+    localStorage.removeItem("LMG-user");
     Router.reload();
-  }
+  };
 
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
       <div className="max-w-[95%] xs:max-w-[90%] lg:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
         <Link href="/">
           <a className="pt-1">
-            <div className="w-[100px] xs:w-[110px] md:w-[130px]">
+            <div className="w-[90px] xs:w-[100px] md:w-[120px]">
               <Image
-                width="130"
-                height="80"
+                width="256"
+                height="170"
                 src="/img/logo-web-LaMilaGrosa2.png"
-                alt="logo"
+                alt="logo milagrosa"
                 className="cursor-pointer"
               />
             </div>
@@ -80,8 +80,8 @@ const Navbar = () => {
           {islogged ? (
             <div className="flex relative">
               <div className="flex flex-col text-center">
-                <p className="text-[10px]">Bienvenido</p>
-                <p className="text-[10px] font-bold capitalize ">
+                <p className="text-xs">Bienvenido</p>
+                <p className="text-xs font-bold capitalize ">
                   {userGlobal.user}
                 </p>
               </div>
@@ -96,6 +96,7 @@ const Navbar = () => {
                     <Image
                       width="25"
                       height="25"
+                      alt="flecha derecha"
                       src="/img/arrowd.svg"
                       className="cursor-pointer"
                       onClick={() => setNavUser(!navUser)}
@@ -105,6 +106,7 @@ const Navbar = () => {
                       width="25"
                       height="25"
                       src="/img/arrowl2.svg"
+                      alt="flecha izquierda"
                       className="cursor-pointer"
                       onClick={() => setNavUser(!navUser)}
                     />
@@ -186,7 +188,7 @@ const Navbar = () => {
                 src="/img/logo-web-LaMilaGrosa2.png"
                 width="100"
                 height="65"
-                alt="logo"
+                alt="logo milagrosa"
               />
 
               <div

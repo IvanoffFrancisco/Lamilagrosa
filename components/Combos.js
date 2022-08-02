@@ -25,7 +25,7 @@ export default function Combos() {
           <Image
             className=" object-cover rounded-xl h-40"
             src={FoodImg}
-            alt=""
+            alt="Combo Sandwiches"
           ></Image>
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -64,7 +64,7 @@ export default function Combos() {
           <Image
             className="object-cover rounded-xl"
             src={FoodImg2}
-            alt=""
+            alt="Combo Saludable"
           ></Image>
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -102,7 +102,7 @@ export default function Combos() {
           <Image
             className=" object-cover rounded-xl h-40"
             src={FoodImg3}
-            alt=""
+            alt="Combo Familiar"
           ></Image>
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -139,7 +139,7 @@ export default function Combos() {
           <Image
             className=" object-cover rounded-xl h-40"
             src={FoodImg4}
-            alt=""
+            alt="Combo Napolitana"
           ></Image>
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
