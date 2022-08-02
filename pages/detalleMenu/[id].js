@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CarritoContext } from "../../contexts/CarritoContext";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
-import {MenuContextData} from '../../contexts/MenuContext'
+import { MenuContextData } from "../../contexts/MenuContext";
 
 import {
   TiHeartOutline,
@@ -16,7 +16,7 @@ import {
 import { GiCow, GiChicken } from "react-icons/gi";
 
 export default function DetalleProducto(props) {
-  const {guarnicionGlobal}=useContext(MenuContextData);
+  const { guarnicionGlobal } = useContext(MenuContextData);
   const { carrito, agregarCarrito } = useContext(CarritoContext);
   const [detalleProducto, setDetalleProducto] = useState({});
   const [cantidad, setCantidad] = useState(1);
@@ -48,7 +48,7 @@ export default function DetalleProducto(props) {
 
   const handleGuarnicion = (e) => {
     setGuarnicion({
-      id:e.currentTarget.dataset.id,
+      id: e.currentTarget.dataset.id,
       nombre: e.currentTarget.dataset.nombre,
       imagen: e.currentTarget.dataset.imagen,
       precio: parseInt(e.currentTarget.dataset.precio),
@@ -83,15 +83,16 @@ export default function DetalleProducto(props) {
       }
     }
     //calcula si el menu tiene costo adicional
-    const adicionalMenu = guarnicion.precio <= 700 ? 0 : guarnicion.precio - 700
+    const adicionalMenu =
+      guarnicion.precio <= 700 ? 0 : guarnicion.precio - 700;
     //Crea y agrega pedido al carrito
     const pedido = {
-      idMenu:detalleProducto._id,
+      idMenu: detalleProducto._id,
       menu: detalleProducto.nombre,
       imagenMenu: detalleProducto.imagen,
       tipoCarne: carneMila,
       cantidad,
-      idGuarnicion:guarnicion.id,
+      idGuarnicion: guarnicion.id,
       guarnicion: guarnicion.nombre,
       imagenGuarnicion: guarnicion.imagen,
       adicional: adicionalMenu,
@@ -156,8 +157,8 @@ export default function DetalleProducto(props) {
               {detalleProducto.imagen && (
                 <Image
                   src={detalleProducto.imagen}
-                  layout={detalleProducto.nombre}
-                  alt="producto"
+                  layout="responsive"
+                  alt={detalleProducto.nombre}
                   objectFit="cover"
                   width="800"
                   height="500"
