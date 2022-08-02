@@ -12,6 +12,7 @@ const Layout = ({ children, pagina }) => {
         <meta name="description" content="Sitio Web de venta de comida" />
         <link rel="canonical" href="https://lamilagrosa.vercel.app/" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preload" />
       </Head>
 
       <Navbar />
