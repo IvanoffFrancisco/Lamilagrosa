@@ -12,7 +12,7 @@ const ResumenCarrito = ({ carrito, sumaCarrito, direccion, metodoEnvio }) => {
             {carrito?.reduce(
               (previousValue, currentValue) =>
                 previousValue +
-                parseInt(currentValue.precio) * currentValue.cantidad,
+                (parseInt(currentValue.precio) + currentValue.adicional) * currentValue.cantidad  ,
               0
             )}
           </span>

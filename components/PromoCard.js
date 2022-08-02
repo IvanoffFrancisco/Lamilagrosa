@@ -9,6 +9,7 @@ const PromoCard = ({
   titulo,
   contenido1,
   contenido2,
+  fondo,
   color,
   descuento,
 }) => {
@@ -16,7 +17,7 @@ const PromoCard = ({
 
   return (
     <div
-      className={`w-full bg-gradient-to-r from-${color}-500 to-${color}-500 rounded-lg shadow-2xl shadow-gray-600 flex flex-col md:flex-row-reverse md:items-center px-2`}
+      className={`w-full bg-gradient-to-r ${fondo} rounded-lg shadow-2xl shadow-gray-600 flex flex-col md:flex-row-reverse md:items-center px-2`}
     >
       <div className="w-full pt-2 text-center">
         <Image
@@ -28,7 +29,7 @@ const PromoCard = ({
         ></Image>
       </div>
       <div className="p-4 lg text-center">
-        <div className="rounded-full bg-gray-300 w-fit flex flex-row py-3 px-4 -mt-8 -ml-8">
+        <div className="rounded-full bg-gray-300 w-fit flex flex-row py-3 px-4 -mt-9 -ml-9 shadow-sm shadow-gray-500">
           <p className="font-bold text-xl flex flex-col m-0 p-0">
             {descuento}%<span className="text-sm text-center">OFF</span>
           </p>

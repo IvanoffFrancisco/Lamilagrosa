@@ -15,7 +15,6 @@ import {
 } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 
-
 export default function DetalleProducto(props) {
   const {guarnicionGlobal}=useContext(MenuContextData);
   const { carrito, agregarCarrito } = useContext(CarritoContext);
@@ -42,7 +41,6 @@ export default function DetalleProducto(props) {
       const res = await fetch(url);
       const respuesta = await res.json();
       setDetalleProducto(respuesta);
-      // setImagenMenu(String(respuesta.imagen));
     } catch (error) {
       console.log(error);
     }
@@ -84,7 +82,8 @@ export default function DetalleProducto(props) {
         return;
       }
     }
-
+    //calcula si el menu tiene costo adicional
+    const adicionalMenu = guarnicion.precio <= 700 ? 0 : guarnicion.precio - 700
     //Crea y agrega pedido al carrito
     const pedido = {
       idMenu:detalleProducto._id,
@@ -95,7 +94,8 @@ export default function DetalleProducto(props) {
       idGuarnicion:guarnicion.id,
       guarnicion: guarnicion.nombre,
       imagenGuarnicion: guarnicion.imagen,
-      precio:detalleProducto.precio,
+      adicional: adicionalMenu,
+      precio: detalleProducto.precio,
       id: Date.now().toString(36),
     };
     agregarCarrito(pedido);
@@ -120,8 +120,6 @@ export default function DetalleProducto(props) {
       setTipoError("");
     }, 2500);
   };
-
-  const volverAlMenu = () => {};
 
   return (
     <Layout pagina="Detalle de productos" carrito={carrito}>
