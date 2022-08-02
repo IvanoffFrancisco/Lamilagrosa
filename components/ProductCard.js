@@ -10,7 +10,7 @@ const ProductCard = ({ producto, setSumaCarrito }) => {
     
   const [cantidadMenus, setCantidadMenus] = useState(producto.cantidad);
 
-  const { menu, imagenMenu, guarnicion, imagenGuarnicion, precio, tipoMila } =
+  const { menu, imagenMenu, guarnicion, imagenGuarnicion, precio, tipoMila, adicional } =
     producto;
 
   const handleChange = (e) => {
@@ -20,7 +20,7 @@ const ProductCard = ({ producto, setSumaCarrito }) => {
     setSumaCarrito(
       carrito?.reduce(
         (previousValue, currentValue) =>
-          previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+          previousValue + (parseInt(currentValue.precio) + currentValue.adicional) * currentValue.cantidad,
         0
       )
     );
@@ -67,6 +67,7 @@ const ProductCard = ({ producto, setSumaCarrito }) => {
           <span className="text-blue-600 xs:text-base capitalize">
             {guarnicion}
           </span>
+          <span className="text-red-600"> {adicional > 0 ? `- $${adicional}` : ""}</span>
         </p>
         <div>
           <label className="font-semibold xl:text-xl">
@@ -94,7 +95,7 @@ const ProductCard = ({ producto, setSumaCarrito }) => {
         </div>
         <p className="font-semibold text-lg pt-2">
           Total:
-          <span className="text-red-600"> ${precio * cantidadMenus}</span>
+          <span className="text-red-600"> ${(precio + adicional) * cantidadMenus }</span>
         </p>
         <AiOutlineClose
           onClick={() => eliminarCarrito(producto.id)}

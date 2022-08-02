@@ -12,7 +12,7 @@ const Carrito = () => {
   const [sumaCarrito, setSumaCarrito] = useState(
     carrito?.reduce(
       (previousValue, currentValue) =>
-        previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+        previousValue + (parseInt(currentValue.precio) + currentValue.adicional) * currentValue.cantidad,
       0
     )
   );

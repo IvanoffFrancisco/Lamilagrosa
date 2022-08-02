@@ -14,138 +14,6 @@ import {
 } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 
-const guarniciones = [
-  {
-    imagen:
-      "https://images.rappi.com.ar/products/3d9120f7-f3ef-455c-8acd-cda3e4098807-1629229510757.png",
-    nombre: "Papas fritas",
-    ingredientes: ["papa"],
-    precio: 700,
-    id: 1,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/1937429-1617886917008.jpg",
-    nombre: "Papas fritas a caballo",
-    ingredientes: ["Papa", "huevo frito"],
-    precio: 825,
-    id: 2,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546594-1617886929209.jpg",
-    nombre: "Papas cheddar",
-    ingredientes: ["Papa", "cheddar", "panceta crocante", "ciboulette"],
-    precio: 825,
-    id: 3,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546595-1617886953216.jpg",
-    nombre: "Papas Criminales",
-    ingredientes: [
-      "Papas fritas",
-      "cheddar",
-      "cebolla de verdeo y colorada",
-      "panceta ahumada",
-      "huevo revuelto",
-      "pimentón dulce",
-    ],
-    precio: 1100,
-    id: 4,
-  },
-  {
-    imagen:
-      "https://images.rappi.com.ar/products/12368191-8b4c-4336-9b94-42fdb50e09d5-1628272889480.png",
-    nombre: "Nachos",
-    ingredientes: ["nachos", "salsa a eleccion"],
-    precio: 600,
-    id: 5,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546599-1617886889264.jpg",
-    nombre: "Aros de Cebolla",
-    ingredientes: ["Aros de cebolla", "salsa barbacoa"],
-    precio: 653,
-    id: 6,
-  },
-  {
-    imagen:
-      "https://images.rappi.com.ar/products/6287d03b-3082-4275-9de6-6a8e4f3d6732-1645118117215.png",
-    nombre: "Triángulo de Provolone",
-    ingredientes: ["provolone", "salsa criolla"],
-    precio: 600,
-    id: 7,
-  },
-  {
-    imagen:
-      "https://images.rappi.com.ar/products/e3cec65d-8bb5-48c5-bbdb-1d22284a3d5e-1650463523409.png",
-    nombre: "Bastoncitos de Muzzarella",
-    ingredientes: ["muzzarella", "salsa fileto"],
-    precio: 600,
-    id: 8,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/1784419-1617887000030.jpg",
-    nombre: "Pechuguitas Crispy",
-    ingredientes: ["Pechuguitas pollo", "muzzarella", "salsa barbacoa"],
-    precio: 575,
-    id: 9,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546624-1617888077361.jpg",
-    nombre: "Ensalada Clásica",
-    ingredientes: [
-      "Cebolla",
-      "Huevo",
-      "Lechuga",
-      "Parmesano",
-      "Tomate",
-      "Zanahoria",
-      "Rúcula",
-    ],
-    precio: 614,
-    id: 10,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546627-1617888105700.jpg",
-    nombre: "Ensalada Caesar",
-    ingredientes: [
-      "lechuga",
-      "pollo",
-      "croutones",
-      "salsa Caesar",
-      "parmesano",
-    ],
-    precio: 800,
-    id: 11,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546629-1617888112237.jpg",
-    nombre: "Ensalada Caesar de Rúcula",
-    ingredientes: [
-      "lechuga",
-      "pollo",
-      "croutones",
-      "salsa Caesar",
-      "parmesano",
-    ],
-    precio: 800,
-    id: 12,
-  },
-  {
-    imagen: "https://images.rappi.com.ar/products/546622-1617888090814.jpg",
-    nombre: "Wrap Milanesitas de Pollo",
-    ingredientes: [
-      "Wrap de milanesas de pollo",
-      "mayonesa",
-      "verdes",
-      "cebolla caramelizada",
-      "tomate confitado",
-      "nachos",
-    ],
-    precio: 700,
-    id: 13,
-  },
-];
-
 export default function DetalleProducto(props) {
   const { carrito, agregarCarrito } = useContext(CarritoContext);
   const [detalleProducto, setDetalleProducto] = useState({});
@@ -171,7 +39,6 @@ export default function DetalleProducto(props) {
       const res = await fetch(url);
       const respuesta = await res.json();
       setDetalleProducto(respuesta);
-      // setImagenMenu(String(respuesta.imagen));
     } catch (error) {
       console.log(error);
     }
@@ -212,7 +79,8 @@ export default function DetalleProducto(props) {
         return;
       }
     }
-
+    //calcula si el menu tiene costo adicional
+    const adicionalMenu = guarnicion.precio <= 700 ? 0 : guarnicion.precio - 700
     //Crea y agrega pedido al carrito
     const pedido = {
       menu: detalleProducto.nombre,
@@ -221,6 +89,7 @@ export default function DetalleProducto(props) {
       cantidad,
       guarnicion: guarnicion.nombre,
       imagenGuarnicion: guarnicion.imagen,
+      adicional: adicionalMenu,
       precio: detalleProducto.precio,
       id: Date.now().toString(36),
     };
@@ -246,8 +115,6 @@ export default function DetalleProducto(props) {
       setTipoError("");
     }, 2500);
   };
-
-  const volverAlMenu = () => {};
 
   return (
     <Layout pagina="Detalle de productos" carrito={carrito}>
