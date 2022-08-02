@@ -7,7 +7,7 @@ export default function Articulo2() {
   const { userGlobal, islogged } = useContext(UsuarioContext);
 
   return (
-    <div className="m-auto text-center my-20">
+    <div className="">
       {/* {islogged ? (
         <div className="my-12">
           <h1 className="text-3xl font-extrabold text-red-800 py-3">
@@ -29,8 +29,6 @@ export default function Articulo2() {
           </h2>
         </div>
       )} */}
-      <Promos />
-      <Combos />
     </div>
   );
 }
