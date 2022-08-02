@@ -66,7 +66,7 @@ const Carrito = () => {
                                   setSumaCarrito={setSumaCarrito}
                               />
                       }else{
-                          return <GuarnicionCarritoCard producto={menus}/>
+                          return <GuarnicionCarritoCard producto={menus} setSumaCarrito={setSumaCarrito}/>
                       }
                     })
                   }

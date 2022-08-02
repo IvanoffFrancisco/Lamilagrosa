@@ -37,15 +37,6 @@ const TipoMila = ({ setTipoMenu, tipoMenu }) => {
           </li>
           <li onClick={handleSeleccion}>
             <p
-              className={`cursor-pointer  hover:ring-1 ring-white px-2 rounded-sm ease-in duration-200 ${
-                tipoMenu === "Napolitana" ? "ring-1 ring-white" : ""
-              }`}
-            >
-              Napolitana
-            </p>
-          </li>
-          <li onClick={handleSeleccion}>
-            <p
               className={`cursor-pointer hover:ring-1 ring-white px-2 rounded-sm ease-in duration-200 ${
                 tipoMenu === "Milanesa" ? "ring-1 ring-white" : ""
               }`}

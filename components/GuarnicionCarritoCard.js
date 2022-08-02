@@ -4,16 +4,38 @@ import { CarritoContext } from "../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function GuarnicionCarritoCard({ producto }) {
-    const { eliminarCarrito } = useContext(CarritoContext);
+export default function GuarnicionCarritoCard({ producto,setSumaCarrito }) {
+  const { eliminarCarrito, actualizarCarrito, carrito } =
+  useContext(CarritoContext);
 
     const [cantidadGuarnicion, setCantidadGuarnicion] = useState(producto.cantidad);
     
-    const { id,guarnicion, imagenGuarnicion, precio } = producto;
+    const { guarnicion, imagenGuarnicion, precio } = producto;
 
     const handleChange = (e) => {
       setCantidadGuarnicion(parseInt(e.target.value));
+      producto.cantidad=parseInt(e.target.value);
+      setSumaCarrito(
+            carrito?.reduce(
+              (previousValue, currentValue) =>
+                previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+              0
+            )
+          );
     };
+
+    // const handleChange = (e) => {
+    //   setCantidadMenus(e.target.value);
+    //   producto.cantidad = parseInt(e.target.value);
+    //   actualizarCarrito(producto);
+    //   setSumaCarrito(
+    //     carrito?.reduce(
+    //       (previousValue, currentValue) =>
+    //         previousValue + parseInt(currentValue.precio) * currentValue.cantidad,
+    //       0
+    //     )
+    //   );
+    // };
     
   
     return (
@@ -42,7 +64,7 @@ export default function GuarnicionCarritoCard({ producto }) {
                 </p>
               )} */}
               <p className="font-bold tracking-widest text-xs">
-                con{" "}
+                {" "}
                 <span className="text-blue-600 xs:text-base capitalize">
                   {guarnicion}
                 </span>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Router from "next/router";
 import { useState, useContext, useEffect } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
@@ -16,6 +17,10 @@ const Navbar = () => {
   const handleNav = () => {
     setNav(!nav);
   };
+  const cerrarSesion=()=>{
+      localStorage.removeItem('LMG-user');
+      Router.reload();
+  }
 
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
@@ -107,7 +112,7 @@ const Navbar = () => {
                               <Link href="historial">
                                 <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer ">Historial</li>
                               </Link>
-                                <li className="py-3 border-b-2 hover:bg-red-600 rounded-b-md cursor-pointer">Cerrar Sesión</li>
+                                <button onClick={cerrarSesion} className="py-3 border-b-2 hover:bg-red-600 rounded-b-md cursor-pointer">Cerrar Sesión</button>
                             </ul>
                     </div>
                 </div>

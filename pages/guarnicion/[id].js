@@ -47,11 +47,12 @@ export default function DetalleGuarnicion(props) {
 
     //Crea y agrega pedido al carrito
     const pedido = {
-      id:detalleProducto.id,
+      idMenu:detalleProducto._id,
       guarnicion: detalleProducto.nombre,
       imagenGuarnicion: detalleProducto.imagen,
       cantidad:cantidad,
-      precio: detalleProducto.precio
+      precio: detalleProducto.precio,
+      id: Date.now().toString(36)
     };
     agregarCarrito(pedido);
 
