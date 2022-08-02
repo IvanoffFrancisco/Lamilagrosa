@@ -16,6 +16,7 @@ import {
 import { GiCow, GiChicken } from "react-icons/gi";
 
 export default function DetalleProducto(props) {
+  //Estados
   const { guarnicionGlobal } = useContext(MenuContextData);
   const { carrito, agregarCarrito } = useContext(CarritoContext);
   const [detalleProducto, setDetalleProducto] = useState({});
@@ -35,17 +36,7 @@ export default function DetalleProducto(props) {
 
   const { ingredientes } = detalleProducto;
 
-  const obtenerDetalleComida = async () => {
-    try {
-      let url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`;
-      const res = await fetch(url);
-      const respuesta = await res.json();
-      setDetalleProducto(respuesta);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  //Funciones
   const handleGuarnicion = (e) => {
     setGuarnicion({
       id: e.currentTarget.dataset.id,
@@ -66,14 +57,12 @@ export default function DetalleProducto(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (guarnicion.nombre === undefined || guarnicion.nombre === "") {
       setTipoError("error");
       setMensaje("Selecciona una guarnicion");
       eliminarMensaje();
       return;
     }
-
     if (!detalleProducto.nombre?.includes("Vegana")) {
       if (carneMila === undefined || carneMila === "") {
         setTipoError("error");
@@ -85,6 +74,7 @@ export default function DetalleProducto(props) {
     //calcula si el menu tiene costo adicional
     const adicionalMenu =
       guarnicion.precio <= 700 ? 0 : guarnicion.precio - 700;
+
     //Crea y agrega pedido al carrito
     const pedido = {
       idMenu: detalleProducto._id,
@@ -120,6 +110,18 @@ export default function DetalleProducto(props) {
     setTimeout(() => {
       setTipoError("");
     }, 2500);
+  };
+
+  //Fetch
+  const obtenerDetalleComida = async () => {
+    try {
+      let url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`;
+      const res = await fetch(url);
+      const respuesta = await res.json();
+      setDetalleProducto(respuesta);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -166,12 +168,12 @@ export default function DetalleProducto(props) {
               )}
             </article>
 
-            <h3 className="text-center uppercase flex justify-around">
-              <TiArrowLeft className="text-red-600 text-2xl" />
-              <TiArrowDown className="text-red-600 text-2xl" />
+            <h3 className="text-center uppercase flex justify-around text-blue-600 font-semibold">
+              <TiArrowLeft className="text-red-600 text-3xl" />
+              <TiArrowDown className="text-red-600 text-3xl animate-bounce" />
               Elige una guarnición{" "}
-              <TiArrowDown className="text-red-600 text-2xl" />
-              <TiArrowRight className="text-red-600 text-2xl" />
+              <TiArrowDown className="text-red-600 text-3xl animate-bounce" />
+              <TiArrowRight className="text-red-600 text-3xl" />
             </h3>
 
             <section className="w-full shadow-sm shadow-gray-800">
