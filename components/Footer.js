@@ -15,8 +15,8 @@ const Footer = () => {
               <a className="cursor-pointer w-[70px] h-[66px] md:w-[110px] md:h-[110px]">
                 <Image
                   layout="responsive"
-                  width="68"
-                  height="66"
+                  width="538"
+                  height="548"
                   src="/img/logo-LaMilaGrosa-circular.png"
                   alt="logo milagrosa"
                 />
