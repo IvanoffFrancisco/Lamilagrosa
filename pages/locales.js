@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import Layout from "../components/Layout";
+import Link from "next/link";
+import { UsuarioContext } from "../contexts/UsuarioContext";
 import LocalImage from "../public/img/Local1.png";
 import LocalImage2 from "../public/img/Local2.jpg";
 import LocalImage3 from "../public/img//Local3.jpg";
@@ -9,6 +11,8 @@ import LogoImage from "../public/img/login-and-register.png";
 import { FaMapMarkedAlt, FaPhoneAlt } from "react-icons/fa";
 
 export default function infoCards() {
+  const { userGlobal, islogged } = useContext(UsuarioContext);
+
   return (
     <Layout>
       <div className="min-h-screen min-w-screen overflow-auto">
@@ -434,6 +438,25 @@ export default function infoCards() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="m-auto text-center py-20">
+        {islogged ? (
+          <Link href="testimonios">
+            <button className="bg-sky-600 w-screen text-white py-6 border-y-2 border-sky-900 hover:text-sky-700 hover:bg-white">
+              <p className="font-bold text-3xl ">
+                Dejanos una Reseña aqui!
+              </p>
+            </button>
+          </Link>
+        ) : (
+          <Link href="login">
+            <button className="bg-sky-600 w-screen text-white py-6 border-y-2 border-sky-900 hover:text-sky-700 hover:bg-white">
+              <p className="font-bold text-3xl ">
+                Inicia Sesion o Registrate para dejar una reseña!
+              </p>
+            </button>
+          </Link>
+        )}
       </div>
     </Layout>
   );
