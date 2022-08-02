@@ -1,11 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import Router from "next/router";
+import Router from 'next/router'
 import { useState, useContext, useEffect } from "react";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
-import { AiOutlineMenu, AiOutlineClose, AiFillInstagram,AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiFillInstagram,
+  AiOutlineUser,
+} from "react-icons/ai";
 import { FaFacebook, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const Navbar = () => {
@@ -17,14 +22,15 @@ const Navbar = () => {
   const handleNav = () => {
     setNav(!nav);
   };
-  const cerrarSesion=()=>{
-      localStorage.removeItem('LMG-user');
-      Router.reload();
+
+  const  cerrarSesion=()=>{
+    localStorage.removeItem('LMG-user');
+    Router.reload();
   }
 
   return (
     <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
-      <div className="max-w-[95%] xs:max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
+      <div className="max-w-[95%] xs:max-w-[90%] lg:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
         <Link href="/">
           <a className="pt-1">
             <div className="w-[100px] xs:w-[110px] md:w-[130px]">
@@ -40,29 +46,29 @@ const Navbar = () => {
         </Link>
 
         <div>
-          <ul className="hidden md:flex cursor-pointer md:gap-x-4 md:text-xs lg:gap-x-6 lg:text-base xl:gap-x-10 2xl:gap-x-16">
+          <ul className="hidden md:flex cursor-pointer md:gap-x-1 md:text- lg:gap-x-6 lg:text-lg xl:gap-x-10 xl:text-xl 2xl:gap-x-16 font-semibold">
             <Link href="/">
-              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full  hover:text-blue-800 ease-in duration-200">
                 Inicio
               </li>
             </Link>
             <Link href="/menu">
-              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full hover:text-blue-800 ease-in duration-200">
                 Menu
               </li>
             </Link>
             <Link href="/nosotros">
-              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full hover:text-blue-800 ease-in duration-200">
                 Nosotros
               </li>
             </Link>
             <Link href="/locales">
-              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full hover:text-blue-800 ease-in duration-200">
                 Locales
               </li>
             </Link>
             <Link href="/contacto">
-              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full text-lg font-semibold hover:text-md hover:text-blue-800 ease-in duration-200">
+              <li className="hover:ring-1 ring-blue-800 px-4 rounded-full hover:text-blue-800 ease-in duration-200">
                 Contacto
               </li>
             </Link>
@@ -70,52 +76,64 @@ const Navbar = () => {
         </div>
 
         {/* logica para poder mostrar el avatar o el nombre de usuario */}
-        <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-3 lg:gap-x-4 ">
+        <div className="flex transition-transform ease-in duration-200 items-center xs:gap-x-1 md:gap-x-1 lg:gap-x-2">
           {islogged ? (
-            <div className="flex items-center">
+            <div className="flex relative">
               <div className="flex flex-col text-center">
                 <p className="text-[10px]">Bienvenido</p>
                 <p className="text-[10px] font-bold capitalize ">
                   {userGlobal.user}
                 </p>
+              </div>
+              <div className="flex justify-center items-center">
+                <AiOutlineUser
+                  size="32"
+                  className="text-gray-600 hover:text-blue-600 hover:scale-105 ease-in duration-200 cursor-pointer"
+                  onClick={() => setNavUser(!navUser)}
+                />
+                <div>
+                  {navUser ? (
+                    <Image
+                      width="25"
+                      height="25"
+                      src="/img/arrowd.svg"
+                      className="cursor-pointer"
+                      onClick={() => setNavUser(!navUser)}
+                    />
+                  ) : (
+                    <Image
+                      width="25"
+                      height="25"
+                      src="/img/arrowl2.svg"
+                      className="cursor-pointer"
+                      onClick={() => setNavUser(!navUser)}
+                    />
+                  )}
                 </div>
-                  <div
-                      className="flex ml-3">
-                      <AiOutlineUser
-                        size="32"
-                        className="text-gray-600 hover:text-blue-600 hover:scale-105 ease-in duration-200 cursor-pointer"
-                        onClick={() => setNavUser(!navUser)}
-                        />
-                        <div>
-                          {navUser ? <Image
-                        width="25"
-                        height="25"
-                        src="/img/arrowd.svg"
-                        className="cursor-pointer"
-                        onClick={() => setNavUser(!navUser)}
-                        />
-                        : 
-                        <Image
-                        width="25"
-                        height="25"
-                        src="/img/arrowl2.svg"
-                        className="cursor-pointer"
-                        onClick={() => setNavUser(!navUser)}
-                        />
-                        }
-                        </div>  
-                      <div className={navUser ? "fixed" : "hidden fixed  ease-in duration-300"}>
-                            <ul className="mt-10 bg-white fixed w-[150px] text-center rounded-lg">
-                              <Link href="perfil">
-                                <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer">Perfil</li>
-                              </Link>
-                              <Link href="historial">
-                                <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer ">Historial</li>
-                              </Link>
-                                <button onClick={cerrarSesion} className="py-3 border-b-2 hover:bg-red-600 rounded-b-md cursor-pointer">Cerrar Sesión</button>
-                            </ul>
-                    </div>
+                <div
+                  className={
+                    navUser
+                      ? "absolute top-4 left-0"
+                      : "hidden ease-in duration-300"
+                  }
+                >
+                  <ul className="mt-10 bg-white absolute w-[150px] text-center rounded-b-lg border">
+                    <Link href="perfil">
+                      <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer">
+                        Perfil
+                      </li>
+                    </Link>
+                    <Link href="historial">
+                      <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer ">
+                        Historial
+                      </li>
+                    </Link>
+                    <li className="py-3 hover:bg-red-500 rounded-b-md cursor-pointer">
+                      <button onClick={cerrarSesion}>Cerrar Sesión</button>
+                    </li>
+                  </ul>
                 </div>
+              </div>
             </div>
           ) : (
             <div className="md:flex md:flex-col lg:flex-row  justify-center items-center gap-1 lg:gap-2 hidden ">

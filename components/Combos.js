@@ -77,7 +77,8 @@ export default function Combos() {
               Combo Saludable
             </h2>
             <p className="leading-relaxed font-bold text-slate-800">
-              3 milanesas o Sandwiches del menu vegano, con guarnicion a eleccion.
+              3 milanesas o Sandwiches del menu vegano, con guarnicion a
+              eleccion.
             </p>
             <p className="font-bold text-xl text-green-800">Precio: 3500$</p>
           </div>
@@ -113,7 +114,8 @@ export default function Combos() {
               Combo Familiar
             </h2>
             <p className="leading-relaxed font-bold text-slate-800">
-              4 milanesas a eleccion, con dos guarniciones de papas fritas con cheddar.
+              4 milanesas a eleccion, con dos guarniciones de papas fritas con
+              cheddar.
             </p>
             <p className="font-bold text-xl text-blue-800">Precio: 4200$</p>
           </div>

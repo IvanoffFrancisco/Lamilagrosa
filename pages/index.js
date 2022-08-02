@@ -1,7 +1,9 @@
 import Articulo1 from "../components/Articulo1";
-import Articulo2 from "../components/Articulo2";
+// import Articulo2 from "../components/Articulo2";
 import Carrusel from "../components/Carrusel";
+import Combos from "../components/Combos";
 import Layout from "../components/Layout";
+import Promos from "../components/Promos";
 
 const images = [
   "/img/slideshow/sandwich-de-milanesa.jpg",
@@ -11,7 +13,7 @@ const images = [
 
 export default function Home() {
   return (
-    <Layout pagina={"Home"} >
+    <Layout pagina={"Home"}>
       <Carrusel
         controles={true}
         autoplay={true}
@@ -20,8 +22,8 @@ export default function Home() {
         images={images}
       />
       <Articulo1 />
-      <hr className="my-4"></hr>
-      <Articulo2 />
+      <Promos />
+      {/* <Combos /> */}
     </Layout>
   );
 }
