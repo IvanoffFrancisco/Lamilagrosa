@@ -83,7 +83,7 @@ export default function contact() {
                       name="numero"
                       id="numero"
                       className="w-full px-3 py-2.5 text-gray-500 bg-clip-padding border border-sky-400 rounded-md transition ease-in-out m-0 focus:text-gray-600 focus:outline-none shadow shadow-gray-400"
-                      placeholder="Numero de telofono"
+                      placeholder="Numeró de telefono"
                       // required
                     />
                   </div>
