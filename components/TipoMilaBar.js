@@ -5,7 +5,7 @@ const TipoMila = ({ setTipoMenu, tipoMenu }) => {
 
   return (
     <>
-      <div className="sticky w-full h-auto bg-blue-500 top-20 z-[800] shadow-sm shadow-blue-900">
+      <div className="sticky w-full h-auto bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 top-20 z-[800] shadow-sm border-t-4 border-b-4 border-double border-white">
         <ul className="max-w-[80%] mx-auto text-white flex justify-around items-center gap-x-2 font-semibold text-xs md:text-sm tracking-wide md:gap-x-7 lg:text-base lg:gap-x-8 xl:gap-x-10 2xl:gap-x-12 2xl:text-lg py-2 ">
           <li onClick={handleSeleccion}>
             <p
@@ -25,7 +25,7 @@ const TipoMila = ({ setTipoMenu, tipoMenu }) => {
               Sándwich
             </p>
           </li>
-          
+
           <li onClick={handleSeleccion}>
             <p
               className={`cursor-pointer hover:ring-1 ring-white px-2 rounded-sm ease-in duration-200 ${
