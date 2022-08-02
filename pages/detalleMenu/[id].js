@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,11 +15,11 @@ import {
 } from "react-icons/ti";
 import { GiCow, GiChicken } from "react-icons/gi";
 
-export default function DetalleProducto(props) {
+export default function DetalleProducto({ respuesta }) {
   //Estados
+  const [detalleProducto, setDetalleProducto] = useState(respuesta);
   const { guarnicionGlobal } = useContext(MenuContextData);
   const { carrito, agregarCarrito } = useContext(CarritoContext);
-  const [detalleProducto, setDetalleProducto] = useState({});
   const [cantidad, setCantidad] = useState(1);
   const [carneMila, setCarneMila] = useState("");
   const [guarnicion, setGuarnicion] = useState({
@@ -29,10 +29,6 @@ export default function DetalleProducto(props) {
   });
   const [mensaje, setMensaje] = useState("");
   const [tipoError, setTipoError] = useState("");
-
-  useEffect(() => {
-    obtenerDetalleComida();
-  }, [props]);
 
   const { ingredientes } = detalleProducto;
 
@@ -112,18 +108,6 @@ export default function DetalleProducto(props) {
     }, 2500);
   };
 
-  //Fetch
-  const obtenerDetalleComida = async () => {
-    try {
-      let url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${props.id}`;
-      const res = await fetch(url);
-      const respuesta = await res.json();
-      setDetalleProducto(respuesta);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <Layout pagina="Detalle de productos" carrito={carrito}>
       <main className="w-full h-auto mt-20 pb-10">
@@ -133,6 +117,7 @@ export default function DetalleProducto(props) {
             Tu<span className="text-red-600">Mila</span>Grosa
           </span>
         </h2>
+
         <div className="max-w-[85%] mx-auto w-full flex flex-col lg:flex-row lg:justify-center lg:gap-x-3 pt-3">
           <div className="flex justify-between pt-1">
             <h2 className="text-center text-2xl font-semibold lg:hidden">
@@ -152,7 +137,7 @@ export default function DetalleProducto(props) {
               )
             </span>
           </div>
-
+          {/* -------------------------------------------------------------------------------------- */}
           {/* columna izquierda */}
           <section className="w-full lg:w-3/5 flex flex-col gap-2 ">
             <article className="w-full shadow-sm shadow-gray-800">
@@ -164,6 +149,7 @@ export default function DetalleProducto(props) {
                   objectFit="cover"
                   width="800"
                   height="500"
+                  priority="true"
                 />
               )}
             </article>
@@ -246,7 +232,9 @@ export default function DetalleProducto(props) {
               </ul>
             </section>
           </section>
+          {/* -------------------------------------------------------------------------------------- */}
 
+          {/* -------------------------------------------------------------------------------------- */}
           {/* columna derecha */}
 
           <form
@@ -264,7 +252,7 @@ export default function DetalleProducto(props) {
               />
             </div>
 
-            <span className="lg:flex justify-start pb-2 text-xs 2xl:text-sm hidden lg:block">
+            <span className="lg:flex justify-start pb-2 text-xs 2xl:text-sm hidden">
               (
               {ingredientes?.map((ingrediente) => ingrediente?.tipo).join(", ")}
               )
@@ -379,15 +367,23 @@ export default function DetalleProducto(props) {
               </Link>
             </div>
           </form>
+          {/* -------------------------------------------------------------------------------------- */}
         </div>
       </main>
     </Layout>
   );
 }
 
-DetalleProducto.getInitialProps = (context) => {
-  const { query } = context;
-  const { id } = query;
+export async function getServerSideProps({ query: { id } }) {
+  const url = `https://lamilagrosa-app.herokuapp.com/api/comidas/${id}`;
 
-  return { id };
-};
+  try {
+    const res = await fetch(url);
+    const respuesta = await res.json();
+    return {
+      props: { respuesta },
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}
