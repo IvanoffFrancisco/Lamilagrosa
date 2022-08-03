@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import moment from "moment";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { FaTrashAlt, FaUser } from "react-icons/fa";
@@ -9,6 +9,16 @@ const Home = (props) => {
   const [commentItem, setCommentItem] = useState("");
   const [comments, setItems] = useState([]);
   const { userGlobal, islogged } = useContext(UsuarioContext);
+  
+  useEffect(() => {
+      setItems(JSON.parse(localStorage.getItem("LMG-coments")));
+  }, []);
+
+  useEffect(() => {
+    if (comments.length > 0) {
+      localStorage.setItem("LMG-coments", JSON.stringify(comments));
+    }
+  }, [comments]);
 
   const handleEnter = (event) => {
     if (event.key === "Enter") {
@@ -16,6 +26,10 @@ const Home = (props) => {
     }
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    handleAddComment();
+  };
   const handleAddComment = () => {
     if (commentItem) {
       setItems([
@@ -127,7 +141,7 @@ const Home = (props) => {
             <h1 className="text-left uppercase tracking-widest font-serif text-slate-700">
               Testimonios
             </h1>
-            <p className="mt-8 text-6xl text-slate-700 font-bold sm:text-center">
+            <p className="mt-8 text-3xl xl:text-5xl text-slate-700 font-bold sm:text-center">
               Somos leales a nuestros clientes
             </p>
             <p className="mt-8 text-lg font-semibold text-gray-700">
@@ -160,9 +174,10 @@ const Home = (props) => {
           </div>
           <div className="mt-8">
             <button
-              className="transition duration-500 ease flex items-start  hover:bg-white hover:text-blue-700 bg-blue-700 hover:border-2 hover:border-blue-500 text-sm font-semibold rounded-full text-white px-8 py-3"
+              onClick={handleClick}
+              className="transition duration-500 ease flex items-start  hover:bg-white hover:text-blue-700 bg-blue-700 hover:border-2 hover:border-blue-500 text-sm font-semibold rounded-full text-white px-8 py-3 shadow-sm shadow-blue-800"
             >
-              Aprete enter para comentar
+              Comentar
             </button>
           </div>
         </div>
