@@ -96,27 +96,51 @@ const Carrito = () => {
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
                   {pago ? (
-                    ""
+                    <div
+                      className={`${
+                        pago ? "translate-x-[700px] ease-in duration-300" : ""
+                      }`}
+                    >
+                      <EnvioCards
+                        direccion={direccion}
+                        editarDomicilio={editarDomicilio}
+                        seteditarDomicilio={seteditarDomicilio}
+                        handleDomicilio={handleDomicilio}
+                        metodoEnvio={metodoEnvio}
+                        setMetodoEnvio={setMetodoEnvio}
+                        handleLocal={handleLocal}
+                      />
+                    </div>
                   ) : (
-                    <EnvioCards
-                      direccion={direccion}
-                      editarDomicilio={editarDomicilio}
-                      seteditarDomicilio={seteditarDomicilio}
-                      handleDomicilio={handleDomicilio}
-                      metodoEnvio={metodoEnvio}
-                      setMetodoEnvio={setMetodoEnvio}
-                      handleLocal={handleLocal}
-                    />
+                    <div>
+                      <EnvioCards
+                        direccion={direccion}
+                        editarDomicilio={editarDomicilio}
+                        seteditarDomicilio={seteditarDomicilio}
+                        handleDomicilio={handleDomicilio}
+                        metodoEnvio={metodoEnvio}
+                        setMetodoEnvio={setMetodoEnvio}
+                        handleLocal={handleLocal}
+                      />
+                    </div>
                   )}
-                  <ResumenCarrito
-                    carrito={carrito}
-                    direccion={direccion}
-                    sumaCarrito={sumaCarrito}
-                    metodoEnvio={metodoEnvio}
-                    totalCarrito={totalCarrito}
-                    handleContinuar={handleContinuar}
-                  />
-                  {pago ? <FormPago /> : null}
+                  <div
+                    className={`${
+                      pago
+                        ? "-translate-y-[323px] top-0 ease-in duration-500"
+                        : ""
+                    }`}
+                  >
+                    <ResumenCarrito
+                      carrito={carrito}
+                      direccion={direccion}
+                      sumaCarrito={sumaCarrito}
+                      metodoEnvio={metodoEnvio}
+                      totalCarrito={totalCarrito}
+                      handleContinuar={handleContinuar}
+                    />
+                    {pago ? <FormPago /> : null}
+                  </div>
                 </div>
               </div>
             </div>
