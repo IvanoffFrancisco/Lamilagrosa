@@ -5,18 +5,22 @@ import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
 import EnvioCards from "../components/EnvioCards";
 import ResumenCarrito from "../components/ResumenCarrito";
-import GuarnicionCarritoCard from '../components/GuarnicionCarritoCard';
+import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
-  const { carrito } = useContext(CarritoContext);
+  const { carrito, totalCarrito } = useContext(CarritoContext);
   const [sumaCarrito, setSumaCarrito] = useState(
     carrito?.reduce(
       (previousValue, currentValue) =>
-        previousValue + (parseInt(currentValue.precio) + currentValue.adicional) * currentValue.cantidad,
+        previousValue +
+        (parseInt(currentValue.precio) +
+          (currentValue.adicional ? currentValue.adicional : 0)) *
+          currentValue.cantidad,
       0
     )
   );
+
   const [direccion, setDireccion] = useState(
     userGlobal?.direcciones?.[0].calle || ""
   );
@@ -25,7 +29,7 @@ const Carrito = () => {
   const [editarDomicilio, seteditarDomicilio] = useState(false);
 
   const handleDomicilio = (e) => {
-    if (e.target.value==="") {
+    if (e.target.value === "") {
       alert("Domicilio no valido");
       return;
     }
@@ -57,19 +61,24 @@ const Carrito = () => {
             <div className="pb-5">
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
                 <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-2">
-                  {
-                    carrito?.map(menus=>{
-                      if(menus.hasOwnProperty('menu')){
-                        return <ProductCard
-                                  producto={menus}
-                                  key={menus.id}
-                                  setSumaCarrito={setSumaCarrito}
-                              />
-                      }else{
-                          return <GuarnicionCarritoCard producto={menus} setSumaCarrito={setSumaCarrito}/>
-                      }
-                    })
-                  }
+                  {carrito?.map((menus) => {
+                    if (menus.hasOwnProperty("menu")) {
+                      return (
+                        <ProductCard
+                          producto={menus}
+                          key={menus.id}
+                          setSumaCarrito={setSumaCarrito}
+                        />
+                      );
+                    } else {
+                      return (
+                        <GuarnicionCarritoCard
+                          producto={menus}
+                          setSumaCarrito={setSumaCarrito}
+                        />
+                      );
+                    }
+                  })}
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
@@ -87,6 +96,7 @@ const Carrito = () => {
                     direccion={direccion}
                     sumaCarrito={sumaCarrito}
                     metodoEnvio={metodoEnvio}
+                    totalCarrito={totalCarrito}
                   />
                 </div>
               </div>

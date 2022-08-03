@@ -18,6 +18,7 @@ export const CarritoProvider = ({ children }) => {
 
   const agregarCarrito = (pedido) => {
     setCarrito([...carrito, pedido]);
+    totalCarrito();
   };
 
   const actualizarCarrito = (pedido) => {
@@ -38,7 +39,20 @@ export const CarritoProvider = ({ children }) => {
         (elemento) => elemento.id !== id
       );
       setCarrito(carritoActualizado);
+      totalCarrito();
     }
+  };
+
+  const totalCarrito = () => {
+    carrito?.reduce(
+      (previousValue, currentValue) =>
+        previousValue +
+        (parseInt(currentValue.precio) +
+          (currentValue.adicional ? currentValue.adicional : 0)) *
+          currentValue.cantidad,
+      0
+    );
+    return totalCarrito;
   };
 
   return (
@@ -49,6 +63,7 @@ export const CarritoProvider = ({ children }) => {
         agregarCarrito,
         eliminarCarrito,
         actualizarCarrito,
+        totalCarrito,
       }}
     >
       {children}

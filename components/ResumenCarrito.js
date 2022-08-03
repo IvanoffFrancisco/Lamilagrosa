@@ -1,4 +1,11 @@
-const ResumenCarrito = ({ carrito, sumaCarrito, direccion, metodoEnvio }) => {
+const ResumenCarrito = ({
+  carrito,
+  sumaCarrito,
+  direccion,
+  metodoEnvio,
+  totalCarrito,
+}) => {
+  console.log(carrito);
   return (
     <div className="w-full bg-white mt-2 shadow-sm shadow-gray-500 rounded-sm">
       <div className="flex flex-col p-3">
@@ -12,7 +19,9 @@ const ResumenCarrito = ({ carrito, sumaCarrito, direccion, metodoEnvio }) => {
             {carrito?.reduce(
               (previousValue, currentValue) =>
                 previousValue +
-                (parseInt(currentValue.precio) + currentValue.adicional) * currentValue.cantidad  ,
+                (parseInt(currentValue.precio) +
+                  (currentValue.adicional ? currentValue.adicional : 0)) *
+                  currentValue.cantidad,
               0
             )}
           </span>
@@ -21,7 +30,7 @@ const ResumenCarrito = ({ carrito, sumaCarrito, direccion, metodoEnvio }) => {
         {/* Envio */}
         <div className="flex justify-between mt-1">
           <span className="font-semibold">
-            Envío a:{" "} 
+            Envío a:{" "}
             <span className="text-blue-600 capitalize">
               {metodoEnvio === "retira" ? "Retira" : direccion}
             </span>
@@ -43,10 +52,34 @@ const ResumenCarrito = ({ carrito, sumaCarrito, direccion, metodoEnvio }) => {
         <div className="flex justify-between mt-1">
           <span className="font-bold pb-2 text-red-600">Total</span>
           <span className="font-bold pb-2 text-red-600">
-            $
-            {sumaCarrito > 5000 || metodoEnvio === "retira"
+            ${" "}
+            {carrito?.reduce(
+              (previousValue, currentValue) =>
+                previousValue +
+                (parseInt(currentValue.precio) +
+                  (currentValue.adicional ? currentValue.adicional : 0)) *
+                  currentValue.cantidad,
+              0
+            ) > 5000 || metodoEnvio === "retira"
+              ? carrito?.reduce(
+                  (previousValue, currentValue) =>
+                    previousValue +
+                    (parseInt(currentValue.precio) +
+                      (currentValue.adicional ? currentValue.adicional : 0)) *
+                      currentValue.cantidad,
+                  0
+                )
+              : carrito?.reduce(
+                  (previousValue, currentValue) =>
+                    previousValue +
+                    (parseInt(currentValue.precio) +
+                      (currentValue.adicional ? currentValue.adicional : 0)) *
+                      currentValue.cantidad,
+                  0
+                ) + 200}
+            {/* {sumaCarrito > 5000 || metodoEnvio === "retira"
               ? sumaCarrito
-              : sumaCarrito + 200}
+              : sumaCarrito + 200} */}
           </span>
         </div>
         <button className="w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto my-2 bg-red-600 text-white py-2 rounded-md font-semibold">
