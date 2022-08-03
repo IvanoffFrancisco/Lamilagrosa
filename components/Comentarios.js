@@ -10,8 +10,8 @@ const Home = (props) => {
   const [comments, setItems] = useState([]);
   const { userGlobal, islogged } = useContext(UsuarioContext);
   
-  useEffect(() => {
-      setItems(JSON.parse(localStorage.getItem("LMG-coments")));
+   useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem("LMG-coments")));  
   }, []);
 
   useEffect(() => {
