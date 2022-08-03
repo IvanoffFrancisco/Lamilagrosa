@@ -13,15 +13,14 @@ export default function OrderHistory() {
             <h1 className='text-center font-bold text-2xl  text-red-900 m-auto'>Historial de Compras</h1>
         </div>
         <div className='border-2 border-orange-300 rounded-full w-full'></div>
-        <div className="mx-auto overflow-hidden  border-2 border-blue-800 bg-black  shadow-xl shadow-gray-400 mt-10 lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
+        <div className="mx-auto overflow-hidden  border-2 border-blue-800 bg-black  shadow-xl shadow-gray-400 mt-10  lg:w-3/5 lg:flex lg:flex-row lg:h-auto">
         <Image
             src={FoodImg}
             alt="Picture of the author"
-            height={260}
-            width={260}
-            className="lg:w-1/2 lg:h-auto  overflow-hidden grid grid-flow-dense grid-row gap-4"
+            height={360}
+            width={360}
         />
-        <div className="bg-sky-100 w-full p-2 ">
+        <div className="bg-sky-100 w-full p-2">
             <p className="flex items-start justify-start mb-4">
                 <h1 className='text-blue-900 font-bold text-lg'>Pedido 1</h1>
             </p>

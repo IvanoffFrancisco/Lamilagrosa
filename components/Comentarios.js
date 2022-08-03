@@ -5,18 +5,18 @@ import { FaTrashAlt, FaUser } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 
-const Home = () => {
-  const [commentItem, setTodoItem] = useState("");
+const Home = (props) => {
+  const [commentItem, setCommentItem] = useState("");
   const [comments, setItems] = useState([]);
   const { userGlobal, islogged } = useContext(UsuarioContext);
 
   const handleEnter = (event) => {
     if (event.key === "Enter") {
-      handleAdd();
+      handleAddComment();
     }
   };
 
-  const handleAdd = () => {
+  const handleAddComment = () => {
     if (commentItem) {
       setItems([
         {
@@ -26,8 +26,23 @@ const Home = () => {
         ...comments,
       ]);
 
-      setTodoItem("");
+      setCommentItem("");
     }
+  };
+
+  const handleDelete = (id) => {
+    const _items = comments.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          done: !item.done,
+        };
+      }
+
+      return item;
+    });
+
+    setItems(_items);
   };
 
   return (
@@ -128,16 +143,16 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-xl sm:my-12 font-bold text-red-900 flex items-start border-b pb-4">
+      <h1 className="text-xl sm:my-10 font-bold text-red-900 flex items-start border-b border-gray-600 pb-4">
         Dejanos tu reseña:
       </h1>
-      <form>
+      <form className="pb-16">
         <div className="bg-white ring-1 ring-blue-700 rounded-xl shadow-lg w-full flex flex-col m-auto p-8">
           <div className="grid grid-cols-1 gap-4 mb-4">
             <textarea
-              onChange={(e) => setTodoItem(e.target.value)}
-              onKeyDown={handleEnter}
               value={commentItem}
+              onChange={(e) => setCommentItem(e.target.value)}
+              onKeyDown={handleEnter}
               className="p-4 outline-none w-full rounded-xl h-40 ring-1 ring-sky-300 bg-gray-100 text-gray-700"
               name="comment"
               placeholder="Deja un comentario..."
@@ -145,10 +160,9 @@ const Home = () => {
           </div>
           <div className="mt-8">
             <button
-              type="button"
-              className="transition duration-500 ease flex items-start  hover:bg-white hover:text-blue-700 bg-blue-700 hover:border-2 hover:border-blue-500 text-sm font-semibold rounded-full text-white px-8 py-3 cursor-pointer"
+              className="transition duration-500 ease flex items-start  hover:bg-white hover:text-blue-700 bg-blue-700 hover:border-2 hover:border-blue-500 text-sm font-semibold rounded-full text-white px-8 py-3"
             >
-              No funciona todavia (APRETE ENTER)
+              Aprete enter para comentar
             </button>
           </div>
         </div>
@@ -167,15 +181,22 @@ const Home = () => {
               >
                 <div className="pb-2 mb-3 mx-auto w-full flex justify-between  border-b">
                   <div className="text-md flex p-auto font-bold text-blue-900 text-start">
-                    <FaUser className="mr-2" />
+                    <FaUser className="mr-2 ring-1 ring-blue-800 rounded-full" />
                     <div>
-                      <span className="m-auto">{userGlobal.user}</span> 
-                     <span className="text-red-800 px-4">
-                        {moment(comments.createdAt).subtract(10, 'days').calendar()}
-                     </span>
+                      <span className="pr-4">{userGlobal.user}</span>
+                      {"-"}
+                      <span className="text-red-800 px-4">
+                        {moment(comments.createdAt)
+                          .subtract(10, "days")
+                          .calendar()}
+                      </span>
                     </div>
                   </div>
-                  <FaTrashAlt className="text-red-700 self-end" />
+                  <FaTrashAlt
+                    className="text-red-700 self-end cursor-pointer"
+                    key={id}
+                    onClick={() => handleDelete(id)}
+                  />
                 </div>
                 <div>{message}</div>
               </div>
