@@ -6,7 +6,7 @@ import { CarritoContext } from "../contexts/CarritoContext";
 import EnvioCards from "../components/EnvioCards";
 import ResumenCarrito from "../components/ResumenCarrito";
 import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
-import FormPago from '../components/formaDePago/FormPago'
+import FormPago from "../components/formaDePago/FormPago";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
@@ -28,6 +28,9 @@ const Carrito = () => {
 
   const [metodoEnvio, setMetodoEnvio] = useState("retira");
   const [editarDomicilio, seteditarDomicilio] = useState(false);
+  const [local, setLocal] = useState("");
+
+  const [pago, setPago] = useState(false);
 
   const handleDomicilio = (e) => {
     if (e.target.value === "") {
@@ -35,6 +38,14 @@ const Carrito = () => {
       return;
     }
     setDireccion(e.target.value);
+  };
+
+  const handleLocal = (e) => {
+    setLocal(e.target.value);
+  };
+  
+  const handleContinuar = (e) => {
+    setPago(true);
   };
 
   return (
@@ -56,12 +67,12 @@ const Carrito = () => {
           </div>
         ) : (
           <>
-            <h2 className="bg-blue-600 text-white text-center uppercase md:text-xl font-semibold py-3">
+            <h2 className="bg-blue-600 text-white text-center uppercase md:text-xl font-semibold py-3 mb-3">
               Carrito de Compras
             </h2>
             <div className="pb-5">
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
-                <ul className="w-full pt-5 max-w-[95%] mx-auto flex flex-col gap-2">
+                <ul className="w-full max-w-[95%] mx-auto flex flex-col gap-2">
                   {carrito?.map((menus) => {
                     if (menus.hasOwnProperty("menu")) {
                       return (
@@ -83,23 +94,28 @@ const Carrito = () => {
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
-                  <EnvioCards
-                    direccion={direccion}
-                    editarDomicilio={editarDomicilio}
-                    seteditarDomicilio={seteditarDomicilio}
-                    handleDomicilio={handleDomicilio}
-                    metodoEnvio={metodoEnvio}
-                    setMetodoEnvio={setMetodoEnvio}
-                  />
-
+                  {pago ? (
+                    ""
+                  ) : (
+                    <EnvioCards
+                      direccion={direccion}
+                      editarDomicilio={editarDomicilio}
+                      seteditarDomicilio={seteditarDomicilio}
+                      handleDomicilio={handleDomicilio}
+                      metodoEnvio={metodoEnvio}
+                      setMetodoEnvio={setMetodoEnvio}
+                      handleLocal={handleLocal}
+                    />
+                  )}
                   <ResumenCarrito
                     carrito={carrito}
                     direccion={direccion}
                     sumaCarrito={sumaCarrito}
                     metodoEnvio={metodoEnvio}
                     totalCarrito={totalCarrito}
+                    handleContinuar={handleContinuar}
                   />
-                  <FormPago />
+                  {pago ? <FormPago /> : null}
                 </div>
               </div>
             </div>

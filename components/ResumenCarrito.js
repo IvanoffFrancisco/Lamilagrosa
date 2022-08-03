@@ -4,10 +4,10 @@ const ResumenCarrito = ({
   direccion,
   metodoEnvio,
   totalCarrito,
+  handleContinuar,
 }) => {
-  console.log(carrito);
   return (
-    <div className="w-full bg-white mt-2 shadow-sm shadow-gray-500 rounded-sm">
+    <div className="w-full bg-white shadow-sm shadow-gray-500 rounded-sm">
       <div className="flex flex-col p-3">
         <h3 className="font-bold text-lg pb-2">Resumen</h3>
         <hr className="text-gray-700 pb-2" />
@@ -77,12 +77,9 @@ const ResumenCarrito = ({
                       currentValue.cantidad,
                   0
                 ) + 200}
-            {/* {sumaCarrito > 5000 || metodoEnvio === "retira"
-              ? sumaCarrito
-              : sumaCarrito + 200} */}
           </span>
         </div>
-        <button className="w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto my-2 bg-red-600 text-white py-2 rounded-md font-semibold">
+        <button onClick={handleContinuar} className="w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto my-2 bg-red-600 text-white py-2 rounded-md font-semibold">
           Continuar compra
         </button>
       </div>
