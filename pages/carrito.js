@@ -6,6 +6,7 @@ import { CarritoContext } from "../contexts/CarritoContext";
 import EnvioCards from "../components/EnvioCards";
 import ResumenCarrito from "../components/ResumenCarrito";
 import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
+import FormPago from '../components/formaDePago/FormPago'
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
@@ -98,6 +99,7 @@ const Carrito = () => {
                     metodoEnvio={metodoEnvio}
                     totalCarrito={totalCarrito}
                   />
+                  <FormPago />
                 </div>
               </div>
             </div>

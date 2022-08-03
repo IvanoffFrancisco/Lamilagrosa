@@ -25,11 +25,23 @@ const EnvioCards = ({
             <BtnSeleccionar handleEnvio={handleEnvio} name="retira" />
           </div>
           <hr className="text-gray-700 pb-2" />
-          <p className="text-xs">
+          <p>Elije un local:</p>
+          <form>
+            <input type="radio" id="direccion1" name="direccion" value="Dorrego 27, Bahía Blanca, Provincia de Buenos Aires"/>
+            <label htmlFor="direccion1">Dorrego 27, Bahía Blanca, Provincia de Buenos Aires</label><br />
+
+            <input type="radio" id="direccion2" name="direccion" value="Carlos Pellegrini 1252 Corrientes, Provincia de Corrientes"/>
+            <label htmlFor="direccion2">Carlos Pellegrini 1252 Corrientes, Provincia de Corrientes</label><br />
+            
+            <input type="radio" id="direccion3" name="direccion" value="Av. Sarmiento 266 Resistencia, Chaco" />
+            <label htmlFor="direccion3">Av. Sarmiento 266 Resistencia, Chaco</label>
+          </form>
+          {/* <p className="text-xs">
             En nuestra tienda:{" "}
             <span className="text-blue-600 capitalize">Dorrego 27</span> ,
             B8000FLB Bahía Blanca, Provincia de Buenos Aires
-          </p>
+          </p> */}
+          <button className="bg-blue-600 py-1.5 px-4 text-white text-xs rounded-md">Cancelar Retiro</button>
         </div>
       </div>
 
@@ -73,6 +85,10 @@ const EnvioCards = ({
                 className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
                 placeholder="Domicilio"
               />
+              <input onBlur={handleDomicilio}
+                type="text"
+                className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
+                placeholder="Departamento N°" />
               <button className="bg-blue-600 text-xs text-white py-1 px-3 rounded-md">
                 Aceptar
               </button>
