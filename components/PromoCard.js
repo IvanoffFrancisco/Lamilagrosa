@@ -48,7 +48,7 @@ const PromoCard = ({
           {islogged ? (
             <Link href="menu">
               <button
-                className={`mt-4 p-2 font-bold border-2 text-gray-800 border-${color}-800 bg-white rounded-2xl hover:bg-${color}-600 hover:text-white hover:border-${color}-800`}
+                className={`mt-4 p-2 font-bold border-2 text-gray-800 border-${color}-800 bg-white rounded-2xl hover:bg-${fondo}-600 hover:text-white hover:border-${color}-800`}
               >
                 {titulo}
               </button>
@@ -56,7 +56,7 @@ const PromoCard = ({
           ) : (
             <Link href="login">
               <button
-                className={`mt-4 p-2 font-bold text-gray-800 border-2 border-${color}-800 bg-white rounded-2xl hover:bg-${color}-600 hover:text-white hover:border-${color}-800`}
+                className={`mt-4 p-2 font-bold text-gray-800 border-2 border-${color}-800 bg-white rounded-2xl hover:bg-${fondo}-600 hover:text-white hover:border-${color}-800`}
               >
                 Acceder Promo
               </button>
