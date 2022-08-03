@@ -432,7 +432,7 @@ export default function infoCards() {
               </div>
               <div className="h-8 ml-auto mt-auto flex justify-end">
                 <span className="flex items-center justify-center text-blue-800 font-bold">
-                  Chaco - Barranqueras
+                  Chaco - Resistencia
                 </span>
               </div>
             </div>
