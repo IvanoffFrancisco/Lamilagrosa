@@ -87,6 +87,7 @@ const Carrusel = ({
                 height="520"
                 layout="responsive"
                 objectFit="cover"
+                priority="true"
               />
             </div>
           ))}
@@ -96,7 +97,7 @@ const Carrusel = ({
       {controles && (
         <div className="absolute top-0 z-20 pointer-events-none w-full h-full flex items-center">
           <button
-          aria-label="Flecha a izquierda"
+            aria-label="Flecha a izquierda"
             className="absolute left-0 w-10 h-8 md:w-14 md:h-12 pointer-events-auto border-none cursor-pointer outline-none bg-black bg-opacity-30"
             onClick={anterior}
           >
@@ -108,7 +109,7 @@ const Carrusel = ({
             />
           </button>
           <button
-          aria-label="flecha a derecha"
+            aria-label="flecha a derecha"
             className="absolute right-0 w-10 h-8 md:w-14 md:h-12 pointer-events-auto border-none cursor-pointer outline-none bg-black bg-opacity-30"
             onClick={siguiente}
           >
