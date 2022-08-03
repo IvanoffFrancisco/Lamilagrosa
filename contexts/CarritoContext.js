@@ -7,13 +7,12 @@ export const CarritoProvider = ({ children }) => {
 
   useEffect(() => {
     const carritoLS = JSON.parse(localStorage.getItem("LMG-Carrito")) ?? [];
+    carrito = carritoLS;
     setCarrito(carritoLS);
   }, []);
 
   useEffect(() => {
-    if (carrito?.length > 0) {
-      localStorage.setItem("LMG-Carrito", JSON.stringify(carrito));
-    }
+    localStorage.setItem("LMG-Carrito", JSON.stringify(carrito));
   }, [carrito]);
 
   const agregarCarrito = (pedido) => {

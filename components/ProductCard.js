@@ -28,7 +28,7 @@ const ProductCard = ({ producto, setSumaCarrito }) => {
       carrito?.reduce(
         (previousValue, currentValue) =>
           previousValue +
-          (parseInt(currentValue.precio) + currentValue.adicional) *
+          (currentValue.precio + currentValue.adicional) *
             currentValue.cantidad,
         0
       )

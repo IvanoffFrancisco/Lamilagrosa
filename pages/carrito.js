@@ -43,7 +43,7 @@ const Carrito = () => {
   const handleLocal = (e) => {
     setLocal(e.target.value);
   };
-  
+
   const handleContinuar = (e) => {
     setPago(true);
   };
@@ -86,6 +86,7 @@ const Carrito = () => {
                       return (
                         <GuarnicionCarritoCard
                           producto={menus}
+                          key={menus.id}
                           setSumaCarrito={setSumaCarrito}
                         />
                       );
