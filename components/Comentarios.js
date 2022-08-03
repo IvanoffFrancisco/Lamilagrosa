@@ -9,15 +9,15 @@ const Home = (props) => {
   const [commentItem, setCommentItem] = useState("");
   const [comments, setItems] = useState([]);
   const { userGlobal, islogged } = useContext(UsuarioContext);
-  
-   useEffect(() => {
-    setItems(JSON.parse(localStorage.getItem("LMG-coments")) ?? []);  
+
+  useEffect(() => {
+    const mensajes = JSON.parse(localStorage.getItem("LMG-coments")) ?? [];
+    comments = mensajes;
+    setItems(mensajes);
   }, []);
 
   useEffect(() => {
-    if (comments.length > 0) {
-      localStorage.setItem("LMG-coments", JSON.stringify(comments));
-    }
+    localStorage.setItem("LMG-coments", JSON.stringify(comments));
   }, [comments]);
 
   const handleEnter = (event) => {
