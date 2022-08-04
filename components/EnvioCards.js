@@ -129,9 +129,6 @@ const EnvioCards = ({
               editarDomicilio || userGlobal?.direcciones?.[0].calle === "" ? "" : "hidden"
             }`}
           >
-            {/* <label className="text-xs text-blue-600">
-              
-            </label> */}
             <div className="flex justify-between gap-1">
               <input
                 onBlur={handleDomicilio}

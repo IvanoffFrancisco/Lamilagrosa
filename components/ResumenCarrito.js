@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+
 const ResumenCarrito = ({
   carrito,
   sumaCarrito,
@@ -7,6 +10,8 @@ const ResumenCarrito = ({
   pago,
   formaDePago,
 }) => {
+  const { userGlobal } = useContext(UsuarioContext);
+
   return (
     <>
       <div className="w-full bg-white shadow-sm shadow-gray-500 rounded-sm">
@@ -34,7 +39,7 @@ const ResumenCarrito = ({
             <span className="font-semibold">
               Envío a:{" "}
               <span className="text-blue-600 capitalize">
-                {metodoEnvio === "retira" ? "Retira" : direccion}
+                {metodoEnvio === "retira" ? "Retira" : userGlobal?.direcciones?.[0].calle}
               </span>
             </span>
             <span className="font-bold text-xs">
@@ -96,7 +101,7 @@ const ResumenCarrito = ({
       </div>
       {pago && metodoEnvio === "enviar" ? (
         <p
-          className={`text-center text-white font-bold py-3 bg-red-600 my-2 rounded-md shadow-sm shadow-red-900 ${
+          className={`text-center text-white font-bold py-3 bg-red-600 my-2 rounded-sm shadow-sm shadow-red-900 ${
             formaDePago !== "" ? "hidden" : ""
           }`}
         >

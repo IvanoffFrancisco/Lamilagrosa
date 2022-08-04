@@ -96,13 +96,13 @@ const Carrito = () => {
                   })}
                   <FaTrash
                     onClick={() => eliminarTodo()}
-                    className="text-xl absolute right-2 -bottom-8 text-red-600 cursor-pointer"
+                    className="text-xl absolute right-2 -bottom-5 text-red-600 cursor-pointer"
                   />
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
                   <p
-                    className={`text-center text-white font-bold py-3 bg-red-600 mb-2 rounded-md shadow-sm shadow-red-900 ${
+                    className={`text-center text-white font-bold py-3 bg-red-600 mb-2 rounded-sm shadow-sm shadow-red-900 ${
                       metodoEnvio !== "" ? "hidden" : ""
                     }`}
                   >
