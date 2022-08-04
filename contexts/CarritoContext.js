@@ -42,6 +42,10 @@ export const CarritoProvider = ({ children }) => {
     }
   };
 
+  const eliminarTodo = () => {
+    setCarrito([]);
+  };
+
   const totalCarrito = () => {
     carrito?.reduce(
       (previousValue, currentValue) =>
@@ -63,6 +67,7 @@ export const CarritoProvider = ({ children }) => {
         eliminarCarrito,
         actualizarCarrito,
         totalCarrito,
+        eliminarTodo
       }}
     >
       {children}
