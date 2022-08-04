@@ -35,17 +35,10 @@ const Carrito = () => {
   const [pago, setPago] = useState(false);
   const [formaDePago, setFormaDePago] = useState("");
 
-  const [venta, setVenta] = useState({
-    id_usuario: "userGlobal.id",
-    montoTotal: "",
-    formaDePago: "",
-    retira: "",
-    listaDeCompra: [],
-  });
-
+  const [venta, setVenta] = useState({});
+  console.log(venta);
   const [procesando, setProcesando] = useState(false);
   const [pagado, setPagado] = useState(false);
-
 
   //Funciones
   const handleDomicilio = (e) => {
@@ -68,7 +61,7 @@ const Carrito = () => {
         setTimeout(() => {
           setProcesando(false);
           setPago(true);
-          setPagado(true)
+          setPagado(true);
         }, 2000);
       }
     }
@@ -79,10 +72,29 @@ const Carrito = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const ventaRealizada = {
+      id_usuario: "userGlobal.id",
+      montoTotal: carrito
+        ?.reduce(
+          (previousValue, currentValue) =>
+            previousValue +
+            (parseInt(currentValue.precio) +
+              (currentValue.adicional ? currentValue.adicional : 0)) *
+              currentValue.cantidad,
+          0
+        )
+        .toString(),
+      formaPago: formaDePago,
+      retira: metodoEnvio === "enviar" ? true : false,
+      listaDeCompra: [...carrito],
+    };
+    setVenta(ventaRealizada);
   };
+
   return (
     <Layout pagina={"carrito de compras"}>
-      <main className="mt-20 pb-10 w-full bg-gray-200">
+      <main className="mt-20 pb-10 w-full bg-gray-200 overflow-hidden">
         {carrito?.length === 0 || carrito == null ? (
           <div className="w-full h-screen flex flex-col justify-center items-center">
             <p className="text-lg font-semibold">
@@ -124,14 +136,15 @@ const Carrito = () => {
                       );
                     }
                   })}
-                  <div>
-                    <p className="text-xs text-red-600 absolute right-2 -bottom-3">
-                      Eliminar Carrito
-                    </p>
+                  <div
+                    onClick={() => eliminarTodo()}
+                    className="lg:absolute lg:-bottom-12 lg:right-0 lg:text-xs font-bold flex items-center justify-center bg-red-600 text-white py-1 rounded-md  cursor-pointer lg:w-fit lg:px-4 lg:py-2"
+                  >
+                    <p className="">Eliminar</p>
+                    <p className=" ml-1">Carrito</p>
                     <BsTrash
-                      size="25"
-                      onClick={() => eliminarTodo()}
-                      className="absolute right-9 -bottom-10 text-red-600 cursor-pointer hover:scale-105 hover:-rotate-180 ease-in duration-500"
+                      // size="25"
+                      className="text-white hover:scale-105 hover:-rotate-180 ease-in duration-500 ml-3 text-2xl"
                     />
                   </div>
                 </ul>

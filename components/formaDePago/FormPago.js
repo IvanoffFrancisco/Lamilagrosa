@@ -209,7 +209,7 @@ export default function FormPago({
                 ) : (
                   ""
                 )}
-                Pagar Ahora
+                {formaDePago === "Delivery" ? "Confirmar" : "Pagar Ahora"}
               </button>
             </form>
           </div>
