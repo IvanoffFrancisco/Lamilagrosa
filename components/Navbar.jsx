@@ -121,12 +121,12 @@ const Navbar = () => {
                 >
                   <ul className="mt-10 bg-white border-slate-500 border-t-0 absolute w-[150px] text-center rounded-b-lg border">
                     <Link href="perfil">
-                      <li className="py-3 border-b text-md font-semibold hover:text-white hover:bg-sky-500 cursor-pointer">
+                      <li className="py-3 border-b border-slate-500 text-md font-semibold hover:text-white hover:bg-sky-500 cursor-pointer">
                         Perfil
                       </li>
                     </Link>
                     <Link href="historial">
-                      <li className="py-3 border-b text-md font-semibold hover:text-white hover:bg-blue-500 cursor-pointer ">
+                      <li className="py-3 border-b border-slate-500 text-md font-semibold hover:text-white hover:bg-blue-500 cursor-pointer ">
                         Historial
                       </li>
                     </Link>
