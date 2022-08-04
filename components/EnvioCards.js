@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+
 import { BtnSeleccionar } from "../components/BtnSeleccionar";
 import Mensaje from "./Mensaje";
 
@@ -12,6 +14,8 @@ const EnvioCards = ({
   handleLocal,
   local,
 }) => {
+  const { userGlobal } = useContext(UsuarioContext);
+
   const [tipoError, setTipoError] = useState("");
   const [mensaje, setMensaje] = useState("");
 
@@ -99,40 +103,45 @@ const EnvioCards = ({
           metodoEnvio === "enviar" && "border-l-4 border-r-4 border-blue-600"
         }`}
       >
-        <div className="flex flex-col pl-3 pr-3 pb-3 mb-3">
+        <div className="relative pl-3 pr-3 pb-3 mb-3 h-[143px]">
           <div className="flex justify-between items-center py-2">
             <h3 className="font-semibold">Recibí tu pedido</h3>
             <BtnSeleccionar handleEnvio={handleEnvio} name="enviar" />
           </div>
           <hr className="text-gray-700 pb-2" />
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-baseline">
             <p className="text-xs">
-              En tu domicilio:{" "}
-              <span className="text-blue-600 capitalize">{direccion}</span>
+              {userGlobal?.direcciones?.[0].calle === "" ? "" : "En tu domicilio: "}
+
+              <span className="text-blue-600 capitalize">{userGlobal?.direcciones?.[0].calle}</span>
             </p>
             <p
               onClick={() => seteditarDomicilio(true)}
               className="text-xs text-red-600 cursor-pointer pt-1"
             >
-              {direccion === "" ? "" : "Editar domicilio"}
+              {userGlobal?.direcciones?.[0].calle === "" ? "" : "Editar domicilio"}
             </p>
           </div>
 
           <div
             // Mestra o no el input
-            className={`w-full ${
-              editarDomicilio || direccion === "" ? "" : "hidden"
+            className={`w-full mt-1 ${
+              editarDomicilio || userGlobal?.direcciones?.[0].calle === "" ? "" : "hidden"
             }`}
           >
-            <label className="text-xs text-blue-600">
-              {direccion === "" ? "Ingresa un domicilio" : "Edita tu domicilio"}
-            </label>
+            {/* <label className="text-xs text-blue-600">
+              
+            </label> */}
             <div className="flex justify-between gap-1">
               <input
                 onBlur={handleDomicilio}
                 type="text"
                 className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
-                placeholder="Domicilio"
+                placeholder={
+                  userGlobal?.direcciones?.[0].calle === ""
+                    ? "Ingresa un domicilio"
+                    : "Edita tu domicilio"
+                }
               />
               <input
                 onBlur={handleDomicilio}
@@ -145,8 +154,7 @@ const EnvioCards = ({
               </button>
             </div>
           </div>
-
-          <p className="text-xs text-red-600 text-center pt-3 animate-pulse">
+          <p className="w-full text-xs text-red-600 text-center pt-3 animate-pulse absolute bottom-3">
             Con tu compra superior a $5000 el envio es sin cago
           </p>
         </div>

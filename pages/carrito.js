@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import Layout from "../components/Layout";
 import ProductCard from "../components/ProductCard";
-import { UsuarioContext } from "../contexts/UsuarioContext";
-import { CarritoContext } from "../contexts/CarritoContext";
 import EnvioCards from "../components/EnvioCards";
 import ResumenCarrito from "../components/ResumenCarrito";
 import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
 import FormPago from "../components/formaDePago/FormPago";
+import { UsuarioContext } from "../contexts/UsuarioContext";
+import { CarritoContext } from "../contexts/CarritoContext";
+
+import { FaTrash } from "react-icons/fa";
 
 const Carrito = () => {
   const { userGlobal } = useContext(UsuarioContext);
-  const { carrito, totalCarrito } = useContext(CarritoContext);
+  const { carrito, eliminarTodo, totalCarrito } = useContext(CarritoContext);
   const [sumaCarrito, setSumaCarrito] = useState(
     carrito?.reduce(
       (previousValue, currentValue) =>
@@ -72,7 +74,7 @@ const Carrito = () => {
             </h2>
             <div className="pb-5">
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
-                <ul className="w-full max-w-[95%] mx-auto flex flex-col gap-2">
+                <ul className="w-full max-w-[95%] mx-auto flex flex-col gap-2 relative">
                   {carrito?.map((menus) => {
                     if (menus.hasOwnProperty("menu")) {
                       return (
@@ -92,6 +94,10 @@ const Carrito = () => {
                       );
                     }
                   })}
+                  <FaTrash
+                    onClick={() => eliminarTodo()}
+                    className="text-xl absolute right-2 -bottom-8 text-red-600 cursor-pointer"
+                  />
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
@@ -102,43 +108,28 @@ const Carrito = () => {
                   >
                     Seleccione el metodo de envio
                   </p>
-                  {pago ? (
-                    <div
-                      className={`${
-                        pago && metodoEnvio === "enviar"
-                          ? "translate-x-[700px] ease-in duration-300"
-                          : ""
-                      }`}
-                    >
-                      <EnvioCards
-                        direccion={direccion}
-                        editarDomicilio={editarDomicilio}
-                        seteditarDomicilio={seteditarDomicilio}
-                        handleDomicilio={handleDomicilio}
-                        metodoEnvio={metodoEnvio}
-                        setMetodoEnvio={setMetodoEnvio}
-                        handleLocal={handleLocal}
-                        local={local}
-                      />
-                    </div>
-                  ) : (
-                    <div>
-                      <EnvioCards
-                        direccion={direccion}
-                        editarDomicilio={editarDomicilio}
-                        seteditarDomicilio={seteditarDomicilio}
-                        handleDomicilio={handleDomicilio}
-                        metodoEnvio={metodoEnvio}
-                        setMetodoEnvio={setMetodoEnvio}
-                        handleLocal={handleLocal}
-                        local={local}
-                      />
-                    </div>
-                  )}
                   <div
                     className={`${
                       pago && metodoEnvio === "enviar"
-                        ? "-translate-y-[324px] top-0 ease-in duration-500"
+                        ? "translate-x-[700px] ease-in duration-300"
+                        : ""
+                    }`}
+                  >
+                    <EnvioCards
+                      direccion={direccion}
+                      editarDomicilio={editarDomicilio}
+                      seteditarDomicilio={seteditarDomicilio}
+                      handleDomicilio={handleDomicilio}
+                      metodoEnvio={metodoEnvio}
+                      setMetodoEnvio={setMetodoEnvio}
+                      handleLocal={handleLocal}
+                      local={local}
+                    />
+                  </div>
+                  <div
+                    className={`${
+                      pago && metodoEnvio === "enviar"
+                        ? "-translate-y-[304px] top-0 ease-in duration-500"
                         : ""
                     }`}
                   >
