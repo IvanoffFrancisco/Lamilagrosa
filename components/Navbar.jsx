@@ -119,18 +119,18 @@ const Navbar = () => {
                       : "hidden ease-in duration-300"
                   }
                 >
-                  <ul className="mt-10 bg-white absolute w-[150px] text-center rounded-b-lg border">
+                  <ul className="mt-10 bg-white border-slate-500 border-t-0 absolute w-[150px] text-center rounded-b-lg border">
                     <Link href="perfil">
-                      <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer">
+                      <li className="py-3 border-b text-md font-semibold hover:text-white hover:bg-sky-500 cursor-pointer">
                         Perfil
                       </li>
                     </Link>
                     <Link href="historial">
-                      <li className="py-3 border-b-2 hover:bg-blue-400 cursor-pointer ">
+                      <li className="py-3 border-b text-md font-semibold hover:text-white hover:bg-blue-500 cursor-pointer ">
                         Historial
                       </li>
                     </Link>
-                    <li className="py-3 hover:bg-red-500 rounded-b-md cursor-pointer">
+                    <li className="py-3 hover:bg-red-700 text-md font-semibold hover:text-white rounded-b-md cursor-pointer">
                       <button onClick={cerrarSesion}>Cerrar Sesión</button>
                     </li>
                   </ul>
