@@ -43,7 +43,10 @@ export const CarritoProvider = ({ children }) => {
   };
 
   const eliminarTodo = () => {
-    setCarrito([]);
+    const respuesta = confirm("Deseas descartar tu carrito de compras?");
+    if (respuesta) {
+      setCarrito([]);
+    }
   };
 
   const totalCarrito = () => {
@@ -67,7 +70,7 @@ export const CarritoProvider = ({ children }) => {
         eliminarCarrito,
         actualizarCarrito,
         totalCarrito,
-        eliminarTodo
+        eliminarTodo,
       }}
     >
       {children}
