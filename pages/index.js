@@ -6,9 +6,9 @@ import Layout from "../components/Layout";
 import Promos from "../components/Promos";
 
 const images = [
-  "/img/slideshow/sandwich-de-milanesa.jpg",
-  "/img/slideshow/milanesa-de-pollo.jpg",
-  "/img/slideshow/milanesa_de_carne.jpg",
+  "/img/slideshow/3.png",
+  "/img/slideshow/6.png",
+  "/img/slideshow/8.png",
 ];
 
 export default function Home() {
