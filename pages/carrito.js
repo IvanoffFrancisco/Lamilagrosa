@@ -62,7 +62,8 @@ const Carrito = () => {
           setProcesando(false);
           setPago(true);
           setPagado(true);
-          handleSubmit();
+          setFormaDePago("retira");
+          handleSubmit(e);
         }, 2000);
       }
     }
@@ -87,7 +88,7 @@ const Carrito = () => {
         )
         .toString(),
       formaPago: formaDePago,
-      retira: metodoEnvio === "enviar" ? true : false,
+      retira: metodoEnvio === "enviar" ? false : true,
       listaDeCompra: [...carrito],
     };
     setVenta(ventaRealizada);
@@ -139,7 +140,7 @@ const Carrito = () => {
                   })}
                   <div
                     onClick={() => eliminarTodo()}
-                    className="lg:absolute lg:-bottom-12 lg:right-0 lg:text-xs font-bold flex items-center justify-center bg-red-600 text-white py-1 rounded-md  cursor-pointer lg:w-fit lg:px-4 lg:py-2"
+                    className="lg:absolute lg:-bottom-12 lg:right-0 lg:text-xs font-bold flex items-center justify-center bg-red-600 text-white py-1 rounded-md  cursor-pointer lg:w-fit lg:px-4 lg:py-2 mb-2"
                   >
                     <p className="">Eliminar</p>
                     <p className=" ml-1">Carrito</p>
