@@ -5,7 +5,6 @@ import { BtnSeleccionar } from "../components/BtnSeleccionar";
 import Mensaje from "./Mensaje";
 
 const EnvioCards = ({
-  direccion,
   editarDomicilio,
   seteditarDomicilio,
   handleDomicilio,
