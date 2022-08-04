@@ -62,6 +62,7 @@ const Carrito = () => {
           setProcesando(false);
           setPago(true);
           setPagado(true);
+          handleSubmit();
         }, 2000);
       }
     }
