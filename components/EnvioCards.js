@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { BtnSeleccionar } from "../components/BtnSeleccionar";
+import Mensaje from "./Mensaje";
 
 const EnvioCards = ({
   direccion,
@@ -7,13 +9,28 @@ const EnvioCards = ({
   handleDomicilio,
   metodoEnvio,
   setMetodoEnvio,
-  handleLocal
+  handleLocal,
+  local,
 }) => {
-  
+  const [tipoError, setTipoError] = useState("");
+  const [mensaje, setMensaje] = useState("");
+
   const handleEnvio = (e) => {
-    setMetodoEnvio(e.target.name);
+    if (e.target.name === "enviar") {
+      setMetodoEnvio(e.target.name);
+    } else if (local === undefined) {
+      setTipoError("error");
+      setMensaje("Selecciona un local");
+      eliminarMensaje();
+      return;
+    } else setMetodoEnvio(e.target.name);
   };
-  
+
+  const eliminarMensaje = () => {
+    setTimeout(() => {
+      setTipoError("");
+    }, 2500);
+  };
 
   return (
     <>
@@ -68,13 +85,15 @@ const EnvioCards = ({
                 Av. Sarmiento 266 Resistencia, Chaco
               </label>
             </div>
-          {/* <button className="bg-blue-600 py-1.5 px-4 text-white text-xs rounded-md mt-1">
+            {/* <button className="bg-blue-600 py-1.5 px-4 text-white text-xs rounded-md mt-1">
             Cancelar Retiro
           </button> */}
           </form>
         </div>
       </div>
-
+      {tipoError === "error" ? (
+        <Mensaje mensaje={mensaje} tipoError={tipoError} />
+      ) : null}
       <div
         className={`w-full bg-white mt-3 lg:mt-2 mb-2 shadow-sm shadow-gray-500 rounded-sm ${
           metodoEnvio === "enviar" && "border-l-4 border-r-4 border-blue-600"

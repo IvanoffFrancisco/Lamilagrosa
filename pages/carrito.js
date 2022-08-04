@@ -25,12 +25,12 @@ const Carrito = () => {
   const [direccion, setDireccion] = useState(
     userGlobal?.direcciones?.[0].calle || ""
   );
-
-  const [metodoEnvio, setMetodoEnvio] = useState("retira");
+  const [local, setLocal] = useState();
+  const [metodoEnvio, setMetodoEnvio] = useState("");
   const [editarDomicilio, seteditarDomicilio] = useState(false);
-  const [local, setLocal] = useState("");
 
   const [pago, setPago] = useState(false);
+  const [formaDePago, setFormaDePago] = useState("");
 
   const handleDomicilio = (e) => {
     if (e.target.value === "") {
@@ -45,7 +45,7 @@ const Carrito = () => {
   };
 
   const handleContinuar = (e) => {
-    setPago(true);
+    if (metodoEnvio === "retira" || metodoEnvio === "enviar") setPago(true);
   };
 
   return (
@@ -95,10 +95,19 @@ const Carrito = () => {
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
+                  <p
+                    className={`text-center text-white font-bold py-3 bg-red-600 mb-2 rounded-md shadow-sm shadow-red-900 ${
+                      metodoEnvio !== "" ? "hidden" : ""
+                    }`}
+                  >
+                    Seleccione el metodo de envio
+                  </p>
                   {pago ? (
                     <div
                       className={`${
-                        pago ? "translate-x-[700px] ease-in duration-300" : ""
+                        pago && metodoEnvio === "enviar"
+                          ? "translate-x-[700px] ease-in duration-300"
+                          : ""
                       }`}
                     >
                       <EnvioCards
@@ -109,6 +118,7 @@ const Carrito = () => {
                         metodoEnvio={metodoEnvio}
                         setMetodoEnvio={setMetodoEnvio}
                         handleLocal={handleLocal}
+                        local={local}
                       />
                     </div>
                   ) : (
@@ -121,13 +131,14 @@ const Carrito = () => {
                         metodoEnvio={metodoEnvio}
                         setMetodoEnvio={setMetodoEnvio}
                         handleLocal={handleLocal}
+                        local={local}
                       />
                     </div>
                   )}
                   <div
                     className={`${
-                      pago
-                        ? "-translate-y-[323px] top-0 ease-in duration-500"
+                      pago && metodoEnvio === "enviar"
+                        ? "-translate-y-[324px] top-0 ease-in duration-500"
                         : ""
                     }`}
                   >
@@ -138,8 +149,16 @@ const Carrito = () => {
                       metodoEnvio={metodoEnvio}
                       totalCarrito={totalCarrito}
                       handleContinuar={handleContinuar}
+                      pago={pago}
+                      formaDePago={formaDePago}
                     />
-                    {pago ? <FormPago /> : null}
+                    {pago ? (
+                      <FormPago
+                        formaDePago={formaDePago}
+                        setFormaDePago={setFormaDePago}
+                        metodoEnvio={metodoEnvio}
+                      />
+                    ) : null}
                   </div>
                 </div>
               </div>
