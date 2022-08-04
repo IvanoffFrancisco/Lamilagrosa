@@ -62,7 +62,6 @@ const Carrito = () => {
           setProcesando(false);
           setPago(true);
           setPagado(true);
-          setFormaDePago("retira");
           handleSubmit(e);
         }, 2000);
       }
@@ -87,8 +86,8 @@ const Carrito = () => {
           0
         )
         .toString(),
-      formaPago: formaDePago,
       retira: metodoEnvio === "enviar" ? false : true,
+      formaPago: metodoEnvio === "retira" ? "retira" : formaDePago,
       listaDeCompra: [...carrito],
     };
     setVenta(ventaRealizada);
