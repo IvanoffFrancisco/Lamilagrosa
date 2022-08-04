@@ -12,7 +12,7 @@ export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
     producto.cantidad
   );
 
-  const { guarnicion, imagenGuarnicion, precio } = producto;
+  const { guarnicion, imagenGuarnicion, precio,idGuarnicion } = producto;
 
   const handleChange = (e) => {
     setCantidadGuarnicion(parseInt(e.target.value));
@@ -30,12 +30,12 @@ export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
   };
 
   return (
-    <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-500 md:pl-5 rounded-sm">
+    <div className="flex justify-start gap-3 bg-white p-2 shadow-sm shadow-gray-500 md:pl-5 rounded-sm mb-2">
       <div className="flex flex-col items-center justify-center">
         <article className="w-[90px] md:w-[100px] border border-black">
           <Image
             src={imagenGuarnicion}
-            alt={guarnicion.nombre}
+            alt={idGuarnicion}
             layout="responsive"
             width="500"
             height="300"
