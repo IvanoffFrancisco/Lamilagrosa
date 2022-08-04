@@ -6,7 +6,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { Disclosure } from "@headlessui/react";
 import { MdOutlineLogout } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import { FaRegComments, FaHistory, FaWhmcs } from "react-icons/fa";
+import { FaRegComments, FaHistory } from "react-icons/fa";
+import { CgBrowse } from "react-icons/cg";
 
 function SideNavbar() {
   const { userGlobal, islogged } = useContext(UsuarioContext);
@@ -79,6 +80,22 @@ function SideNavbar() {
                     <Link href="login">
                     <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                       Historial
+                    </a>
+                  </Link>
+                )}
+              </div>
+              <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-blue-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
+                <CgBrowse className="text-2xl text-sky-600 group-hover:text-white " />
+                {islogged ? (
+                  <Link href="menu">
+                  <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
+                    Acceder Menu
+                  </a>
+                </Link>
+                ) : (
+                    <Link href="login">
+                    <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
+                      Acceder Menu
                     </a>
                   </Link>
                 )}
