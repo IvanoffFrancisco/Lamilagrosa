@@ -7,9 +7,9 @@ import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
 import FormPago from "../components/formaDePago/FormPago";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";
-import Link from 'next/link';
-import Mensaje from '../components/Mensaje'
-import Router from 'next/router';
+import Link from "next/link";
+import Mensaje from "../components/Mensaje";
+import Router from "next/router";
 
 import { BsTrash } from "react-icons/bs";
 
@@ -38,83 +38,106 @@ const Carrito = () => {
   const [pago, setPago] = useState(false);
   const [formaDePago, setFormaDePago] = useState("");
   const [errorPago, setErrorPago] = useState(false);
-  
 
   const [procesando, setProcesando] = useState(false);
   const [pagado, setPagado] = useState(false);
-  const [datosUserNoLogeado, setDatosUserNoLogeado] = useState({})
+  const [datosUserNoLogeado, setDatosUserNoLogeado] = useState({});
   const [error, setError] = useState("");
-  const [errorNombre, setErrorNombre] = useState("error")
-  const [errorTelefono, setErrorTelefono] = useState("error")
-  const [mensaje, setMensaje] = useState("")
-  
-  const hendlerDatosUserNoLogeado=(e)=>{
-    const {name,value}=e.target;
-    setDatosUserNoLogeado({
-      ...datosUserNoLogeado,
-      [name]:value
-    })
-    
-    if(name==="nombre"){
-      setError("")
-      setMensaje("")
-      if(value.length >= 5 && value.length <=30){
-      setError("correcto");
-      setMensaje("Nombre valido");
-      setErrorNombre('correcto');
-      setErrorPago(false);
-      }else{
-        setError("error");
-        setMensaje("Nombre muy corto");
-        setErrorNombre("error")
-        setErrorPago(true);
-      }
-    }
-
-    if(name==="telefono"){
-      setError("")
-      setMensaje("")
-      if(value.length >= 6 && value.length <= 10){
-      setError("correcto");
-      setMensaje("telefono valido");
-      setErrorTelefono("correcto");
-      setErrorPago(false);
-      }else{
-        setError("error");
-        setMensaje("Telefono muy corto");
-        setErrorTelefono("error")
-        setErrorPago(true);
-      }
-    }
-
-  }
+  const [errorNombre, setErrorNombre] = useState("error");
+  const [errorTelefono, setErrorTelefono] = useState("error");
+  const [errorDireccion, setErrorDireccion] = useState("error");
+  const [mensaje, setMensaje] = useState("");
 
   //Funciones
+  const hendlerDatosUserNoLogeado = (e) => {
+    const { name, value } = e.target;
+    setDatosUserNoLogeado({
+      ...datosUserNoLogeado,
+      [name]: value,
+    });
+
+    if (name === "nombre") {
+      if (value.length >= 5 && value.length <= 30) {
+        // setError("correcto");
+        // setMensaje("Nombre valido");
+        setErrorNombre("correcto");
+        setErrorPago(false);
+      } else {
+        setError("error");
+        setMensaje("Nombre muy corto");
+        setErrorNombre("error");
+        setErrorPago(true);
+        return;
+      }
+    }
+
+    if (name === "telefono") {
+      if (value.length >= 6 && value.length <= 10) {
+        // setError("correcto");
+        // setMensaje("telefono valido");
+        setErrorTelefono("correcto");
+        setErrorPago(false);
+      } else {
+        setError("error");
+        setMensaje("Telefono muy corto");
+        setErrorTelefono("error");
+        setErrorPago(true);
+        return;
+      }
+    }
+
+    if (name === "direccion") {
+      if (value.length >= 6 && value.length <= 50) {
+        // setError("correcto");
+        // setMensaje("telefono valido");
+        setErrorDireccion("correcto");
+        setErrorPago(false);
+      } else {
+        setError("error");
+        setMensaje("Direccion muy corta");
+        setErrorDireccion("error");
+        setErrorPago(true);
+        return;
+      }
+    }
+    eliminarMensaje();
+  };
+
+  const eliminarMensaje = () => {
+    setTimeout(() => {
+      setError("");
+      setMensaje("");
+    }, 2500);
+  };
   const handleDomicilio = (e) => {
     if (e.target.value === "") {
       alert("Domicilio no valido");
       return;
     }
     setDireccion(e.target.value);
-    if(userGlobal.id !== undefined){
-      errorNombre="correcto";
-      errorTelefono="correcto";
-      errorPago=false;
+    if (userGlobal.id !== undefined) {
+      errorNombre = "correcto";
+      errorTelefono = "correcto";
+      errorPago = false;
     }
   };
 
   const handleLocal = (e) => {
     setLocal(e.target.value);
   };
-  //hendler continuar
+
   const handleContinuar = (e) => {
-    if(userGlobal.id !== undefined){
-      errorNombre="correcto";
-      errorTelefono="correcto";
-      errorPago=false;
+    if (userGlobal.id !== undefined) {
+      errorNombre = "correcto";
+      errorTelefono = "correcto";
+      errorPago = false;
     }
     if (metodoEnvio === "retira") {
-      if (errorPago===false && errorNombre==="correcto" && errorTelefono==="correcto") {
+      if (
+        errorPago === false &&
+        errorNombre === "correcto" &&
+        errorTelefono === "correcto"
+      ) {
         setProcesando(true);
         setTimeout(() => {
           setProcesando(false);
@@ -123,14 +146,18 @@ const Carrito = () => {
           handleSubmit(e);
           console.log("realice la compra por tarjeta o delivery");
         }, 2000);
-      }else{
+      } else {
         alert(" Nombre o Telefono Incorrectos");
       }
     }
     if (metodoEnvio === "enviar") {
-      if(errorPago===false && errorNombre==="correcto" && errorTelefono==="correcto"){
+      if (
+        errorPago === false &&
+        errorNombre === "correcto" &&
+        errorTelefono === "correcto"
+      ) {
         setPago(true);
-      }else{
+      } else {
         alert(" Nombre o Telefono Incorrectos");
       }
     }
@@ -138,20 +165,43 @@ const Carrito = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const date=new Date();
-    const dia= date.getDay() < 10 ? `0${date.getDay()}`: date.getDay();
-    const mes= (date.getMonth()+1) < 10 ? `0${date.getMonth()+1}`: date.getMonth();
-    const año= date.getFullYear();
+    const date = new Date();
+    const dia = date.getDay() < 10 ? `0${date.getDay()}` : date.getDay();
+    const mes =
+      date.getMonth() + 1 < 10 ? `0${date.getMonth() + 1}` : date.getMonth();
+    const año = date.getFullYear();
 
-    const fecha=`${dia}/${mes}/${año}`;
-    
+    const fecha = `${dia}/${mes}/${año}`;
+
     //genero un objeto
-    let newVenta={
-      id_usuario:"",
-      nombre:"",
-      telefono:"",
-      fecha:fecha,
-      montoTotal:carrito
+    let newVenta = {
+      id_usuario: "",
+      nombre: "",
+      telefono: "",
+      fecha: fecha,
+      montoTotal: carrito
+        ?.reduce(
+          (previousValue, currentValue) =>
+            previousValue +
+            (parseInt(currentValue.precio) +
+              (currentValue.adicional ? currentValue.adicional : 0)) *
+              currentValue.cantidad,
+          0
+        )
+        .toString(),
+      formaDePago: "",
+      retira: "",
+      carrito: carrito,
+    };
+
+    if (metodoEnvio === "retira") {
+      if (userGlobal.id === undefined) {
+        newVenta = {
+          nombre: datosUserNoLogeado.nombre,
+          telefono: datosUserNoLogeado.telefono,
+          direccion: datosUserNoLogeado.direccion,
+          fecha: fecha,
+          montoTotal: carrito
             ?.reduce(
               (previousValue, currentValue) =>
                 previousValue +
@@ -161,106 +211,97 @@ const Carrito = () => {
               0
             )
             .toString(),
-      formaDePago:"",
-      retira: "",
-      carrito:carrito
-    }
-
-
-    if(metodoEnvio==="retira"){
-      if(userGlobal.id===undefined){
-        newVenta={
-          nombre:datosUserNoLogeado.nombre,
-          telefono:datosUserNoLogeado.telefono,
-          fecha:fecha,
-          montoTotal:carrito
-                ?.reduce(
-                  (previousValue, currentValue) =>
-                    previousValue +
-                    (parseInt(currentValue.precio) +
-                      (currentValue.adicional ? currentValue.adicional : 0)) *
-                      currentValue.cantidad,
-                  0
-                )
-                .toString(),
-          formaDePago:"En el local",
+          formaDePago: "En el local",
           retira: local,
-          carrito:carrito
-        }
-      console.log("usuario no logeado que retira");
-      }else{
+          carrito: carrito,
+        };
+        console.log("usuario no logeado que retira");
+      } else {
         //no estan cambiando estos estados
-        errorNombre="correcto";
-        errorTelefono="correcto";
-        errorPago=false;
+        errorNombre = "correcto";
+        errorTelefono = "correcto";
+        errorPago = false;
         // setErrorNombre("correcto");
         // setErrorTelefono("correcto");
         // setErrorPago(false);
-        newVenta.id_usuario=userGlobal.id;
-        newVenta.nombre=userGlobal.user;
-        newVenta.telefono="";
-        newVenta.formaDePago="En el local";
-        newVenta.retira=local;
-        console.log("usuario logeado que tiene deliveri "+errorNombre+" "+" "+ errorTelefono +" "+ errorPago);
+        newVenta.id_usuario = userGlobal.id;
+        newVenta.nombre = userGlobal.user;
+        newVenta.telefono = "";
+        newVenta.formaDePago = "En el local";
+        newVenta.retira = local;
+        console.log(
+          "usuario logeado que tiene deliveri " +
+            errorNombre +
+            " " +
+            " " +
+            errorTelefono +
+            " " +
+            errorPago
+        );
       }
-    }else{
-      if(userGlobal.id===undefined){
-        newVenta={
-          nombre:datosUserNoLogeado.nombre,
-          telefono:datosUserNoLogeado.telefono,
-          fecha:fecha,
-          direccion:direccion,
-          montoTotal:carrito
-                ?.reduce(
-                  (previousValue, currentValue) =>
-                    previousValue +
-                    (parseInt(currentValue.precio) +
-                      (currentValue.adicional ? currentValue.adicional : 0)) *
-                      currentValue.cantidad,
-                  0
-                )
-                .toString(),
-          formaDePago:formaDePago,
+    } else {
+      if (userGlobal.id === undefined) {
+        newVenta = {
+          nombre: datosUserNoLogeado.nombre,
+          telefono: datosUserNoLogeado.telefono,
+          fecha: fecha,
+          direccion: direccion,
+          montoTotal: carrito
+            ?.reduce(
+              (previousValue, currentValue) =>
+                previousValue +
+                (parseInt(currentValue.precio) +
+                  (currentValue.adicional ? currentValue.adicional : 0)) *
+                  currentValue.cantidad,
+              0
+            )
+            .toString(),
+          formaDePago: formaDePago,
           retira: "Delivery",
-          carrito:carrito
-        }
-      
+          carrito: carrito,
+        };
+
         console.log("usuario no logeado que tiene deliveri");
-      }else{
-        errorNombre="correcto";
-        errorTelefono="correcto";
-        errorPago=false;
+      } else {
+        errorNombre = "correcto";
+        errorTelefono = "correcto";
+        errorPago = false;
 
-
-        newVenta={
-          id_usuario:userGlobal.id,
-          nombre:userGlobal.user,
-          telefono:"",
-          fecha:fecha,
-          direccion:editarDomicilio ? direccion : userGlobal.direcciones[0],
-          montoTotal:carrito
-                ?.reduce(
-                  (previousValue, currentValue) =>
-                    previousValue +
-                    (parseInt(currentValue.precio) +
-                      (currentValue.adicional ? currentValue.adicional : 0)) *
-                      currentValue.cantidad,
-                  0
-                )
-                .toString(),
-          formaDePago:formaDePago,
+        newVenta = {
+          id_usuario: userGlobal.id,
+          nombre: userGlobal.user,
+          telefono: "",
+          fecha: fecha,
+          direccion: editarDomicilio ? direccion : userGlobal.direcciones[0],
+          montoTotal: carrito
+            ?.reduce(
+              (previousValue, currentValue) =>
+                previousValue +
+                (parseInt(currentValue.precio) +
+                  (currentValue.adicional ? currentValue.adicional : 0)) *
+                  currentValue.cantidad,
+              0
+            )
+            .toString(),
+          formaDePago: formaDePago,
           retira: "Delivery",
-          carrito:carrito
-        }
-        console.log("usuario logeado que tiene deliveri "+errorNombre+" "+" "+ errorTelefono +" "+ errorPago);
+          carrito: carrito,
+        };
+        console.log(
+          "usuario logeado que tiene deliveri " +
+            errorNombre +
+            " " +
+            " " +
+            errorTelefono +
+            " " +
+            errorPago
+        );
       }
-      
     }
 
-    
-    if(errorNombre==="correcto" && errorTelefono==="correcto"){
+    if (errorNombre === "correcto" && errorTelefono === "correcto") {
       if (metodoEnvio === "retira") {
-        if (errorPago===false) {
+        if (errorPago === false) {
           setProcesando(true);
           setTimeout(async () => {
             setProcesando(false);
@@ -281,19 +322,18 @@ const Carrito = () => {
             );
             const respuesta = await res.json();
 
-            if(respuesta.data==="se guardo la venta"){
+            if (respuesta.data === "se guardo la venta") {
               localStorage.removeItem("LMG-Carrito");
-              Router.reload()
+              Router.reload();
             }
-
           }, 2000);
-        }else{
+        } else {
           setErrorPago(true);
           alert("Debe Completar nombre y telefono");
         }
       }
       if (metodoEnvio === "enviar") {
-        if(errorPago===false){
+        if (errorPago === false) {
           console.log("Retira ", newVenta);
           const config = {
             method: "POST",
@@ -308,22 +348,28 @@ const Carrito = () => {
           );
           const respuesta = await res.json();
 
-          if(respuesta.data==="se guardo la venta"){
+          if (respuesta.data === "se guardo la venta") {
             localStorage.removeItem("LMG-Carrito");
-            Router.reload()
+            Router.reload();
           }
 
           setPago(true);
-        }else{
+        } else {
           setErrorPago(true);
           alert("Debe Completar nombre y telefono");
         }
       }
-      
-    }else{
-      alert('Debe completar nombre y telefono');
-      setErrorPago(true)
+    } else {
+      alert("Debe completar nombre y telefono");
+      setErrorPago(true);
     }
+  };
+
+  const resetearErrores = () => {
+    setErrorNombre("error");
+    setErrorTelefono("error");
+    setErrorDireccion("error");
+    setDatosUserNoLogeado({});
   };
 
   return (
@@ -384,12 +430,11 @@ const Carrito = () => {
                 </ul>
 
                 <div className="w-full flex flex-col max-w-[95%] mx-auto lg:w-1/2">
+                  {/* Mensajes de error */}
                   {error.length > 0 ? (
                     <Mensaje mensaje={mensaje} tipoError={error} />
-                  ):(
-                    null
-                  )}
-                  {
+                  ) : null}
+                  {/* {
                     userGlobal.id === undefined  &&  
                     <div>
                       <p>Por favor completa tus datos!</p>
@@ -401,10 +446,10 @@ const Carrito = () => {
                       <p>Tiene una cuenta?</p>
                       <Link href={"/login"}>Acceder</Link>
                     </div>
-                  }
-                 
+                  } */}
+
                   <p
-                    className={`text-center text-white font-bold py-3 bg-red-600 mb-2 rounded-sm shadow-sm shadow-red-900 ${
+                    className={`text-center text-white font-bold py-2.5 bg-red-600 mb-2 rounded-sm shadow-sm shadow-red-900 ${
                       metodoEnvio !== "" ? "hidden" : ""
                     }`}
                   >
@@ -425,6 +470,11 @@ const Carrito = () => {
                       setMetodoEnvio={setMetodoEnvio}
                       handleLocal={handleLocal}
                       local={local}
+                      hendlerDatosUserNoLogeado={hendlerDatosUserNoLogeado}
+                      errorNombre={errorNombre}
+                      errorTelefono={errorTelefono}
+                      errorDireccion={errorDireccion}
+                      resetearErrores={resetearErrores}
                     />
                   </div>
                   <div
