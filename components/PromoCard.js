@@ -12,6 +12,7 @@ const PromoCard = ({
   fondo,
   color,
   descuento,
+  hover
 }) => {
   const { islogged } = useContext(UsuarioContext);
 
@@ -48,15 +49,15 @@ const PromoCard = ({
           {islogged ? (
             <Link href="menu">
               <button
-                className={`mt-4 p-2 font-bold border-2 text-gray-800 border-${color}-800 bg-white rounded-2xl hover:bg-${color}-600 hover:text-white hover:border-${color}-800`}
+                className={`mt-4 p-2 font-bold border-2 text-gray-800 border-${color}-800 bg-white rounded-2xl ${hover}`}
               >
-                {titulo}
+                Consultar
               </button>
             </Link>
           ) : (
             <Link href="login">
               <button
-                className={`mt-4 p-2 font-bold text-gray-800 border-2 border-${color}-800 bg-white rounded-2xl hover:bg-${color}-600 hover:text-white hover:border-${color}-800`}
+                className={`mt-4 p-2 font-bold text-gray-800 border-2 border-${color}-800 bg-white rounded-2xl ${hover}`}
               >
                 Acceder Promo
               </button>
