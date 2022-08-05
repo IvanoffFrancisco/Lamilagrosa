@@ -200,7 +200,6 @@ const Carrito = () => {
         newVenta = {
           nombre: datosUserNoLogeado.nombre,
           telefono: datosUserNoLogeado.telefono,
-          direccion: datosUserNoLogeado.direccion,
           fecha: fecha,
           montoTotal: carrito
             ?.reduce(
@@ -273,7 +272,7 @@ const Carrito = () => {
           nombre: userGlobal.user,
           telefono: "",
           fecha: fecha,
-          direccion: editarDomicilio ? direccion : userGlobal.direcciones[0],
+          direccion: direccion,
           montoTotal: carrito
             ?.reduce(
               (previousValue, currentValue) =>

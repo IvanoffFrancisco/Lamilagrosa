@@ -39,7 +39,7 @@ function SideNavbar() {
               <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-blue-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <CgProfile className="text-2xl text-sky-600 group-hover:text-white " />
                 {islogged ? (
-                  <Link href="perfil">
+                  <Link href="/perfil">
                   <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                     Perfil
                   </a>
@@ -55,13 +55,13 @@ function SideNavbar() {
               <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-blue-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FaRegComments className="text-2xl text-sky-600 group-hover:text-white " />
                 {islogged ? (
-                  <Link href="testimonios">
+                  <Link href="/testimonios">
                   <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                     Dejar reseña
                   </a>
                 </Link>
                 ) : (
-                    <Link href="login">
+                    <Link href="/login">
                     <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                       Dejar reseña
                     </a>
@@ -71,13 +71,13 @@ function SideNavbar() {
               <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-blue-400 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                 <FaHistory className="text-2xl text-sky-600 group-hover:text-white " />
                 {islogged ? (
-                  <Link href="historial">
+                  <Link href="/historial">
                   <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                     Historial
                   </a>
                 </Link>
                 ) : (
-                    <Link href="login">
+                    <Link href="/login">
                     <a className="text-base text-sky-800 group-hover:text-white font-semibold ">
                       Historial
                     </a>
