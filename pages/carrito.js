@@ -16,7 +16,8 @@ import { BsTrash } from "react-icons/bs";
 const Carrito = () => {
   //States
   const { userGlobal, islogged } = useContext(UsuarioContext);
-  const { carrito, eliminarTodo, totalCarrito } = useContext(CarritoContext);
+  const { carrito, setCarrito, eliminarTodo, totalCarrito } =
+    useContext(CarritoContext);
   const [sumaCarrito, setSumaCarrito] = useState(
     carrito?.reduce(
       (previousValue, currentValue) =>
@@ -108,7 +109,7 @@ const Carrito = () => {
     setTimeout(() => {
       setError("");
       setMensaje("");
-    }, 2500);
+    }, 3000);
   };
   const handleDomicilio = (e) => {
     if (e.target.value === "") {
@@ -328,10 +329,9 @@ const Carrito = () => {
             const respuesta = await res.json();
 
             if (respuesta.data === "se guardo la venta") {
-              localStorage.removeItem("LMG-Carrito");
-              // setTimeout(() => {
-              //   Router.reload();
-              // }, 3000);
+              setTimeout(() => {
+                setCarrito([]);
+              }, 4000);
             }
           }, 2000);
           return;
@@ -362,8 +362,9 @@ const Carrito = () => {
             const respuesta = await res.json();
 
             if (respuesta.data === "se guardo la venta") {
-              localStorage.removeItem("LMG-Carrito");
-              // Router.reload();
+              setTimeout(() => {
+                setCarrito([]);
+              }, 4000);
             }
           }, 2000);
         } else {
@@ -388,8 +389,9 @@ const Carrito = () => {
           const respuesta = await res.json();
 
           if (respuesta.data === "se guardo la venta") {
-            localStorage.removeItem("LMG-Carrito");
-            // Router.reload();
+            setTimeout(() => {
+              setCarrito([]);
+            }, 4000);
           }
 
           setPago(true);
@@ -430,7 +432,7 @@ const Carrito = () => {
           </div>
         ) : (
           <>
-            <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 w-full text-center border-t-4 border-b-4 border-double border-white shadow-sm">
+            <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 w-full text-center border-t-4 border-b-4 border-double border-white shadow-sm mb-2">
               <h1 className="font-bold text-xl md:text-2xl xl:text-3xl text-white py-2 ">
                 Carrito de compras
               </h1>

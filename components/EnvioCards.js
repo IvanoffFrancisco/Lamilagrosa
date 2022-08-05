@@ -201,7 +201,7 @@ const EnvioCards = ({
                     type="text"
                     name="nombre"
                     className={`bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md text-blue-600 capitalize border border-red-600 w-full ${
-                      errorNombre === "correcto"
+                      errorDireccion === "correcto"
                         ? "border-green-600"
                         : "border-red-600"
                     }`}

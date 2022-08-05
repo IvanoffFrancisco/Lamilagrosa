@@ -181,7 +181,7 @@ export default function FormPago({
               ) : null}
 
               <button
-                onClick={pagarAhora}
+                onClick={handleSubmit}
                 className={`w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto mt-5 mb-2 bg-red-600 text-white py-2 rounded-md font-semibold flex justify-center items-center ${
                   formaDePago ? "display-block" : "hidden"
                 }`}
