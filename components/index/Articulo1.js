@@ -5,6 +5,7 @@ const Articulo1 = () => {
   const [quotes, setQuotes] = useState([]);
 
   const Frases = [
+    "Una milanesa no soluciona tus problemas pero ayuda bastante",
     "No dejes para mañana lo que puedas comer hoy!!!",
 
     "La cocina donde cabemos todos",
@@ -30,29 +31,29 @@ const Articulo1 = () => {
 
   const RandomQuotes = async () => {
     const Frases = [
-      { 
-        quote: "No dejes para mañana lo que puedas comer hoy!!!" 
+      {
+        quote: "No dejes para mañana lo que puedas comer hoy!!!",
       },
       {
-        quote: "Sazón y sabor a un costo menor"
-      },
-      { 
-        quote: "Un mundo de sabores a un click de distancia" 
-      },
-      { 
-        quote: "Creando experiencias únicas para tu paladar" 
-      },
-      { 
-        quote: "No es solo comida, es amor en cada bocado" 
-      },
-      { 
-        quote: "Frescura y sabor son tu mejor opción" 
-      },
-      { 
-        quote: "Cada platillo está hecho con el corazón" 
+        quote: "Sazón y sabor a un costo menor",
       },
       {
-        quote: "Calidad y amor en cada comida" 
+        quote: "Un mundo de sabores a un click de distancia",
+      },
+      {
+        quote: "Creando experiencias únicas para tu paladar",
+      },
+      {
+        quote: "No es solo comida, es amor en cada bocado",
+      },
+      {
+        quote: "Frescura y sabor son tu mejor opción",
+      },
+      {
+        quote: "Cada platillo está hecho con el corazón",
+      },
+      {
+        quote: "Calidad y amor en cada comida",
       },
     ];
     const randomQuote = Math.floor(Math.random() * Frases.length);
@@ -65,10 +66,10 @@ const Articulo1 = () => {
 
   return (
     <div className="w-full max-w-[90%] mx-auto flex flex-col text-center items-center mt-5 md:mt-10 lg:mt-15 xl:mt-20">
-      <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold text-red-700 mx-auto tracking-wide">
+      <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold text-red-700 mx-auto tracking-wide ">
         {quotes}
       </h2>
-      <h2 className="lg:text-xl xl:text-xl text-black font-semibold mx-auto tracking-wide mt-8 lg:mt-10 xl:mt-8 mb-4">
+      <h2 className="lg:text-xl xl:text-xl text-black font-semibold mx-auto tracking-wide mt-8 lg:mt-10 xl:mt-28 mb-4">
         Date el gusto con nuestra amplia variedad de menúes
       </h2>
       <Link href="/menu">
