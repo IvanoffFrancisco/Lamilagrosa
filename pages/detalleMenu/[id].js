@@ -207,6 +207,7 @@ export default function DetalleProducto({ respuesta }) {
                           : ""
                       }`}
                       key={i}
+                      data-id={item._id}
                       data-nombre={item.nombre}
                       data-imagen={item.imagen}
                       data-precio={item.precio}

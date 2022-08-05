@@ -46,7 +46,7 @@ export default function DetalleGuarnicion(props) {
 
     //Crea y agrega pedido al carrito
     const pedido = {
-      idMenu:detalleProducto._id,
+      idGuarnicion:detalleProducto._id,
       guarnicion: detalleProducto.nombre,
       imagenGuarnicion: detalleProducto.imagen,
       cantidad:cantidad,

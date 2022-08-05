@@ -6,6 +6,7 @@ const ResumenCarrito = ({
   sumaCarrito,
   metodoEnvio,
   handleContinuar,
+  handleSubmit,
   pago,
   formaDePago,
   procesando,
@@ -93,7 +94,7 @@ const ResumenCarrito = ({
             <>
               {metodoEnvio === "retira" ? (
                 <button
-                  onClick={handleContinuar}
+                  onClick={handleSubmit}
                   className={`w-full md:w-1/2 lg:w-full xl:w-1/2 mx-auto my-2 bg-red-600 text-white py-2 rounded-md font-semibold flex justify-center items-center ${
                     pago ? "hidden" : ""
                   }`}
