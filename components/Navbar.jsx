@@ -29,8 +29,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white">
-      <div className="max-w-[95%] xs:max-w-[90%] lg:max-w-[85%] mx-auto flex justify-between items-center w-full h-full shadow-sm shadow-gray-400">
+    <div className="fixed w-full h-20 z-[900] top-0 shadow-lg bg-white shadow-sm shadow-gray-400">
+      <div className="max-w-[95%] xs:max-w-[90%] lg:max-w-[85%] mx-auto flex justify-between items-center w-full h-full ">
         <Link href="/">
           <a className="pt-1">
             <div className="w-[90px] xs:w-[100px] md:w-[120px]">
