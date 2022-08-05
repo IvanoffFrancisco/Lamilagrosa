@@ -9,11 +9,12 @@ export default function Profile() {
   const { userGlobal, islogged } = useContext(UsuarioContext);
 
   return (
-    <div className="h-full absolute w-full ">
-      <ProfileSideBar />
-
-      <div className="antialiased max-w-6xl mx-auto my-32 px-8">
-        <div className="relative block md:flex items-center ">
+    <div className="absolute w-full">
+      <div className="">
+        <ProfileSideBar />
+      </div>
+      <div className="antialiased max-w-6xl mx-auto my-32 px-8 xl:ml-56">
+        <div className="relative lg:flex items-center ">
           <div className="w-full md:w-1/2 h-[591px] relative z-1 bg-white border border-sky-500 border-r-0 rounded shadow-xl shadow-gray-300 overflow-hidden">
             <div className="text-lg w-full font-medium text-blue-500 uppercase p-8 text-center border-b border-gray-300 tracking-wide">
               <Image
@@ -69,7 +70,7 @@ export default function Profile() {
               </ul>
             </div>
           </div>
-          <div className="w-full md:w-1/2 relative z-0 px-8 md:px-0 md:py-16">
+          <div className="w-full md:w-1/2 relative z-0 md:px-0 md:py-16">
             <div className="bg-blue-800 text-white rounded-b md:rounded-b-none md:rounded-r shadow-lg overflow-hidden">
               <div className="text-2xl font-semibold p-8 text-center border-b border-blue-500 tracking-wide">
                 Editar Perfil
