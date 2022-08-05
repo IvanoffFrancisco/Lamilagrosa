@@ -430,9 +430,31 @@ const Carrito = () => {
           </div>
         ) : (
           <>
-            <h2 className="bg-blue-600 text-white text-center uppercase md:text-xl font-semibold py-3 mb-3">
-              Carrito de Compras
-            </h2>
+            <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700 w-full text-center border-t-4 border-b-4 border-double border-white shadow-sm">
+              <h1 className="font-bold text-xl md:text-2xl xl:text-3xl text-white py-2 ">
+                Carrito de compras
+              </h1>
+            </div>
+            {islogged ? (
+              ""
+            ) : (
+              <div className="w-full flex justify-center items-center max-w-[95%] lg:max-w-[85%] mx-auto bg-gradient-to-r from-gray-600 via-gray-500 to-gray-600 py-1 my-2 text-white font-semibold gap-2 text-xs lg:text-base">
+                <p className=" ">Ingresaste como usuario invitado</p>
+                <span>||</span>
+                <p className=" ">Tenes una cuenta?</p>
+                <Link href="/login">
+                  <a className="bg-blue-600 px-2 py-1.5 rounded-md">Logeate</a>
+                </Link>
+                <span>||</span>
+                <p className=" ">No estas registrado?</p>
+
+                <Link href="/register">
+                  <a className="bg-blue-600 px-2 py-1.5 rounded-md">
+                    Registrate
+                  </a>
+                </Link>
+              </div>
+            )}
             <div className="pb-5">
               <div className="flex flex-col justify-center items-center lg:flex-row lg:items-start lg:max-w-[85%] lg:mx-auto lg:gap-x-2">
                 <ul className="w-full max-w-[95%] mx-auto flex flex-col gap-2 relative">
