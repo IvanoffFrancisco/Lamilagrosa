@@ -59,11 +59,11 @@ const Articulo1 = () => {
       },
       {
         quote:
-          "Hay 3 cosas en la vioda que no se rechazan, La siesta, cerveza fria y milanesas",
+          "Hay 3 cosas en la vida que no se rechazan, La siesta, cerveza fria y milanesas",
       },
       {
         quote:
-          "Hay amores quie duran para toda la vida, como el amor a la milanesa, ese es infinitamente infinito",
+          "Hay amores que duran para toda la vida, como el amor a la milanesa, ese es infinitamente infinito",
       },
       {
         quote:
@@ -79,7 +79,7 @@ const Articulo1 = () => {
       },
       {
         quote:
-          "Mi cerebro me dice: 'Gimnasio', pero mi corazón me dice: 'Milanesas con papas fritas'",
+          'Mi cerebro me dice: "Gimnasio", pero mi corazón me dice: "Milanesas con papas fritas"',
       },
       {
         quote: "No dejes para mañana lo que puedas comer hoy!!!",
@@ -125,7 +125,7 @@ const Articulo1 = () => {
       <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold text-red-700 mx-auto tracking-wide">
         {quotes}
       </h2>
-      <h2 className="lg:text-xl xl:text-xl text-black font-semibold mx-auto tracking-wide mt-8 lg:mt-10 xl:mt-8 mb-4">
+      <h2 className="lg:text-xl xl:text-xl text-black font-semibold mx-auto tracking-wide mt-8 lg:mt-10 xl:mt-40 mb-4">
         Date el gusto con nuestra amplia variedad de menúes
       </h2>
       <Link href="/menu">
