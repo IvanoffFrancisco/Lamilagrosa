@@ -31,7 +31,7 @@ export default function infoCards() {
         <div className="bg-gray-100 xs:w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion de nuestro Local en Bahía Blanca{" "}
+            Local Bahía Blanca{" "}
           </h1>
           <div className="border-2 border-orange-300 xs:w-full text-start"></div>
         </div>
@@ -41,6 +41,8 @@ export default function infoCards() {
             alt="Picture of the author"
             height={480}
             width={480}
+            layout="responsive"
+            sizes="50vw"
           />
           <div className="bg-white p-8 rounded-bl-md rounded-br-md xs:rounded-bl-none xs:rounded-br-none">
             <h2 className="text-sky-800 font-bold">
@@ -111,6 +113,8 @@ export default function infoCards() {
                   alt="Picture of the author"
                   width={100}
                   height={75}
+                  sizes="50vw"
+                  layout="responsive"
                 />
                 <div className="ml-4 flex xs:flex-col">
                   <p className="text-blue-800 text-sm font-bold">
@@ -138,7 +142,7 @@ export default function infoCards() {
         <div className="bg-gray-100 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion del nuestros Locales en Corrientes Capital{" "}
+            Nuestros Locales en Corrientes Capital
           </h1>
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
@@ -148,6 +152,8 @@ export default function infoCards() {
             alt="Picture of the author"
             height={480}
             width={480}
+            layout="responsive"
+            sizes="50vw"
           />
           <div className="bg-white p-8 rounded-bl-md rounded-br-md xs:rounded-bl-none xs:rounded-br-none">
             <h2 className="text-sky-800 font-bold">
@@ -219,6 +225,8 @@ export default function infoCards() {
                   alt="Picture of the author"
                   width={100}
                   height={75}
+                  sizes="50vw"
+                  layout="responsive"
                 />
                 <div className="ml-4">
                   <p className="text-blue-800 text-sm font-bold">
@@ -249,6 +257,8 @@ export default function infoCards() {
             alt="Picture of the author"
             height={480}
             width={480}
+            layout="responsive"
+            sizes="50vw"
           />
           <div className="bg-white p-8 rounded-bl-md rounded-br-md xs:rounded-bl-none xs:rounded-br-none">
             <h2 className="text-sky-800 font-bold">
@@ -319,6 +329,8 @@ export default function infoCards() {
                   alt="Picture of the author"
                   width={100}
                   height={75}
+                  layout="responsive"
+                  sizes="50vw"
                 />
                 <div className="ml-4">
                   <p className="text-blue-800 text-sm font-bold">
@@ -346,7 +358,7 @@ export default function infoCards() {
         <div className="bg-gray-100 w-full m-auto my-10 text-center overflow-hidden">
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
           <h1 className=" font-bold m-auto text-center text-3xl text-red-900 my-4">
-            Informacion de nuestro Local en Barranqueras{" "}
+            Local Barranqueras{" "}
           </h1>
           <div className="border-2 border-orange-300 rounded-full w-full text-start"></div>
         </div>
@@ -356,6 +368,8 @@ export default function infoCards() {
             alt="Picture of the author"
             height={480}
             width={480}
+            layout="responsive"
+            sizes="50vw"
           />
           <div className="bg-white p-8 rounded-bl-md rounded-br-md xs:rounded-bl-none xs:rounded-br-none">
             <h2 className="text-sky-800 font-bold">
@@ -426,6 +440,8 @@ export default function infoCards() {
                   alt="Picture of the author"
                   width={100}
                   height={75}
+                  layout="responsive"
+                  sizes="50vw"
                 />
                 <div className="ml-4">
                   <p className="text-blue-800 text-sm font-bold">

@@ -106,6 +106,7 @@ const Carrusel = ({
               alt="flecha izquierda"
               layout="fill"
               objectFit="contain"
+              sizes="50vw"
             />
           </button>
           <button
@@ -118,6 +119,7 @@ const Carrusel = ({
               alt="flecha derecha"
               layout="fill"
               objectFit="contain"
+              sizes="50vw"
             />
           </button>
         </div>

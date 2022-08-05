@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { UsuarioContext } from "../contexts/UsuarioContext";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 
-import { BtnSeleccionar } from "../components/BtnSeleccionar";
-import Mensaje from "./Mensaje";
+import { BtnSeleccionar } from "./BtnSeleccionar";
+import Mensaje from "../Mensaje";
 
 const EnvioCards = ({
   editarDomicilio,
@@ -245,33 +245,6 @@ const EnvioCards = ({
               </div>
             </div>
           )}
-
-          {/* <div
-            // Mestra o no el input
-            className={`w-full mt-1 ${editarDomicilio ? "" : "hidden"}`}
-          >
-            <div className="flex justify-between gap-1">
-              <input
-                onBlur={handleDomicilio}
-                type="text"
-                className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
-                placeholder="Edita tu domicilio"
-              />
-              <input
-                onBlur={handleDomicilio}
-                type="text"
-                className="bg-gray-100 outline-none text-sm py-1 pl-2 rounded-md w-full text-blue-600 capitalize border border-blue-600"
-                placeholder="Departamento N°"
-              />
-              <button className="bg-blue-600 text-xs text-white py-1 px-3 rounded-md">
-                Aceptar
-              </button>
-            </div>
-          </div> */}
-
-          {/* <p className="w-full text-xs text-red-600 text-center pt-3 animate-pulse absolute bottom-3">
-            Con tu compra superior a $5000 el envio es sin cago
-          </p> */}
         </div>
       </div>
     </>

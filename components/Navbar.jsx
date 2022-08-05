@@ -35,11 +35,13 @@ const Navbar = () => {
           <a className="pt-1">
             <div className="w-[90px] xs:w-[100px] md:w-[120px]">
               <Image
+                layout="responsive"
                 width="256"
                 height="170"
                 src="/img/logo-web-LaMilaGrosa2.png"
                 alt="logo milagrosa"
                 className="cursor-pointer"
+                sizes="50vw"
               />
             </div>
           </a>
@@ -94,19 +96,23 @@ const Navbar = () => {
                 <div>
                   {navUser ? (
                     <Image
+                      layout="responsive"
                       width="25"
                       height="25"
                       alt="flecha derecha"
                       src="/img/arrowd.svg"
+                      sizes="50vw"
                       className="cursor-pointer"
                       onClick={() => setNavUser(!navUser)}
                     />
                   ) : (
                     <Image
+                      layout="responsive"
                       width="25"
                       height="25"
                       src="/img/arrowl2.svg"
                       alt="flecha izquierda"
+                      sizes="50vw"
                       className="cursor-pointer"
                       onClick={() => setNavUser(!navUser)}
                     />
@@ -185,10 +191,12 @@ const Navbar = () => {
           <div>
             <div className="flex w-full items-center justify-between pb-2 border-b border-gray-300">
               <Image
+                layout="responsive"
                 src="/img/logo-web-LaMilaGrosa2.png"
                 width="100"
                 height="65"
                 alt="logo milagrosa"
+                sizes="50vw"
               />
 
               <div

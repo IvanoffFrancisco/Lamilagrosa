@@ -19,6 +19,7 @@ const Footer = () => {
                   height="548"
                   src="/img/logo-LaMilaGrosa-circular.png"
                   alt="logo milagrosa"
+                  sizes="50vw"
                 />
               </a>
             </Link>

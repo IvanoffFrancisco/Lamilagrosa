@@ -18,13 +18,17 @@ export default function OrderHistory() {
         <div className="mx-auto overflow-hidden rounded-3xl bg-sky-100  shadow-xl shadow-gray-400 mt-10  lg:w-7/12 lg:flex lg:flex-row lg:h-auto">
           <Image
             src={FoodImg}
+            layout="responsive"
+            sizes="50vw"
             alt="Picture of the author"
             height={280}
             width={360}
           />
           <div className="bg-sky-100 w-full p-2">
             <p className="flex items-start justify-start ">
-              <h1 className="text-blue-600 font-bold m-auto  text-center border-b border-sky-600 text-lg">Pedido 1</h1>
+              <h1 className="text-blue-600 font-bold m-auto  text-center border-b border-sky-600 text-lg">
+                Pedido 1
+              </h1>
             </p>
             <h3 className="text-blue-800 font-bold p-2">
               id-venta: <span className="text-md"> "venta"</span>

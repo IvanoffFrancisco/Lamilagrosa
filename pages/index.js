@@ -1,9 +1,9 @@
-import Articulo1 from "../components/Articulo1";
+import Articulo1 from "../components/index/Articulo1";
 // import Articulo2 from "../components/Articulo2";
-import Carrusel from "../components/Carrusel";
-import Combos from "../components/Combos";
+import Carrusel from "../components/index/Carrusel";
+// import Combos from "../components/index/Combos";
 import Layout from "../components/Layout";
-import Promos from "../components/Promos";
+import Promos from "../components/index/Promos";
 
 const images = [
   "/img/slideshow/3.png",

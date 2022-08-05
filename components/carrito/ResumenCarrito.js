@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UsuarioContext } from "../contexts/UsuarioContext";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 
 const ResumenCarrito = ({
   carrito,

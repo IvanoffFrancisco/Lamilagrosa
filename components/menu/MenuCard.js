@@ -14,6 +14,7 @@ const MenuCard = ({ item, tipo }) => {
           objectFit="cover"
           className="rounded-md"
           loading="lazy"
+          sizes="50vw"
         />
         <div>
           <h2 className="font-bold text-lg text-white px-1">{item.nombre}</h2>

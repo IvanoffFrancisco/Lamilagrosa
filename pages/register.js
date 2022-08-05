@@ -15,18 +15,20 @@ import {
 import { MdLockOutline, MdLock, MdAddLocationAlt } from "react-icons/md";
 import { useRegistro } from "../hooks/useRegistro";
 
-
 export default function Register() {
-  
-  const [hendlerInputChangeRegistro,handlerSubmitRegistro,userRegistro,tipoError,mensaje]=useRegistro();
+  const [
+    hendlerInputChangeRegistro,
+    handlerSubmitRegistro,
+    userRegistro,
+    tipoError,
+    mensaje,
+  ] = useRegistro();
 
   return (
     <div className="w-full h-screen bg-gray-200 flex items-center">
       <main className="w-[850px] mx-auto flex flex-col-reverse md:flex-row-reverse justify-center text-center max-w-[85%]">
         <div className="w-full md:w-1/2 max-w-[425px] mx-auto bg-white py-10 flex justify-center items-center rounded-r-lg ">
-          <form
-            className="w-full px-9 py-1"
-          >
+          <form className="w-full px-9 py-1">
             <Link href="/">
               <a>
                 <Image
@@ -34,6 +36,8 @@ export default function Register() {
                   alt="logo milagrosa"
                   width={190}
                   height={120}
+                  layout="responsive"
+                  sizes="50vw"
                 />
               </a>
             </Link>
@@ -107,7 +111,10 @@ export default function Register() {
                 />
               </div>
 
-              <button className="px-24 py-[10px] mt-7 text-xs text-sky-400 font-semibold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-widest uppercase" onClick={handlerSubmitRegistro}>
+              <button
+                className="px-24 py-[10px] mt-7 text-xs text-sky-400 font-semibold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-widest uppercase"
+                onClick={handlerSubmitRegistro}
+              >
                 Registrarse
               </button>
 

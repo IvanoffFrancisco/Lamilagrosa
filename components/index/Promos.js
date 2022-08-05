@@ -1,8 +1,8 @@
-import PromoImg from "../public/img/PromoImg.png";
-import PromoImg2 from "../public/img/PromoImg2.png";
-import PromoImg3 from "../public/img/PromoImg3.png";
-import PromoImg4 from "../public/img/PromoImg4.png";
-import PromoCard from "./PromoCard";
+import PromoImg from "../../public/img/PromoImg.png";
+import PromoImg2 from "../../public/img/PromoImg2.png";
+import PromoImg3 from "../../public/img/PromoImg3.png";
+import PromoImg4 from "../../public/img/PromoImg4.png";
+import PromoCard from "../index/PromoCard";
 
 export default function Promos() {
   return (
@@ -22,7 +22,7 @@ export default function Promos() {
                   de descuento en tu menu vegano o vegetariano."
           contenido2="Promocion valida para consumo en el local abonando en
                   efectivo"
-          fondo=" bg-blue-500 to-blue-500"
+          fondo=" bg-blue-600 to-blue-600"
           color="blue"
           descuento="20"
         />

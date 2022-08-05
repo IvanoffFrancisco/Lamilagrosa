@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import Layout from "../components/Layout";
-import ProductCard from "../components/ProductCard";
-import EnvioCards from "../components/EnvioCards";
-import ResumenCarrito from "../components/ResumenCarrito";
-import GuarnicionCarritoCard from "../components/GuarnicionCarritoCard";
+import ProductCard from "../components/carrito/ProductCard";
+import EnvioCards from "../components/carrito/EnvioCards";
+import ResumenCarrito from "../components/carrito/ResumenCarrito";
+import GuarnicionCarritoCard from "../components/carrito/GuarnicionCarritoCard";
 import FormPago from "../components/formaDePago/FormPago";
 import { UsuarioContext } from "../contexts/UsuarioContext";
 import { CarritoContext } from "../contexts/CarritoContext";

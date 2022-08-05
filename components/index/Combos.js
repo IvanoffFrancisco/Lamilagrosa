@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UsuarioContext } from "../contexts/UsuarioContext";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 import Image from "next/dist/client/image";
 import Link from "next/link";
 import FoodImg from "../public/img/menues/Doble Criminal.jpg";
@@ -24,9 +24,12 @@ export default function Combos() {
         <div className="w-72 p-2 bg-red-200 rounded-xl border-4 border-dashed border-red-800 transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl ">
           <Image
             className=" object-cover rounded-xl h-40"
+            layout="responsive"
             src={FoodImg}
             alt="Combo Sandwiches"
-          ></Image>
+            sizes="50vw"
+            objectFit="cover"
+          />
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -65,7 +68,10 @@ export default function Combos() {
             className="object-cover rounded-xl"
             src={FoodImg2}
             alt="Combo Saludable"
-          ></Image>
+            layout="responsive"
+            objectFit="cover"
+            sizes="50vw"
+          />
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -103,7 +109,9 @@ export default function Combos() {
             className=" object-cover rounded-xl h-40"
             src={FoodImg3}
             alt="Combo Familiar"
-          ></Image>
+            layout="responsive"
+            sizes="50vw"
+          />
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />
@@ -140,6 +148,8 @@ export default function Combos() {
             className=" object-cover rounded-xl h-40"
             src={FoodImg4}
             alt="Combo Napolitana"
+            layout="responsive"
+            sizes="50vw"
           ></Image>
           <div className="flex flex-row">
             <TiStarFullOutline className="block text-yellow-500 text-xl w-6 h-8" />

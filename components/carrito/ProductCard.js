@@ -1,21 +1,27 @@
 import Image from "next/image";
 import { useContext, useState } from "react";
-import { CarritoContext } from "../contexts/CarritoContext";
+import { CarritoContext } from "../../contexts/CarritoContext";
 
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
+const ProductCard = ({ producto, setSumaCarrito }) => {
   const { eliminarCarrito, actualizarCarrito, carrito } =
     useContext(CarritoContext);
 
-  const [cantidadGuarnicion, setCantidadGuarnicion] = useState(
-    producto.cantidad
-  );
+  const [cantidadMenus, setCantidadMenus] = useState(producto.cantidad);
 
-  const { guarnicion, imagenGuarnicion, precio,idGuarnicion } = producto;
+  const {
+    menu,
+    imagenMenu,
+    guarnicion,
+    imagenGuarnicion,
+    precio,
+    tipoMila,
+    adicional,
+  } = producto;
 
   const handleChange = (e) => {
-    setCantidadGuarnicion(parseInt(e.target.value));
+    setCantidadMenus(e.target.value);
     producto.cantidad = parseInt(e.target.value);
     actualizarCarrito(producto);
     setSumaCarrito(
@@ -34,30 +40,47 @@ export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
       <div className="flex flex-col items-center justify-center">
         <article className="w-[90px] md:w-[100px] border border-black">
           <Image
-            src={imagenGuarnicion}
-            alt={idGuarnicion}
+            src={imagenMenu}
+            alt={menu}
             layout="responsive"
             width="500"
             height="300"
             objectFit="cover"
+            sizes="50vw"
+          />
+        </article>
+        <p>+</p>
+        <article className="w-[90px] md:w-[100px] border border-black">
+          <Image
+            src={imagenGuarnicion}
+            alt={guarnicion}
+            layout="responsive"
+            width="500"
+            height="300"
+            objectFit="cover"
+            sizes="50vw"
           />
         </article>
       </div>
 
       <div className="w-full flex flex-col justify-between items-start relative">
-        {/* <h3 className="font-bold tracking-widest text-xs xs:text-lg">{menu}</h3>
-              {tipoMila && (
-                <p className="font-bold tracking-widest text-xs">
-                  de{" "}
-                  <span className="text-blue-600 xs:text-base capitalize">
-                    {tipoMila}
-                  </span>
-                </p>
-              )} */}
+        <h3 className="font-bold tracking-widest text-xs xs:text-lg">{menu}</h3>
+        {tipoMila && (
+          <p className="font-bold tracking-widest text-xs">
+            de{" "}
+            <span className="text-blue-600 xs:text-base capitalize">
+              {tipoMila}
+            </span>
+          </p>
+        )}
         <p className="font-bold tracking-widest text-xs">
-          {" "}
+          con{" "}
           <span className="text-blue-600 xs:text-base capitalize">
             {guarnicion}
+          </span>
+          <span className="text-red-600">
+            {" "}
+            {adicional > 0 ? `- $${adicional}` : ""}
           </span>
         </p>
         <div>
@@ -68,7 +91,7 @@ export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
             onChange={handleChange}
             className="border border-gray-900 ml-1 font-bold"
             name="cantidad"
-            value={cantidadGuarnicion}
+            value={cantidadMenus}
           >
             <option value="1" defaultValue>
               1
@@ -86,7 +109,11 @@ export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
         </div>
         <p className="font-semibold text-lg pt-2">
           Total:
-          <span className="text-red-600"> ${precio * cantidadGuarnicion}</span>
+          {}
+          <span className="text-red-600">
+            {" "}
+            ${(precio + adicional) * cantidadMenus}
+          </span>
         </p>
         <AiOutlineClose
           onClick={() => eliminarCarrito(producto.id)}
@@ -95,4 +122,6 @@ export default function GuarnicionCarritoCard({ producto, setSumaCarrito }) {
       </div>
     </div>
   );
-}
+};
+
+export default ProductCard;

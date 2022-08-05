@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useContext } from "react";
-import { UsuarioContext } from "../contexts/UsuarioContext";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 
 const PromoCard = ({
   imagen,
@@ -36,19 +36,17 @@ const PromoCard = ({
         </div>
 
         <div className="pb-4">
-          <h2 className={`text-3xl font-black text-${color}-900 pb-2`}>
-            {titulo}
-          </h2>
+          <h2 className={`text-3xl font-black text-gray-900 pb-2`}>{titulo}</h2>
           <div className="md:mt-6 sm:mt-0 mb-4">
             <p className="text-white text-md font-bold ">{contenido1}</p>
-            <p className="text-xs text-black font-semibold md:mt-6 sm:mt-0 ">
+            <p className="text-xs text-black font-bold mt-2 md:mt-6 sm:mt-0 ">
               ({contenido2})
             </p>
           </div>
           {islogged ? (
             <Link href="menu">
               <button
-                className={`mt-4 p-2 font-bold border-2 text-gray-800 border-${color}-800 bg-white rounded-2xl hover:bg-${color}-600 hover:text-white hover:border-${color}-800`}
+                className={`mt-4 p-2 font-bold border-2 text-gray-900 border-${color}-800 bg-white rounded-2xl hover:bg-${color}-600 hover:text-white hover:border-${color}-800`}
               >
                 {titulo}
               </button>

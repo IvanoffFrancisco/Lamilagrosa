@@ -21,6 +21,7 @@ const nosotros = () => {
                 height="800"
                 objectFit="cover"
                 priority="true"
+                sizes="50vw"
               />
             </div>
 
