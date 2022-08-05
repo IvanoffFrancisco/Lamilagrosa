@@ -9,7 +9,7 @@ export default function OrderHistory() {
     <>
       <ProfileSideBar />
       <div>
-        <div className="bg-blue-400 h-full py-4">
+        <div className="bg-blue-500 h-full py-4">
           <h1 className="text-center font-bold text-2xl  text-white m-auto">
             Historial de Compras
           </h1>
