@@ -146,7 +146,6 @@ const Carrito = () => {
           setPago(true);
           setPagado(true);
           handleSubmit(e);
-          console.log("realice la compra por tarjeta o delivery");
         }, 2000);
       } else {
         alert(" Nombre o Telefono Incorrectos");
@@ -389,6 +388,7 @@ const Carrito = () => {
           const respuesta = await res.json();
 
           if (respuesta.data === "se guardo la venta") {
+            alert('Pago realizado')
             setTimeout(() => {
               setCarrito([]);
             }, 4000);
