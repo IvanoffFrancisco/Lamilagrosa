@@ -10,11 +10,11 @@ export default function Profile() {
 
   return (
     <div className="absolute w-full">
-      <div className="">
+      <div className="hidden xl:block">
         <ProfileSideBar />
       </div>
-      <div className="antialiased max-w-6xl mx-auto my-32 px-8 xl:ml-56">
-        <div className="relative lg:flex items-center ">
+      <div className="antialiased max-w-6xl mx-auto my-32 px-8">
+        <div className="relative md:flex items-center ">
           <div className="w-full md:w-1/2 h-[591px] relative z-1 bg-white border border-sky-500 border-r-0 rounded shadow-xl shadow-gray-300 overflow-hidden">
             <div className="text-lg w-full font-medium text-blue-500 uppercase p-8 text-center border-b border-gray-300 tracking-wide">
               <Image
