@@ -15,25 +15,25 @@ const Articulo1 = () => {
 
     "No dejes para mañana lo que puedas comer hoy!!!",
 
-    "La cocina donde cabemos todos",
+    // "La cocina donde cabemos todos",
 
-    "Sazón y sabor a un costo menor",
+    // "Sazón y sabor a un costo menor",
 
-    "Un mundo de sabores a un click de distancia",
+    // "Un mundo de sabores a un click de distancia",
 
-    "Creando experiencias únicas para tu paladar",
+    // "Creando experiencias únicas para tu paladar",
 
-    "No es solo comida, es amor en cada bocado",
+    // "No es solo comida, es amor en cada bocado",
 
-    "Frescura y sabor son tu mejor opción",
+    // "Frescura y sabor son tu mejor opción",
 
-    "Cada platillo está hecho con el corazón",
+    // "Cada platillo está hecho con el corazón",
 
-    "El verdadero sabor de una cocina mexicana",
+    // "El verdadero sabor de una cocina mexicana",
 
-    "Calidad y amor en cada cucharada",
+    // "Calidad y amor en cada cucharada",
 
-    "Alimentos frescos y saludables siempre",
+    // "Alimentos frescos y saludables siempre",
 
     "-Sabias que sos el amor de mi vida? -Hija, deja de hablar con la milanesa!",
 
@@ -90,27 +90,27 @@ const Articulo1 = () => {
       {
         quote: 'Un "Te Amo" jamas superara un "Traje milas de LaMilaGrosa"',
       },
-      {
-        quote: "Sazón y sabor a un costo menor",
-      },
-      {
-        quote: "Un mundo de sabores a un click de distancia",
-      },
-      {
-        quote: "Creando experiencias únicas para tu paladar",
-      },
-      {
-        quote: "No es solo comida, es amor en cada bocado",
-      },
-      {
-        quote: "Frescura y sabor son tu mejor opción",
-      },
-      {
-        quote: "Cada platillo está hecho con el corazón",
-      },
-      {
-        quote: "Calidad y amor en cada comida",
-      },
+      // {
+      //   quote: "Sazón y sabor a un costo menor",
+      // },
+      // {
+      //   quote: "Un mundo de sabores a un click de distancia",
+      // },
+      // {
+      //   quote: "Creando experiencias únicas para tu paladar",
+      // },
+      // {
+      //   quote: "No es solo comida, es amor en cada bocado",
+      // },
+      // {
+      //   quote: "Frescura y sabor son tu mejor opción",
+      // },
+      // {
+      //   quote: "Cada platillo está hecho con el corazón",
+      // },
+      // {
+      //   quote: "Calidad y amor en cada comida",
+      // },
     ];
     const randomQuote = Math.floor(Math.random() * Frases.length);
     setQuotes(Frases[randomQuote].quote);
