@@ -11,6 +11,8 @@ const images = [
   "/img/slideshow/8.png",
 ];
 
+
+
 export default function Home() {
   return (
     <Layout pagina={"Home"}>
