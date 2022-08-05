@@ -7,13 +7,10 @@ import { CarritoContext } from "../../contexts/CarritoContext";
 import Layout from "../../components/Layout";
 import Mensaje from "../../components/Mensaje";
 
-import {
-  TiHeartOutline
-} from "react-icons/ti";
-
+import { TiHeartOutline } from "react-icons/ti";
 
 export default function DetalleGuarnicion(props) {
-  const {carrito, agregarCarrito } = useContext(CarritoContext);
+  const { carrito, agregarCarrito } = useContext(CarritoContext);
   const [detalleProducto, setDetalleProducto] = useState({});
   const [cantidad, setCantidad] = useState(1);
   const [mensaje, setMensaje] = useState("");
@@ -24,7 +21,7 @@ export default function DetalleGuarnicion(props) {
   }, [props]);
 
   const { ingredientes } = detalleProducto;
-  
+
   //metodo para hacer el fetch de id guarniciones
   const obtenerDetalleGuarnicion = async () => {
     try {
@@ -37,21 +34,21 @@ export default function DetalleGuarnicion(props) {
     }
   };
 
-  const hendlerChangeCantidad=(e)=>{
-    setCantidad(e.target.value)
-  }
+  const hendlerChangeCantidad = (e) => {
+    setCantidad(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     //Crea y agrega pedido al carrito
     const pedido = {
-      idMenu:detalleProducto._id,
+      idMenu: detalleProducto._id,
       guarnicion: detalleProducto.nombre,
       imagenGuarnicion: detalleProducto.imagen,
-      cantidad:cantidad,
+      cantidad: cantidad,
       precio: detalleProducto.precio,
-      id: Date.now().toString(36)
+      id: Date.now().toString(36),
     };
     agregarCarrito(pedido);
 
@@ -111,6 +108,7 @@ export default function DetalleGuarnicion(props) {
                   objectFit="cover"
                   width="800"
                   height="500"
+                  sizes="50vw"
                 />
               )}
             </article>
@@ -168,8 +166,7 @@ export default function DetalleGuarnicion(props) {
                 Total:
                 <span className="text-red-700 text-lg md:text-3xl font-bold py-6">
                   {" "}
-                  $
-                  {detalleProducto?.precio * cantidad}
+                  ${detalleProducto?.precio * cantidad}
                 </span>
               </p>
             </div>

@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,16 +13,13 @@ import { MdLockOutline } from "react-icons/md";
 import { useLogin } from "../hooks/useLogin";
 
 export default function Login() {
-
-  const [handleChangeInputs,handleSubmitFormLogin,error,user]=useLogin()
+  const [handleChangeInputs, handleSubmitFormLogin, error, user] = useLogin();
 
   return (
     <div className="w-full h-screen bg-gray-200 flex items-center">
       <main className="w-[800px] mx-auto flex flex-col-reverse md:flex-row justify-center text-center max-w-[85%]">
         <div className="w-full md:w-1/2 max-w-[400px] mx-auto bg-white py-6 flex justify-center items-center rounded-l-lg ">
-          <form
-            className="w-full px-9 py-6"
-          >
+          <form className="w-full px-9 py-6">
             <Link href="/">
               <a>
                 <Image
@@ -31,6 +27,8 @@ export default function Login() {
                   alt="logo milagrosa"
                   width={190}
                   height={120}
+                  layout="responsive"
+                  sizes="50vw"
                 />
               </a>
             </Link>
@@ -82,7 +80,10 @@ export default function Login() {
                 </Link>
               </div>
 
-              <button className="px-24 py-[10px] text-xs mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase" onClick={handleSubmitFormLogin}>
+              <button
+                className="px-24 py-[10px] text-xs mb-12 mt-6 text-sky-400 font-bold border-2 border-sky-400 rounded-full hover:bg-sky-500 ease-in duration-200 hover:text-white tracking-wide uppercase"
+                onClick={handleSubmitFormLogin}
+              >
                 Iniciar Sesión
               </button>
 

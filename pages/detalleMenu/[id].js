@@ -137,7 +137,7 @@ export default function DetalleProducto({ respuesta }) {
               )
             </span>
           </div>
-          {/* -------------------------------------------------------------------------------------- */}
+
           {/* columna izquierda */}
           <section className="w-full lg:w-3/5 flex flex-col gap-2 ">
             <article className="w-full shadow-sm shadow-gray-800">
@@ -150,6 +150,7 @@ export default function DetalleProducto({ respuesta }) {
                   width="800"
                   height="500"
                   priority="true"
+                  sizes="50vw"
                 />
               )}
             </article>
@@ -187,6 +188,7 @@ export default function DetalleProducto({ respuesta }) {
                         width="500"
                         height="300"
                         objectFit="cover"
+                        sizes="50vw"
                       />
                       <p className="text-xs text-center font-semibold text-blue-600">
                         {item.nombre}
@@ -219,6 +221,7 @@ export default function DetalleProducto({ respuesta }) {
                         width="500"
                         height="300"
                         objectFit="cover"
+                        sizes="50vw"
                       />
                       <p className="text-xs text-center font-semibold text-blue-600">
                         {item.nombre}
@@ -232,11 +235,8 @@ export default function DetalleProducto({ respuesta }) {
               </ul>
             </section>
           </section>
-          {/* -------------------------------------------------------------------------------------- */}
 
-          {/* -------------------------------------------------------------------------------------- */}
           {/* columna derecha */}
-
           <form
             onSubmit={handleSubmit}
             className="w-full mt-5 lg:px-2 lg:w-2/5"
@@ -367,7 +367,6 @@ export default function DetalleProducto({ respuesta }) {
               </Link>
             </div>
           </form>
-          {/* -------------------------------------------------------------------------------------- */}
         </div>
       </main>
     </Layout>

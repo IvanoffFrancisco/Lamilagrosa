@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import moment from "moment";
-import { UsuarioContext } from "../contexts/UsuarioContext";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 import { FaTrashAlt, FaUser } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";

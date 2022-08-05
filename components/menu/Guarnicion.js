@@ -10,6 +10,7 @@ const Guarnicion = ({ guarnicion }) => {
         width="500"
         height="330"
         objectFit="cover"
+        sizes="50vw"
         className="cursor-pointer rounded-md"
       />
     </li>

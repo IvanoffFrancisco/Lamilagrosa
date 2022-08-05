@@ -1,6 +1,6 @@
 import { React, useContext } from "react";
 import Image from "next/image";
-import ProfileSideBar from "../components/ProfileSideBar";
+import ProfileSideBar from "../components/historial/ProfileSideBar";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { TbMapPin } from "react-icons/tb";
 import { UsuarioContext } from "../contexts/UsuarioContext";
@@ -11,23 +11,27 @@ export default function Profile() {
   return (
     <div className="h-full absolute w-full ">
       <ProfileSideBar />
-      
+
       <div className="antialiased max-w-6xl mx-auto my-32 px-8">
         <div className="relative block md:flex items-center ">
-          <div className="w-full md:w-1/2 relative z-1 bg-white border border-sky-500 border-r-0 rounded shadow-xl shadow-gray-300 overflow-hidden">
-            <div className="text-lg font-medium text-blue-500 uppercase p-8 text-center border-b border-gray-300 tracking-wide">
+          <div className="w-full md:w-1/2 h-[591px] relative z-1 bg-white border border-sky-500 border-r-0 rounded shadow-xl shadow-gray-300 overflow-hidden">
+            <div className="text-lg w-full font-medium text-blue-500 uppercase p-8 text-center border-b border-gray-300 tracking-wide">
               <Image
-                width="100"
-                height="100"
+                width="180"
+                height="180"
                 src="/img/profile.svg"
                 alt="profile"
+                // layout="responsive"
+                // sizes="50vw"
+                // objectFit="cover"
               />
             </div>
             <div className="block sm:flex md:block lg:flex items-center justify-center">
               <div className="mt-8 sm:m-8 md:m-0 md:mt-8 lg:m-8 text-center">
                 <div className="inline-flex items-center">
                   <span className="text-3xl text-bold text-slate-600 font-medium">
-                    Usuario: <span className="text-blue-600">{userGlobal?.user}</span>
+                    Usuario:{" "}
+                    <span className="text-blue-600">{userGlobal?.user}</span>
                   </span>
                 </div>
               </div>

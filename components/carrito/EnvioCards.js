@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { UsuarioContext } from "../contexts/UsuarioContext";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 
-import { BtnSeleccionar } from "../components/BtnSeleccionar";
-import Mensaje from "./Mensaje";
+import { BtnSeleccionar } from "./BtnSeleccionar";
+import Mensaje from "../Mensaje";
 
 const EnvioCards = ({
   editarDomicilio,
@@ -88,9 +88,6 @@ const EnvioCards = ({
                 Av. Sarmiento 266 Resistencia, Chaco
               </label>
             </div>
-            {/* <button className="bg-blue-600 py-1.5 px-4 text-white text-xs rounded-md mt-1">
-            Cancelar Retiro
-          </button> */}
           </form>
         </div>
       </div>
@@ -110,22 +107,30 @@ const EnvioCards = ({
           <hr className="text-gray-700 pb-2" />
           <div className="flex justify-between items-baseline">
             <p className="text-xs">
-              {userGlobal?.direcciones?.[0].calle === "" ? "" : "En tu domicilio: "}
+              {userGlobal?.direcciones?.[0].calle === ""
+                ? ""
+                : "En tu domicilio: "}
 
-              <span className="text-blue-600 capitalize">{userGlobal?.direcciones?.[0].calle}</span>
+              <span className="text-blue-600 capitalize">
+                {userGlobal?.direcciones?.[0].calle}
+              </span>
             </p>
             <p
               onClick={() => seteditarDomicilio(true)}
               className="text-xs text-red-600 cursor-pointer pt-1"
             >
-              {userGlobal?.direcciones?.[0].calle === "" ? "" : "Editar domicilio"}
+              {userGlobal?.direcciones?.[0].calle === ""
+                ? ""
+                : "Editar domicilio"}
             </p>
           </div>
 
           <div
             // Mestra o no el input
             className={`w-full mt-1 ${
-              editarDomicilio || userGlobal?.direcciones?.[0].calle === "" ? "" : "hidden"
+              editarDomicilio || userGlobal?.direcciones?.[0].calle === ""
+                ? ""
+                : "hidden"
             }`}
           >
             <div className="flex justify-between gap-1">
