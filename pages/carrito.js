@@ -15,7 +15,7 @@ import { BsTrash } from "react-icons/bs";
 
 const Carrito = () => {
   //States
-  const { userGlobal } = useContext(UsuarioContext);
+  const { userGlobal, islogged } = useContext(UsuarioContext);
   const { carrito, eliminarTodo, totalCarrito } = useContext(CarritoContext);
   const [sumaCarrito, setSumaCarrito] = useState(
     carrito?.reduce(
@@ -92,6 +92,7 @@ const Carrito = () => {
         // setMensaje("telefono valido");
         setErrorDireccion("correcto");
         setErrorPago(false);
+        setDireccion(value);
       } else {
         setError("error");
         setMensaje("Direccion muy corta");
@@ -298,7 +299,45 @@ const Carrito = () => {
         );
       }
     }
+    if (metodoEnvio === "retira") {
+      console.log("retira");
+      if (errorNombre === "correcto") {
+        console.log("nombre correcto");
 
+        if (errorPago === false) {
+          console.log("error pago falso");
+
+          setProcesando(true);
+          setTimeout(async () => {
+            setProcesando(false);
+            setPago(true);
+            setPagado(true);
+            console.log("Retira ", newVenta);
+
+            const config = {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(newVenta),
+            };
+            const res = await fetch(
+              "https://lamilagrosa-app.herokuapp.com/api/ventas",
+              config
+            );
+            const respuesta = await res.json();
+
+            if (respuesta.data === "se guardo la venta") {
+              localStorage.removeItem("LMG-Carrito");
+              // setTimeout(() => {
+              //   Router.reload();
+              // }, 3000);
+            }
+          }, 2000);
+          return;
+        }
+      }
+    }
     if (errorNombre === "correcto" && errorTelefono === "correcto") {
       if (metodoEnvio === "retira") {
         if (errorPago === false) {
@@ -324,7 +363,7 @@ const Carrito = () => {
 
             if (respuesta.data === "se guardo la venta") {
               localStorage.removeItem("LMG-Carrito");
-              Router.reload();
+              // Router.reload();
             }
           }, 2000);
         } else {
@@ -350,7 +389,7 @@ const Carrito = () => {
 
           if (respuesta.data === "se guardo la venta") {
             localStorage.removeItem("LMG-Carrito");
-            Router.reload();
+            // Router.reload();
           }
 
           setPago(true);
@@ -449,7 +488,7 @@ const Carrito = () => {
                   } */}
 
                   <p
-                    className={`text-center text-white font-bold py-2.5 bg-red-600 mb-2 rounded-sm shadow-sm shadow-red-900 ${
+                    className={`text-center lg:w-[462px] text-white font-bold py-2.5 bg-red-600 mb-2 rounded-sm shadow-sm shadow-red-900 ${
                       metodoEnvio !== "" ? "hidden" : ""
                     }`}
                   >
@@ -479,8 +518,14 @@ const Carrito = () => {
                   </div>
                   <div
                     className={`${
-                      pago && metodoEnvio === "enviar"
-                        ? "-translate-y-[304px] top-0 ease-in duration-500"
+                      islogged
+                        ? pago && editarDomicilio && metodoEnvio === "enviar"
+                          ? "-translate-y-[328px] top-0 ease-in duration-500"
+                          : pago && metodoEnvio === "enviar"
+                          ? "-translate-y-[266px] top-0 ease-in duration-500"
+                          : ""
+                        : pago && metodoEnvio === "enviar"
+                        ? "-translate-y-[364px] top-0 ease-in duration-500"
                         : ""
                     }`}
                   >
@@ -494,6 +539,7 @@ const Carrito = () => {
                       pago={pago}
                       formaDePago={formaDePago}
                       procesando={procesando}
+                      direccion={direccion}
                     />
                     {pago ? (
                       <FormPago

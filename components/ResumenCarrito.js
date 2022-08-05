@@ -10,6 +10,7 @@ const ResumenCarrito = ({
   pago,
   formaDePago,
   procesando,
+  direccion,
 }) => {
   const { userGlobal } = useContext(UsuarioContext);
 
@@ -40,9 +41,7 @@ const ResumenCarrito = ({
             <span className="font-semibold">
               Envío a:{" "}
               <span className="text-blue-600 capitalize">
-                {metodoEnvio === "retira"
-                  ? "Retira"
-                  : userGlobal?.direcciones?.[0].calle}
+                {metodoEnvio === "retira" ? "Retira" : direccion}
               </span>
             </span>
             <span className="font-bold text-xs">
@@ -103,7 +102,7 @@ const ResumenCarrito = ({
                     <div role="status">
                       <svg
                         aria-hidden="true"
-                        className="mr-2 w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                        className="mr-2 w-6 h-6 text-white animate-spin dark:text-gray-600 fill-blue-600"
                         viewBox="0 0 100 101"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
