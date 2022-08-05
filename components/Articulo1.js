@@ -121,11 +121,11 @@ const Articulo1 = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-[90%] mx-auto flex flex-col text-center items-center mt-5 md:mt-10 lg:mt-15 xl:mt-20">
-      <h2 className="text-xl lg:text-2xl xl:text-3xl font-bold text-red-700 mx-auto tracking-wide">
+    <div className="w-full max-w-[85%] md:max-w-[75%] lg:max-w-[65%] xl:max-w-[50%] mx-auto flex flex-col text-center items-center mt-10 md:mt-16 lg:mt-24 xl:mt-24">
+      <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-red-700 mx-auto tracking-wide">
         {quotes}
       </h2>
-      <h2 className="lg:text-xl xl:text-xl text-black font-semibold mx-auto tracking-wide mt-8 lg:mt-10 xl:mt-40 mb-4">
+      <h2 className="md:text-xl lg:text-2xl text-black font-semibold mx-auto tracking-wide mt-8 md:mt-16 lg:mt-24 xl:mt-32 mb-4">
         Date el gusto con nuestra amplia variedad de menúes
       </h2>
       <Link href="/menu">
